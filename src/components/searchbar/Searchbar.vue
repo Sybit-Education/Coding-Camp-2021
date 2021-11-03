@@ -1,13 +1,13 @@
 <template>
   <v-toolbar>
-    <v-toolbar-title>Dein Müll</v-toolbar-title>
     <v-autocomplete
       v-model="select"
       :loading="loading"
       :items="items"
       :search-input.sync="search"
-      class="mx-4"
+      class="mx-4 rounded-xl"
       flat
+      outlined
       hide-no-data
       hide-details
       label="Suche deinen Müll..."
@@ -18,10 +18,12 @@
     <template slot="selection" slot-scope="data">
       {{data.item.name}}
     </template>
+    <template v-slot:append>
+      <v-icon>
+        mdi-help
+      </v-icon>
+    </template>
     </v-autocomplete>
-    <v-btn icon>
-      <v-icon>mdi-dots-vertical</v-icon>
-    </v-btn>
   </v-toolbar>
 </template>
 
@@ -49,16 +51,6 @@ export default {
 </script>
 
 <style>
-  .v-toolbar__content, .v-toolbar__extension {
-      align-items: center;
-      display: flex;
-      position: relative;
-      z-index: 0;
-      background: rgb(255, 255, 255);
-      border-radius: 52px;
-      width: 1190px;
-      margin: auto;
-  }
 
 .v-sheet.v-toolbar:not(.v-sheet--outlined) {
     box-shadow: none !important;
