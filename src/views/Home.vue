@@ -1,6 +1,6 @@
 <template>
   <v-container class="home__container">
-    <h2 class="mt-5">Müll finden</h2>
+    <h2 class="mt-5">Müll suchen</h2>
   </v-container>
 </template>
 
