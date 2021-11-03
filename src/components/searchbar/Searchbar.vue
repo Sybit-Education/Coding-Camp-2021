@@ -20,7 +20,7 @@
     </template>
     <template v-slot:append>
       <v-icon>
-        mdi-help
+        {{ $route.path === '/detail' ? 'mdi-magnify' : 'mdi-help'}}
       </v-icon>
     </template>
     </v-autocomplete>
