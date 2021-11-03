@@ -1,12 +1,12 @@
 <template>
-  <v-bottom-navigation app color="pink accent-3" hide-on-scroll scroll-target="#scroll-area">
+  <v-bottom-navigation app color="amber darken-4" hide-on-scroll scroll-target="#scroll-area">
     <v-btn :to="{ name: 'Home' }" class="bottom-nav__button rounded-xl" exact>
       <span>Home</span>
-      <v-icon>mdi-home-variant</v-icon>
+      <v-icon>mdi-home</v-icon>
     </v-btn>
-     <v-btn :to="{ name: 'Info' }" class="bottom-nav__button rounded-xl" exact>
-      <span class="blue--text">Info</span>
-      <v-icon color="blue">mdi-information</v-icon>
+     <v-btn :to="{ name: 'Tipps' }" class="bottom-nav__button rounded-xl" exact>
+      <span>Tipps</span>
+      <v-icon>mdi-exclamation</v-icon>
     </v-btn>
      <v-menu offset-y top>
       <template v-slot:activator="{ on, attrs }">
