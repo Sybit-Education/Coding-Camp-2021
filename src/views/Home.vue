@@ -1,21 +1,33 @@
 <template>
   <v-container class="home__container">
-    <h2 class="mt-5">Müll finden</h2>
+    <h1 class="mt-5">Müll suchen</h1>
+    <Searchbar :items="materials"/>
   </v-container>
 </template>
 
 <script>
+import Searchbar from '../components/searchbar/Searchbar'
 export default {
   name: 'Home',
   components: {
+    Searchbar
   },
   metaInfo () {
     return {
     }
   },
   computed: {
+    materials () {
+      return this.$store.getters.getMaterialList
+    }
   },
   mounted () {
+    if (this.materials) {
+      this.$store.dispatch('getRecordsFromSessionStorage', [
+        'material',
+        'targets'
+      ])
+    }
   },
   methods: {
   }
@@ -24,5 +36,6 @@ export default {
 <style scoped>
 .home__container {
   position: relative;
+  text-align: center;
 }
 </style>
