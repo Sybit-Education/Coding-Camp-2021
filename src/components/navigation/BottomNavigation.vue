@@ -4,6 +4,30 @@
       <span>Home</span>
       <v-icon>mdi-home-variant</v-icon>
     </v-btn>
+     <v-btn :to="{ name: 'Info' }" class="bottom-nav__button rounded-xl" exact>
+      <span class="blue--text">Info</span>
+      <v-icon color="blue">mdi-information</v-icon>
+    </v-btn>
+     <v-menu offset-y top>
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          class="bottom-nav__button rounded-xl"
+          v-bind="attrs"
+          v-on="on"
+        >
+          <span class="black--text">Menu</span>
+          <v-icon color="black">mdi-menu</v-icon>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item>
+          <v-list-item-title>Datenschutz</v-list-item-title>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-title>Impressum</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
   </v-bottom-navigation>
 </template>
 
