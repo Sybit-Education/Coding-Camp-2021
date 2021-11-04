@@ -2,6 +2,13 @@
   <div class="tips">
     <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
     <back-button :to="{ name: 'Tips'}"></back-button>
+    <share-button
+      v-if="tip"
+      :title="tip.title"
+      :text="tip.teaser"
+      :url="tipUrl"
+    >
+    </share-button>
     <v-card v-if="tip" class="mx-auto rounded-xl" justify="center">
         <div class="card">
             <v-img :src="imageSource" class="card__image card__image--top rounded-xl" contain></v-img>
@@ -26,10 +33,11 @@
 <script>
 import tipService from '@/services/tip.service'
 import BackButton from '@/components/navigation/BackButton.vue'
+import ShareButton from '@/components/navigation/ShareButton.vue'
 
 export default {
   name: 'TipDetail',
-  components: { BackButton },
+  components: { BackButton, ShareButton },
   props: {
     tipId: {
       type: String,
@@ -64,6 +72,9 @@ export default {
         return this.tip.teaserImage[0].url
       }
       return require('@/assets/tips_placeholder.svg')
+    },
+    tipUrl () {
+      return window.location.href
     }
   }
 }
