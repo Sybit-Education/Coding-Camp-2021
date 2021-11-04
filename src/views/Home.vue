@@ -1,6 +1,6 @@
 <template>
   <v-container class="home__container">
-    <h1 class="mt-5">Müll suchen</h1>
+    <h1 class="mt-5">Wie entsorge ich im Landkreis Konstanz &hellip;</h1>
     <Searchbar :items="materials"/>
   </v-container>
 </template>
