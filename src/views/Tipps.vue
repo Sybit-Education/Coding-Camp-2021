@@ -2,7 +2,7 @@
   <v-container class="tipps__container">
     <h1 class="mt-5">Tipps</h1>
     <div v-for="tipp in list" :key="tipp.id">
-        <tipp-card :tipp="tipp" />
+        <tipp-card :tipp="tipp" class="mb-5"/>
     </div>
   </v-container>
 </template>
