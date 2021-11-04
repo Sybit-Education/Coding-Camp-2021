@@ -2,23 +2,25 @@
   <div class="tips">
     <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
     <back-button :to="{ name: 'Tips'}"></back-button>
-    <v-card v-if="tip" class="mx-auto rounded-xl" justify="center">
-        <div class="card">
-            <v-img :src="imageSource" class="card__image card__image--top rounded-xl" contain></v-img>
-            <v-img :src="imageSource" class="card__image card__image--top card__image-background rounded-xl" contain></v-img>
-            <div class="card__title grey--text text--darken-3">{{ tip.title }}</div>
-            <vue-simple-markdown
-                :source="tip.teaser.replaceAll('\\', '')"
-                class="card__teaser grey--text text--darken-3 body-1 my-2">
-            </vue-simple-markdown>
-            <div class="card__markdown-wrapper">
-                <v-img :src="imageSource" class="card__image card__image--bottom rounded-xl" contain></v-img>
-                <vue-simple-markdown
-                    :source="tip.article.replaceAll('\\', '')"
-                    class="card__markdown">
-                </vue-simple-markdown>
-            </div>
-        </div>
+
+    <v-card v-if="tip" class="card mx-auto rounded-xl" >
+      <v-img :src="imageSource" class="card__image card__image--top rounded-xl" contain></v-img>
+      <v-img :src="imageSource" class="card__image card__image--top card__image-background rounded-xl" contain></v-img>
+
+      <div class="card__title grey--text text--darken-3">
+        {{ tip.title }}
+      </div>
+      <vue-simple-markdown
+        :source="tip.teaser.replaceAll('\\', '')"
+        class="card__teaser grey--text text--darken-3 body-1 my-2">
+      </vue-simple-markdown>
+      <div class="card__markdown-wrapper">
+        <v-img :src="imageSource" class="card__image card__image--bottom rounded-xl" contain></v-img>
+        <vue-simple-markdown
+          :source="tip.article.replaceAll('\\', '')"
+          class="card__markdown">
+        </vue-simple-markdown>
+      </div>
     </v-card>
   </div>
 </template>
