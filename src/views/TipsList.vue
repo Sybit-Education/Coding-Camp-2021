@@ -1,6 +1,7 @@
 <template>
   <v-container id="tip-list" class="pb-16">
     <h1 class="mb-5">Tipps</h1>
+    <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
     <div v-for="tip in list" :key="tip.id">
       <tip-card :tip="tip" class="mb-5"/>
     </div>
@@ -16,11 +17,13 @@ export default {
   components: { tipCard },
   data () {
     return {
-      list: []
+      list: [],
+      showLoadingSpinner: true
     }
   },
   async created () {
     this.list = await this.$store.dispatch('getTipRecords')
+    this.showLoadingSpinner = false
   }
 }
 </script>
