@@ -6,7 +6,7 @@
       v-if="tip"
       :title="tip.title"
       :text="tip.teaser"
-      :url="tipUrl"
+      :url="$route.path"
     >
     </share-button>
     <v-card v-if="tip" class="mx-auto rounded-xl" justify="center">
@@ -27,6 +27,7 @@
             </div>
         </div>
     </v-card>
+    <v-skeleton-loader v-else type="card" />
   </div>
 </template>
 
@@ -72,9 +73,6 @@ export default {
         return this.tip.teaserImage[0].url
       }
       return require('@/assets/tips_placeholder.svg')
-    },
-    tipUrl () {
-      return window.location.href
     }
   }
 }
