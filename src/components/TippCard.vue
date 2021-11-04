@@ -4,7 +4,7 @@
     max-width="365"
   >
     <v-card-title>
-      {{ this.tipp.title }}
+      {{ tipp.title }}
     </v-card-title>
 
     <v-card-actions>
@@ -23,7 +23,7 @@
         <v-divider></v-divider>
 
         <v-card-text>
-          {{ this.tipp.article }}
+          <vue-simple-markdown :source="tipp.article" />
         </v-card-text>
       </div>
     </v-expand-transition>
