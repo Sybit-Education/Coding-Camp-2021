@@ -13,15 +13,15 @@
 
 <script>
 export default {
-  name: "Impressum",
+  name: 'Impressum',
   components: {},
-  metaInfo() {
-    return {};
+  metaInfo () {
+    return {}
   },
   computed: {},
-  mounted() {},
-  methods: {},
-};
+  mounted () {},
+  methods: {}
+}
 </script>
 
 <style scoped>
