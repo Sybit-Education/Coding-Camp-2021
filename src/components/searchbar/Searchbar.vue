@@ -4,7 +4,6 @@
       v-model="select"
       :loading="loading"
       :items="items"
-      :search-input.sync="search"
       class="mx-4 rounded-xl"
       flat
       outlined
@@ -36,14 +35,23 @@ export default {
       required: true
     }
   },
+  watch: {
+    select () {
+      this.search()
+    }
+  },
   data () {
     return {
       loading: false,
-      search: null,
       select: null
     }
   },
   methods: {
+    search () {
+      if (this.select?.id) {
+        this.$router.push({ name: 'DetailPage', params: { id: this.select.id } })
+      }
+    },
     filterObject (item, queryText) {
       if (item.synonyms) {
         return (
