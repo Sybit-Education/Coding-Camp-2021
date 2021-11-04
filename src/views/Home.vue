@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1 class="mt-5 d-flex justify-center">Wie entsorge ich im Landkreis Konstanz &hellip;</h1>
+    <h1 class="mt-5 d-flex justify-center" style="text-align: center">Wie entsorge ich im Landkreis Konstanz &hellip;</h1>
     <Searchbar :items="materials" />
     <Partner class="mt-15"/>
   </v-container>

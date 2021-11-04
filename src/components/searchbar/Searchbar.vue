@@ -9,7 +9,7 @@
       outlined
       no-data-text="Keine Treffer!"
       hide-details
-      label="Suche deinen Müll..."
+      label="meinen Müll..."
       :filter="filterObject"
     >
       <template slot="item" slot-scope="data">

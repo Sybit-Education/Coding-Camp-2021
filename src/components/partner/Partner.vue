@@ -1,6 +1,17 @@
 <template>
 <div>
-  <h2>Partner:</h2>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
     <v-carousel
     cycle
     height="140"
@@ -20,6 +31,9 @@
     </div>
     </v-carousel-item>
   </v-carousel>
+  <p>
+    Partner:
+  </p>
 </div>
 </template>
 <script>
