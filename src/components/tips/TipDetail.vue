@@ -1,40 +1,35 @@
 <template>
-  <v-container class="tips">
+  <div class="tips">
     <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
-      <v-btn
-        @click="$router.go(-1)"
-        fab
-        small
-        top
-        left
-        fixed
-        class="mt-3"
-      >
-        <v-icon style="font-size:25px">
-          mdi-arrow-left
-        </v-icon>
-      </v-btn>
+    <back-button :to="{ name: 'Tips'}"></back-button>
     <v-card v-if="tip" class="mx-auto rounded-xl" justify="center">
         <div class="card">
             <v-img :src="imageSource" class="card__image card__image--top rounded-xl" contain></v-img>
-            <v-img :src="imageSource" class="card__image card__image--top card__image-background" contain></v-img>
+            <v-img :src="imageSource" class="card__image card__image--top card__image-background rounded-xl" contain></v-img>
             <div class="card__title grey--text text--darken-3">{{ tip.title }}</div>
-            <vue-simple-markdown :source="tip.teaser"
-                                class="card__teaser grey--text text--darken-3 body-1 my-2"></vue-simple-markdown>
+            <vue-simple-markdown
+                :source="tip.teaser"
+                class="card__teaser grey--text text--darken-3 body-1 my-2">
+            </vue-simple-markdown>
             <div class="card__markdown-wrapper">
-                <v-img :src="imageSource" class="card__image card__image--bottom" contain></v-img>
-                <vue-simple-markdown :source="tip.article" class="card__markdown"></vue-simple-markdown>
+                <v-img :src="imageSource" class="card__image card__image--bottom rounded-xl" contain></v-img>
+                <vue-simple-markdown
+                    :source="tip.article"
+                    class="card__markdown">
+                </vue-simple-markdown>
             </div>
         </div>
     </v-card>
-  </v-container>
+  </div>
 </template>
 
 <script>
 import tipService from '@/services/tip.service'
+import BackButton from '@/components/navigation/BackButton.vue'
 
 export default {
   name: 'TipDetail',
+  components: { BackButton },
   props: {
     tipId: {
       type: String,
@@ -90,7 +85,7 @@ export default {
   padding: 1rem;
 
   @media #{map-get($display-breakpoints, 'xs-only')} {
-    padding: 0;
+    padding: 0.5rem;
   }
 
   &__title {
@@ -140,7 +135,7 @@ export default {
   }
 
   &__image {
-
+    padding: 0;
     &--top {
       z-index: 1 !important;
       display: none;
@@ -152,7 +147,7 @@ export default {
     }
 
     &--bottom {
-      max-width: 320px;
+      max-width: 420px;
       float: right;
       @media #{map-get($display-breakpoints, 'xs-only')} {
         display: none;
