@@ -130,9 +130,7 @@ export default {
       ],
       types: [
         'Wertstoffhof',
-        'Öffentlicher Mülleimer',
-        'Glas-Container',
-        'Altkleider-Container'
+        'Glas-Container'
       ],
       type: '',
       typeRules: [
