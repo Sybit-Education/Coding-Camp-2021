@@ -1,7 +1,7 @@
 <template>
 <v-card
     class="mx-auto"
-    max-width="344"
+    max-width="365"
   >
     <v-card-title>
       {{ this.tipp.title }}

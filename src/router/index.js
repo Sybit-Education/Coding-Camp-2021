@@ -30,7 +30,7 @@ const routes = [
     path: '/impressum',
     name: 'Impressum',
     component: () =>
-        import(/* webpackChunkName: "impressum" */ '../views/Impressum.vue')
+      import(/* webpackChunkName: "impressum" */ '../views/Impressum.vue')
   },
   {
     path: '/tipps',
