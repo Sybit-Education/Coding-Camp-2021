@@ -2,8 +2,8 @@ module.exports = {
   lintOnSave: process.env.NODE_ENV !== 'production',
   pwa: {
     name: '',
-    themeColor: '#E91E63',
-    msTileColor: '#E91E63',
+    themeColor: '#FF6F00',
+    msTileColor: '#FF6F00',
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'default',
     workboxOptions: {
