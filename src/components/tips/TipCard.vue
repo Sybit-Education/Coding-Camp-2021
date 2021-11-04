@@ -8,7 +8,7 @@
         <v-col md="4" sm="12">
           <v-img
             :src="imageSource"
-            class="tip-teaser-card__image rounded-tl-xl rounded-xl"/>
+            class="tip-teaser-card__image rounded-xl"/>
         </v-col>
         <v-col md="8" sm="12">
           <v-card-title class="tip-teaser-card__title">

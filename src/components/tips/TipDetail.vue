@@ -1,24 +1,32 @@
 <template>
-  <v-container class="tips" fluid>
+  <v-container class="tips">
     <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
-    <v-row v-if="tip" justify="center">
-      <v-col cols="12" lg="10">
-        <v-btn elevation="0" icon @click="$router.go(-1)">
-          <v-icon>mdi-arrow-left</v-icon>
-        </v-btn>
+      <v-btn
+        @click="$router.go(-1)"
+        fab
+        small
+        top
+        left
+        fixed
+        class="mt-3"
+      >
+        <v-icon style="font-size:25px">
+          mdi-arrow-left
+        </v-icon>
+      </v-btn>
+    <v-card v-if="tip" class="mx-auto rounded-xl" justify="center">
         <div class="card">
-          <v-img :src="imageSource" class="card__image card__image--top" contain></v-img>
-          <v-img :src="imageSource" class="card__image card__image--top card__image-background" contain></v-img>
-          <div class="card__title grey--text text--darken-3">{{ tip.title }}</div>
-          <vue-simple-markdown :source="tip.teaser"
-                               class="card__teaser grey--text text--darken-3 body-1 my-2"></vue-simple-markdown>
-          <div class="card__markdown-wrapper">
-            <v-img :src="imageSource" class="card__image card__image--bottom" contain></v-img>
-            <vue-simple-markdown :source="tip.article" class="card__markdown"></vue-simple-markdown>
-          </div>
+            <v-img :src="imageSource" class="card__image card__image--top rounded-xl" contain></v-img>
+            <v-img :src="imageSource" class="card__image card__image--top card__image-background" contain></v-img>
+            <div class="card__title grey--text text--darken-3">{{ tip.title }}</div>
+            <vue-simple-markdown :source="tip.teaser"
+                                class="card__teaser grey--text text--darken-3 body-1 my-2"></vue-simple-markdown>
+            <div class="card__markdown-wrapper">
+                <v-img :src="imageSource" class="card__image card__image--bottom" contain></v-img>
+                <vue-simple-markdown :source="tip.article" class="card__markdown"></vue-simple-markdown>
+            </div>
         </div>
-      </v-col>
-    </v-row>
+    </v-card>
   </v-container>
 </template>
 
@@ -69,14 +77,6 @@ export default {
 <style lang="scss" scoped>
 @import 'src/scss/variables.scss';
 @import "node_modules/vuetify/src/styles/settings/_colors.scss";
-
-.v-carousel {
-  height: auto !important;
-
-  ::v-deep &__item {
-    height: auto !important;
-  }
-}
 
 .tips {
   margin-bottom: 1.5 * $bottom-navigation-height;
@@ -140,13 +140,10 @@ export default {
   }
 
   &__image {
-    width: clamp(310px, 40vw, 300px);
-    border-radius: 8px !important;
 
     &--top {
       z-index: 1 !important;
       display: none;
-      margin: 4rem 0 2rem 0;
       place-self: center;
       grid-area: 1 / 1 / span 1 / -1;
       @media #{map-get($display-breakpoints, 'xs-only')} {
@@ -155,7 +152,7 @@ export default {
     }
 
     &--bottom {
-      margin: .5rem 0 0 1rem;
+      max-width: 320px;
       float: right;
       @media #{map-get($display-breakpoints, 'xs-only')} {
         display: none;

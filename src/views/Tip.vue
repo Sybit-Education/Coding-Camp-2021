@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <tip-detail :tip="tip" class="mt-5"/>
+    <tip-detail :tipId="tipId" class="mt-5"/>
   </v-container>
 </template>
 
@@ -10,12 +10,6 @@ import TipDetail from '@/components/tips/TipDetail.vue'
 export default {
   components: { TipDetail },
   name: 'Tip',
-  props: {
-    tipId: {
-      type: String,
-      required: true
-    }
-  },
   data () {
     return {
       tip: this.$store.getters.getTipById(this.tipId)
@@ -27,6 +21,9 @@ export default {
     }
   },
   computed: {
+    tipId () {
+      return this.$route.params.tipId
+    },
     tipTitle () {
       if (this.tip) {
         return this.tip.title
