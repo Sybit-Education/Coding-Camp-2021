@@ -8,6 +8,13 @@
     <p class="mx-5 black--text" align="center" style="font-size:26px">{{ material.notes }}</p>
     </div>
     <v-skeleton-loader v-else type="card" />
+    <div class="d-flex justify-center mb-7 mt-5">
+      <v-btn
+          v-if="isShareable"
+          @click="shareDetails"
+          elevation="2"
+      >Teilen</v-btn>
+    </div>
   </v-container>
 
 </template>
@@ -42,11 +49,10 @@ export default {
       if (!this.isShareable) {
         return
       }
-      const { GEN: name, BEZ: targets } = this.material
       const data = {
-        title: `Details zu ${name}`,
+        title: `Details zu ${this.material.name}`,
         text: `So kannst du den Müll fachgerecht entsorgen:
-        (${targets[0].description})`,
+        (${this.material.targets[0].description})`,
         url: window.location.href
       }
       navigator.share(data)
