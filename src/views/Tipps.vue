@@ -1,5 +1,5 @@
 <template>
-  <v-container class="impressum__container">
+  <v-container class="tipps__container">
     <h1 class="mt-5">Tipps</h1>
     <div v-for="tipp in list" :key="tipp.id">
         <tipp-card :tipp="tipp" />
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style scoped>
-.impressum__container {
+.tipps__container {
   position: relative;
 }
 
