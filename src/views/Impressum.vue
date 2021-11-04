@@ -47,8 +47,8 @@
 
 <script>
 export default {
-  name: "Impressum",
-};
+  name: 'Impressum'
+}
 </script>
 
 <style scoped>
