@@ -1,7 +1,7 @@
 <template>
   <div class="tips">
     <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
-    <back-button :to="{ name: 'Tips'}"></back-button>
+    <back-button :to="{ name: 'Tipps'}"></back-button>
 
     <v-card v-if="tip" class="card mx-auto rounded-xl" >
       <v-img :src="imageSource" class="card__image card__image--top rounded-xl" contain></v-img>
