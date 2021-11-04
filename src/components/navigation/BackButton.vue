@@ -24,8 +24,16 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
+@import 'src/scss/variables.scss';
+
 .back-button {
-    background: rgba(255, 255, 255, 0.4) !important;
+  @include glassmorphism($color: white, $blur-ammount: 4px, $color-intensity: 0.4);
+  z-index: 999;
+  margin-bottom: calc(0.5*#{$bottom-navigation-height});
+
+  @media #{map-get($display-breakpoints, 'xs-only')} {
+    margin-bottom: calc(1.5*#{$bottom-navigation-height});
+  }
 }
 </style>

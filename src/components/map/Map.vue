@@ -13,9 +13,7 @@
         </l-marker>
         <l-control-zoom class="map__zoom-buttons"></l-control-zoom>
         <l-control position="topleft">
-          <v-btn class="back-button" icon @click="$router.go(-1)">
-            <v-icon color="black" size="30">mdi-arrow-left</v-icon>
-          </v-btn>
+          <back-button :to="{name:'Home'}" />
         </l-control>
       </l-map>
     </div>
@@ -69,6 +67,7 @@ import 'leaflet.path.drag'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 import MapActionButton from './MapActionButton'
+import BackButton from '@/components/navigation/BackButton.vue'
 
 export default {
   name: 'Map',
@@ -78,7 +77,8 @@ export default {
     LTileLayer,
     LMarker,
     LControl,
-    LControlZoom
+    LControlZoom,
+    BackButton
   },
   props: {
     trashCanType: {
@@ -202,15 +202,6 @@ export default {
   width: 100vw;
   height: 100vh;
   z-index: 1;
-}
-
-.back-button {
-  @include glassmorphism($color: white, $blur-ammount: 4px, $color-intensity: 0.4, $remove-shadow: true);
-  z-index: 999;
-  position: absolute;
-  top: .5rem;
-  left: .5rem;
-  border-radius: 50%;
 }
 
 .bottom-sheet {
