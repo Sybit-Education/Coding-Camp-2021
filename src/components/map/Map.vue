@@ -53,7 +53,7 @@
         </v-row>
         <v-row align="end" justify="center">
           <v-col cols="11" lg="2" md="4" sm="6">
-            <v-btn block class="rounded-xl py-7" color="blue" dark
+            <v-btn block class="rounded-xl py-7" color="primary" dark
                    @click="openGoogleMaps(trashCanPopupData.latitude, trashCanPopupData.longitude)">Navigiere mich
             </v-btn>
           </v-col>

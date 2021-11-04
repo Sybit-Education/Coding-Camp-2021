@@ -37,6 +37,12 @@ const routes = [
     name: 'Datenschutz',
     component: () =>
       import(/* webpackChunkName: "datenschutz" */ '../views/Datenschutz.vue')
+  },
+  {
+    path: '/impressum',
+    name: 'Impressum',
+    component: () =>
+      import(/* webpackChunkName: "impressum" */ '../views/Impressum.vue')
   }
 ]
 

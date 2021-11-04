@@ -2,9 +2,9 @@
   <div>
     <v-dialog v-model="$parent.showUploadForm" fullscreen transition="dialog-bottom-transition">
       <v-card>
-        <v-toolbar color="green darken-3" dark>
-          <v-btn dark icon @click="$parent.showUploadForm = false">
-            <v-icon>mdi-close</v-icon>
+        <v-toolbar dark color="secondary">
+          <v-btn icon @click="$parent.showUploadForm = false">
+            <v-icon dark>mdi-close</v-icon>
           </v-btn>
           <v-toolbar-title class="pl-2">Erstellen einer Wegwerfmöglichkeit</v-toolbar-title>
           <v-spacer></v-spacer>
@@ -46,7 +46,7 @@
           </v-row>
           <v-row>
             <v-col cols="12">
-              <v-checkbox v-model="useGPSData" :disabled="denyGPSTracking"
+              <v-checkbox color="secondary" v-model="useGPSData" :disabled="denyGPSTracking"
                           :value="userLocation === null ? false :userLocation.length > 0"
                           label="Momentane GPS Position Benutzen? (Für Computer nicht empfohlen)">
               </v-checkbox>
@@ -78,7 +78,7 @@
                 :loading="$store.state.showLoadingSpinner"
                 block
                 class="white--text py-6"
-                color="green darken-3"
+                color="primary"
                 @click="submit"
               >
                 Erstellen
