@@ -8,6 +8,10 @@
       <span>Tipps</span>
       <v-icon>mdi-exclamation</v-icon>
     </v-btn>
+    <v-btn :to="{ name: 'Karte'}" class="bottom-nav__button rounded-xl" exact>
+      <span>Karte</span>
+      <v-icon>mdi-google-maps</v-icon>
+    </v-btn>
      <v-menu offset-y top>
       <template v-slot:activator="{ on, attrs }">
         <v-btn
