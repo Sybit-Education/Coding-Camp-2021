@@ -15,9 +15,10 @@ const routes = [
   },
   {
     path: '/detail/:id',
+    props: true,
     name: 'DetailPage',
     component: () =>
-      import('../views/DetailPage.vue')
+      import(/* webpackChunkName: "home" */ '../views/DetailPage.vue')
   },
   {
     path: '/karte',
@@ -39,10 +40,17 @@ const routes = [
       import(/* webpackChunkName: "impressum" */ '../views/Impressum.vue')
   },
   {
-    path: '/tipps',
-    name: 'Tipps',
+    path: '/tips',
+    name: 'Tips',
     component: () =>
-      import(/* webpackChunkName: "tipps" */ '../views/Tipps.vue')
+      import(/* webpackChunkName: "tips" */ '../views/TipsList.vue')
+  },
+  {
+    path: '/tips/:tipId',
+    props: true,
+    name: 'TipDetail',
+    component: () =>
+      import(/* webpackChunkName: "tips" */ '../views/Tip.vue')
   }
 ]
 
