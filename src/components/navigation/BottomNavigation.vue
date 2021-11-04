@@ -70,4 +70,8 @@ export default {
     }
   }
 }
+.test {
+  position: fixed;
+  bottom: 0;
+}
 </style>

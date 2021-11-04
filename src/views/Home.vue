@@ -1,41 +1,36 @@
 <template>
-  <v-container class="home__container">
-    <h1 class="mt-5">Wie entsorge ich im Landkreis Konstanz &hellip;</h1>
-    <Searchbar :items="materials"/>
+  <v-container>
+    <h1 class="mt-5 d-flex justify-center">Wie entsorge ich im Landkreis Konstanz &hellip;</h1>
+    <Searchbar :items="materials" />
+    <Partner class="mt-15"/>
   </v-container>
 </template>
 
 <script>
-import Searchbar from '../components/searchbar/Searchbar'
+import Searchbar from "../components/searchbar/Searchbar";
+import Partner from "../components/partner/Partner";
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    Searchbar
+    Searchbar,
+    Partner,
   },
-  metaInfo () {
-    return {
-    }
+  metaInfo() {
+    return {};
   },
   computed: {
-    materials () {
-      return this.$store.getters.getMaterialList
-    }
+    materials() {
+      return this.$store.getters.getMaterialList;
+    },
   },
-  mounted () {
+  mounted() {
     if (this.materials) {
-      this.$store.dispatch('getRecordsFromSessionStorage', [
-        'material',
-        'targets'
-      ])
+      this.$store.dispatch("getRecordsFromSessionStorage", [
+        "material",
+        "targets",
+      ]);
     }
   },
-  methods: {
-  }
-}
+  methods: {},
+};
 </script>
-<style scoped>
-.home__container {
-  position: relative;
-  text-align: center;
-}
-</style>

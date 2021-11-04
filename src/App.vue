@@ -2,7 +2,9 @@
   <v-app>
     <v-main class="py-0">
       <router-view/>
-      <BottomNavigation/>
+      <div class="navigation">
+      <BottomNavigation class="test"/>
+      </div>
     </v-main>
     <cookie-law :buttonText=buttonText :message="message" theme="royal"></cookie-law>
     <notifications group="default"/>
@@ -35,5 +37,12 @@ export default {
     background-color: #E91E63 !important;
     transition-duration: 0.4s;
   }
+}
+.navigation {
+  position: relative;
+}
+.test {
+  position: absolute;
+  bottom: 0;
 }
 </style>
