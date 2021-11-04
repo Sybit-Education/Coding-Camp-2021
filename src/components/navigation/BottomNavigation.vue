@@ -24,10 +24,10 @@
         </v-btn>
       </template>
       <v-list>
-        <v-btn :to="{ name: 'Impressum'}" class="container" exact>
+        <v-btn :to="{ name: 'Impressum'}" class="container" exact text>
           <span>Impressum</span>
         </v-btn>
-        <v-btn :to="{ name: 'Datenschutz'}" class="container" exact>
+        <v-btn :to="{ name: 'Datenschutz'}" class="container" exact text>
           <span>Datenschutz</span>
         </v-btn>
       </v-list>
