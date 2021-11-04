@@ -1,10 +1,10 @@
 <template>
   <v-container>
     <div class="d-flex justify-center mb-7">
-    <h1>Jogurtbecher</h1>
+    <h1 style="font-size:40px">{{material.name}}</h1>
     </div>
-    <v-img contain height="125"  class="mb-10" :src="image"></v-img>
-    <p class="mx-5" align="center"> Text ajshdgfajhsgfhjasghfjghasghfgajhsgfhaghjfsg asjhgdhjas  hgasg ghj hj ghg hgh ghj g hg hgh g hghj gh g hg hjg hg </p>
+    <v-img contain height="125"  class="mb-10" src="https://via.placeholder.com/150?text=placeholder"></v-img>
+    <p class="mx-5" align="center" style="font-size:26px"> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
   </v-container>
 
 </template>
@@ -12,11 +12,30 @@
 export default {
   computed: {
     image () {
-      return require("@/assets/img/gelber_sack.png")
+      if (this.material?.targets[0]?.images){
+        return this.material.targets[0].images[0].url
+      }
+      return("")
+    },
+    material (){
+      return this.$store.getters.getMaterialById(this.$route.params.id)
     }
+  },
+  mounted (){
+    this.getMaterial()
+    console.log(this.material)
+  },
+  methods:{
+    getMaterial() {
+      if (this.material ==! undefined) return
+      this.$store.dispatch('getRecordsFromSessionStorage', [
+        'material',
+        'targets'
+      ])
+      }
   }
 }
 </script>
 <style>
-h1 {color:rgb(36, 36, 36)}
+p {color:rgb(0, 0, 0)}
 </style>
