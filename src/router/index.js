@@ -31,6 +31,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "map" */ '../views/Map.vue'),
     props: true
+  },
+  {
+    path: '/impressum',
+    name: 'Impressum',
+    component: () =>
+        import(/* webpackChunkName: "impressum" */ '../views/Impressum.vue')
   }
 ]
 
