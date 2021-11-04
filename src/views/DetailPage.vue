@@ -12,26 +12,45 @@
 export default {
   computed: {
     image () {
-      if (this.material?.targets[0]?.images){
+      if (this.material?.targets[0]?.images) {
         return this.material.targets[0].images[0].url
       }
-      return("https://via.placeholder.com/150?text=placeholder")
+      return ('https://via.placeholder.com/150?text=placeholder')
     },
-    material (){
+    material () {
       return this.$store.getters.getMaterialById(this.$route.params.id)
     }
   },
-  mounted (){
+  mounted () {
     this.getMaterial()
+    this.isShareable()
   },
-  methods:{
-    getMaterial() {
-      if (this.material ==! undefined) return
+  methods: {
+    getMaterial () {
+      if (this.material === !undefined) return
       this.$store.dispatch('getRecordsFromSessionStorage', [
         'material',
         'targets'
       ])
-      }
+    }
+  },
+  isShareable () {
+    return (this.material && ('share' in navigator))
+  },
+  shareDetails () {
+    if (!this.isShareable) {
+      return
+    }
+    const { GEN: districtName, BEZ: districtCategory, cases7_per_100k: incidence, last_update: today } = this.data
+    const data = {
+      title: 'Hier findet du Details zu dem',
+      text: `Mehr Informationen auf Mülli:
+        In ${districtName} (${districtCategory}) wurden in den letzten 7 Tagen
+        ${this.rounded(incidence)} ${this.indicatorEmoji} Menschen
+        von 100.000 Einwohnern positiv auf 🦠 COVID-19 getestet (${today}):`,
+      url: window.location.href
+    }
+    navigator.share(data)
   }
 }
 </script>
