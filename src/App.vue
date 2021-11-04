@@ -3,7 +3,7 @@
     <v-main class="py-0">
       <router-view/>
       <div class="navigation">
-      <BottomNavigation class="test"/>
+      <BottomNavigation class="bottomnav"/>
       </div>
     </v-main>
     <cookie-law :buttonText=buttonText :message="message" theme="royal"></cookie-law>
@@ -41,7 +41,7 @@ export default {
 .navigation {
   position: relative;
 }
-.test {
+.bottomnav {
   position: absolute;
   bottom: 0;
 }
