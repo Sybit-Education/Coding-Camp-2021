@@ -3,8 +3,8 @@
   <h2>Partner:</h2>
     <v-carousel
     cycle
-    height="200"
-    width="200"
+    height="140"
+    width="140"
     hide-delimiter-background
     hide-delimiters
     show-arrows-on-hover
@@ -15,7 +15,7 @@
     >
     <div class="d-flex justify-center">
       <a :href="partner.website">
-      <v-img :src="partner.logo[0].url" contain width="200" height="200" />
+      <v-img :src="partner.logo[0].url" contain width="140" height="140" />
       </a>
     </div>
     </v-carousel-item>
@@ -38,6 +38,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-</style>
