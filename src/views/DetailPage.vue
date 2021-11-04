@@ -17,8 +17,8 @@
       </v-icon>
       </v-btn>
     <v-card-text elevation="20" class="black--text"  style="font-size:20px">
-    <div class="d-flex justify-center mb-7">
-    <h1 style="font-size:40px">{{material.name}}</h1>
+    <div class="d-flex justify-center mb-7 mt-5">
+    <h1 style="font-size:30px">{{material.name}}</h1>
     </div>
     <v-img contain height="125"  class="mb-10" :src="image"></v-img>
     <p class="d-flex justify-center mx-5">
