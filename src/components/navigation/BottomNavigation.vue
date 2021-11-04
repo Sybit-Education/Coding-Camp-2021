@@ -1,9 +1,33 @@
 <template>
-  <v-bottom-navigation app color="pink accent-3" hide-on-scroll scroll-target="#scroll-area">
+  <v-bottom-navigation app color="amber darken-4" hide-on-scroll>
     <v-btn :to="{ name: 'Home' }" class="bottom-nav__button rounded-xl" exact>
       <span>Home</span>
-      <v-icon>mdi-home-variant</v-icon>
+      <v-icon>mdi-home</v-icon>
     </v-btn>
+     <v-btn :to="{ name: 'Tipps' }" class="bottom-nav__button rounded-xl" exact>
+      <span>Tipps</span>
+      <v-icon>mdi-exclamation</v-icon>
+    </v-btn>
+     <v-menu offset-y top>
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          class="bottom-nav__button rounded-xl"
+          v-bind="attrs"
+          v-on="on"
+        >
+          <span class="black--text">Menu</span>
+          <v-icon color="black">mdi-menu</v-icon>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item>
+          <v-list-item-title>Datenschutz</v-list-item-title>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-title>Impressum</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
   </v-bottom-navigation>
 </template>
 
