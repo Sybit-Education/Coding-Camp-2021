@@ -1,12 +1,43 @@
 <template>
   <v-container>
-    <div v-if="material && material.name && image">
-          <div class="d-flex justify-center mb-7">
+    <v-card class="mx-auto rounded-xl"
+      v-if="material && material.name && image">
+      <v-btn
+        @click="$router.go(-1)"
+        fab
+        small
+        top
+        left
+        absolute
+        class="mt-3"
+        style="margin-left: -12px"
+      >
+        <v-icon style="font-size:25px">
+          mdi-arrow-left
+      </v-icon>
+      </v-btn>
+    <v-card-text elevation="20" class="black--text"  style="font-size:20px">
+    <div class="d-flex justify-center mb-7">
     <h1 style="font-size:40px">{{material.name}}</h1>
     </div>
     <v-img contain height="125"  class="mb-10" :src="image"></v-img>
-    <p class="mx-5 black--text" align="center" style="font-size:26px">{{ material.notes }}</p>
+    <p class="d-flex justify-center mx-5">
+      <v-list>
+        <v-list-item v-for="target in material.targets" :key="target.id">
+          <v-list-content>
+            <v-chip outlined :color="target.color">{{ target.name }}</v-chip>
+          </v-list-content>
+        </v-list-item>
+      </v-list>
+    </p>
+    <div v-if="material.notes.length >= 300" style="max-height: 250px; overflow: scroll;">
+      {{ material.notes }}
     </div>
+    <div v-else>
+      {{ material.notes }}
+    </div>
+    </v-card-text>
+    </v-card>
     <v-skeleton-loader v-else type="card" />
     <div class="d-flex justify-center mb-7 mt-5">
       <v-btn
@@ -22,10 +53,10 @@
 export default {
   computed: {
     image () {
-      if (this.material?.targets[0]?.images) {
+      if (this.material && this.material.targets && this.material.targets[0]?.images) {
         return this.material.targets[0].images[0].url
       }
-      return 'https://via.placeholder.com/150?text=placeholder'
+      return 'required(\'https://via.placeholder.com/150?text=placeholder\')'
     },
     material () {
       return this.$store.getters.getMaterialById(this.$route.params.id)
@@ -36,6 +67,7 @@ export default {
   },
   mounted () {
     this.getMaterial()
+    this.isShareable()
   },
   methods: {
     getMaterial () {
