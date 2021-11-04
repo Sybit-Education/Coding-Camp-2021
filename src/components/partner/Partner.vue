@@ -14,7 +14,9 @@
       :key="partner.id"
     >
     <div class="d-flex justify-center">
+      <a :href="partner.website">
       <v-img :src="partner.logo[0].url" contain width="200" height="200" />
+      </a>
     </div>
     </v-carousel-item>
   </v-carousel>
