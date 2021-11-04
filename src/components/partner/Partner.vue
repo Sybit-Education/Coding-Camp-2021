@@ -25,12 +25,11 @@ import partnerService from '@/services/partner.service'
 export default {
   data () {
     return {
-      partnerList:[]
-      
-      
+      partnerList: []
+
     }
   },
-  created() {
+  created () {
     partnerService.getPartnerRecords().then(list => {
       this.partnerList = list
     })
