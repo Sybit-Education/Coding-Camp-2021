@@ -31,7 +31,7 @@ export default new Vuex.Store({
       return material
     },
     getMaterialById: (state) => (id) => {
-      return state.targetList.find((material) => material.id === id)
+      return state.materialList.find((material) => material.id === id)
     },
     getTargetById: (state) => (id) => {
       return state.targetList.find((target) => target.id === id)
