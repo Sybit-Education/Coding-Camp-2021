@@ -16,7 +16,7 @@
           </v-card-title>
           <v-card-text>
             <vue-simple-markdown
-              :source="tip.teaser"
+              :source="tip.teaser.replaceAll('\\', '')"
               class="tip-teaser-card__teaser"
             />
           </v-card-text>
