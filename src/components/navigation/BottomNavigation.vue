@@ -6,7 +6,7 @@
     </v-btn>
      <v-btn :to="{ name: 'Tipps' }" class="bottom-nav__button rounded-xl" exact>
       <span>Tipps</span>
-      <v-icon>mdi-exclamation</v-icon>
+      <v-icon>mdi-lightbulb-on</v-icon>
     </v-btn>
     <v-btn :to="{ name: 'Karte'}" class="bottom-nav__button rounded-xl" exact>
       <span>Karte</span>
