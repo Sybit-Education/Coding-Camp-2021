@@ -26,7 +26,12 @@ export default new Vuex.Store({
       return state.materialList
     },
     getMaterialByName: (state) => (name) => {
-      return state.materialList.find((material) => material.name === name)
+      name = name.toLowerCase()
+      const material = state.materialList.find((material) => material.name.toLowerCase() === name)
+      return material
+    },
+    getMaterialById: (state) => (id) => {
+      return state.materialList.find((material) => material.id === id)
     },
     getTargetById: (state) => (id) => {
       return state.targetList.find((target) => target.id === id)
@@ -118,6 +123,7 @@ export default new Vuex.Store({
         const tips = await tipService.getTipRecords()
         commit('UPDATE_TIP_LIST', tips)
         commit('UPDATE_SHOW_LOADING_SPINNER', false)
+        return tips
       } catch (error) {
         console.warn(error)
         return null

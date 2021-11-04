@@ -22,9 +22,9 @@ const vuetify = new Vuetify({
   theme: {
     themes: {
       light: {
-        primary: '#000000',
+        primary: '#FF6F00',
         onprimary: '#212121',
-        secondary: '#E91E63',
+        secondary: '#558B2F',
         onsecondary: '#212121',
         anchor: '#E1007A'
       }

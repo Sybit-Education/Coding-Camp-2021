@@ -1,9 +1,37 @@
 <template>
-  <v-bottom-navigation app color="pink accent-3" hide-on-scroll scroll-target="#scroll-area">
+  <v-bottom-navigation app color="primary" hide-on-scroll>
     <v-btn :to="{ name: 'Home' }" class="bottom-nav__button rounded-xl" exact>
       <span>Home</span>
-      <v-icon>mdi-home-variant</v-icon>
+      <v-icon>mdi-home</v-icon>
     </v-btn>
+     <v-btn :to="{ name: 'Tipps' }" class="bottom-nav__button rounded-xl" exact>
+      <span>Tipps</span>
+      <v-icon>mdi-exclamation</v-icon>
+    </v-btn>
+    <v-btn :to="{ name: 'Karte'}" class="bottom-nav__button rounded-xl" exact>
+      <span>Karte</span>
+      <v-icon>mdi-google-maps</v-icon>
+    </v-btn>
+     <v-menu offset-y top>
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          class="bottom-nav__button rounded-xl"
+          v-bind="attrs"
+          v-on="on"
+        >
+          <span class="black--text">Menu</span>
+          <v-icon color="black">mdi-menu</v-icon>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-btn :to="{ name: 'Impressum'}" class="container" exact text>
+          <span>Impressum</span>
+        </v-btn>
+        <v-btn :to="{ name: 'Datenschutz'}" class="container" exact text>
+          <span>Datenschutz</span>
+        </v-btn>
+      </v-list>
+    </v-menu>
   </v-bottom-navigation>
 </template>
 
@@ -45,5 +73,8 @@ export default {
       opacity: 0 !important;
     }
   }
+}
+.theme--light.v-btn {
+    color: rgba(255, 111, 0, 0.87)
 }
 </style>
