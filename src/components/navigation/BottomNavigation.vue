@@ -1,5 +1,5 @@
 <template>
-  <v-bottom-navigation app color="amber darken-4" hide-on-scroll>
+  <v-bottom-navigation app color="primary" hide-on-scroll>
     <v-btn :to="{ name: 'Home' }" class="bottom-nav__button rounded-xl" exact>
       <span>Home</span>
       <v-icon>mdi-home</v-icon>
