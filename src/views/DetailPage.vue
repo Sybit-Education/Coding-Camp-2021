@@ -31,10 +31,10 @@
       </v-list>
     </p>
     <div v-if="material.notes.length >= 300" style="max-height: 250px; overflow: scroll;">
-      {{ material.notes }}
+      <vue-simple-markdown :source="material.notes" />
     </div>
     <div v-else>
-      {{ material.notes }}
+      <vue-simple-markdown :source="material.notes" />
     </div>
     </v-card-text>
     </v-card>
