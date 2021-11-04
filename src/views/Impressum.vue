@@ -54,7 +54,6 @@ export default {
 <style scoped>
 .impressum__container {
   position: relative;
-
 }
 
 span {
