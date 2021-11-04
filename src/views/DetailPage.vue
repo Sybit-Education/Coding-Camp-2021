@@ -47,7 +47,7 @@
       {{ material.notes }}
     </div>
     <div v-else>
-      {{ material.notes }}
+      <vue-simple-markdown :source="material.notes" />
     </div>
     </v-card-text>
     </v-card>

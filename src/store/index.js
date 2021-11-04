@@ -123,6 +123,7 @@ export default new Vuex.Store({
         const tips = await tipService.getTipRecords()
         commit('UPDATE_TIP_LIST', tips)
         commit('UPDATE_SHOW_LOADING_SPINNER', false)
+        return tips
       } catch (error) {
         console.warn(error)
         return null
