@@ -7,30 +7,30 @@
 </template>
 
 <script>
-import Searchbar from "../components/searchbar/Searchbar";
-import Partner from "../components/partner/Partner";
+import Searchbar from '../components/searchbar/Searchbar'
+import Partner from '../components/partner/Partner'
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     Searchbar,
-    Partner,
+    Partner
   },
-  metaInfo() {
-    return {};
+  metaInfo () {
+    return {}
   },
   computed: {
-    materials() {
-      return this.$store.getters.getMaterialList;
-    },
-  },
-  mounted() {
-    if (this.materials) {
-      this.$store.dispatch("getRecordsFromSessionStorage", [
-        "material",
-        "targets",
-      ]);
+    materials () {
+      return this.$store.getters.getMaterialList
     }
   },
-  methods: {},
-};
+  mounted () {
+    if (this.materials) {
+      this.$store.dispatch('getRecordsFromSessionStorage', [
+        'material',
+        'targets'
+      ])
+    }
+  },
+  methods: {}
+}
 </script>
