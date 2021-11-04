@@ -24,12 +24,12 @@
         </v-btn>
       </template>
       <v-list>
-        <v-list-item>
-          <v-list-item-title>Datenschutz</v-list-item-title>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-title>Impressum</v-list-item-title>
-        </v-list-item>
+        <v-btn :to="{ name: 'Impressum'}" class="container" exact>
+          <span>Impressum</span>
+        </v-btn>
+        <v-btn :to="{ name: 'Datenschutz'}" class="container" exact>
+          <span>Datenschutz</span>
+        </v-btn>
       </v-list>
     </v-menu>
   </v-bottom-navigation>
@@ -73,5 +73,8 @@ export default {
       opacity: 0 !important;
     }
   }
+}
+.theme--light.v-btn {
+    color: rgba(255, 111, 0, 0.87)
 }
 </style>

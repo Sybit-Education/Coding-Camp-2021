@@ -36,7 +36,7 @@ const routes = [
     path: '/datenschutz',
     name: 'Datenschutz',
     component: () =>
-        import(/* webpackChunkName: "home" */ '../views/Datenschutz.vue')
+      import(/* webpackChunkName: "datenschutz" */ '../views/Datenschutz.vue')
   }
 ]
 
