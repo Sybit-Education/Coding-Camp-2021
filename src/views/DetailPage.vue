@@ -16,6 +16,11 @@
           mdi-arrow-left
       </v-icon>
       </v-btn>
+      <share-button
+        :title="share.title"
+        :text="share.text"
+        :url="$route.path"
+      />
     <v-card-text elevation="20" class="black--text"  style="font-size:20px">
     <div class="d-flex justify-center mb-7 mt-5">
     <h1 style="font-size:30px">{{material.name}}</h1>
@@ -39,18 +44,13 @@
     </v-card-text>
     </v-card>
     <v-skeleton-loader v-else type="card" />
-    <div class="d-flex justify-center mb-7 mt-5">
-      <v-btn
-          v-if="isShareable"
-          @click="shareDetails"
-          elevation="2"
-      >Teilen</v-btn>
-    </div>
   </v-container>
 
 </template>
 <script>
+import ShareButton from '../components/navigation/ShareButton.vue'
 export default {
+  components: { ShareButton },
   computed: {
     image () {
       if (this.material && this.material.targets && this.material.targets[0]?.images) {
@@ -61,13 +61,16 @@ export default {
     material () {
       return this.$store.getters.getMaterialById(this.$route.params.id)
     },
-    isShareable () {
-      return (this.material && ('share' in navigator))
+    share () {
+      return {
+        title: `Mülli: ${this.material.name} entsorgen 👉 ${this.material.targets[0].name}`,
+        text: `${this.material.name} entsorgen: ${this.material.targets[0].name}
+        ${this.material.notes}`
+      }
     }
   },
   mounted () {
     this.getMaterial()
-    this.isShareable()
   },
   methods: {
     getMaterial () {
@@ -76,18 +79,6 @@ export default {
         'material',
         'targets'
       ])
-    },
-    shareDetails () {
-      if (!this.isShareable) {
-        return
-      }
-      const data = {
-        title: `Details zu ${this.material.name}`,
-        text: `So kannst du den Müll fachgerecht entsorgen:
-        (${this.material.targets[0].description})`,
-        url: window.location.href
-      }
-      navigator.share(data)
     }
   }
 }
