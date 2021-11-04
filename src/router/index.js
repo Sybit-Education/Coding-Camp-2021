@@ -31,6 +31,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "map" */ '../views/Map.vue'),
     props: true
+  },
+  {
+    path: '/datenschutz',
+    name: 'Datenschutz',
+    component: () =>
+        import(/* webpackChunkName: "home" */ '../views/Datenschutz.vue')
   }
 ]
 
