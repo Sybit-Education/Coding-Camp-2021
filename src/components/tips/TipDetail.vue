@@ -8,13 +8,13 @@
             <v-img :src="imageSource" class="card__image card__image--top card__image-background rounded-xl" contain></v-img>
             <div class="card__title grey--text text--darken-3">{{ tip.title }}</div>
             <vue-simple-markdown
-                :source="tip.teaser"
+                :source="tip.teaser.replaceAll('\\', '')"
                 class="card__teaser grey--text text--darken-3 body-1 my-2">
             </vue-simple-markdown>
             <div class="card__markdown-wrapper">
                 <v-img :src="imageSource" class="card__image card__image--bottom rounded-xl" contain></v-img>
                 <vue-simple-markdown
-                    :source="tip.article"
+                    :source="tip.article.replaceAll('\\', '')"
                     class="card__markdown">
                 </vue-simple-markdown>
             </div>
