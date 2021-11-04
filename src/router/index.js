@@ -14,10 +14,23 @@ const routes = [
       import(/* webpackChunkName: "home" */ '../views/Home.vue')
   },
   {
-    path: '/datenschutz',
-    name: 'Datenschutz',
+    path: '/detail/:id',
+    name: 'DetailPage',
     component: () =>
-      import(/* webpackChunkName: "home" */ '../views/Datenschutz.vue')
+      import('../views/DetailPage.vue')
+  },
+  {
+    path: '/tipps',
+    name: 'Tipps',
+    component: () =>
+      import(/* webpackChunkName: "tipps" */ '../views/Tipps.vue')
+  },
+  {
+    path: '/karte',
+    name: 'Karte',
+    component: () =>
+      import(/* webpackChunkName: "map" */ '../views/Map.vue'),
+    props: true
   }
 ]
 
