@@ -12,6 +12,7 @@
 
 <script>
 import tipCard from '@/components/tips/TipCard.vue'
+
 export default {
   name: 'Tipps',
   components: { tipCard },

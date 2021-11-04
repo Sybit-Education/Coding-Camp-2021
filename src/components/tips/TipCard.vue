@@ -1,14 +1,14 @@
 <template>
   <router-link
-    :to="{ name: 'TipDetail', params: { tipId: tip.id } }"
-    class="text-decoration-none"
+      :to="{ name: 'TipDetail', params: { tipId: tip.id } }"
+      class="text-decoration-none"
   >
     <v-card class="tip-teaser-card rounded-xl">
       <v-row>
         <v-col md="4" sm="12">
           <v-img
-            :src="imageSource"
-            class="tip-teaser-card__image rounded-xl"/>
+              :src="imageSource"
+              class="tip-teaser-card__image rounded-xl"/>
         </v-col>
         <v-col md="8" sm="12">
           <v-card-title class="tip-teaser-card__title">
@@ -16,8 +16,8 @@
           </v-card-title>
           <v-card-text>
             <vue-simple-markdown
-              :source="tip.teaser.replaceAll('\\', '')"
-              class="tip-teaser-card__teaser"
+                :source="tip.teaser.replaceAll('\\', '')"
+                class="tip-teaser-card__teaser"
             />
           </v-card-text>
           <v-card-actions>

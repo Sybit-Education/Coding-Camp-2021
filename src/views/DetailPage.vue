@@ -7,51 +7,47 @@
         top
         left
         dark
-        absolute
-        class="mt-6"
-        style="margin-left: -12px"
-      >
-        <v-icon style="font-size:25px">
-          mdi-arrow-left
+        fixed
+    >
+      <v-icon>
+        mdi-arrow-left
       </v-icon>
-      </v-btn>
-      <v-btn
+    </v-btn>
+    <v-btn
         v-if="isShareable"
         @click="shareDetails"
         fab
         small
         top
         right
-        absolute
-        class="mt-6"
-        style="margin-left: -12px"
-      >
-        <v-icon color="blue" style="font-size:25px">
-          mdi-share
+        fixed
+    >
+      <v-icon color="blue">
+        mdi-share
       </v-icon>
-      </v-btn>
+    </v-btn>
     <v-card class="mx-auto rounded-xl mt-10"
-      style="overflow: scroll;"
-      v-if="material && material.name && image" height="540">
-    <v-card-text elevation="20" class="black--text"  style="font-size:20px">
-    <div class="d-flex justify-center mb-7 mt-5">
-    <h1 style="font-size:30px; line-height: 2rem;">{{material.name}}</h1>
-    </div>
-    <v-img contain height="125"  class="mb-5" :src="image" />
-    <v-row class="mb-3">
-      <v-col v-for="target in material.targets" :key="target.id" align="center">
-        <v-chip class="ml-2 elevation-3" outlined :color="target.color">{{ target.name }}</v-chip>
-      </v-col>
-    </v-row>
-    <div class="mt-10" v-if="material.notes.length >= 300">
-      {{ material.notes }}
-    </div>
-    <div v-else>
-      <vue-simple-markdown :source="material.notes" />
-    </div>
-    </v-card-text>
+            style="overflow: scroll;"
+            v-if="material && material.name && image" height="540">
+      <v-card-text elevation="20" class="black--text">
+        <div class="d-flex justify-center mb-7 mt-5">
+          <h1 style="line-height: 2rem;">{{ material.name }}</h1>
+        </div>
+        <v-img contain height="125" class="mb-5" :src="image"/>
+        <v-row class="mb-3">
+          <v-col cols="12" v-for="target in material.targets" :key="target.id" align="center">
+            <v-chip class="ml-2 elevation-3" outlined :color="target.color">{{ target.name }}</v-chip>
+          </v-col>
+        </v-row>
+        <div class="mt-10" v-if="material.notes.length >= 300">
+          {{ material.notes }}
+        </div>
+        <div v-else>
+          <vue-simple-markdown :source="material.notes"/>
+        </div>
+      </v-card-text>
     </v-card>
-    <v-skeleton-loader v-else type="card" />
+    <v-skeleton-loader v-else type="card"/>
     <div class="d-flex justify-center mb-7 mt-5">
     </div>
   </v-container>
