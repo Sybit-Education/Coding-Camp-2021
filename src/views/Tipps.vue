@@ -1,0 +1,31 @@
+<template>
+  <v-container class="impressum__container">
+    <h1 class="mt-5">Tipps</h1>
+    <div v-for="tipp in list" :key="tipp.id">
+        <tipp-card :tipp="tipp" />
+    </div>
+  </v-container>
+</template>
+
+<script>
+import TippCard from '@/components/TippCard'
+export default {
+  name: 'Tipps',
+  components: { TippCard },
+  data () {
+    return {
+      list: []
+    }
+  },
+  async created () {
+    this.list = await this.$store.dispatch('getTipRecords')
+  }
+}
+</script>
+
+<style scoped>
+.impressum__container {
+  position: relative;
+}
+
+</style>
