@@ -1,7 +1,19 @@
 <template>
   <v-app>
     <v-main class="py-0">
-      <router-view/>
+      <v-banner
+        v-if="deferredPrompt"
+        color="primary"
+        dark
+        class="text-left"
+      >
+        Möchten Sie die Mülli-App lokal installieren?
+        <template v-slot:actions>
+          <v-btn text @click="dismiss">Nein danke</v-btn>
+          <v-btn text @click="install">Installieren</v-btn>
+        </template>
+      </v-banner>
+      <router-view />
       <div class="navigation">
         <BottomNavigation class="bottomnav"/>
       </div>
@@ -20,29 +32,26 @@ export default {
   components: { BottomNavigation, VueCookieFirst },
   data () {
     return {
-      cookieFirstKey: 'e1cd165b-d382-4e08-acdf-e9467a05f9d8',
-      cookieFirstStyle: {
-        banner: {
-          backgroundColor: '#FF6F00',
-          color: '#000'
-        },
-        acceptButton: {
-          backgroundColor: '#fff',
-          color: '#000',
-          borderColor: '#000',
-          borderRadius: '50%',
-          borderWidth: '1px',
-          borderStyle: 'solid'
-        },
-        declineButton: {
-          backgroundColor: '#fff',
-          color: '#000',
-          borderColor: '#000',
-          borderRadius: '50%',
-          borderWidth: '1px',
-          borderStyle: 'solid'
-        }
-      }
+      message: 'Diese Website verwendet Cookies 🍪, um Ihnen die bestmögliche Nutzung unserer Website zu ermöglichen.',
+      buttonText: 'Ja, ich akzeptiere',
+      deferredPrompt: null
+    }
+  },
+  created () {
+    window.addEventListener('beforeinstallprompt', event => {
+      event.preventDefault()
+      this.deferredPrompt = event
+    })
+    window.addEventListener('appinstalled', () => {
+      this.deferredPrompt = null
+    })
+  },
+  methods: {
+    async dismiss () {
+      this.deferredPrompt = null
+    },
+    async install () {
+      this.deferredPrompt.prompt()
     }
   }
 }
