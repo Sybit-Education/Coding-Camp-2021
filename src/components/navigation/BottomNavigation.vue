@@ -4,9 +4,9 @@
       <span>Home</span>
       <v-icon>mdi-home</v-icon>
     </v-btn>
-     <v-btn :to="{ name: 'Tipps' }" class="bottom-nav__button rounded-xl" exact>
+     <v-btn :to="{ name: 'Tips' }" class="bottom-nav__button rounded-xl" exact>
       <span>Tipps</span>
-      <v-icon>mdi-exclamation</v-icon>
+      <v-icon>mdi-lightbulb-on</v-icon>
     </v-btn>
     <v-btn :to="{ name: 'Karte'}" class="bottom-nav__button rounded-xl" exact>
       <span>Karte</span>
