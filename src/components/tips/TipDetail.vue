@@ -2,36 +2,43 @@
   <div class="tips">
     <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
     <back-button :to="{ name: 'Tipps'}"></back-button>
-
-    <v-card v-if="tip" class="card mx-auto rounded-xl">
-      <v-img :src="imageSource" class="card__image card__image--top rounded-xl" contain></v-img>
-      <v-img :src="imageSource" class="card__image card__image--top card__image-background rounded-xl" contain></v-img>
-
-      <div class="card__title grey--text text--darken-3">
-        {{ tip.title }}
-      </div>
-      <vue-simple-markdown
-          :source="tip.teaser.replaceAll('\\', '')"
-          class="card__teaser grey--text text--darken-3 body-1 my-2">
-      </vue-simple-markdown>
-      <div class="card__markdown-wrapper">
-        <v-img :src="imageSource" class="card__image card__image--bottom rounded-xl" contain></v-img>
-        <vue-simple-markdown
-            :source="tip.article.replaceAll('\\', '')"
-            class="card__markdown">
-        </vue-simple-markdown>
-      </div>
+    <share-button
+      v-if="tip"
+      :title="tip.title"
+      :text="tip.teaser"
+      :url="$route.path"
+    >
+    </share-button>
+    <v-card v-if="tip" class="mx-auto rounded-xl" justify="center">
+        <div class="card">
+            <v-img :src="imageSource" class="card__image card__image--top rounded-xl" contain></v-img>
+            <v-img :src="imageSource" class="card__image card__image--top card__image-background rounded-xl" contain></v-img>
+            <div class="card__title grey--text text--darken-3">{{ tip.title }}</div>
+            <vue-simple-markdown
+                :source="tip.teaser.replaceAll('\\', '')"
+                class="card__teaser grey--text text--darken-3 body-1 my-2">
+            </vue-simple-markdown>
+            <div class="card__markdown-wrapper">
+                <v-img :src="imageSource" class="card__image card__image--bottom rounded-xl" contain></v-img>
+                <vue-simple-markdown
+                    :source="tip.article.replaceAll('\\', '')"
+                    class="card__markdown">
+                </vue-simple-markdown>
+            </div>
+        </div>
     </v-card>
+    <v-skeleton-loader v-else type="card" />
   </div>
 </template>
 
 <script>
 import tipService from '@/services/tip.service'
 import BackButton from '@/components/navigation/BackButton.vue'
+import ShareButton from '@/components/navigation/ShareButton.vue'
 
 export default {
   name: 'TipDetail',
-  components: { BackButton },
+  components: { BackButton, ShareButton },
   props: {
     tipId: {
       type: String,
@@ -138,7 +145,6 @@ export default {
 
   &__image {
     padding: 0;
-
     &--top {
       z-index: 1 !important;
       display: none;
