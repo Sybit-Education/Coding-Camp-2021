@@ -1,7 +1,19 @@
 <template>
   <v-app>
     <v-main class="py-0">
-      <router-view/>
+      <v-banner
+        v-if="deferredPrompt"
+        color="info"
+        dark
+        class="text-left"
+      >
+        Möchten Sie die Mülli-App lokal installieren?
+        <template v-slot:actions>
+          <v-btn text @click="dismiss">Nein danke</v-btn>
+          <v-btn text @click="install">Installieren</v-btn>
+        </template>
+      </v-banner>
+      <router-view />
       <div class="navigation">
       <BottomNavigation class="bottomnav"/>
       </div>
@@ -21,7 +33,25 @@ export default {
   data () {
     return {
       message: 'Diese Website verwendet Cookies 🍪, um Ihnen die bestmögliche Nutzung unserer Website zu ermöglichen.',
-      buttonText: 'Ja, ich akzeptiere'
+      buttonText: 'Ja, ich akzeptiere',
+      deferredPrompt: null
+    }
+  },
+  created () {
+    window.addEventListener('beforeinstallprompt', event => {
+      event.preventDefault()
+      this.deferredPrompt = event
+    })
+    window.addEventListener('appinstalled', () => {
+      this.deferredPrompt = null
+    })
+  },
+  methods: {
+    async dismiss () {
+      this.deferredPrompt = null
+    },
+    async install () {
+      this.deferredPrompt.prompt()
     }
   }
 }
