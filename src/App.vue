@@ -31,8 +31,6 @@ export default {
   components: { BottomNavigation },
   data () {
     return {
-      message: 'Diese Website verwendet Cookies 🍪, um Ihnen die bestmögliche Nutzung unserer Website zu ermöglichen.',
-      buttonText: 'Ja, ich akzeptiere',
       deferredPrompt: null
     }
   },
@@ -52,7 +50,7 @@ export default {
     async install () {
       this.deferredPrompt.prompt()
     }
- }
+  }
 }
 </script>
 <style lang="scss">
