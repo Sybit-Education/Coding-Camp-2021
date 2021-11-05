@@ -6,7 +6,7 @@ const tipService = {
   async getTipRecords () {
     return new Promise((resolve, reject) => {
       const allTips = []
-      base('Tipp')
+      base(BASE_NAME)
         .select({
           // Selecting the first 3 records in All:
           view: 'published',
@@ -44,7 +44,7 @@ const tipService = {
           console.error(err)
           reject(err)
         }
-        const tipp = {
+        const tip = {
           id: record.id,
           title: record.fields.Title,
           teaser: record.fields.Teaser,
@@ -53,7 +53,7 @@ const tipService = {
           lang: record.fields.Lang,
           creationTime: record._rawJson?.createdTime
         }
-        resolve(tipp)
+        resolve(tip)
       })
     })
   }
