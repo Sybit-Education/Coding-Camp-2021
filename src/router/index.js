@@ -43,6 +43,12 @@ const routes = [
       import(/* webpackChunkName: "impressum" */ '../views/Ueber-uns.vue')
   },
   {
+    path: '/tipps',
+    name: 'Tipps',
+    component: () =>
+      import(/* webpackChunkName: "tipps" */ '../views/TipsList.vue')
+  },
+  {
     path: '/tipps/:tipId',
     props: true,
     name: 'TipDetail',
