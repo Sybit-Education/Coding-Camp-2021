@@ -36,7 +36,7 @@
         <v-img contain height="125" class="mb-5" :src="image"/>
         <v-row class="mb-3">
           <v-col cols="12" v-for="target in material.targets" :key="target.id" align="center">
-            <v-chip class="ml-2 elevation-3" outlined :color="target.color">{{ target.name }}</v-chip>
+            <v-chip class="ml-2 elevation-3 white--text" :color="target.color" large>{{ target.name }}</v-chip>
           </v-col>
         </v-row>
         <div class="mt-10" v-if="material.notes.length >= 300">
