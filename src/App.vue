@@ -3,7 +3,7 @@
     <v-main class="py-0">
       <v-banner
         v-if="deferredPrompt"
-        color="info"
+        color="primary"
         dark
         class="text-left"
       >
