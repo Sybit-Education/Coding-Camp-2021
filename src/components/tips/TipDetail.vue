@@ -1,7 +1,7 @@
 <template>
   <div class="tips">
     <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
-    <back-button :to="{ name: 'Tips'}"></back-button>
+    <back-button :to="{ name: 'Tipps'}"></back-button>
     <share-button
       v-if="tip"
       :title="tip.title"
