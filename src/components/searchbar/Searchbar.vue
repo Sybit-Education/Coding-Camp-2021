@@ -1,16 +1,15 @@
 <template>
   <v-toolbar>
     <v-autocomplete
-      v-model="select"
-      :loading="loading"
-      :items="items"
-      class="mx-4 rounded-xl"
-      flat
-      outlined
-      no-data-text="Keine Treffer!"
-      hide-details
-      label="Suche deinen Müll..."
-      :filter="filterObject"
+        v-model="select"
+        :loading="items && items.length < 0"
+        :items="items"
+        class="mx-4 rounded-xl"
+        solo
+        no-data-text="Keine Treffer!"
+        hide-details
+        label="Suche deinen Müll..."
+        :filter="filterObject"
     >
       <template slot="item" slot-scope="data">
         {{ data.item.name }}
@@ -42,7 +41,6 @@ export default {
   },
   data () {
     return {
-      loading: false,
       select: null
     }
   },
@@ -52,19 +50,19 @@ export default {
         this.$router.push({ name: 'DetailPage', params: { id: this.select.id } })
       }
     },
-    filterObject (item, queryText) {
+    filterObject: function (item, queryText) {
       if (item.synonyms) {
         return (
           item.name.toLocaleLowerCase().indexOf(queryText.toLocaleLowerCase()) >
             -1 ||
-          item.synonyms
-            .toLocaleLowerCase()
-            .indexOf(queryText.toLocaleLowerCase()) > -1
+            item.synonyms
+              .toLocaleLowerCase()
+              .indexOf(queryText.toLocaleLowerCase()) > -1
         )
       } else {
         return (
           item.name.toLocaleLowerCase().indexOf(queryText.toLocaleLowerCase()) >
-          -1
+            -1
         )
       }
     }
