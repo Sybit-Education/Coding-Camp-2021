@@ -7,11 +7,6 @@
   <br>
   <br>
   <br>
-  <br>
-  <br>
-  <br>
-
-
     <v-carousel
     cycle
     height="140"
