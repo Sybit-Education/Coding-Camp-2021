@@ -1,21 +1,21 @@
 <template>
   <v-container>
-    <h1 class="mt-5 d-flex justify-center">Vom Coding-Camp 2021 Entwickelt</h1>
-    <h2 class="mt-5 d-flex justify-center">
+    <h1 class="mt-5">Vom Coding-Camp 2021 Entwickelt</h1>
+    <h2 class="mt-5">
       Was ist denn Überhaupt das Coding-Camp?
     </h2>
-    <h4 class="mt-5 d-flex justify-center">
+    <p>
       Das Sybit Coding-Camp findet jährlich statt und bietet Jugendlichen die
       Chance, einen Einblick in den Beruf von Softwareentwicklerinnen und
       Softwareentwickler sowie die Ausbildung als Fachinformatiker
       (Anwendungsentwicklung) zu erhalten. Die Auszubildenden des Unternehmens
       bereiten hierfür im Vorfeld ein Projekt vor und coachen die Jugendlichen
       während des Coding Camps.
-    </h4>
-    <h2 class="mt-5 d-flex justify-center">
+    </p>
+    <h2 class="mt">
       Was haben wir denn während des Coding-Camps gemacht?
     </h2>
-    <h4>
+    <p>
       Während des Coding-Camps codeten wir die App Mülli. Wir waren insgesamt
       zehn Praktikanten,/Schüler und sechs Auszubildende. Diese brachten uns
       vieles über das Coden bei mit Vue, Java, JavaScript, HTML und CSS bei. Wir
@@ -24,7 +24,7 @@
       Sybit arbeitet uns wurden die Personas erklärt und vorgestellt. Am Ende
       erstellten wir vier Personas. Wir besprachen noch mal alle Ideen und
       erstellten User Storys über unsere Personas.
-    </h4>
+    </p>
     <v-img contain class="mt-10" :src="image"></v-img>
   </v-container>
 </template>
