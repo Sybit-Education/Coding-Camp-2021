@@ -36,16 +36,16 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       locationMap: {
         location_: 0,
         location_map: 1,
-        location_more: 2,
-      },
-    };
-  },
-};
+        location_more: 2
+      }
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

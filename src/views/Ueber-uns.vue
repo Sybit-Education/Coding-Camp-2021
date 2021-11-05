@@ -25,5 +25,16 @@
       erstellten wir vier Personas. Wir besprachen noch mal alle Ideen und
       erstellten User Storys über unsere Personas.
     </h4>
+    <v-img contain class="mt-10" :src="image"></v-img>
   </v-container>
 </template>
+
+<script>
+export default {
+  computed: {
+    image () {
+      return require('@/assets/img/ueber-uns/team.jpg')
+    }
+  }
+}
+</script>
