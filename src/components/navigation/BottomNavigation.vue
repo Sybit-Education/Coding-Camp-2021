@@ -4,31 +4,30 @@
       <span>Home</span>
       <v-icon>mdi-home</v-icon>
     </v-btn>
-     <v-btn :to="{ name: 'Tipps' }" class="bottom-nav__button rounded-xl" exact>
+    <v-btn :to="{ name: 'Tipps' }" class="bottom-nav__button rounded-xl" exact>
       <span>Tipps</span>
-      <v-icon>mdi-exclamation</v-icon>
+      <v-icon>mdi-lightbulb-on</v-icon>
     </v-btn>
-    <v-btn :to="{ name: 'Karte'}" class="bottom-nav__button rounded-xl" exact>
+    <v-btn :to="{ name: 'Karte' }" class="bottom-nav__button rounded-xl" exact>
       <span>Karte</span>
       <v-icon>mdi-google-maps</v-icon>
     </v-btn>
-     <v-menu offset-y top>
+    <v-menu offset-y top>
       <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          class="bottom-nav__button rounded-xl"
-          v-bind="attrs"
-          v-on="on"
-        >
+        <v-btn class="bottom-nav__button rounded-xl" v-bind="attrs" v-on="on">
           <span class="black--text">Menu</span>
           <v-icon color="black">mdi-menu</v-icon>
         </v-btn>
       </template>
       <v-list>
-        <v-btn :to="{ name: 'Impressum'}" class="container" exact>
+        <v-btn :to="{ name: 'Impressum' }" class="container" exact text>
           <span>Impressum</span>
         </v-btn>
-        <v-btn :to="{ name: 'Datenschutz'}" class="container" exact>
+        <v-btn :to="{ name: 'Datenschutz' }" class="container" exact text>
           <span>Datenschutz</span>
+        </v-btn>
+        <v-btn :to="{ name: 'Ueber-uns' }" class="container" exact>
+          <span>Über uns</span>
         </v-btn>
       </v-list>
     </v-menu>
@@ -51,7 +50,11 @@ export default {
 
 <style lang="scss" scoped>
 .v-item-group.v-bottom-navigation {
-  @include glassmorphism($color: white, $blur-ammount: 8px, $color-intensity: .4);
+  @include glassmorphism(
+    $color: white,
+    $blur-ammount: 8px,
+    $color-intensity: 0.4
+  );
   display: flex;
   justify-content: space-around;
   border-radius: 50px;
@@ -74,7 +77,8 @@ export default {
     }
   }
 }
+
 .theme--light.v-btn {
-    color: rgba(255, 111, 0, 0.87)
+  color: rgba(255, 111, 0, 0.87);
 }
 </style>
