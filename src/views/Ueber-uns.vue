@@ -12,7 +12,7 @@
       bereiten hierfür im Vorfeld ein Projekt vor und coachen die Jugendlichen
       während des Coding Camps.
     </p>
-    <h2 class="mt">
+    <h2 class="mt-5">
       Was haben wir denn während des Coding-Camps gemacht?
     </h2>
     <p>
