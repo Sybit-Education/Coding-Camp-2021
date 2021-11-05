@@ -4,7 +4,7 @@
       <span>Home</span>
       <v-icon>mdi-home</v-icon>
     </v-btn>
-     <v-btn :to="{ name: 'Tips' }" class="bottom-nav__button rounded-xl" exact>
+    <v-btn :to="{ name: 'Tips' }" class="bottom-nav__button rounded-xl" exact>
       <span>Tipps</span>
       <v-icon>mdi-lightbulb-on</v-icon>
     </v-btn>
@@ -12,12 +12,12 @@
       <span>Karte</span>
       <v-icon>mdi-google-maps</v-icon>
     </v-btn>
-     <v-menu offset-y top>
+    <v-menu offset-y top>
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-          class="bottom-nav__button rounded-xl"
-          v-bind="attrs"
-          v-on="on"
+            class="bottom-nav__button rounded-xl"
+            v-bind="attrs"
+            v-on="on"
         >
           <span class="black--text">Menu</span>
           <v-icon color="black">mdi-menu</v-icon>
@@ -74,7 +74,8 @@ export default {
     }
   }
 }
+
 .theme--light.v-btn {
-    color: rgba(255, 111, 0, 0.87)
+  color: rgba(255, 111, 0, 0.87)
 }
 </style>
