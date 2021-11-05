@@ -6,7 +6,7 @@
     </v-btn>
     <v-btn :to="{ name: 'Tipps' }" class="bottom-nav__button rounded-xl" exact>
       <span>Tipps</span>
-      <v-icon>mdi-exclamation</v-icon>
+      <v-icon>mdi-lightbulb-on</v-icon>
     </v-btn>
     <v-btn :to="{ name: 'Karte' }" class="bottom-nav__button rounded-xl" exact>
       <span>Karte</span>
@@ -20,10 +20,10 @@
         </v-btn>
       </template>
       <v-list>
-        <v-btn :to="{ name: 'Impressum' }" class="container" exact>
+        <v-btn :to="{ name: 'Impressum' }" class="container" exact text>
           <span>Impressum</span>
         </v-btn>
-        <v-btn :to="{ name: 'Datenschutz' }" class="container" exact>
+        <v-btn :to="{ name: 'Datenschutz' }" class="container" exact text>
           <span>Datenschutz</span>
         </v-btn>
         <v-btn :to="{ name: 'Ueber-uns' }" class="container" exact>
@@ -36,16 +36,16 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       locationMap: {
         location_: 0,
         location_map: 1,
-        location_more: 2,
-      },
-    };
-  },
-};
+        location_more: 2
+      }
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -77,6 +77,7 @@ export default {
     }
   }
 }
+
 .theme--light.v-btn {
   color: rgba(255, 111, 0, 0.87);
 }
