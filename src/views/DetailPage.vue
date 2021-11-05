@@ -37,13 +37,13 @@
         <v-row class="mb-3">
           <v-col cols="12" v-for="target in material.targets" :key="target.id" align="center">
             <v-chip class="ml-2 elevation-3 white--text" :color="target.color" large>{{ target.name }}</v-chip>
-          </v-col>
-        </v-row>
-        <div class="mt-10" v-if="material.notes.length >= 300">
-          {{ material.notes }}
+      </v-col>
+    </v-row>
+    <div class="mt-10" v-if="material.notes && material.notes.length <=300 && material.notes.length >5">
+        <vue-simple-markdown :source="material.notes" />
         </div>
-        <div v-else>
-          <vue-simple-markdown :source="material.notes"/>
+        <div class="mt-10" v-else>
+      <vue-simple-markdown :source="material.targets[0].description"></vue-simple-markdown>
         </div>
       </v-card-text>
     </v-card>
