@@ -23,14 +23,12 @@ export default {
       cookieFirstKey: 'e1cd165b-d382-4e08-acdf-e9467a05f9d8',
       cookieFirstStyle: {
         banner: {
-          backgroundColor: '#FF6F00',
           color: '#000'
         },
         acceptButton: {
           backgroundColor: '#fff',
           color: '#000',
           borderColor: '#000',
-          borderRadius: '50%',
           borderWidth: '1px',
           borderStyle: 'solid'
         },
@@ -38,7 +36,6 @@ export default {
           backgroundColor: '#fff',
           color: '#000',
           borderColor: '#000',
-          borderRadius: '50%',
           borderWidth: '1px',
           borderStyle: 'solid'
         }
