@@ -1,17 +1,16 @@
 <template>
   <v-btn
-    fab
-    small
-    top
-    right
-    fixed
-    class="share-button mt-3"
-    aria-hidden="false"
-    aria-label="Teilen"
-    v-if="isShareable"
-    @click="shareDetails"
-    >
-    <v-icon style="font-size:25px">
+      fab
+      top
+      right
+      fixed
+      class="share-button mt-3"
+      aria-hidden="false"
+      aria-label="Teilen"
+      v-if="isShareable"
+      @click="shareDetails"
+  >
+    <v-icon>
       mdi-share-variant
     </v-icon>
   </v-btn>
@@ -59,10 +58,10 @@ export default {
 .share-button {
   @include glassmorphism($color: white, $blur-ammount: 4px, $color-intensity: 0.4);
   z-index: 999;
-  margin-bottom: calc(0.5*#{$bottom-navigation-height});
+  margin-bottom: calc(0.5 * #{$bottom-navigation-height});
 
   @media #{map-get($display-breakpoints, 'xs-only')} {
-    margin-bottom: calc(1.5*#{$bottom-navigation-height});
+    margin-bottom: calc(1.5 * #{$bottom-navigation-height});
   }
 }
 </style>

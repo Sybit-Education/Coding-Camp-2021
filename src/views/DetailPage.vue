@@ -48,18 +48,18 @@
 import ShareButton from '../components/navigation/ShareButton.vue'
 
 export default {
-  components: {ShareButton},
+  components: { ShareButton },
   computed: {
-    image() {
+    image () {
       if (this.material && this.material.targets && this.material.targets[0]?.images) {
         return this.material.targets[0].images[0].url
       }
       return 'required(\'https://via.placeholder.com/150?text=placeholder\')'
     },
-    material() {
+    material () {
       return this.$store.getters.getMaterialById(this.$route.params.id)
     },
-    share() {
+    share () {
       return {
         title: `Mülli: ${this.material.name} entsorgen 👉 ${this.material.targets[0].name}`,
         text: `${this.material.name} entsorgen: ${this.material.targets[0].name}
@@ -67,11 +67,11 @@ export default {
       }
     }
   },
-  created() {
+  created () {
     this.getMaterial()
   },
   methods: {
-    getMaterial() {
+    getMaterial () {
       if (this.material === !undefined) return
       this.$store.dispatch('getRecordsFromSessionStorage', [
         'material',
