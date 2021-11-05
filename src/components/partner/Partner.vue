@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h2>Partner:</h2>
+    <h4  class="ml-5 mt-5">Unsere Partner</h4>
     <v-carousel
         v-if="partnerList && partnerList.length > 0"
         cycle
-        height="140"
-        width="140"
+        height="120"
+        width="200"
         hide-delimiter-background
         hide-delimiters
         show-arrows-on-hover
@@ -16,7 +16,7 @@
       >
         <div class="d-flex justify-center">
           <a :href="partner.website">
-            <v-img :src="partner.logo[0].url" contain width="140" height="140"/>
+            <v-img :src="partner.logo[0].url" contain width="250" height="100"/>
           </a>
         </div>
       </v-carousel-item>
