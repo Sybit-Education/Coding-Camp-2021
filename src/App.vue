@@ -7,41 +7,16 @@
       </div>
     </v-main>
     <notifications group="default"/>
-    <vue-cookie-first :api-key="cookieFirstKey" :banner-style="cookieFirstStyle" />
   </v-app>
 </template>
 
 <script>
 import BottomNavigation from '@/components/navigation/BottomNavigation'
-import VueCookieFirst from 'vue-cookie-first'
 
 export default {
   name: 'App',
-  components: { BottomNavigation, VueCookieFirst },
-  data () {
-    return {
-      cookieFirstKey: 'e1cd165b-d382-4e08-acdf-e9467a05f9d8',
-      cookieFirstStyle: {
-        banner: {
-          color: '#000'
-        },
-        acceptButton: {
-          backgroundColor: '#fff',
-          color: '#000',
-          borderColor: '#000',
-          borderWidth: '1px',
-          borderStyle: 'solid'
-        },
-        declineButton: {
-          backgroundColor: '#fff',
-          color: '#000',
-          borderColor: '#000',
-          borderWidth: '1px',
-          borderStyle: 'solid'
-        }
-      }
-    }
-  }
+  components: { BottomNavigation },
+  data () {}
 }
 </script>
 <style lang="scss">
