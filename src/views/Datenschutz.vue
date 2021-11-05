@@ -1,5 +1,8 @@
 <template>
-  <div class="container">
+  <v-container>
+    <div id="cookiefirst-policy-page"></div>
+    <div>Diese Cookie-Richtlinie wurde erstellt und aktualisiert von der Firma <a href="https://cookiefirst.com">CookieFirst.com</a>.</div>
+
     <h2> Datenschutzerklärung</h2>
     <h4>Wir freuen uns sehr über Ihr Interesse an unserem Unternehmen. Datenschutz hat einen besonders hohen Stellenwert
       für uns. Eine Nutzung der Internetseiten der Sybit GmbH ist grundsätzlich ohne jede Angabe personenbezogener Daten
@@ -1029,5 +1032,5 @@
     <h4>Diese Muster Datenschutzerklärung wurde durch den Datenschutzerklärungs-Generator der DGD Deutsche Gesellschaft
       für Datenschutz GmbH, die Datenschutzaudit durchführt, in Kooperation mit der Medienrechtskanzlei WILDE BEUGER
       SOLMECKE erstellt.</h4>
-  </div>
+   </v-container>
 </template>
