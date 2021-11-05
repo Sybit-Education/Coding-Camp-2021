@@ -1,15 +1,14 @@
 <template>
   <v-container>
-    <v-card class="mx-auto rounded-xl"
-      v-if="material && material.name && image">
-      <v-btn
+    <v-btn
         @click="$router.go(-1)"
         fab
         small
         top
         left
+        dark
         absolute
-        class="mt-3"
+        class="mt-6"
         style="margin-left: -12px"
       >
         <v-icon style="font-size:25px">
@@ -21,22 +20,20 @@
         :text="share.text"
         :url="$route.path"
       />
-    <v-card-text elevation="20" class="black--text"  style="font-size:20px">
+    <v-card class="mx-auto rounded-xl mt-10"
+      style="overflow: scroll;"
+      v-if="material && material.name && image" height="540">
     <div class="d-flex justify-center mb-7 mt-5">
-    <h1 style="font-size:30px">{{material.name}}</h1>
+    <h1 style="font-size:30px; line-height: 2rem;">{{material.name}}</h1>
     </div>
-    <v-img contain height="125"  class="mb-10" :src="image"></v-img>
-    <p class="d-flex justify-center mx-5">
-      <v-list>
-        <v-list-item v-for="target in material.targets" :key="target.id">
-          <v-list-content>
-            <v-chip outlined :color="target.color">{{ target.name }}</v-chip>
-          </v-list-content>
-        </v-list-item>
-      </v-list>
-    </p>
-    <div v-if="material.notes.length >= 300" style="max-height: 250px; overflow: scroll;">
-      <vue-simple-markdown :source="material.notes" />
+    <v-img contain height="125"  class="mb-5" :src="image" />
+    <v-row class="mb-3">
+      <v-col v-for="target in material.targets" :key="target.id" align="center">
+        <v-chip class="ml-2 elevation-3" outlined :color="target.color">{{ target.name }}</v-chip>
+      </v-col>
+    </v-row>
+    <div class="mt-10" v-if="material.notes.length >= 300">
+      {{ material.notes }}
     </div>
     <div v-else>
       <vue-simple-markdown :source="material.notes" />
@@ -47,6 +44,7 @@
   </v-container>
 
 </template>
+
 <script>
 import ShareButton from '../components/navigation/ShareButton.vue'
 export default {
@@ -69,7 +67,7 @@ export default {
       }
     }
   },
-  mounted () {
+  created () {
     this.getMaterial()
   },
   methods: {
