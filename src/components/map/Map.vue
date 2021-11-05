@@ -13,7 +13,7 @@
         </l-marker>
         <l-control-zoom class="map__zoom-buttons"></l-control-zoom>
         <l-control position="topleft">
-          <back-button :to="{name:'Home'}" />
+          <back-button :to="{name:'Home'}"/>
         </l-control>
       </l-map>
     </div>
@@ -110,7 +110,7 @@ export default {
       }),
       url: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution:
-        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }
   },
   mounted () {
@@ -232,7 +232,7 @@ export default {
     }
 
     &-wrapper {
-      margin:0 0 3rem 0;
+      margin: 0 0 3rem 0;
     }
   }
 

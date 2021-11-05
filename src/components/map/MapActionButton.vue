@@ -29,12 +29,13 @@ export default {
 
 <style lang="scss" scoped>
 @import 'src/scss/variables.scss';
+
 .map__action-button {
   @include glassmorphism($color: white, $blur-ammount: 4px, $color-intensity: 0.4);
-  margin-bottom: calc(0.5*#{$bottom-navigation-height});
+  margin-bottom: calc(0.5 * #{$bottom-navigation-height});
 
   @media #{map-get($display-breakpoints, 'xs-only')} {
-    margin-bottom: calc(1.5*#{$bottom-navigation-height});
+    margin-bottom: calc(1.5 * #{$bottom-navigation-height});
   }
 }
 </style>
