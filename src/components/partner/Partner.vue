@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4  class="ml-5 mt-5">Unsere Partner</h4>
+    <h3 class="ml-5 mt-5">Unsere Partner</h3>
     <v-carousel
         v-if="partnerList && partnerList.length > 0"
         cycle
