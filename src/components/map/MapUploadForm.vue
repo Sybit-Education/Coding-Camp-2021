@@ -74,17 +74,17 @@
           <v-row justify="center" justify-sm="end">
             <v-col cols="12" md="3" lg="2">
               <v-btn
-                :disabled="!formDataIsValid"
-                :loading="$store.state.showLoadingSpinner"
-                block
-                class="white--text py-6"
-                color="primary"
-                @click="submit"
+                  :disabled="!formDataIsValid"
+                  :loading="$store.state.showLoadingSpinner"
+                  block
+                  class="white--text py-6"
+                  color="primary"
+                  @click="submit"
               >
                 Erstellen
                 <v-icon
-                  dark
-                  right
+                    dark
+                    right
                 >
                   mdi-cloud-upload
                 </v-icon>
@@ -130,9 +130,7 @@ export default {
       ],
       types: [
         'Wertstoffhof',
-        'Öffentlicher Mülleimer',
-        'Glas-Container',
-        'Altkleider-Container'
+        'Glas-Container'
       ],
       type: '',
       typeRules: [
