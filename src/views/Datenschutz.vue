@@ -217,9 +217,9 @@
       keine gesetzlichen Aufbewahrungspflichten entgegenstehen. Ein in dieser Datenschutzerklärung namentlich benannter
       Datenschutzbeauftragter und die Gesamtheit der Mitarbeiter des für die Verarbeitung Verantwortlichen stehen der
       betroffenen Person in diesem Zusammenhang als Ansprechpartner zur Verfügung.</p>
-
     <h2>7.Abonnement unseres Newsletters / E-Mail-Werbung</h2>
-    <p>Auf der Internetseite der Sybit GmbH wird den Benutzern die Möglichkeit eingeräumt, den Newsletter unseres
+    <p>
+      Auf der Internetseite der Sybit GmbH wird den Benutzern die Möglichkeit eingeräumt, den Newsletter unseres
       Unternehmens zu abonnieren oder diverse Download-Angebote zu nutzen. Welche personenbezogenen Daten bei der
       Bestellung des Newsletters bzw. Nutzung eines Download-Angebotes an den für die Verarbeitung Verantwortlichen
       übermittelt werden, ergibt sich aus der hierzu verwendeten Eingabemaske.
@@ -232,7 +232,7 @@
       eingetragene E-Mail-Adresse wird aus rechtlichen Gründen eine Bestätigungsmail im Double-Opt-In-Verfahren
       versendet. Diese Bestätigungsmail dient der Überprüfung, ob der Inhaber der E-Mail-Adresse als betroffene Person
       den Empfang des Newsletters oder die weitere Zusendung von E-Mails zu Werbezwecken autorisiert hat.
-      p
+
       Bei der Eintragung speichern wir ferner die vom Internet-Service-Provider (ISP) vergebene IP-Adresse des von der
       betroffenen Person zum Zeitpunkt der Anmeldung verwendeten Computersystems sowie das Datum und die Uhrzeit der
       Anmeldung. Die Erhebung dieser Daten ist erforderlich, um den (möglichen) Missbrauch der E-Mail-Adresse einer
@@ -257,7 +257,7 @@
       besteht die Möglichkeit, sich jederzeit auch per E-Mail an newsletter(at)sybit.de, per Telefax oder auf dem
       Postweg abzumelden bzw. die Einwilligung zu widerrufen.</p>
 
-    <h2>8. Newsletter-Tracking</h2>
+    <h2>8.Newsletter-Tracking</h2>
     <p>Die Newsletter der Sybit GmbH enthalten sogenannte Zählpixel. Ein Zählpixel ist eine Miniaturgrafik, die in
       solche E-Mails eingebettet wird, welche im HTML-Format versendet werden, um eine Logdatei-Aufzeichnung und eine
       Logdatei-Analyse zu ermöglichen. Dadurch kann eine statistische Auswertung des Erfolges oder Misserfolges von
@@ -1038,8 +1038,5 @@
     <p>Diese Muster Datenschutzerklärung wurde durch den Datenschutzerklärungs-Generator der DGD Deutsche Gesellschaft
       für Datenschutz GmbH, die Datenschutzaudit durchführt, in Kooperation mit der Medienrechtskanzlei WILDE BEUGER
       SOLMECKE erstellt.</p>
-    <div id="cookiefirst-policy-page"></div>
-    <div>Diese Cookie-Richtlinie wurde erstellt und aktualisiert von der Firma <a href="https://cookiefirst.com">CookieFirst.com</a>.
-    </div>
   </v-container>
 </template>
