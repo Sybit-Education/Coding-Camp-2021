@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <h1 class="mt-5">Vom Coding-Camp 2021 Entwickelt</h1>
+    <h1 class="mt-5">Vom Coding-Camp 2021 entwickelt</h1>
     <h2 class="mt-5">
-      Was ist denn Überhaupt das Coding-Camp?
+      Was ist das Coding-Camp?
     </h2>
     <p>
       Das Sybit Coding-Camp findet jährlich statt und bietet Jugendlichen die
@@ -17,7 +17,7 @@
     </h2>
     <p>
       Während des Coding-Camps codeten wir die App Mülli. Wir waren insgesamt
-      zehn Praktikanten,/Schüler und sechs Auszubildende. Diese brachten uns
+      zehn Schüler:innen und sechs Auszubildende. Diese brachten uns
       vieles über das Coden bei mit Vue, Java, JavaScript, HTML und CSS bei. Wir
       teilten uns in vier Gruppen und arbeiteten zusammen an, denn Aufgaben, die
       wir vorher besprochen hatten. Uns wurde erklärt, wie so eine Firma wie
