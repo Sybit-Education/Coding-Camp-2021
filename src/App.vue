@@ -19,17 +19,16 @@
       </div>
     </v-main>
     <notifications group="default"/>
-    <vue-cookie-first :api-key="cookieFirstKey" :banner-style="cookieFirstStyle" />
   </v-app>
 </template>
 
 <script>
 import BottomNavigation from '@/components/navigation/BottomNavigation'
-import VueCookieFirst from 'vue-cookie-first'
 
 export default {
   name: 'App',
-  components: { BottomNavigation, VueCookieFirst },
+
+  components: { BottomNavigation },
   data () {
     return {
       message: 'Diese Website verwendet Cookies 🍪, um Ihnen die bestmögliche Nutzung unserer Website zu ermöglichen.',
@@ -53,7 +52,7 @@ export default {
     async install () {
       this.deferredPrompt.prompt()
     }
-  }
+ }
 }
 </script>
 <style lang="scss">
