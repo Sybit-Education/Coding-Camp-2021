@@ -15,18 +15,18 @@
     <v-menu offset-y top>
       <template v-slot:activator="{ on, attrs }">
         <v-btn class="bottom-nav__button rounded-xl" v-bind="attrs" v-on="on">
-          <span class="black--text">Menu</span>
-          <v-icon color="black">mdi-menu</v-icon>
+          <span class="grey--text text--darken-2">Menu</span>
+          <v-icon color="grey darken-2">mdi-menu</v-icon>
         </v-btn>
       </template>
-      <v-list>
-        <v-btn :to="{ name: 'Impressum' }" class="container" exact text>
+      <v-list class="d-flex flex-column pa-2">
+        <v-btn class="my-2 grey--text text--darken-2" :to="{ name: 'Impressum' }" exact text>
           <span>Impressum</span>
         </v-btn>
-        <v-btn :to="{ name: 'Datenschutz' }" class="container" exact text>
+        <v-btn class="my-2 grey--text text--darken-2" :to="{ name: 'Datenschutz' }" exact text>
           <span>Datenschutz</span>
         </v-btn>
-        <v-btn :to="{ name: 'Ueber-uns' }" class="container" exact>
+        <v-btn class="my-2 grey--text text--darken-2" :to="{ name: 'Ueber-uns' }" exact text>
           <span>Über uns</span>
         </v-btn>
       </v-list>
