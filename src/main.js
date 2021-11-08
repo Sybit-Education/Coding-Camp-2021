@@ -1,9 +1,9 @@
 import Vue from 'vue'
+import vuetify from '@/plugins/vuetify' // path to vuetify export
 import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import store from './store'
-import Vuetify from 'vuetify/lib'
 import Notifications from 'vue-notification'
 import VueSimpleMarkdown from 'vue-simple-markdown'
 import 'vue-simple-markdown/dist/vue-simple-markdown.css'
@@ -14,7 +14,6 @@ import LoadingSpinner from './components/LoadingSpinner'
 Vue.config.productionTip = false
 Vue.component('LoadingSpinner', LoadingSpinner)
 
-Vue.use(Vuetify)
 Vue.use(Notifications)
 Vue.use(VueSimpleMarkdown)
 Vue.use(VueMeta)
@@ -23,20 +22,6 @@ if (process.env.VUE_APP_GTAG_ID !== '') {
     config: { id: 'G-R88JSEDEBT' }
   }, router)
 }
-
-const vuetify = new Vuetify({
-  theme: {
-    themes: {
-      light: {
-        primary: '#FF6F00',
-        onprimary: '#212121',
-        secondary: '#558B2F',
-        onsecondary: '#212121',
-        anchor: '#E1007A'
-      }
-    }
-  }
-})
 
 new Vue({
   router,
