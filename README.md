@@ -16,8 +16,10 @@ The application will support the citizens of "Landkreis Konstanz" to dispose the
 ## Partner of the Project
 
 The project is supported by several municipalities:
+https://airtable.com/embed/shrJyBkwkIxzvZfLh?backgroundColor=green
 
-<iframe class="airtable-embed" src="https://airtable.com/embed/shrJyBkwkIxzvZfLh?backgroundColor=green" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+![municipalities](/public/img/municipalities.png)
+
 
 ---
 
