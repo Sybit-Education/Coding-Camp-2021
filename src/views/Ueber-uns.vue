@@ -1,29 +1,37 @@
 <template>
   <v-container>
-    <h1 class="mt-5 d-flex justify-center">Vom Coding-Camp 2021 Entwickelt</h1>
+    <h1 class="mt-5 d-flex justify-center">Coding-Camp 2021</h1>
     <h2 class="mt-5 d-flex justify-center">
-      Was ist denn Überhaupt das Coding-Camp?
+      Was genau ist eigentlich das Coding-Camp?
     </h2>
     <h4 class="mt-5 d-flex justify-center">
-      Das Sybit Coding-Camp findet jährlich statt und bietet Jugendlichen die
-      Chance, einen Einblick in den Beruf von Softwareentwicklerinnen und
-      Softwareentwickler sowie die Ausbildung als Fachinformatiker
-      (Anwendungsentwicklung) zu erhalten. Die Auszubildenden des Unternehmens
-      bereiten hierfür im Vorfeld ein Projekt vor und coachen die Jugendlichen
-      während des Coding Camps.
+      Das Sybit Coding-Camp findet jährlich statt und bietet interessierten
+      Jugendlichen die Chance die Ausbildung als Fachinformatiker
+      (Anwendungsentwicklung) und den Beruf des Softwareentwicklers genauer
+      kennenzulernen. Die Auszubildenden des Unternehmens "sybitcx" bereiten
+      hierfür im Vorfeld ein Coding-Projekt für die einwöchige Veranstaltung vor
+      und unterstützen dann die Teilnehmenden Jugendlichen bei ihrer Arbeit 
+      während des Camps.
     </h4>
     <h2 class="mt-5 d-flex justify-center">
-      Was haben wir denn während des Coding-Camps gemacht?
+      Was haben wir während des Coding-Camps gemacht?
     </h2>
     <h4>
-      Während des Coding-Camps codeten wir die App Mülli. Wir waren insgesamt
-      zehn Praktikanten,/Schüler und sechs Auszubildende. Diese brachten uns
-      vieles über das Coden bei mit Vue, Java, JavaScript, HTML und CSS bei. Wir
-      teilten uns in vier Gruppen und arbeiteten zusammen an, denn Aufgaben, die
-      wir vorher besprochen hatten. Uns wurde erklärt, wie so eine Firma wie
-      Sybit arbeitet uns wurden die Personas erklärt und vorgestellt. Am Ende
-      erstellten wir vier Personas. Wir besprachen noch mal alle Ideen und
-      erstellten User Storys über unsere Personas.
+      Während des Coding-Camps lernten wir (zehn Praktikanten und Schüler)
+      vieles über das Coden mit Vue, Java, JavaScript, HTML und CSS.
+      Mit Hilfe von sechs Auszubildenenden des Unternehmens "sybitcx" codeten
+      und entwickelten wir die App "Mülli", eine App, die Nutzer unterstützt ihren
+      Müll zu trennen und vor allem an den richtigen Orten zu entsorgen.
+      Nach einer Gruppeneinteilung wurde uns das "Persona-Modell" erklärt und
+      vorgestellt, welche einen Prototyp für eine Gruppe von Nutzern, mit konkret
+      ausgeprägten Eigenschaften und einem konkreten Nutzungsverhalten darstellt.
+      Auch die Firma "sybitcx" arbeitet mit solch einem Modell, um ihre Produkte
+      und Services bedarfs- und zielgruppenspezifisch zu entwickeln.
+      Auch uns unterstützte das Modell der "Personas" sehr, weil wir so anhand der
+      ausgedachten User-Storys der "Personas" unsere Ideen zum Projekt "Mülli" nochmals
+      überarbeiten und abändern konnten.
+      So entwicklten wir erfolgreich unsere erste, eigene, funktionierende App zur 
+      Müllentsorgung.
     </h4>
     <v-img contain class="mt-10" :src="image"></v-img>
   </v-container>
