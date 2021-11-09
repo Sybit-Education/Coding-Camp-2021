@@ -18,7 +18,7 @@ The application will support the citizens of "Landkreis Konstanz" to dispose the
 The project is supported by several municipalities:
 https://airtable.com/embed/shrJyBkwkIxzvZfLh?backgroundColor=green
 
-![GitHub Logo](/public/img/municipalities.png)
+![municipalities](/public/img/municipalities.png)
 
 
 ---
