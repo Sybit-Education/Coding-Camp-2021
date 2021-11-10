@@ -16,3 +16,8 @@ $bottom-navigation-height: 56px;
     box-shadow: 0 0 !important;
   }
 }
+
+// to force font also for cookie-banner
+html {
+  font-family: $body-font-family;
+}
