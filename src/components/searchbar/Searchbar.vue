@@ -4,11 +4,11 @@
         v-model="select"
         :loading="items && items.length < 0"
         :items="items"
-        class="mx-4 rounded-xl"
+        class="rounded-xl"
         solo
         no-data-text="Keine Treffer!"
         hide-details
-        label="Suche deinen Müll..."
+        label="Tippe zum Suchen"
         :filter="filterObject"
     >
       <template slot="item" slot-scope="data">
@@ -70,7 +70,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .v-sheet.v-toolbar:not(.v-sheet--outlined) {
   box-shadow: none !important;
 }
