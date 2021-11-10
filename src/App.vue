@@ -55,6 +55,9 @@ export default {
 </script>
 <style lang="scss">
 @import 'src/scss/scrollbar.scss';
+.container {
+  padding-bottom: 64px;
+}
 .navigation {
   position: relative;
 }
