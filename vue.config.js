@@ -7,7 +7,7 @@ module.exports = {
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black-translucent',
     manifestOptions: {
-      background_color: '#FF6F00',
+      background_color: '#323232',
       display: 'standalone',
       orientation: 'portrait',
       description: 'Finde heraus, was in welchen Müll gehört.',
