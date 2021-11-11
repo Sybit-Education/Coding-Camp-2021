@@ -15,7 +15,7 @@
     <h2 class="mt-5 d-flex">
       Was haben wir denn während des Coding-Camps gemacht?
     </h2>
-    <p> class="mt-5 d-flex justify-center">
+    <p class="mt-5 d-flex">
       Während des Coding-Camps codeten wir die App Mülli. Wir waren insgesamt
       zehn Schüler und sechs Auszubildende. Die Auszubildenden brachten uns
       vieles über das Programmieren bei mit Vue, JavaScript, HTML und CSS bei. Wir
@@ -25,6 +25,9 @@
       erstellten wir vier Personas. Wir besprachen nochmal alle Ideen und
       erstellten User Storys über unsere Personas.
     </p>
+    <h2>
+      Das Team
+    </h2>
     <v-img contain class="mt-5" :src="image"></v-img>
     <div class="mt-5 d-flex">
       <small>Stephan Strittmatter (von links), Enrico Franke, Jonas Degener, Morries
