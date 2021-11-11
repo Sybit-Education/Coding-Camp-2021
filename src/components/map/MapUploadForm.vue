@@ -55,12 +55,12 @@
           <v-row v-if="!useGPSData">
             <v-col cols="12" md="6">
               <v-text-field v-model="latitude" :rules="latitudeRules" hint="Hier die Latitude Geo Koordinaten eintragen"
-                            label="latitude"
+                            label="Breitengrad"
                             outlined></v-text-field>
             </v-col>
             <v-col cols="12" md="6">
               <v-text-field v-model="longitude" :rules="longitudeRules"
-                            hint="Hier die Longitude Geo Koordinaten eintragen" label="longitude"
+                            hint="Hier die Longitude Geo Koordinaten eintragen" label="Längengrad"
                             outlined></v-text-field>
             </v-col>
           </v-row>

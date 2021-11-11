@@ -73,7 +73,6 @@
 
 <script>
 import materialService from '../../services/material.service'
-
 export default {
   props: {
     items: {
@@ -145,9 +144,14 @@ export default {
         } else {
           return item.name.toLocaleLowerCase().indexOf(queryText.toLocaleLowerCase()) > -1
         }
+
+
+
+
       }
       return -1
     }
+
   }
 }
 </script>
