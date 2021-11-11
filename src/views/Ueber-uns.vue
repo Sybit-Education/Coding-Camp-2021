@@ -1,6 +1,7 @@
 <template>
   <v-container>
     <h1>Sybit Coding-Camp 2021: Die Mülli-App</h1>
+    <p class="mt-5 d-flex">
     <h2>
       Was ist das Sybit Coding-Camp?
     </h2>
@@ -35,12 +36,23 @@
         Mirko Pleli, Raphael Schnick, Mario Sieg, Sophia Kunert (von unten), Dominik Smyczkowski, Viktor Müller, Niklas
         Neumann, Gideon Godejoann während ihrer Arbeit beim Coding-Camp.</small>
     </div>
-    <small>Brandon Serra (fehlt auf dem Bild)</small>
-    <br>
-    <br>
-      <small> Die Mülli-App ist eine Open-Source Software. Der Quellcode ist somit öffentlich verfügbar und kann frei genutzt,
-        vervielfältigt und verändert werden. (https://github.com/Sybit-Education/Coding-Camp-2021)<br>
-        Es gelten die Bedingungen der MIT-Lizenz. (https://github.com/Sybit-Education/Coding-Camp-2021/blob/main/LICENSE)</small>
+      <small>Brandon Serra (fehlt auf dem Bild)</small>
+    <h2 class="mt-10 d-flex">
+    Über Mülli
+    </h2>
+    <div class="mt-5 d-flex">
+    <p class="mr-3">
+      Die Mülli-App ist eine Open-Source Software. Der Quellcode ist somit öffentlich verfügbar und kann frei genutzt,
+      vervielfältigt und verändert werden.
+    </p>
+      <a href="https://github.com/Sybit-Education/Coding-Camp-2021" target="_blank">https://github.com/Sybit-Education/Coding-Camp-2021</a>
+    </div>
+    <div class="d-flex">
+    <p class="mr-3">
+      Es gelten die Bedingungen der MIT-Lizenz.
+    </p>
+      <a href="https://github.com/Sybit-Education/Coding-Camp-2021/blob/main/LICENSE" target="_blank">https://github.com/Sybit-Education/Coding-Camp-2021/blob/main/LICENSE</a>
+    </div>
   </v-container>
 </template>
 
