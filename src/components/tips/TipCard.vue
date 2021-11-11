@@ -31,7 +31,7 @@
 
 <script>
 export default {
-  name: 'TypeCard',
+  name: 'TipCard',
   props: {
     tip: {
       type: Object,
