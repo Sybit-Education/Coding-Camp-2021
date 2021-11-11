@@ -7,7 +7,7 @@
         class="rounded-xl"
         solo
         hide-details
-        no-data-text="Keine Treffer! Drücke auf die Suchlupe, um eine Anfrage zu senden."
+        no-data-text="Keine Treffer! Drücke auf das Fragezeichen, um eine Anfrage zu senden."
         label="Tippe zum Suchen"
         :filter="filter"
         @keyup.enter="search()"
@@ -35,7 +35,7 @@
     >
       <v-card class="pa-5 rounded-xl">
         <v-card-title class="text-h5">
-          Material Anfrage
+          Anfrage
         </v-card-title>
         <v-form ref="form" v-model="valid" @submit.prevent="addMaterial">
           <v-card-text>
@@ -126,10 +126,10 @@ export default {
               group: 'default',
               type: 'success',
               title: 'Vielen Dank!',
-              text: 'Wir haben deine Anfrage erfolgreich erhalten.'
+              text: 'Wir haben deine Anfrage erhalten und werden sie bearbeiten.'
             })
           } else {
-            this.message = 'Dieses Material gibt es bereits'
+            this.message = 'Diesen Eintrag gibt es bereits'
           }
           this.$store.dispatch('updateShowLoadingSpinner', false)
         })
