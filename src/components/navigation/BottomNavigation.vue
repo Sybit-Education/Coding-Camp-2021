@@ -19,16 +19,16 @@
           <v-icon color="grey darken-2">mdi-menu</v-icon>
         </v-btn>
       </template>
-      <v-list class="d-flex flex-column pa-2">
-        <v-btn class="my-2 grey--text text--darken-2" :to="{ name: 'Impressum' }" exact text>
-          <span>Impressum</span>
-        </v-btn>
-        <v-btn class="my-2 grey--text text--darken-2" :to="{ name: 'Datenschutz' }" exact text>
-          <span>Datenschutz</span>
-        </v-btn>
-        <v-btn class="my-2 grey--text text--darken-2" :to="{ name: 'Ueber-uns' }" exact text>
-          <span>Über uns</span>
-        </v-btn>
+      <v-list>
+        <v-list-item :to="{ name: 'Impressum' }">
+          <v-list-item-title>Impressum</v-list-item-title>
+        </v-list-item>
+        <v-list-item :to="{ name: 'Datenschutz' }">
+          <v-list-item-title>Datenschutz</v-list-item-title>
+        </v-list-item>
+        <v-list-item :to="{ name: 'Ueber-uns' }">
+          <v-list-item-title>Über uns</v-list-item-title>
+        </v-list-item>
       </v-list>
     </v-menu>
   </v-bottom-navigation>

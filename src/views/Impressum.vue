@@ -5,14 +5,15 @@
       <h2>Sybit GmbH</h2>
       <address>Sankt-Johannis-Str. 1-5</address>
       <address>78315 Radolfzell, Germany</address>
-      <h4>Tel :+49 7732 9508-0</h4>
-      <h4>Fax +49 7732 9508-111</h4>
-      <h4>Internet: <a href="https://www.sybit.de/">www.sybit.de</a></h4>
-      <p><span>Geschäftsführer:</span> Thomas Regele</p>
-      <p><span>Registergericht:</span> Amtsgericht Freiburg</p>
-      <p><span>Registernummer:</span> HRB 550606</p>
-      <p><span>Ust.-ID-Nr.:</span> DE 142314511</p>
-      <p><span>DUNS Nummer:</span> 34-124-4838</p>
+      <address>Tel :+49 7732 9508-0</address>
+      <address>Fax +49 7732 9508-111</address>
+      <address>Internet: <a href="https://www.sybit.de/">www.sybit.de</a></address>
+      <p><b>Geschäftsführer:</b> Thomas Regele</p>
+      <p><b>Registergericht:</b> Amtsgericht Freiburg</p>
+      <p><b>Registernummer:</b> HRB 550606</p>
+      <p><b>Ust.-ID-Nr.:</b> DE 142314511</p>
+      <p><b>DUNS Nummer:</b> 34-124-4838</p>
+
       <h2>Haftung für Inhalte</h2>
       <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
         Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet,
@@ -54,16 +55,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .impressum__container {
-  position: relative;
-}
-
-span {
-  font-weight: bold;
-}
-
-p {
-  margin: 5px 0;
+  font-size: 0.75rem;
 }
 </style>
