@@ -32,10 +32,10 @@
           </v-col>
         </v-row>
         <div class="mt-10" v-if="material.notes && material.notes.length <=300 && material.notes.length >5">
-          <vue-simple-markdown :source="material.notes"/>
+          <markdown :source="material.notes"/>
         </div>
         <div class="mt-10" v-else>
-          <vue-simple-markdown :source="material.targets[0].description"></vue-simple-markdown>
+          <markdown :source="material.targets[0].description"></markdown>
         </div>
       </v-card-text>
     </v-card>
@@ -45,10 +45,11 @@
 </template>
 
 <script>
-import ShareButton from '../components/navigation/ShareButton.vue'
+import ShareButton from '@/components/navigation/ShareButton.vue'
+import Markdown from '@/components/Markdown.vue'
 
 export default {
-  components: { ShareButton },
+  components: { ShareButton, Markdown },
   computed: {
     image () {
       if (this.material && this.material.targets && this.material.targets[0]?.images) {
