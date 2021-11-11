@@ -15,8 +15,8 @@
     <v-menu offset-y top>
       <template v-slot:activator="{ on, attrs }">
         <v-btn class="bottom-nav__button rounded-xl" v-bind="attrs" v-on="on">
-          <span class="black--text">Menu</span>
-          <v-icon color="black">mdi-menu</v-icon>
+          <span class="grey--text text--darken-2">Menu</span>
+          <v-icon color="grey darken-2">mdi-menu</v-icon>
         </v-btn>
       </template>
       <v-list>
@@ -76,5 +76,9 @@ export default {
       opacity: 0 !important;
     }
   }
+}
+
+.theme--light.v-btn {
+  color: rgba(255, 111, 0, 0.87);
 }
 </style>
