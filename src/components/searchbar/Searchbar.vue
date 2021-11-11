@@ -144,10 +144,6 @@ export default {
         } else {
           return item.name.toLocaleLowerCase().indexOf(queryText.toLocaleLowerCase()) > -1
         }
-
-
-
-
       }
       return -1
     }
