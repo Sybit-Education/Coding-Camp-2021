@@ -71,7 +71,6 @@ function postTrashCanWithImage (trashCan, uploadedImage) {
         }
       }
     ], function (err) {
-      console.log('DONE')
       if (err) {
         console.error(err)
         reject(err.message)
@@ -85,9 +84,7 @@ export function checkImageAndCreateTrashCan (trashCan) {
   return new Promise((resolve, reject) => {
     if (trashCan.image) {
       imageService.uploadFile(null, trashCan.image).then((uploadedImage) => {
-        console.log('PostTrashcanWithImage')
         postTrashCanWithImage(trashCan, uploadedImage).then(() => {
-          console.log('NACH  WITHIMAGE')
           imageService.deleteImageByUID(uploadedImage.deleteToken).then(() => {
             store.dispatch('updateShowLoadingSpinner', false)
             resolve()
@@ -102,7 +99,6 @@ export function checkImageAndCreateTrashCan (trashCan) {
       })
     } else {
       postTrashCanWithoutImage(trashCan)
-      console.log('PostTrashcanWithNOImage')
       store.dispatch('updateShowLoadingSpinner', false)
       resolve()
     }
