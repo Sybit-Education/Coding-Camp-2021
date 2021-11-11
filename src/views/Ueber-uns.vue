@@ -1,13 +1,13 @@
 <template>
   <v-container>
-    <h1>Sybit Coding-Camp 2021: Die Mülli-App</h1>
+    <h1 class="text-h3 mb-12 mt-4">Sybit Coding-Camp 2021: Die Mülli-App</h1>
     <h2>
       Was ist das Sybit Coding-Camp?
     </h2>
     <p class="mt-5 d-flex">
       Das Sybit Coding-Camp findet jährlich statt und bietet Jugendlichen die
       Chance, einen Einblick in den Beruf von Softwareentwicklerinnen und
-      Softwareentwickler sowie die Ausbildung als Fachinformatiker
+      Softwareentwicklern, sowie die Ausbildung als Fachinformatiker
       (Anwendungsentwicklung) zu erhalten. Die Auszubildenden des Unternehmens
       bereiten hierfür im Vorfeld ein Projekt vor und coachen die Jugendlichen
       während des Coding-Camps.
@@ -16,14 +16,13 @@
       Was haben wir denn während des Coding-Camps gemacht?
     </h2>
     <p class="mt-5 d-flex">
-      Während des Coding-Camps codeten wir die App Mülli. Wir waren insgesamt
-      zehn Schüler und sechs Auszubildende. Die Auszubildenden brachten uns
-      vieles über das Programmieren bei mit Vue, JavaScript, HTML und CSS bei. Wir
-      teilten uns in vier Gruppen und arbeiteten zusammen an, denn Aufgaben, die
-      wir vorher besprochen hatten. Uns wurde erklärt, wie eine Firma wie
-      Sybit arbeitet: uns wurden die Personas erklärt und vorgestellt. Am Ende
-      erstellten wir vier Personas. Wir besprachen nochmal alle Ideen und
-      erstellten User Storys über unsere Personas.
+      Während des Coding-Camps haben die die App Mülli gecodet.
+      Wir sind insgesamt zehn Schüler und sechs Auszubildende gewesen.
+      Die Auszubildenden haben uns vieles über das Programmieren mit Vue, JavaScript, HTML und CSS beigebracht.
+      Wir haben uns in vier Gruppen aufgeteilt und an den zuvor besprochenen Aufgaben gearbeitet.
+      Uns wurde erklärt, wie eine Firma wie Sybit arbeitet.
+      Danach haben uns das Sybit-Team die Personas erklärt und vorgestellt.
+      Gegen Ende unserer Vorbereitung haben wir vier Personas erstellt und jeweils User Storys für diese erstellt.
     </p>
     <h2>
       Das Team
