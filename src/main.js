@@ -5,8 +5,6 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import Notifications from 'vue-notification'
-import VueSimpleMarkdown from 'vue-simple-markdown'
-import 'vue-simple-markdown/dist/vue-simple-markdown.css'
 import VueMeta from 'vue-meta'
 import VueGtag from 'vue-gtag'
 import LoadingSpinner from './components/LoadingSpinner'
@@ -15,7 +13,6 @@ Vue.config.productionTip = false
 Vue.component('LoadingSpinner', LoadingSpinner)
 
 Vue.use(Notifications)
-Vue.use(VueSimpleMarkdown)
 Vue.use(VueMeta)
 if (process.env.VUE_APP_GTAG_ID !== '') {
   Vue.use(VueGtag, {

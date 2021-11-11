@@ -8,16 +8,29 @@
         <v-col md="4" sm="12">
           <v-img
               :src="imageSource"
-              class="tip-teaser-card__image rounded-xl"/>
+              class="tip-teaser-card__image rounded-xl">
+            <template v-slot:placeholder>
+              <v-row
+                class="fill-height ma-0"
+                align="center"
+                justify="center"
+              >
+                <v-progress-circular
+                  indeterminate
+                  color="grey lighten-5"
+                />
+              </v-row>
+            </template>
+          </v-img>
         </v-col>
         <v-col md="8" sm="12">
           <v-card-title class="tip-teaser-card__title">
             {{ tip.title }}
           </v-card-title>
           <v-card-text>
-            <vue-simple-markdown
-                :source="tip.teaser.replaceAll('\\', '')"
-                class="tip-teaser-card__teaser"
+            <markdown
+              :source="tip.teaser"
+              class="tip-teaser-card__teaser"
             />
           </v-card-text>
           <v-card-actions>
@@ -30,7 +43,10 @@
 </template>
 
 <script>
+import Markdown from '@/components/Markdown.vue'
+
 export default {
+  components: { Markdown },
   name: 'TypeCard',
   props: {
     tip: {
