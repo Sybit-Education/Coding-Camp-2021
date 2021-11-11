@@ -16,7 +16,7 @@
       Was haben wir denn während des Coding-Camps gemacht?
     </h2>
     <p class="mt-2 mb-8 grey--text text--darken-1">
-      Während des Coding-Camps haben die die App Mülli gecodet.
+      Während des Coding-Camps haben wir die App Mülli gecodet.
       Wir sind insgesamt zehn Schüler und sechs Auszubildende gewesen.
       Die Auszubildenden haben uns vieles über das Programmieren mit Vue, JavaScript, HTML und CSS beigebracht.
       Wir haben uns in vier Gruppen aufgeteilt und an den zuvor besprochenen Aufgaben gearbeitet.
@@ -34,7 +34,7 @@
         Mirko Pleli, Raphael Schnick, Mario Sieg, Sophia Kunert (von unten), Dominik Smyczkowski, Viktor Müller, Niklas
         Neumann, Gideon Godejoann während ihrer Arbeit beim Coding-Camp.</small>
     </div>
-    <small class="grey--text text--lighten-1">Brandon Serra (fehlt auf dem Bild)</small>
+    <small class="grey--text text--lighten-1">Brandon Serra (fehlt auf dem Bild), Henrik Schmid (als Schülerpraktikum)</small>
   </v-container>
 </template>
 
