@@ -2,6 +2,7 @@
   <v-btn
       fab
       top
+      small
       right
       fixed
       class="share-button mt-3"

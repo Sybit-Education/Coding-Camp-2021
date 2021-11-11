@@ -23,7 +23,7 @@
             v-if="material && material.name && image" height="540">
       <v-card-text elevation="20" class="black--text">
         <div class="d-flex justify-center mb-7 mt-5">
-          <h1 style="font-size:30px; line-height: 2rem;">{{ material.name }}</h1>
+          <h1 class="material-name">{{ material.name }}</h1>
         </div>
         <v-img contain height="125" class="mb-5" :src="image"/>
         <v-row class="mb-3">
@@ -32,10 +32,10 @@
           </v-col>
         </v-row>
         <div class="mt-10" v-if="material.notes && material.notes.length <=300 && material.notes.length >5">
-          <vue-simple-markdown :source="material.notes"/>
+          <markdown :source="material.notes"/>
         </div>
         <div class="mt-10" v-else>
-          <vue-simple-markdown :source="material.targets[0].description"></vue-simple-markdown>
+          <markdown :source="material.targets[0].description"></markdown>
         </div>
       </v-card-text>
     </v-card>
@@ -45,10 +45,11 @@
 </template>
 
 <script>
-import ShareButton from '../components/navigation/ShareButton.vue'
+import ShareButton from '@/components/navigation/ShareButton.vue'
+import Markdown from '@/components/Markdown.vue'
 
 export default {
-  components: { ShareButton },
+  components: { ShareButton, Markdown },
   computed: {
     image () {
       if (this.material && this.material.targets && this.material.targets[0]?.images) {
@@ -81,3 +82,15 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.material-name {
+  moz-hyphens: auto;
+  o-hyphens: auto;
+  webkit-hyphens: auto;
+  ms-hyphens: auto;
+  hyphens: auto;
+  font-size:30px;
+  line-height: 2rem;
+}
+
+</style>

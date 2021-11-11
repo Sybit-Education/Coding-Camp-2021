@@ -37,12 +37,9 @@
           </v-col>
         </v-row>
         <div v-if="trashCanPopupData.notes !== '\n'">
-          <v-row justify="center">
-            <v-col class="d-flex justify-center" cols="9" lg="6" md="8">
-              <vue-simple-markdown :source="trashCanPopupData.notes"
-                                   class="bottom-sheet__notes"></vue-simple-markdown>
-            </v-col>
-          </v-row>
+          <markdown
+            :source="trashCanPopupData.notes"
+            class="bottom-sheet__notes" />
         </div>
         <v-row v-if="trashCanPopupData.images.length" justify="center">
           <v-col v-for="img in trashCanPopupData.images" :key="img" cols="auto">
@@ -68,6 +65,7 @@ import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 import MapActionButton from './MapActionButton'
 import BackButton from '@/components/navigation/BackButton.vue'
+import Markdown from '@/components/Markdown'
 
 export default {
   name: 'Map',
@@ -78,7 +76,8 @@ export default {
     LMarker,
     LControl,
     LControlZoom,
-    BackButton
+    BackButton,
+    Markdown
   },
   props: {
     trashCanType: {
@@ -206,7 +205,6 @@ export default {
 
 .bottom-sheet {
   &__card {
-    text-align: center;
     overflow-y: scroll;
     padding: 1rem 1rem 1.75rem 0.75rem;
     height: clamp(60vh, 70vw, 90vh);
@@ -237,9 +235,8 @@ export default {
   }
 
   &__notes {
-    text-align: center;
     font-size: clamp(1rem, 2vw, 1.25rem);
-    word-break: break-word;
+    hyphens: auto;
 
     ::v-deep ul li {
       width: fit-content;
