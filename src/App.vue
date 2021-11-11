@@ -9,8 +9,8 @@
       >
         Möchten Sie die Mülli-App lokal installieren?
         <template v-slot:actions>
-          <v-btn text @click="dismiss">Nein danke</v-btn>
-          <v-btn text @click="install">Installieren</v-btn>
+          <v-btn text @click="dismiss" class="rounded-xl">Nein danke</v-btn>
+          <v-btn color="white" @click="install" class="rounded-xl black--text">Installieren</v-btn>
         </template>
       </v-banner>
       <router-view />
