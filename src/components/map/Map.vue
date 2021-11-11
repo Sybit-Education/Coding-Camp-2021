@@ -7,7 +7,7 @@
         <template v-if="userLocation">
           <l-marker :icon="userIcon" :lat-lng="userLocation"/>
         </template>
-        <l-marker v-for="can in trashCans" :key="can.latitude" :icon="pickIcon(can)"
+        <l-marker v-for="can in trashCans" :key="can.id" :icon="pickIcon(can)"
                   :lat-lng="[can.latitude, can.longitude]"
                   @click="openTrashCanPopup(can)">
         </l-marker>
