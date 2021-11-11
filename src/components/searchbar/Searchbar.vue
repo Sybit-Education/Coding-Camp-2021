@@ -69,6 +69,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 .v-sheet.v-toolbar:not(.v-sheet--outlined) {
   box-shadow: none !important;
