@@ -1,14 +1,9 @@
 <template>
   <v-container>
-    <v-row>
-      <v-col align="center" cols="12">
-        <h1>Wie entsorge ich im Landkreis Konstanz &hellip;</h1>
-      </v-col>
-      <v-col>
-        <Searchbar :items="materials"/>
-        <Partner class="mt-15"/>
-      </v-col>
-    </v-row>
+    <h1>Wie entsorge ich im Landkreis Konstanz &hellip;</h1>
+
+    <searchbar :items="materials" class="my-5"/>
+    <partner />
   </v-container>
 </template>
 
@@ -37,7 +32,6 @@ export default {
         'targets'
       ])
     }
-  },
-  methods: {}
+  }
 }
 </script>

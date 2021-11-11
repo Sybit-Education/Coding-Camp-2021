@@ -1,5 +1,5 @@
 <template>
-  <v-container id="tip-list" class="pb-16">
+  <v-container id="tip-list">
     <h1 class="mb-5">Tipps</h1>
     <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
     <div v-for="tip in list" :key="tip.id">

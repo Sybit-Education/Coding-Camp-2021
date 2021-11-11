@@ -1,14 +1,14 @@
 <template>
   <div>
-    <h3 class="ml-5 mt-5">Unsere Partner</h3>
+    <h3>Unsere Partner</h3>
     <v-carousel
         v-if="partnerList && partnerList.length > 0"
         cycle
-        height="120"
-        width="200"
+        max-width="320"
+        max-height="200"
         hide-delimiter-background
         hide-delimiters
-        show-arrows-on-hover
+        :show-arrows="false"
     >
       <v-carousel-item
           v-for="partner in partnerList"
@@ -16,7 +16,12 @@
       >
         <div class="d-flex justify-center">
           <a :href="partner.website">
-            <v-img :src="partner.logo[0].url" contain width="250" height="100"/>
+            <v-img
+              :src="partner.logo[0].url"
+              :alt="partner.name"
+              contain
+              max-width="300"
+              max-height="200" />
           </a>
         </div>
       </v-carousel-item>
@@ -28,10 +33,10 @@
 import partnerService from '@/services/partner.service'
 
 export default {
+  name: 'Partner',
   data () {
     return {
       partnerList: []
-
     }
   },
   created () {
