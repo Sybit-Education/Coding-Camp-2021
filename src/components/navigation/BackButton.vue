@@ -36,4 +36,8 @@ export default {
     margin-bottom: calc(1.5 * #{$bottom-navigation-height});
   }
 }
+
+.theme--light.v-btn--active::before {
+  opacity: 0;
+}
 </style>

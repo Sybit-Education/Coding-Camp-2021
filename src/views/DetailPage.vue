@@ -23,7 +23,7 @@
             v-if="material && material.name && image" height="540">
       <v-card-text elevation="20" class="black--text">
         <div class="d-flex justify-center mb-7 mt-5">
-          <h1 style="font-size:30px; line-height: 2rem;">{{ material.name }}</h1>
+          <h1 class="material-name">{{ material.name }}</h1>
         </div>
         <v-img contain height="125" class="mb-5" :src="image"/>
         <v-row class="mb-3">
@@ -82,3 +82,15 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.material-name {
+  moz-hyphens: auto;
+  o-hyphens: auto;
+  webkit-hyphens: auto;
+  ms-hyphens: auto;
+  hyphens: auto;
+  font-size:30px;
+  line-height: 2rem;
+}
+
+</style>
