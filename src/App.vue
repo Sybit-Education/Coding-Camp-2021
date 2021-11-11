@@ -27,7 +27,11 @@ import BottomNavigation from '@/components/navigation/BottomNavigation'
 
 export default {
   name: 'App',
-
+  metaInfo: {
+    title: 'Wie entsorge ich ...?',
+    // all titles will be injected into this template
+    titleTemplate: '%s | Mülli'
+  },
   components: { BottomNavigation },
   data () {
     return {
