@@ -48,7 +48,7 @@
           <v-card-actions class="px-4">
             <v-spacer></v-spacer>
             <v-btn
-                color="secondary"
+                color="grey"
                 class="rounded-xl"
                 text
                 @click="dialog = false"
