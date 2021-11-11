@@ -35,6 +35,22 @@
         Neumann, Gideon Godejoann während ihrer Arbeit beim Coding-Camp.</small>
     </div>
     <small class="grey--text text--lighten-1">Brandon Serra (fehlt auf dem Bild), Henrik Schmid (als Schülerpraktikum)</small>
+    <h2 class="mt-10 d-flex">
+      Über Mülli
+    </h2>
+    <div class="mt-5 d-flex">
+      <p class="mr-3">
+        Die Mülli-App ist eine Open-Source Software. Der Quellcode ist somit öffentlich verfügbar und kann frei genutzt,
+        vervielfältigt und verändert werden.
+      </p>
+      <a href="https://github.com/Sybit-Education/Coding-Camp-2021" target="_blank">https://github.com/Sybit-Education/Coding-Camp-2021</a>
+    </div>
+    <div class="d-flex">
+      <p class="mr-3">
+        Es gelten die Bedingungen der MIT-Lizenz.
+      </p>
+      <a href="https://github.com/Sybit-Education/Coding-Camp-2021/blob/main/LICENSE" target="_blank">https://github.com/Sybit-Education/Coding-Camp-2021/blob/main/LICENSE</a>
+    </div>
   </v-container>
 </template>
 
