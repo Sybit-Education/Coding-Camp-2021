@@ -2,7 +2,8 @@
   <v-container>
     <h1>Wie entsorge ich im Landkreis Konstanz &hellip;</h1>
     <searchbar :items="materials" class="my-5"/>
-    <tip-carousel />
+    <tip-card v-if="tip && tip.id" :tip="tip" />
+    <v-skeleton-loader v-else type="card" />
     <partner />
   </v-container>
 </template>
@@ -10,30 +11,37 @@
 <script>
 import Searchbar from '../components/searchbar/Searchbar'
 import Partner from '../components/partner/Partner'
-import TipCarousel from '../components/tips/Carousel'
+import TipCard from '../components/tips/TipCard'
 
 export default {
   name: 'Home',
   components: {
-    TipCarousel,
+    TipCard,
     Searchbar,
     Partner
   },
   metaInfo () {
     return {}
   },
+  data () {
+    return {
+      tip: null
+    }
+  },
   computed: {
     materials () {
       return this.$store.getters.getMaterialList
     }
   },
-  mounted () {
+  async mounted () {
     if (this.materials) {
-      this.$store.dispatch('getRecordsFromSessionStorage', [
+      await this.$store.dispatch('getRecordsFromSessionStorage', [
         'material',
         'targets'
       ])
     }
+    const tipList = await this.$store.dispatch('getTipRecords')
+    this.tip = tipList[Math.floor(Math.random() * tipList.length)]
   }
 }
 </script>
