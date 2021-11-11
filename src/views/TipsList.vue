@@ -22,6 +22,11 @@ export default {
       showLoadingSpinner: true
     }
   },
+  metaInfo () {
+    return {
+      title: 'Tipps'
+    }
+  },
   async created () {
     this.list = await this.$store.dispatch('getTipRecords')
     this.showLoadingSpinner = false
