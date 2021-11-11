@@ -7,7 +7,6 @@
         class="rounded-xl"
         solo
         hide-details
-        no-data-text="Keine Treffer! Drücke auf das Fragezeichen, um eine Anfrage zu senden."
         label="Tippe zum Suchen"
         :filter="filter"
         @keyup.enter="search()"
@@ -25,6 +24,17 @@
             {{ $route.path === "/detail" ? "mdi-magnify" : "mdi-help" }}
           </v-icon>
         </v-btn>
+      </template>
+      <template slot="no-data">
+        <div class="px-3">
+          Leider keinen Treffer!<br>
+          Drücke
+          <v-btn icon @click="search">
+          <v-icon>
+            {{ $route.path === "/detail" ? "mdi-magnify" : "mdi-help" }}
+          </v-icon>
+          </v-btn> für eine Anfrage.
+        </div>
       </template>
     </v-autocomplete>
     <v-dialog
