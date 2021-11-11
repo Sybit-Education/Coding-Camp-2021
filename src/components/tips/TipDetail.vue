@@ -11,19 +11,31 @@
     </share-button>
     <v-card v-if="tip" class="mx-auto rounded-xl" justify="center">
         <div class="card">
-            <v-img :src="imageSource" class="card__image card__image--top rounded-xl" contain></v-img>
-            <v-img :src="imageSource" class="card__image card__image--top card__image-background rounded-xl" contain></v-img>
+            <v-img :src="imageSource" class="card__image card__image--top rounded-xl" contain>
+              <template v-slot:placeholder>
+                <v-row
+                  class="fill-height ma-0"
+                  align="center"
+                  justify="center"
+                >
+                  <v-progress-circular
+                    indeterminate
+                    color="grey lighten-5"
+                  />
+                </v-row>
+              </template>
+            </v-img>
             <div class="card__title grey--text text--darken-3">{{ tip.title }}</div>
-            <vue-simple-markdown
-                :source="tip.teaser.replaceAll('\\', '')"
-                class="card__teaser grey--text text--darken-3 body-1 my-2">
-            </vue-simple-markdown>
+            <markdown
+                :source="tip.teaser"
+                class="card__teaser grey--text text--darken-3">
+            </markdown>
             <div class="card__markdown-wrapper">
                 <v-img :src="imageSource" class="card__image card__image--bottom rounded-xl" contain></v-img>
-                <vue-simple-markdown
-                    :source="tip.article.replaceAll('\\', '')"
+                <markdown
+                    :source="tip.article"
                     class="card__markdown">
-                </vue-simple-markdown>
+                </markdown>
             </div>
         </div>
     </v-card>
@@ -33,12 +45,13 @@
 
 <script>
 import tipService from '@/services/tip.service'
+import Markdown from '@/components/Markdown.vue'
 import BackButton from '@/components/navigation/BackButton.vue'
 import ShareButton from '@/components/navigation/ShareButton.vue'
 
 export default {
   name: 'TipDetail',
-  components: { BackButton, ShareButton },
+  components: { Markdown, BackButton, ShareButton },
   props: {
     tipId: {
       type: String,
@@ -94,7 +107,7 @@ export default {
   padding: 1rem;
 
   @media #{map-get($display-breakpoints, 'xs-only')} {
-    padding: 0.5rem;
+    padding: 0;
   }
 
   &__title {
@@ -105,6 +118,7 @@ export default {
 
     @media #{map-get($display-breakpoints, 'xs-only')} {
       grid-area: 2 / 1 / span 1 / -1;
+      padding: 0 0.5rem 0 0.5rem
     }
   }
 
@@ -114,6 +128,7 @@ export default {
     font-weight: bold;
     @media #{map-get($display-breakpoints, 'xs-only')} {
       grid-area: 3 / 1 / span 1 / -1;
+      padding: 0 0.5rem 0 0.5rem
     }
   }
 
@@ -139,6 +154,7 @@ export default {
       grid-area: 3 / 1 / span 1 / -1;
       @media #{map-get($display-breakpoints, 'xs-only')} {
         grid-area: 4 / 1 / span 1 / -1;
+        padding: 0 0.5rem 0 0.5rem
       }
     }
   }
