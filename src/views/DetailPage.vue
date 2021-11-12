@@ -1,18 +1,6 @@
 <template>
   <v-container>
-    <v-btn
-        @click="$router.go(-1)"
-        fab
-        small
-        top
-        left
-        dark
-        fixed
-    >
-      <v-icon>
-        mdi-arrow-left
-      </v-icon>
-    </v-btn>
+    <back-button :to="{ name: 'Home'}"></back-button>
     <share-button
         :title="share.title"
         :text="share.text"
@@ -45,11 +33,33 @@
 </template>
 
 <script>
+import BackButton from '@/components/navigation/BackButton.vue'
 import ShareButton from '@/components/navigation/ShareButton.vue'
 import Markdown from '@/components/Markdown.vue'
 
 export default {
-  components: { ShareButton, Markdown },
+  components: { BackButton, ShareButton, Markdown },
+  metaInfo () {
+    return {
+      title: this.title,
+      meta: [
+        // Twitter Card
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:title', content: this.title },
+        { name: 'twitter:description', content: this.description },
+        // image must be an absolute path
+        { name: 'twitter:image', content: this.image },
+
+        // Facebook OpenGraph
+        { property: 'og:title', content: this.title },
+        { property: 'og:site_name', content: 'Mülli' },
+        { property: 'og:type', content: 'article' },
+        { property: 'og:image', content: this.image },
+        { property: 'og:description', content: this.description },
+        { property: 'og:url', content: this.$route.path }
+      ]
+    }
+  },
   computed: {
     image () {
       if (this.material && this.material.targets && this.material.targets[0]?.images) {
@@ -57,14 +67,23 @@ export default {
       }
       return 'required(\'https://via.placeholder.com/150?text=placeholder\')'
     },
+    materialId () {
+      return this.$route.params.id
+    },
     material () {
-      return this.$store.getters.getMaterialById(this.$route.params.id)
+      return this.$store.getters.getMaterialById(this.materialId)
+    },
+    title () {
+      return this.material ? this.material.name : 'Loading...'
+    },
+    description () {
+      return this.material ? this.material.notes : 'Loading...'
     },
     share () {
       return {
-        title: `Mülli: ${this.material.name} entsorgen 👉 ${this.material.targets[0].name}`,
-        text: `${this.material.name} entsorgen: ${this.material.targets[0].name}
-        ${this.material.notes}`
+        title: `Mülli: ${this.material?.name} entsorgen 👉 ${this.material?.targets[0].name}`,
+        text: `${this.material?.name} entsorgen: ${this.material?.targets[0].name}
+        ${this.material?.notes}`
       }
     }
   },
@@ -84,13 +103,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .material-name {
-  moz-hyphens: auto;
-  o-hyphens: auto;
-  webkit-hyphens: auto;
-  ms-hyphens: auto;
   hyphens: auto;
   font-size:30px;
   line-height: 2rem;
 }
-
 </style>
