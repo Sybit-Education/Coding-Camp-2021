@@ -27,7 +27,11 @@ import BottomNavigation from '@/components/navigation/BottomNavigation'
 
 export default {
   name: 'App',
-
+  metaInfo: {
+    title: 'Wie entsorge ich ...?',
+    // all titles will be injected into this template
+    titleTemplate: '%s | Mülli'
+  },
   components: { BottomNavigation },
   data () {
     return {
@@ -56,7 +60,7 @@ export default {
 <style lang="scss">
 @import 'src/scss/scrollbar.scss';
 .container {
-  padding-bottom: 64px;
+  margin-bottom: 1.25 * $bottom-navigation-height;
 }
 .navigation {
   position: relative;

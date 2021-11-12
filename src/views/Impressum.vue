@@ -51,7 +51,15 @@
 
 <script>
 export default {
-  name: 'Impressum'
+  name: 'Impressum',
+  created () {
+    window.scrollTo(0, 0)
+  },
+  metaInfo () {
+    return {
+      title: 'Impressum'
+    }
+  }
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <h2> Datenschutzerklärung</h2>
+  <v-container class="privacy__container">
+    <h1>Datenschutzerklärung</h1>
     <p>Wir freuen uns sehr über Ihr Interesse an unserem Unternehmen. Datenschutz hat einen besonders hohen Stellenwert
       für uns.
       Eine Nutzung der Internetseiten der Sybit GmbH ist grundsätzlich ohne jede Angabe personenbezogener Daten möglich.
@@ -24,7 +24,7 @@
       betroffenen Person frei, personenbezogene Daten auch auf alternativen Wegen, beispielsweise telefonisch, an uns zu
       übermitteln.</p>
 
-    <h2>1.Begriffsbestimmungen</h2>
+    <h2>1. Begriffsbestimmungen</h2>
     <p>Die Datenschutzerklärung der Sybit GmbH beruht auf den Begrifflichkeiten,
       die durch den Europäischen Richtlinien- und Verordnungsgeber beim Erlass der Datenschutz-Grundverordnung (DS-GVO)
       verwendet wurden. Unsere Datenschutzerklärung soll sowohl für die Öffentlichkeit als auch für unsere Kunden und
@@ -33,7 +33,7 @@
 
     <p>Wir verwenden in dieser Datenschutzerklärung unter anderem die folgenden Begriffe:</p>
 
-    <h2>a)personenbezogene Daten</h2>
+    <h2>a) personenbezogene Daten</h2>
     <p>Personenbezogene Daten sind alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche
       Person (im Folgenden „betroffene Person“)
       beziehen. Als identifizierbar wird eine natürliche Person angesehen, die direkt oder indirekt, insbesondere
@@ -43,11 +43,11 @@
       genetischen, psychischen, wirtschaftlichen, kulturellen oder sozialen Identität dieser natürlichen Person sind,
       identifiziert werden kann.</p>
 
-    <h2> b)betroffene Person</h2>
+    <h2>b) betroffene Person</h2>
     <p>Betroffene Person ist jede identifizierte oder identifizierbare natürliche Person,
       deren personenbezogene Daten von dem für die Verarbeitung Verantwortlichen verarbeitet werden.</p>
 
-    <h2>c)Verarbeitung</h2>
+    <h2>c) Verarbeitung</h2>
     <p>Verarbeitung ist jeder mit oder ohne Hilfe automatisierter Verfahren ausgeführte Vorgang oder jede solche
       Vorgangsreihe im Zusammenhang mit personenbezogenen Daten wie das Erheben, das Erfassen, die Organisation, das
       Ordnen, die Speicherung,
@@ -56,10 +56,10 @@
       oder eine andere Form der Bereitstellung, den Abgleich oder die Verknüpfung, die Einschränkung, das Löschen oder
       die Vernichtung.</p>
 
-    <h2>d)Einschränkung der Verarbeitung</h2>
+    <h2>d) Einschränkung der Verarbeitung</h2>
     <p>Markierung gespeicherter personenbezogener Daten mit dem Ziel, ihre künftige Verarbeitung einzuschränken.</p>
 
-    <h2>e)Profiling </h2>
+    <h2>e) Profiling </h2>
     <p>Profiling ist jede Art der automatisierten Verarbeitung personenbezogener Daten,
       die darin besteht, dass diese personenbezogenen Daten verwendet werden, um bestimmte persönliche Aspekte, die sich
       auf eine natürliche Person beziehen, zu bewerten, insbesondere, um Aspekte bezüglich Arbeitsleistung,
@@ -67,7 +67,7 @@
       Gesundheit, persönlicher Vorlieben, Interessen, Zuverlässigkeit, Verhalten, Aufenthaltsort oder Ortswechsel dieser
       natürlichen Person zu analysieren oder vorherzusagen.</p>
 
-    <h2>f)Pseudonymisierung</h2>
+    <h2>f) Pseudonymisierung</h2>
     <p>Pseudonymisierung ist die Verarbeitung personenbezogener Daten
       in einer Weise, auf welche die personenbezogenen Daten ohne Hinzuziehung
       zusätzlicher Informationen nicht mehr einer spezifischen betroffenen Person
@@ -76,78 +76,80 @@
       die gewährleisten, dass die personenbezogenen Daten nicht einer identifizierten
       oder identifizierbaren natürlichen Person zugewiesen werden.</p>
 
-    <h2>g)Verantwortlicher oder für die Verarbeitung Verantwortlicher</h2>
+    <h2>g) Verantwortlicher oder für die Verarbeitung Verantwortlicher</h2>
     <p>Verantwortlicher oder für die Verarbeitung Verantwortlicher ist die natürliche oder juristische Person, Behörde,
       Einrichtung oder andere Stelle, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung
       von personenbezogenen Daten entscheidet. Sind die Zwecke und Mittel dieser Verarbeitung durch das Unionsrecht oder
       das Recht der Mitgliedstaaten vorgegeben, so kann der Verantwortliche beziehungsweise können die bestimmten
       Kriterien seiner Benennung nach dem Unionsrecht oder dem Recht der Mitgliedstaaten vorgesehen werden.</p>
 
-    <h2>h)Auftragsverarbeiter</h2>
+    <h2>h) Auftragsverarbeiter</h2>
     <p>Auftragsverarbeiter ist eine natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle, die
       personenbezogene Daten im Auftrag des Verantwortlichen verarbeitet.</p>
 
-    <h2>i)Empfänger</h2>
+    <h2>i) Empfänger</h2>
     <p>Empfänger ist eine natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle, der
       personenbezogene Daten offengelegt werden, unabhängig davon, ob es sich bei ihr um einen Dritten handelt oder
       nicht. Behörden, die im Rahmen eines bestimmten Untersuchungsauftrags nach dem Unionsrecht oder dem Recht der
       Mitgliedstaaten möglicherweise personenbezogene Daten erhalten, gelten jedoch nicht als Empfänger.</p>
-    <h2>j)Dritter</h2>
+    <h2>j) Dritter</h2>
     <p>Dritter ist eine natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle außer der
       betroffenen Person, dem Verantwortlichen, dem Auftragsverarbeiter und den Personen, die unter der unmittelbaren
       Verantwortung des Verantwortlichen oder des Auftragsverarbeiters befugt sind, die personenbezogenen Daten zu
       verarbeiten.</p>
 
-    <h2>k)Einwilligung</h2>
+    <h2>k) Einwilligung</h2>
     <p>Einwilligung ist jede von der betroffenen Person freiwillig für den bestimmten Fall in informierter Weise und
       unmissverständlich abgegebene Willensbekundung in Form einer Erklärung oder einer sonstigen eindeutigen
       bestätigenden Handlung, mit der die betroffene Person zu verstehen gibt, dass sie mit der Verarbeitung der sie
       betreffenden personenbezogenen Daten einverstanden ist.</p>
 
-    <h2>2.Name und Anschrift des für die Verarbeitung Verantwortlichen</h2>
+    <h2>2. Name und Anschrift des für die Verarbeitung Verantwortlichen</h2>
     <p>Verantwortlicher im Sinne der Datenschutz-Grundverordnung, sonstiger in den Mitgliedstaaten der Europäischen
       Union geltenden Datenschutzgesetze und anderer Bestimmungen mit datenschutzrechtlichem Charakter ist die:</p>
 
-    <p>Sybit GmbH
-      St.-Johannis-Straße 1 – 5
-      78315 Radolfzell
-      Deutschland
+    <p>
+      Sybit GmbH<br>
+      St.-Johannis-Straße 1 - 5<br>
+      78315 Radolfzell<br>
+      Deutschland<br>
+      <br>
+      Tel.: +49 7732 9508-0<br>
+      E-Mail: datenschutz@sybit.de<br>
+      Website: www.sybit.de
+    </p>
 
-      Tel.: +49 7732 9508-0
-      E-Mail: datenschutz@sybit.de
-      Website: www.sybit.de</p>
-
-    <h2>3.Name und Anschrift des Datenschutzbeauftragten</h2>
+    <h2>3. Name und Anschrift des Datenschutzbeauftragten</h2>
     <p>Der Datenschutzbeauftragte des für die Verarbeitung Verantwortlichen ist:
 
-      Peter Zylla
-      Sybit GmbH
+      Peter Zylla<br>
+      Sybit GmbH<br>
 
-      St.-Johannis-Straße 1 – 5
-      78315 Radolfzell
-      Deutschland
-
-      Tel.: +49 7732 9508-112
-      E-Mail: datenschutz@sybit.de
-      Website: www.sybit.de
-
+      St.-Johannis-Straße 1 - 5<br>
+      78315 Radolfzell<br>
+      Deutschland<br>
+      <br>
+      Tel.: +49 7732 9508-112<br>
+      E-Mail: datenschutz@sybit.de<br>
+      Website: www.sybit.de<br>
+      <br>
       Jede betroffene Person kann sich jederzeit bei allen Fragen und Anregungen zum Datenschutz direkt an unseren
       Datenschutzbeauftragten wenden.</p>
 
     <h2>4. Cookies</h2>
     <p>Die Internetseiten der Sybit GmbH verwenden Cookies. Cookies sind Textdateien, welche über einen Internetbrowser
       auf einem Computersystem abgelegt und gespeichert werden.
-
+      <br>
       Zahlreiche Internetseiten und Server verwenden Cookies. Viele Cookies enthalten eine sogenannte Cookie-ID. Eine
       Cookie-ID ist eine eindeutige Kennung des Cookies. Sie besteht aus einer Zeichenfolge, durch welche Internetseiten
       und Server dem konkreten Internetbrowser zugeordnet werden können, in dem das Cookie gespeichert wurde. Dies
       ermöglicht es den besuchten Internetseiten und Servern, den individuellen Browser der betroffenen Person von
       anderen Internetbrowsern, die andere Cookies enthalten, zu unterscheiden. Ein bestimmter Internetbrowser kann über
       die eindeutige Cookie-ID wiedererkannt und identifiziert werden.
-
+      <br>
       Durch den Einsatz von Cookies kann die Sybit GmbH den Nutzern dieser Internetseite nutzerfreundlichere Services
       bereitstellen, die ohne die Cookie-Setzung nicht möglich wären.
-
+      <br>
       Mittels eines Cookies können die Informationen und Angebote auf unserer Internetseite im Sinne des Benutzers
       optimiert werden. Cookies ermöglichen uns, wie bereits erwähnt, die Benutzer unserer Internetseite
       wiederzuerkennen. Zweck dieser Wiedererkennung ist es, den Nutzern die Verwendung unserer Internetseite zu
@@ -156,13 +158,14 @@
       Computersystem des Benutzers abgelegten Cookie übernommen wird. Ein weiteres Beispiel ist das Cookie eines
       Warenkorbes im Online-Shop. Der Online-Shop merkt sich die Artikel, die ein Kunde in den virtuellen Warenkorb
       gelegt hat, über ein Cookie.
-
+      <br>
       Die betroffene Person kann die Setzung von Cookies durch unsere Internetseite jederzeit mittels einer
       entsprechenden Einstellung des genutzten Internetbrowsers verhindern und damit der Setzung von Cookies dauerhaft
       widersprechen. Ferner können bereits gesetzte Cookies jederzeit über einen Internetbrowser oder andere
       Softwareprogramme gelöscht werden. Dies ist in allen gängigen Internetbrowsern möglich. Deaktiviert die betroffene
       Person die Setzung von Cookies in dem genutzten Internetbrowser, sind unter Umständen nicht alle Funktionen
-      unserer Internetseite vollumfänglich nutzbar.</p>
+      unserer Internetseite vollumfänglich nutzbar.
+    </p>
 
     <h2>5. Erfassung von allgemeinen Daten und Informationen</h2>
     <p>Die Internetseite der Sybit GmbH erfasst mit jedem Aufruf der Internetseite durch eine betroffene Person oder ein
@@ -174,7 +177,7 @@
       eines Zugriffs auf die Internetseite, (6) eine Internet-Protokoll-Adresse (IP-Adresse), (7) der
       Internet-Service-Provider des zugreifenden Systems und (8) sonstige ähnliche Daten und Informationen, die der
       Gefahrenabwehr im Falle von Angriffen auf unsere informationstechnologischen Systeme dienen.
-
+      <br>
       Bei der Nutzung dieser allgemeinen Daten und Informationen zieht die Sybit GmbH keine Rückschlüsse auf die
       betroffene Person. Diese Informationen werden vielmehr benötigt, um (1) die Inhalte unserer Internetseite korrekt
       auszuliefern, (2) die Inhalte unserer Internetseite sowie die Werbung für diese zu optimieren, (3) die dauerhafte
@@ -184,7 +187,8 @@
       GmbH daher einerseits statistisch und ferner mit dem Ziel ausgewertet, den Datenschutz und die Datensicherheit in
       unserem Unternehmen zu erhöhen, um letztlich ein optimales Schutzniveau für die von uns verarbeiteten
       personenbezogenen Daten sicherzustellen. Die anonymen Daten der Server-Logfiles werden getrennt von allen durch
-      eine betroffene Person angegebenen personenbezogenen Daten gespeichert.</p>
+      eine betroffene Person angegebenen personenbezogenen Daten gespeichert.
+    </p>
 
     <h2>6. Registrierung auf unserer Internetseite</h2>
     <p>Die betroffene Person hat die Möglichkeit, sich auf der Internetseite des für die Verarbeitung Verantwortlichen
@@ -196,7 +200,7 @@
       Auftragsverarbeiter, beispielsweise einen Paketdienstleister, veranlassen, der die personenbezogenen Daten
       ebenfalls ausschließlich für eine interne Verwendung, die dem für die Verarbeitung Verantwortlichen zuzurechnen
       ist, nutzt.
-
+      <br>
       Durch eine Registrierung auf der Internetseite des für die Verarbeitung Verantwortlichen wird ferner die vom
       Internet-Service-Provider (ISP) der betroffenen Person vergebene IP-Adresse, das Datum sowie die Uhrzeit der
       Registrierung gespeichert. Die Speicherung dieser Daten erfolgt vor dem Hintergrund, dass nur so der Missbrauch
@@ -204,26 +208,28 @@
       aufzuklären. Insofern ist die Speicherung dieser Daten zur Absicherung des für die Verarbeitung Verantwortlichen
       erforderlich. Eine Weitergabe dieser Daten an Dritte erfolgt grundsätzlich nicht, sofern keine gesetzliche Pflicht
       zur Weitergabe besteht oder die Weitergabe der Strafverfolgung dient.
-
+      <br>
       Die Registrierung der betroffenen Person unter freiwilliger Angabe personenbezogener Daten dient dem für die
       Verarbeitung Verantwortlichen dazu, der betroffenen Person Inhalte oder Leistungen anzubieten, die aufgrund der
       Natur der Sache nur registrierten Benutzern angeboten werden können. Registrierten Personen steht die Möglichkeit
       frei, die bei der Registrierung angegebenen personenbezogenen Daten jederzeit abzuändern oder vollständig aus dem
       Datenbestand des für die Verarbeitung Verantwortlichen löschen zu lassen.
-
+      <br>
       Der für die Verarbeitung Verantwortliche erteiltp jeder betroffenen Person jederzeit auf Anfrage Auskunft darüber,
       welche personenbezogenen Daten über die betroffene Person gespeichert sind. Ferner berichtigt oder löscht der für
       die Verarbeitung Verantwortliche personenbezogene Daten auf Wunsch oder Hinweis der betroffenen Person, soweit dem
       keine gesetzlichen Aufbewahrungspflichten entgegenstehen. Ein in dieser Datenschutzerklärung namentlich benannter
       Datenschutzbeauftragter und die Gesamtheit der Mitarbeiter des für die Verarbeitung Verantwortlichen stehen der
-      betroffenen Person in diesem Zusammenhang als Ansprechpartner zur Verfügung.</p>
+      betroffenen Person in diesem Zusammenhang als Ansprechpartner zur Verfügung.
+    </p>
+
     <h2>7.Abonnement unseres Newsletters / E-Mail-Werbung</h2>
     <p>
       Auf der Internetseite der Sybit GmbH wird den Benutzern die Möglichkeit eingeräumt, den Newsletter unseres
       Unternehmens zu abonnieren oder diverse Download-Angebote zu nutzen. Welche personenbezogenen Daten bei der
       Bestellung des Newsletters bzw. Nutzung eines Download-Angebotes an den für die Verarbeitung Verantwortlichen
       übermittelt werden, ergibt sich aus der hierzu verwendeten Eingabemaske.
-
+      <br>
       Die Sybit GmbH informiert ihre Kunden und Geschäftspartner in regelmäßigen und unregelmäßigen Abständen im Wege
       eines Newsletters oder zu Werbezwecken über Angebote des Unternehmens. Der Newsletter oder die Download-Angebote
       unseres Unternehmens können von der betroffenen Person grundsätzlich nur dann empfangen werden, wenn (1) die
@@ -232,13 +238,13 @@
       eingetragene E-Mail-Adresse wird aus rechtlichen Gründen eine Bestätigungsmail im Double-Opt-In-Verfahren
       versendet. Diese Bestätigungsmail dient der Überprüfung, ob der Inhaber der E-Mail-Adresse als betroffene Person
       den Empfang des Newsletters oder die weitere Zusendung von E-Mails zu Werbezwecken autorisiert hat.
-
+      <br>
       Bei der Eintragung speichern wir ferner die vom Internet-Service-Provider (ISP) vergebene IP-Adresse des von der
       betroffenen Person zum Zeitpunkt der Anmeldung verwendeten Computersystems sowie das Datum und die Uhrzeit der
       Anmeldung. Die Erhebung dieser Daten ist erforderlich, um den (möglichen) Missbrauch der E-Mail-Adresse einer
       betroffenen Person zu einem späteren Zeitpunkt nachvollziehen zu können und dient deshalb der rechtlichen
       Absicherung des für die Verarbeitung Verantwortlichen.
-
+      <br>
       Die im Rahmen einer Eintragung erhobenen personenbezogenen Daten werden ausschließlich zum Versand unseres
       Newsletters oder zu eigenen Werbezwecken verwendet. Ferner könnten Abonnenten des Newsletters per E-Mail
       informiert werden, sofern dies für den Betrieb des Newsletter-Dienstes oder eine diesbezügliche Registrierung
@@ -246,16 +252,17 @@
       Gegebenheiten der Fall sein könnte. Es erfolgt keine Weitergabe der erhobenen personenbezogenen Daten an Dritte.
       Die Eintragung kann durch die betroffene Person jederzeit gekündigt werden. Die erteilte Einwilligung in die
       Speicherung personenbezogener Daten kann jederzeit widerrufen werden. Die Einwilligung lautet wie folgt:
-
+      <br>
       „Ja, ich stimme zu, dass die Sybit GmbH mich per E-Mail über das Produktportfolio von Sybit, zu Veranstaltungen
       von Sybit, Branchenneuigkeiten, Analysen, sowie Veröffentlichungen zu den genannten Themen (z. B. White Paper,
       Case Studies, Fachartikel, Leitfäden, etc.) informiert. Ich kann die Einwilligung jederzeit per E-Mail an
       newsletter@sybit.de, per Telefax oder auf dem Postweg widerrufen. Ferner habe ich die Möglichkeit, durch die
       Nutzung des Abmeldelinks in jeder E-Mail, die ich erhalte, die Einwilligung zu widerrufen.*
-
+      <br>
       Zum Zwecke des Widerrufs der Einwilligung findet sich in jeder E-Mail ein entsprechender Abmelde-Link. Ferner
       besteht die Möglichkeit, sich jederzeit auch per E-Mail an newsletter(at)sybit.de, per Telefax oder auf dem
-      Postweg abzumelden bzw. die Einwilligung zu widerrufen.</p>
+      Postweg abzumelden bzw. die Einwilligung zu widerrufen.
+    </p>
 
     <h2>8.Newsletter-Tracking</h2>
     <p>Die Newsletter der Sybit GmbH enthalten sogenannte Zählpixel. Ein Zählpixel ist eine Miniaturgrafik, die in
@@ -264,14 +271,15 @@
       Online-Marketing-Kampagnen durchgeführt werden. Anhand des eingebetteten Zählpixels kann die Sybit GmbH erkennen,
       ob und wann eine E-Mail von einer betroffenen Person geöffnet wurde und welche in der E-Mail befindlichen Links
       von der betroffenen Person aufgerufen wurden.
-
+      <br>
       Solche über die in den Newslettern enthaltenen Zählpixel erhobenen personenbezogenen Daten, werden von dem für die
       Verarbeitung Verantwortlichen gespeichert und ausgewertet, um den Newsletterversand zu optimieren und den Inhalt
       zukünftiger Newsletter noch besser den Interessen der betroffenen Person anzupassen. Diese personenbezogenen Daten
       werden nicht an Dritte weitergegeben. Betroffene Personen sind jederzeit berechtigt, die diesbezügliche
       gesonderte, über das Double-Opt-In-Verfahren abgegebene Einwilligungserklärung zu widerrufen. Nach einem Widerruf
       werden diese personenbezogenen Daten von dem für die Verarbeitung Verantwortlichen gelöscht. Eine Abmeldung vom
-      Erhalt des Newsletters deutet die Sybit GmbH automatisch als Widerruf.</p>
+      Erhalt des Newsletters deutet die Sybit GmbH automatisch als Widerruf.
+    </p>
 
     <h2>9. Kontaktmöglichkeit über die Internetseite</h2>
     <p>Die Internetseite der Sybit GmbH enthält aufgrund von gesetzlichen Vorschriften Angaben, die eine schnelle
@@ -281,24 +289,28 @@
       Verantwortlichen aufnimmt, werden die von der betroffenen Person übermittelten personenbezogenen Daten automatisch
       gespeichert. Solche auf freiwilliger Basis von einer betroffenen Person an den für die Verarbeitung
       Verantwortlichen übermittelten personenbezogenen Daten werden für Zwecke der Bearbeitung oder der Kontaktaufnahme
-      zur betroffenen Person gespeichert. Es erfolgt keine Weitergabe dieser personenbezogenen Daten an Dritte.</p>
+      zur betroffenen Person gespeichert. Es erfolgt keine Weitergabe dieser personenbezogenen Daten an Dritte.
+    </p>
 
     <h2>10. Routinemäßige Löschung und Sperrung von personenbezogenen Daten</h2>
     <p>Der für die Verarbeitung Verantwortliche verarbeitet und speichert personenbezogene Daten der betroffenen Person
       nur für den Zeitraum, der zur Erreichung des Speicherungszwecks erforderlich ist oder sofern dies durch den
       Europäischen Richtlinien- und Verordnungsgeber oder einen anderen Gesetzgeber in Gesetzen oder Vorschriften,
       welchen der für die Verarbeitung Verantwortliche unterliegt, vorgesehen wurde.
-
+      <br>
       Entfällt der Speicherungszweck oder läuft eine vom Europäischen Richtlinien- und Verordnungsgeber oder einem
       anderen zuständigen Gesetzgeber vorgeschriebene Speicherfrist ab, werden die personenbezogenen Daten routinemäßig
-      und entsprechend den gesetzlichen Vorschriften gesperrt oder gelöscht.</p>
+      und entsprechend den gesetzlichen Vorschriften gesperrt oder gelöscht.
+    </p>
 
     <h2>11. Rechte der betroffenen Person</h2>
-    <p> a) Recht auf Bestätigung Richtlinien- und Verordnungsgeber eingeräumte Recht, von dem für die Verarbeitung
+    <p>
+      a) Recht auf Bestätigung Richtlinien- und Verordnungsgeber eingeräumte Recht, von dem für die Verarbeitung
       Verantwortlichen eine Bestätigung darüber zu verlangen, ob sie betreffende personenbezogene Daten verarbeitet
       werden. Möchte eine betroffene Person dieses Bestätigungsrecht in Anspruch nehmen, kann sie sich hierzu jederzeit
       an unseren Datenschutzbeauftragten oder einen anderen Mitarbeiter des für die Verarbeitung Verantwortlichen
-      wenden.</p>
+      wenden.
+    </p>
 
     <h2>b) Recht auf Auskunft</h2>
     <p>Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das vom Europäischen Richtlinien- und
@@ -308,7 +320,8 @@
       zugestanden:</p>
 
     <h2> Die Verarbeitungszwecke</h2>
-    <p>die Kategorien personenbezogener Daten, die verarbeitet werden
+    <p>
+      die Kategorien personenbezogener Daten, die verarbeitet werden
       die Empfänger oder Kategorien von Empfängern, gegenüber denen die personenbezogenen Daten offengelegt worden sind
       oder noch offengelegt werden, insbesondere bei Empfängern in Drittländern oder bei internationalen Organisationen
       falls möglich die geplante Dauer, für die die personenbezogenen Daten gespeichert werden, oder, falls dies nicht
@@ -324,17 +337,20 @@
       Ferner steht der betroffenen Person ein Auskunftsrecht darüber zu, ob personenbezogene Daten an ein Drittland oder
       an eine internationale Organisation übermittelt wurden. Sofern dies der Fall ist, so steht der betroffenen Person
       im Übrigen das Recht zu, Auskunft über die geeigneten Garantien im Zusammenhang mit der Übermittlung zu
-      erhalten.</p>
-
-    Möchte eine betroffene Person dieses Auskunftsrecht in Anspruch nehmen, kann sie sich hierzu jederzeit an unseren
-    Datenschutzbeauftragten oder einen anderen Mitarbeiter des für die Verarbeitung Verantwortlichen wenden.
+      erhalten.
+      <br>
+      Möchte eine betroffene Person dieses Auskunftsrecht in Anspruch nehmen, kann sie sich hierzu jederzeit an unseren
+      Datenschutzbeauftragten oder einen anderen Mitarbeiter des für die Verarbeitung Verantwortlichen wenden.
+    </p>
 
     <h2>c) Recht auf Berichtigung</h2>
-    <p>Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das vom Europäischen Richtlinien- und
+    <p>
+      Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das vom Europäischen Richtlinien- und
       Verordnungsgeber gewährte Recht, die unverzügliche Berichtigung sie betreffender unrichtiger personenbezogener
       Daten zu verlangen. Ferner steht der betroffenen Person das Recht zu, unter Berücksichtigung der Zwecke der
       Verarbeitung, die Vervollständigung unvollständiger personenbezogener Daten — auch mittels einer ergänzenden
-      Erklärung — zu verlangen.</p>
+      Erklärung — zu verlangen.
+    </p>
 
     Möchte eine betroffene Person dieses Berichtigungsrecht in Anspruch nehmen, kann sie sich hierzu jederzeit an
     unseren Datenschutzbeauftragten oder einen anderen Mitarbeiter des für die Verarbeitung Verantwortlichen wenden.
@@ -441,7 +457,7 @@
       der Nutzung von Diensten der Informationsgesellschaft, ungeachtet der Richtlinie 2002/58/EG, ihr Widerspruchsrecht
       mittels automatisierter Verfahren auszuüben, bei denen technische Spezifikationen verwendet werden.</p>
 
-    <h2>h)Automatisierte Entscheidungen im Einzelfall einschließlich Profiling</h2>
+    <h2>h) Automatisierte Entscheidungen im Einzelfall einschließlich Profiling</h2>
     <p>Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das vom Europäischen Richtlinien- und
       Verordnungsgeber gewährte Recht, nicht einer ausschließlich auf einer automatisierten Verarbeitung —
       einschließlich Profiling — beruhenden Entscheidung unterworfen zu werden, die ihr gegenüber rechtliche Wirkung
@@ -462,7 +478,7 @@
       hierzu jederzeit an unseren Datenschutzbeauftragten oder einen anderen Mitarbeiter des für die Verarbeitung
       Verantwortlichen wenden.</p>
 
-    <h2>i)Recht auf Widerruf einer datenschutzrechtlichen Einwilligung</h2>
+    <h2>i) Recht auf Widerruf einer datenschutzrechtlichen Einwilligung</h2>
     <p>Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das vom Europäischen Richtlinien- und
       Verordnungsgeber gewährte Recht, eine Einwilligung zur Verarbeitung personenbezogener Daten jederzeit zu
       widerrufen.
@@ -471,7 +487,7 @@
       jederzeit an unseren Datenschutzbeauftragten oder einen anderen Mitarbeiter des für die Verarbeitung
       Verantwortlichen wenden.</p>
 
-    <h2>12.Datenschutz bei Bewerbungen und im Bewerbungsverfahren</h2>
+    <h2>12.D atenschutz bei Bewerbungen und im Bewerbungsverfahren</h2>
     <p>Der für die Verarbeitung Verantwortliche erhebt und verarbeitet die personenbezogenen Daten von Bewerbern zum
       Zwecke der Abwicklung des Bewerbungsverfahrens. Die Verarbeitung kann auch auf elektronischem Wege erfolgen. Dies
       ist insbesondere dann der Fall, wenn ein Bewerber entsprechende Bewerbungsunterlagen auf dem elektronischen Wege,
@@ -485,7 +501,7 @@
       Sonstiges berechtigtes Interesse in diesem Sinne ist beispielsweise eine Beweispflicht in einem Verfahren nach dem
       Allgemeinen Gleichbehandlungsgesetz (AGG).</p>
 
-    <h2>13.Datenschutzbestimmungen zu Einsatz und Verwendung von Facebook</h2>
+    <h2>13. Datenschutzbestimmungen zu Einsatz und Verwendung von Facebook</h2>
     <p>Der für die Verarbeitung Verantwortliche hat auf dieser Internetseite Komponenten des Unternehmens Facebook
       integriert. Facebook ist ein soziales Netzwerk.</p>
 
@@ -531,19 +547,7 @@
       bietet. Zudem sind unterschiedliche Applikationen erhältlich, die es ermöglichen, eine Datenübermittlung an
       Facebook zu unterdrücken.</p>
 
-    <h2>14.Datenschutzbestimmungen zu Einsatz und Verwendung von facebook Remarketing</h2>
-    <p>Diese Website verwendet die Remarketing-Funktion „Custom Audiences“ der Facebook Inc. („Facebook“). Diese
-      Funktion dient dazu, Besuchern dieser Webseite im Rahmen des Besuchs des sozialen Netzwerkes Facebook
-      interessenbezogene Werbeanzeigen („Facebook-Ads“) zu präsentieren. Hierzu wurde auf dieser Website das
-      Remarketing-Tag von Facebook implementiert. Über dieses Tag wird beim Besuch der Webseite eine direkte Verbindung
-      zu den Facebook-Servern hergestellt. Dabei wird an den Facebook-Server übermittelt, dass Sie diese Website besucht
-      haben und Facebook ordnet diese Information Ihrem persönlichen Facebook-Benutzerkonto zu. Nähere Informationen zur
-      Erhebung und Nutzung der Daten durch Facebook sowie über Ihre diesbezüglichen Rechte und Möglichkeiten zum Schutz
-      Ihrer Privatsphäre finden Sie in den Datenschutzhinweisen von Facebook unter
-      https://www.facebook.com/about/privacy/. Alternativ können Sie die Remarketing-Funktion „Custom Audiences“ unter
-      https://www.facebook.com/settings/?tab=ads#_=_ deaktivieren. Hierfür müssen Sie bei Facebook angemeldet sein.</p>
-
-    <h2>15.Datenschutzbestimmungen zu Einsatz und Verwendung von Google Analytics (mit Anonymisierungsfunktion)</h2>
+    <h2>14. Datenschutzbestimmungen zu Einsatz und Verwendung von Google Analytics (mit Anonymisierungsfunktion)</h2>
     <p>Der für die Verarbeitung Verantwortliche hat auf dieser Internetseite die Komponente Google Analytics (mit
       Anonymisierungsfunktion) integriert. Google Analytics ist ein Web-Analyse-Dienst. Web-Analyse ist die Erhebung,
       Sammlung und Auswertung von Daten über das Verhalten von Besuchern von Internetseiten. Ein Web-Analyse-Dienst
@@ -606,9 +610,10 @@
       Weitere Informationen und die geltenden Datenschutzbestimmungen von Google können unter
       https://www.google.de/intl/de/policies/privacy/ und unter http://www.google.com/analytics/terms/de.html abgerufen
       werden. Google Analytics wird unter diesem Link https://www.google.com/intl/de_de/analytics/ genauer
-      erläutert.</p>
+      erläutert.
+    </p>
 
-    <h2>16.Datenschutzbestimmungen zu Einsatz und Verwendung von Google Remarketing</h2>
+    <h2>15. Datenschutzbestimmungen zu Einsatz und Verwendung von Google Remarketing</h2>
     <p>Der für die Verarbeitung Verantwortliche hat auf dieser Internetseite Dienste von Google Remarketing integriert.
       Google Remarketing ist eine Funktion von Google-AdWords, die es einem Unternehmen ermöglicht, bei solchen
       Internetnutzern Werbung einblenden zu lassen, die sich zuvor auf der Internetseite des Unternehmens aufgehalten
@@ -651,7 +656,7 @@
       Weitere Informationen und die geltenden Datenschutzbestimmungen von Google können unter
       https://www.google.de/intl/de/policies/privacy/ abgerufen werden.</p>
 
-    <h2>17.Datenschutzbestimmungen zu Einsatz und Verwendung von Google-AdWords</h2>
+    <h2>16. Datenschutzbestimmungen zu Einsatz und Verwendung von Google-AdWords</h2>
     <p>Der für die Verarbeitung Verantwortliche hat auf dieser Internetseite Google AdWords integriert. Google AdWords
       ist ein Dienst zur Internetwerbung, der es Werbetreibenden gestattet, sowohl Anzeigen in den
       Suchmaschinenergebnissen von Google als auch im Google-Werbenetzwerk zu schalten. Google AdWords ermöglicht es
@@ -705,7 +710,7 @@
       Weitere Informationen und die geltenden Datenschutzbestimmungen von Google können unter
       https://www.google.de/intl/de/policies/privacy/ abgerufen werden.</p>
 
-    <h2>18.Datenschutzbestimmungen zu Einsatz und Verwendung von Instagram</h2>
+    <h2>17. Datenschutzbestimmungen zu Einsatz und Verwendung von Instagram</h2>
     <p>Betreibergesellschaft der Dienste von Instagram ist die Instagram LLC, 1 Hacker Way, Building 14 First Floor,
       Menlo Park, CA, USA.
 
@@ -735,91 +740,7 @@
       https://help.instagram.com/155833707900388 und https://www.instagram.com/about/legal/privacy/ abgerufen
       werden.</p>
 
-    <h2>19.Datenschutzbestimmungen zu Einsatz und Verwendung von LinkedIn</h2>
-    <p>Der für die Verarbeitung Verantwortliche hat auf dieser Internetseite Komponenten der LinkedIn Corporation
-      integriert. LinkedIn ist ein Internetbasiertes soziales Netzwerk, das eine Konnektierung der Nutzer mit
-      bestehenden Geschäftskontakten sowie das Knüpfen von neuen Businesskontakten ermöglicht. Über 400 Millionen
-      registrierte Personen nutzen LinkedIn in mehr als 200 Ländern. Damit ist LinkedIn derzeit die größte Plattform für
-      Businesskontakte und eine der meistbesuchten Internetseiten der Welt.
-
-      Betreibergesellschaft von LinkedIn ist die LinkedIn Corporation, 2029 Stierlin Court Mountain View, CA 94043, USA.
-      Für Datenschutzangelegenheiten außerhalb der USA ist LinkedIn Ireland, Privacy Policy Issues, Wilton Plaza, Wilton
-      Place, Dublin 2, Ireland, zuständig.
-
-      Bei jedem einzelnen Abruf unserer Internetseite, die mit einer LinkedIn-Komponente (LinkedIn-Plug-In) ausgestattet
-      ist, veranlasst diese Komponente, dass der von der betroffenen Person verwendete Browser eine entsprechende
-      Darstellung der Komponente von LinkedIn herunterlädt. Weitere Informationen zu den LinkedIn-Plug-Ins können unter
-      https://developer.linkedin.com/plugins abgerufen werden. Im Rahmen dieses technischen Verfahrens erhält LinkedIn
-      Kenntnis darüber, welche konkrete Unterseite unserer Internetseite durch die betroffene Person besucht wird.
-
-      Sofern die betroffene Person gleichzeitig bei LinkedIn eingeloggt ist, erkennt LinkedIn mit jedem Aufruf unserer
-      Internetseite durch die betroffene Person und während der gesamten Dauer des jeweiligen Aufenthaltes auf unserer
-      Internetseite, welche konkrete Unterseite unserer Internetseite die betroffene Person besucht. Diese Informationen
-      werden durch die LinkedIn-Komponente gesammelt und durch LinkedIn dem jeweiligen LinkedIn-Account der betroffenen
-      Person zugeordnet. Betätigt die betroffene Person einen auf unserer Internetseite integrierten LinkedIn-Button,
-      ordnet LinkedIn diese Information dem persönlichen LinkedIn-Benutzerkonto der betroffenen Person zu und speichert
-      diese personenbezogenen Daten.
-
-      LinkedIn erhält über die LinkedIn-Komponente immer dann eine Information darüber, dass die betroffene Person
-      unsere Internetseite besucht hat, wenn die betroffene Person zum Zeitpunkt des Aufrufes unserer Internetseite
-      gleichzeitig bei LinkedIn eingeloggt ist; dies findet unabhängig davon statt, ob die betroffene Person die
-      LinkedIn-Komponente anklickt oder nicht. Ist eine derartige Übermittlung dieser Informationen an LinkedIn von der
-      betroffenen Person nicht gewollt, kann diese die Übermittlung dadurch verhindern, dass sie sich vor einem Aufruf
-      unserer Internetseite aus ihrem LinkedIn-Account ausloggt.
-
-      LinkedIn bietet unter https://www.linkedin.com/psettings/guest-controls die Möglichkeit, E-Mail-Nachrichten,
-      SMS-Nachrichten und zielgerichtete Anzeigen abzubestellen sowie Anzeigen-Einstellungen zu verwalten. LinkedIn
-      nutzt ferner Partner wie Quantcast, Google Analytics, BlueKai, DoubleClick, Nielsen, Comscore, Eloqua und Lotame,
-      die Cookies setzen können. Solche Cookies können unter https://www.linkedin.com/legal/cookie-policy abgelehnt
-      werden. Die geltenden Datenschutzbestimmungen von LinkedIn sind unter
-      https://www.linkedin.com/legal/privacy-policy abrufbar. Die Cookie-Richtlinie von LinkedIn ist unter
-      https://www.linkedin.com/legal/cookie-policy abrufbar.</p>
-
-    <h2>20.Datenschutzbestimmungen zu Einsatz und Verwendung von SlideShare</h2>
-    <p>Der für die Verarbeitung Verantwortliche hat auf dieser Internetseite SlideShare-Komponenten integriert. LinkedIn
-      SlideShare ermöglicht als Filehosting-Dienst das austauschen und archivieren von Präsentationen und anderen
-      Dokumenten wie PDF-Dateien, Videos und Webinaren. Der Filehosting-Dienst gestattet den Benutzern den Upload von
-      Medieninhalten in allen gängigen Formaten, wobei die Dokumente entweder öffentlich zugänglich gemacht oder durch
-      eine Privatmarkierung versehen werden können.
-
-      Betreibergesellschaft von SlideShare ist die LinkedIn Corporation, 2029 Stierlin Court Mountain View, CA 94043,
-      USA. Für Datenschutzangelegenheiten außerhalb der USA ist die LinkedIn Ireland, Privacy Policy Issues, Wilton
-      Plaza, Wilton Place, Dublin 2, Irland, zuständig.
-
-      LinkedIn SlideShare stellt sogenannte Embed-Codes für die dort abgelegten Medieninhalte (Präsentationen,
-      PDF-Dateien, Videos, Fotos, etc.) zur Verfügung. Embed-Codes sind Programmcodes, die mit dem Ziel in
-      Internetseiten eingebettet werden, externe Inhalte auf der eigenen Internetseite anzuzeigen. Embed-Codes
-      ermöglichen es, Inhalte auf einer eigenen Internetseite wiederzugeben, ohne solche auf dem eigenen Server
-      abzulegen und hierbei möglicherweise das Vervielfältigungsrecht des jeweiligen Urhebers des Inhalts zu verletzen.
-      Weiterer Vorteil der Verwendung eines Embed-Codes ist, dass der jeweilige Betreiber einer Internetseite keinen
-      eigenen Speicherplatz nutzt und der eigene Server hierdurch entlastet wird. Ein Embed-Code kann an jeder Stelle
-      einer anderen Internetseite eingebunden werden, sodass ein externer Inhalt auch innerhalb des eigenen Textes
-      eingefügt werden kann. Zweck der Nutzung von LinkedIn SlideShare ist die Entlastung unseres Servers sowie eine
-      Vermeidung von Urheberrechtsverstößen bei gleichzeitiger Nutzung fremder Inhalte.
-
-      Bei jedem Abruf unserer Internetseite, die mit einer SlideShare-Komponente (Embed-Codes) ausgestattet ist,
-      veranlasst diese Komponente, dass der von ihnen verwendete Browser entsprechend eingebettete Daten von SlideShare
-      herunterlädt. Im Rahmen dieses technischen Verfahrens erhält LinkedIn Kenntnis darüber, welche konkrete Unterseite
-      unserer Internetseite durch die betroffene Person besucht wird.
-
-      Sofern die betroffene Person gleichzeitig bei SlideShare eingeloggt ist, erkennt SlideShare mit jedem Aufruf
-      unserer Internetseite durch die betroffene Person und während der gesamten Dauer des jeweiligen Aufenthaltes auf
-      unserer Internetseite, welche konkrete Unterseite die betroffene Person besucht. Diese Informationen werden durch
-      SlideShare gesammelt und durch LinkedIn dem jeweiligen SlideShare-Account der betroffenen Person zugeordnet.
-
-      LinkedIn erhält über die SlideShare-Komponente immer dann eine Information darüber, dass die betroffene Person
-      unsere Internetseite besucht hat, wenn die betroffene Person zum Zeitpunkt des Aufrufs unserer Internetseite
-      gleichzeitig bei SlideShare eingeloggt ist; dies findet unabhängig davon statt, ob die betroffene Person die
-      eingebundenen Mediendaten anklickt oder nicht. Ist eine derartige Übermittlung dieser Informationen an LinkedIn
-      von der betroffenen Person nicht gewollt, kann diese die Übermittlung dadurch verhindern, dass sie sich vor einem
-      Aufruf unserer Internetseite aus ihrem SlideShare-Account ausloggt.
-
-      LinkedIn nutzt ferner Partner wie Quantcast, Google Analytics, BlueKai, DoubleClick, Nielsen, Comscore, Eloqua und
-      Lotame, die Cookies setzen können. Solche Cookies können unter https://www.linkedin.com/legal/cookie-policy
-      abgelehnt werden. Die geltenden Datenschutzbestimmungen von LinkedIn sind unter
-      https://www.linkedin.com/legal/privacy-policy abrufbar.</p>
-
-    <h2>21.Datenschutzbestimmungen zu Einsatz und Verwendung von Twitter</h2>
+    <h2>18. Datenschutzbestimmungen zu Einsatz und Verwendung von Twitter</h2>
     <p>Der für die Verarbeitung Verantwortliche hat auf dieser Internetseite Komponenten von Twitter integriert. Twitter
       ist ein multilingualer öffentlich zugänglicher Mikroblogging-Dienst, auf welchem die Nutzer sogenannte Tweets,
       also Kurznachrichten, die auf 140 Zeichen begrenzt sind, veröffentlichen und verbreiten können. Diese
@@ -858,96 +779,8 @@
       Internetseite aus ihrem Twitter-Account ausloggt.</p>
 
     <p>Die geltenden Datenschutzbestimmungen von Twitter sind unter https://twitter.com/privacy?lang=de abrufbar.</p>
-    <h2>22.Datenschutzbestimmungen zu Einsatz und Verwendung von WiredMinds</h2>
-    <p>Der für die Verarbeitung Verantwortliche hat auf dieser Internetseite Komponenten von WiredMinds integriert.
-      Durch die WiredMinds-Komponenten werden Unternehmen, die eine Internetseite besuchen, automatisch erkannt und
-      qualifiziert. Die WiredMinds-Komponente ermöglicht dem Betreiber einer Internetseite, der die Komponente einsetzt,
-      die Generierung von Leads, also eine Qualifizierung potenzieller Neukunden.
 
-      Betreibergesellschaft von WiredMinds ist die WiredMinds GmbH, Lindenspürstraße 32, 70176 Stuttgart, Deutschland.
-
-      Wir setzen einen WiredMinds Zählpixel ein. Ein Zählpixel ist eine Miniaturgrafik, die in eine Internetseite
-      eingebettet wird, um eine Logdatei-Aufzeichnung und eine Logdatei-Analyse zu ermöglichen, um in der Folge eine
-      statistische Auswertung durchzuführen.
-
-      WiredMinds setzt zudem ein Cookie auf dem informationstechnologischen System der betroffenen Person. Was Cookies
-      sind, wurde oben bereits erläutert. Mit der Setzung des Cookies wird uns eine Analyse der Benutzung unserer
-      Internetseite ermöglicht.
-
-      Mittels der gewonnenen Daten werden pseudonymisierte Nutzungsprofile erstellt. Die pseudonymisierten
-      Nutzungsprofile werden zum Zwecke der Analyse des Besucherverhaltens genutzt und ermöglichen eine Verbesserung
-      unseres Internetangebots. Die über die WiredMinds-Komponente erhobenen Daten werden nicht ohne vorherige Einholung
-      einer gesonderten und ausdrücklichen Einwilligung der betroffenen Person dazu genutzt, die betroffene Person zu
-      identifizieren. Diese Daten werden nicht mit personenbezogenen Daten oder mit anderen Daten, die das gleiche
-      Pseudonym enthalten, zusammengeführt.
-
-      Durch jeden Aufruf einer der Einzelseiten dieser Internetseite wird der Internetbrowser auf dem
-      informationstechnologischen System der betroffenen Person automatisch durch die WiredMinds-Komponente veranlasst,
-      Daten zum Zwecke der Online-Analyse zu übermitteln. Im Rahmen dieses technischen Verfahrens erhält WiredMinds
-      Kenntnis über personenbezogene Daten, wie die IP-Adresse, die unter anderem dazu dient, die Herkunft der Besucher
-      und Klicks nachzuvollziehen.
-
-      Mittels des Cookies werden personenbezogene Informationen, beispielsweise die Zugriffszeit, der Ort, von welchem
-      ein Zugriff ausging und die Häufigkeit der Besuche auf unserer Internetseite, gespeichert. Bei jedem Besuch
-      unserer Internetseiten werden diese personenbezogenen Daten, einschließlich der IP-Adresse des von der betroffenen
-      Person genutzten Internetanschlusses, an den Server der WiredMinds übertragen. Diese personenbezogenen Daten
-      werden durch WiredMinds gespeichert, aber nicht an Dritte weitergegeben.
-
-      Die betroffene Person kann die Setzung von Cookies durch unsere Internetseite, wie oben bereits dargestellt,
-      jederzeit mittels einer entsprechenden Einstellung des genutzten Internetbrowsers verhindern und damit der Setzung
-      von Cookies dauerhaft widersprechen. Eine solche Einstellung des genutzten Internetbrowsers würde auch verhindern,
-      dass WiredMinds ein Cookie auf dem informationstechnologischen System der betroffenen Person setzt. Zudem kann ein
-      von WiredMinds bereits gesetzter Cookie jederzeit über einen Internetbrowser oder andere Softwareprogramme
-      gelöscht werden.
-
-      Ferner besteht für die betroffene Person die Möglichkeit, einer Erfassung der durch den WiredMinds erzeugten, auf
-      eine Nutzung dieser Internetseite bezogenen Daten zu widersprechen und eine solche zu verhindern. Hierzu muss die
-      betroffene Person den Dont-Track-My-Visits-Button unter dem Link
-      https://wm.wiredminds.de/track/cookie_mgr.php?mode=dont_track_ask&websitesel anklicken. Wird das
-      informationstechnologische System der betroffenen Person zu einem späteren Zeitpunkt gelöscht, formatiert oder neu
-      installiert, muss die betroffene Person erneut einen Opt-Out-Cookie setzen.
-
-      Weitere Informationen und die geltenden Datenschutzbestimmungen von WiredMinds können unter
-      https://www.wiredminds.de/produkt/datenschutz-gutachten/ abgerufen werden.</p>
-
-    <h2>23. Datenschutzbestimmungen zu Einsatz und Verwendung von Xing</h2>
-    <p>Der für die Verarbeitung Verantwortliche hat auf dieser Internetseite Komponenten von Xing integriert. Xing ist
-      ein Internetbasiertes soziales Netzwerk, das die Konnektierung der Nutzer mit bestehenden Geschäftskontakten sowie
-      das Knüpfen von neuen Businesskontakten ermöglicht. Die einzelnen Nutzer können bei Xing ein persönliches Profil
-      von sich anlegen. Unternehmen können beispielsweise Unternehmensprofile erstellen oder Stellenangebote auf Xing
-      veröffentlichen.
-
-      Betreibergesellschaft von Xing ist die XING AG, Dammtorstraße 30, 20354 Hamburg, Deutschland.
-
-      Durch jeden Aufruf einer der Einzelseiten dieser Internetseite, die durch den für die Verarbeitung
-      Verantwortlichen betrieben wird und auf welcher eine Xing-Komponente (Xing-Plug-In) integriert wurde, wird der
-      Internetbrowser auf dem informationstechnologischen System der betroffenen Person automatisch durch die jeweilige
-      Xing-Komponente veranlasst, eine Darstellung der entsprechenden Xing-Komponente von Xing herunterzuladen. Weitere
-      Informationen zum den Xing-Plug-Ins können unter https://dev.xing.com/plugins abgerufen werden. Im Rahmen dieses
-      technischen Verfahrens erhält Xing Kenntnis darüber, welche konkrete Unterseite unserer Internetseite durch die
-      betroffene Person besucht wird.
-
-      Sofern die betroffene Person gleichzeitig bei Xing eingeloggt ist, erkennt Xing mit jedem Aufruf unserer
-      Internetseite durch die betroffene Person und während der gesamten Dauer des jeweiligen Aufenthaltes auf unserer
-      Internetseite, welche konkrete Unterseite unserer Internetseite die betroffene Person besucht. Diese Informationen
-      werden durch die Xing-Komponente gesammelt und durch Xing dem jeweiligen Xing-Account der betroffenen Person
-      zugeordnet. Betätigt die betroffene Person einen der auf unserer Internetseite integrierten Xing-Buttons,
-      beispielsweise den „Share“-Button, ordnet Xing diese Information dem persönlichen Xing-Benutzerkonto der
-      betroffenen Person zu und speichert diese personenbezogenen Daten.
-
-      Xing erhält über die Xing-Komponente immer dann eine Information darüber, dass die betroffene Person unsere
-      Internetseite besucht hat, wenn die betroffene Person zum Zeitpunkt des Aufrufs unserer Internetseite gleichzeitig
-      bei Xing eingeloggt ist; dies findet unabhängig davon statt, ob die betroffene Person die Xing-Komponente anklickt
-      oder nicht. Ist eine derartige Übermittlung dieser Informationen an Xing von der betroffenen Person nicht gewollt,
-      kann diese die Übermittlung dadurch verhindern, dass sie sich vor einem Aufruf unserer Internetseite aus ihrem
-      Xing-Account ausloggt.
-
-      Die von Xing veröffentlichten Datenschutzbestimmungen, die unter https://www.xing.com/privacy abrufbar sind, geben
-      Aufschluss über die Erhebung, Verarbeitung und Nutzung personenbezogener Daten durch Xing. Ferner hat Xing unter
-      https://www.xing.com/app/share?op=data_protection Datenschutzhinweise für den XING-Share-Button
-      veröffentlicht.</p>
-
-    <h2>24.Datenschutzbestimmungen zu Einsatz und Verwendung von YouTube</h2>
+    <h2>19. Datenschutzbestimmungen zu Einsatz und Verwendung von YouTube</h2>
     <p>Der für die Verarbeitung Verantwortliche hat auf dieser Internetseite Komponenten von YouTube integriert. YouTube
       ist ein Internet-Videoportal, das Video-Publishern das kostenlose Einstellen von Videoclips und anderen Nutzern
       die ebenfalls kostenfreie Betrachtung, Bewertung und Kommentierung dieser ermöglicht. YouTube gestattet die
@@ -981,7 +814,7 @@
       https://www.google.de/intl/de/policies/privacy/ abrufbar sind, geben Aufschluss über die Erhebung, Verarbeitung
       und Nutzung personenbezogener Daten durch YouTube und Google.</p>
 
-    <h2> 25. Rechtsgrundlage der Verarbeitung</h2>
+    <h2>20. Rechtsgrundlage der Verarbeitung</h2>
     <p>Art. 6 I lit. a DS-GVO dient unserem Unternehmen als Rechtsgrundlage für Verarbeitungsvorgänge, bei denen wir
       eine Einwilligung für einen bestimmten Verarbeitungszweck einholen. Ist die Verarbeitung personenbezogener Daten
       zur Erfüllung eines Vertrags, dessen Vertragspartei die betroffene Person ist, erforderlich, wie dies
@@ -1004,18 +837,18 @@
       vertrat insoweit die Auffassung, dass ein berechtigtes Interesse anzunehmen sein könnte, wenn die betroffene
       Person ein Kunde des Verantwortlichen ist. </p>
 
-    <h2>26.Berechtigte Interessen an der Verarbeitung, die von dem Verantwortlichen oder einem Dritten verfolgt
+    <h2>21. Berechtigte Interessen an der Verarbeitung, die von dem Verantwortlichen oder einem Dritten verfolgt
       werden</h2>
     <p>Basiert die Verarbeitung personenbezogener Daten auf Artikel 6 I lit. f DS-GVO ist unser berechtigtes Interesse
       die Durchführung unserer Geschäftstätigkeit zugunsten des Wohlergehens all unserer Mitarbeiter und unserer
       Anteilseigner.</p>
 
-    <h2>27.Dauer, für die die personenbezogenen Daten gespeichert werden</h2>
+    <h2>22. Dauer, für die die personenbezogenen Daten gespeichert werden</h2>
     <p>Das Kriterium für die Dauer der Speicherung von personenbezogenen Daten ist die jeweilige gesetzliche
       Aufbewahrungsfrist. Nach Ablauf der Frist werden die entsprechenden Daten routinemäßig gelöscht, sofern sie nicht
       mehr zur Vertragserfüllung oder Vertragsanbahnung erforderlich sind.</p>
 
-    <h2>28.Gesetzliche oder vertragliche Vorschriften zur Bereitstellung der personenbezogenen Daten; Erforderlichkeit
+    <h2>23. Gesetzliche oder vertragliche Vorschriften zur Bereitstellung der personenbezogenen Daten; Erforderlichkeit
       für den Vertragsabschluss; Verpflichtung der betroffenen Person, die personenbezogenen Daten bereitzustellen;
       mögliche Folgen der Nichtbereitstellung</h2>
     <p>Wir klären Sie darüber auf, dass die Bereitstellung personenbezogener Daten zum Teil gesetzlich vorgeschrieben
@@ -1031,7 +864,7 @@
       die personenbezogenen Daten bereitzustellen, und welche Folgen die Nichtbereitstellung der personenbezogenen Daten
       hätte.</p>
 
-    <h2>29.Bestehen einer automatisierten Entscheidungsfindung</h2>
+    <h2>24. Bestehen einer automatisierten Entscheidungsfindung</h2>
     <p>Als verantwortungsbewusstes Unternehmen verzichten wir auf eine automatische Entscheidungsfindung oder ein
       Profiling.</p>
 
@@ -1040,3 +873,21 @@
       SOLMECKE erstellt.</p>
   </v-container>
 </template>
+
+<script>
+export default {
+  created () {
+    window.scrollTo(0, 0)
+  },
+  metaInfo () {
+    return {
+      title: 'Datenschutzerklärung'
+    }
+  }
+}
+</script>
+<style lang="scss" scoped>
+.privacy__container {
+  font-size: 0.75rem;
+}
+</style>
