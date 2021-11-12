@@ -52,21 +52,21 @@ export default {
   components: { ShareButton, Markdown },
   metaInfo () {
     return {
-      title: this.material.name,
+      title: this.title,
       meta: [
         // Twitter Card
         { name: 'twitter:card', content: 'summary' },
-        { name: 'twitter:title', content: this.material.name },
-        { name: 'twitter:description', content: this.material.notes },
+        { name: 'twitter:title', content: this.title },
+        { name: 'twitter:description', content: this.description },
         // image must be an absolute path
         { name: 'twitter:image', content: this.image },
 
         // Facebook OpenGraph
-        { property: 'og:title', content: this.material.name },
+        { property: 'og:title', content: this.title },
         { property: 'og:site_name', content: 'Mülli' },
         { property: 'og:type', content: 'article' },
         { property: 'og:image', content: this.image },
-        { property: 'og:description', content: this.material.notes },
+        { property: 'og:description', content: this.description },
         { property: 'og:url', content: this.$route.path }
       ]
     }
@@ -78,14 +78,23 @@ export default {
       }
       return 'required(\'https://via.placeholder.com/150?text=placeholder\')'
     },
+    materialId () {
+      return this.$route.params.id
+    },
     material () {
-      return this.$store.getters.getMaterialById(this.$route.params.id)
+      return this.$store.getters.getMaterialById(this.materialId)
+    },
+    title () {
+      return this.material ? this.material.name : 'Loading...'
+    },
+    description () {
+      return this.material ? this.material.notes : 'Loading...'
     },
     share () {
       return {
-        title: `Mülli: ${this.material.name} entsorgen 👉 ${this.material.targets[0].name}`,
-        text: `${this.material.name} entsorgen: ${this.material.targets[0].name}
-        ${this.material.notes}`
+        title: `Mülli: ${this.material?.name} entsorgen 👉 ${this.material?.targets[0].name}`,
+        text: `${this.material?.name} entsorgen: ${this.material?.targets[0].name}
+        ${this.material?.notes}`
       }
     }
   },
@@ -109,5 +118,4 @@ export default {
   font-size:30px;
   line-height: 2rem;
 }
-
 </style>
