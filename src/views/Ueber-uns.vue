@@ -34,7 +34,7 @@
         Mirko Pleli, Raphael Schnick, Mario Sieg, Sophia Kunert (von unten), Dominik Smyczkowski, Viktor Müller, Niklas
         Neumann, Gideon Godejoann während ihrer Arbeit beim Coding-Camp.</small>
     </div>
-    <small class="grey--text text--lighten-1">Brandon Serra (fehlt auf dem Bild), Henrik Schmid (als Schülerpraktikum)</small>
+    <small class="grey--text text--lighten-1">Auf dem Bild fehlt: Brandon Serra, Henrik Schmid (als Schülerpraktikum), Cedric Lange</small>
     <h2 class="mt-10 d-flex">
       Über Mülli
     </h2>
