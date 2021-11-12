@@ -60,7 +60,7 @@ export default {
 <style lang="scss">
 @import 'src/scss/scrollbar.scss';
 .container {
-  padding-bottom: 64px;
+  margin-bottom: 1.25 * $bottom-navigation-height;
 }
 .navigation {
   position: relative;
