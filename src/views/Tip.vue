@@ -12,7 +12,7 @@
               :url="$route.path"
           >
           </share-button>
-          <div class="card">
+          <div class="card" v-if="tip">
             <v-img :src="imageSource" class="card__image card__image--top rounded-xl" contain>
               <template v-slot:placeholder>
                 <v-row
@@ -60,7 +60,8 @@ export default {
   name: 'Tip',
   data () {
     return {
-      tip: this.$store.getters.getTipById(this.tipId)
+      showLoadingSpinner: false,
+      tip: null
     }
   },
   async created () {
@@ -69,21 +70,21 @@ export default {
   },
   metaInfo () {
     return {
-      title: this.tip.title,
+      title: this.title,
       meta: [
         // Twitter Card
         { name: 'twitter:card', content: 'summary' },
-        { name: 'twitter:title', content: this.tip.title },
-        { name: 'twitter:description', content: this.tip.teaser },
+        { name: 'twitter:title', content: this.title },
+        { name: 'twitter:description', content: this.teaser },
         // image must be an absolute path
         { name: 'twitter:image', content: this.imageSource },
 
         // Facebook OpenGraph
-        { property: 'og:title', content: this.tip.title },
+        { property: 'og:title', content: this.title },
         { property: 'og:site_name', content: 'Mülli' },
         { property: 'og:type', content: 'article' },
         { property: 'og:image', content: this.imageSource },
-        { property: 'og:description', content: this.tip.teaser },
+        { property: 'og:description', content: this.teaser },
         { property: 'og:url', content: this.$route.path }
       ]
     }
@@ -93,16 +94,21 @@ export default {
       const tipFromStore = this.$store.getters.getTipById(this.tipId)
       if (tipFromStore) {
         this.tip = tipFromStore
-        this.showLoadingSpinner = false
       } else {
         this.tip = await tipService.getTip(this.tipId)
-        this.showLoadingSpinner = false
       }
+      this.showLoadingSpinner = false
     }
   },
   computed: {
     tipId () {
       return this.$route.params.tipId
+    },
+    title () {
+      return this.tip ? this.tip.title : 'Tipp'
+    },
+    teaser () {
+      return this.tip ? this.tip.teaser : ''
     },
     imageSource () {
       if (this.tip?.teaserImage?.length) {
@@ -116,10 +122,6 @@ export default {
 <style lang="scss" scoped>
 @import 'src/scss/variables.scss';
 @import "node_modules/vuetify/src/styles/settings/_colors.scss";
-
-.tips {
-  margin-bottom: 1.5 * $bottom-navigation-height;
-}
 
 .card {
   display: grid;
