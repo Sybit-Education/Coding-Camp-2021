@@ -107,8 +107,4 @@ export default {
   font-size:30px;
   line-height: 2rem;
 }
-
-.theme--light.v-btn--active::before {
-  opacity: 0;
-}
 </style>
