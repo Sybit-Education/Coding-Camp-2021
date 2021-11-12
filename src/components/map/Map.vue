@@ -3,7 +3,13 @@
     <div class="map">
       <map-action-button :userLocation="userLocation"></map-action-button>
       <l-map ref="map" :center="center" :options="{ zoomControl: false}" :zoom="zoom" class="map">
-        <LTileLayer :attribution="attribution" :url="url"/>
+        <l-tile-layer :attribution="attribution" :url="url"/>
+        <l-geo-json
+          v-if="geojson"
+          layerType="boundary"
+          :options-style="styleFunction"
+          :geojson="geojson"
+        />
         <template v-if="userLocation">
           <l-marker :icon="userIcon" :lat-lng="userLocation"/>
         </template>
@@ -59,7 +65,7 @@
 </template>
 
 <script>
-import { LControl, LControlZoom, LMap, LTileLayer, LMarker } from 'vue2-leaflet'
+import { LControl, LControlZoom, LMap, LTileLayer, LMarker, LGeoJson } from 'vue2-leaflet'
 import 'leaflet.path.drag'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
@@ -76,6 +82,7 @@ export default {
     LMarker,
     LControl,
     LControlZoom,
+    LGeoJson,
     BackButton,
     Markdown
   },
@@ -88,6 +95,7 @@ export default {
   data () {
     return {
       map: null,
+      geojson: null,
       userLocation: null,
       zoom: 13,
       position: null,
@@ -108,9 +116,13 @@ export default {
         iconAnchor: [6, 12]
       }),
       url: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
-      attribution:
-          '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }
+  },
+  async created () {
+    const response = await fetch('/landkreis-konstanz.geojson')
+    const data = await response.json()
+    this.geojson = data
   },
   mounted () {
     this.getTrashCans()
@@ -122,6 +134,14 @@ export default {
         return this.$store.getters.getTrashCans.filter((trashCan) => trashCan.type === this.trashCanType[0])
       } else {
         return this.$store.getters.getTrashCans
+      }
+    },
+    styleFunction () {
+      return () => {
+        return {
+          weight: 2,
+          color: '#FF6F00'
+        }
       }
     }
   },
