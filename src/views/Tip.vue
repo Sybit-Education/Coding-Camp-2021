@@ -69,7 +69,23 @@ export default {
   },
   metaInfo () {
     return {
-      title: this.tip ? this.tip.title : 'Mülli'
+      title: this.tip.title,
+      meta: [
+        // Twitter Card
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:title', content: this.tip.title },
+        { name: 'twitter:description', content: this.tip.teaser },
+        // image must be an absolute path
+        { name: 'twitter:image', content: this.imageSource },
+
+        // Facebook OpenGraph
+        { property: 'og:title', content: this.tip.title },
+        { property: 'og:site_name', content: 'Mülli' },
+        { property: 'og:type', content: 'article' },
+        { property: 'og:image', content: this.imageSource },
+        { property: 'og:description', content: this.tip.teaser },
+        { property: 'og:url', content: this.$route.path }
+      ]
     }
   },
   methods: {

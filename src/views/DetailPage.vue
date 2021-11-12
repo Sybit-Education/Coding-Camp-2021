@@ -50,6 +50,27 @@ import Markdown from '@/components/Markdown.vue'
 
 export default {
   components: { ShareButton, Markdown },
+  metaInfo () {
+    return {
+      title: this.material.name,
+      meta: [
+        // Twitter Card
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:title', content: this.material.name },
+        { name: 'twitter:description', content: this.material.notes },
+        // image must be an absolute path
+        { name: 'twitter:image', content: this.image },
+
+        // Facebook OpenGraph
+        { property: 'og:title', content: this.material.name },
+        { property: 'og:site_name', content: 'Mülli' },
+        { property: 'og:type', content: 'article' },
+        { property: 'og:image', content: this.image },
+        { property: 'og:description', content: this.material.notes },
+        { property: 'og:url', content: this.$route.path }
+      ]
+    }
+  },
   computed: {
     image () {
       if (this.material && this.material.targets && this.material.targets[0]?.images) {
@@ -84,10 +105,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .material-name {
-  moz-hyphens: auto;
-  o-hyphens: auto;
-  webkit-hyphens: auto;
-  ms-hyphens: auto;
   hyphens: auto;
   font-size:30px;
   line-height: 2rem;
