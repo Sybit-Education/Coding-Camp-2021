@@ -876,6 +876,9 @@
 
 <script>
 export default {
+  async created () {
+    window.scrollTo(0, 0)
+  },
   metaInfo () {
     return {
       title: 'Datenschutzerklärung'
