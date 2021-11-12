@@ -60,6 +60,11 @@ export default {
     image () {
       return require('@/assets/img/ueber-uns/team.jpg')
     }
+  },
+  metaInfo () {
+    return {
+      title: 'Über uns'
+    }
   }
 }
 </script>

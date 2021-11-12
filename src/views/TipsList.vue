@@ -5,8 +5,6 @@
     <div v-for="tip in list" :key="tip.id">
       <tip-card :tip="tip" class="mb-5"/>
     </div>
-    <br>
-    <br>
   </v-container>
 </template>
 
@@ -24,7 +22,7 @@ export default {
   },
   metaInfo () {
     return {
-      title: 'Tipps'
+      title: 'Tipps zur Entsorgung'
     }
   },
   async created () {

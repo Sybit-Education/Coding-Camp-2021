@@ -51,7 +51,12 @@
 
 <script>
 export default {
-  name: 'Impressum'
+  name: 'Impressum',
+  metaInfo () {
+    return {
+      title: 'Impressum'
+    }
+  }
 }
 </script>
 

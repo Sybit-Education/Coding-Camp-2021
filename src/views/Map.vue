@@ -14,6 +14,11 @@ export default {
       type: Array,
       default: null
     }
+  },
+  metaInfo () {
+    return {
+      title: 'Karte mit Entsorgungsmöglichkeiten'
+    }
   }
 }
 </script>
