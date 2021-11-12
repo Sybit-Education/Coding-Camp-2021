@@ -52,7 +52,7 @@
 <script>
 export default {
   name: 'Impressum',
-  async created () {
+  created () {
     window.scrollTo(0, 0)
   },
   metaInfo () {

@@ -876,7 +876,7 @@
 
 <script>
 export default {
-  async created () {
+  created () {
     window.scrollTo(0, 0)
   },
   metaInfo () {
