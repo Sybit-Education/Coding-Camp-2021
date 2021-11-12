@@ -1,18 +1,6 @@
 <template>
   <v-container>
-    <v-btn
-        @click="$router.go(-1)"
-        fab
-        small
-        top
-        left
-        dark
-        fixed
-    >
-      <v-icon>
-        mdi-arrow-left
-      </v-icon>
-    </v-btn>
+    <back-button :to="{ name: 'Home'}"></back-button>
     <share-button
         :title="share.title"
         :text="share.text"
@@ -45,11 +33,12 @@
 </template>
 
 <script>
+import BackButton from '@/components/navigation/BackButton.vue'
 import ShareButton from '@/components/navigation/ShareButton.vue'
 import Markdown from '@/components/Markdown.vue'
 
 export default {
-  components: { ShareButton, Markdown },
+  components: { BackButton, ShareButton, Markdown },
   metaInfo () {
     return {
       title: this.title,
@@ -117,5 +106,9 @@ export default {
   hyphens: auto;
   font-size:30px;
   line-height: 2rem;
+}
+
+.theme--light.v-btn--active::before {
+  opacity: 0;
 }
 </style>
