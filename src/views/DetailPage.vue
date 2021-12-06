@@ -19,11 +19,11 @@
             <v-chip class="ml-2 elevation-3" outlined :color="target.color">{{ target.name }}</v-chip>
           </v-col>
         </v-row>
-        <div class="mt-10" v-if="material.notes && material.notes.length <=300 && material.notes.length >5">
+        <div class="mt-10" v-if="material.notes">
           <markdown :source="material.notes"/>
         </div>
-        <div class="mt-10" v-else>
-          <markdown :source="material.targets[0].description"></markdown>
+        <div v-for="target in material.targets" :key="target.id">
+          <material-taget-detail :target="target" />
         </div>
       </v-card-text>
     </v-card>
@@ -36,9 +36,10 @@
 import BackButton from '@/components/navigation/BackButton.vue'
 import ShareButton from '@/components/navigation/ShareButton.vue'
 import Markdown from '@/components/Markdown.vue'
+import MaterialTagetDetail from '../components/material/MaterialTagetDetail.vue'
 
 export default {
-  components: { BackButton, ShareButton, Markdown },
+  components: { BackButton, ShareButton, Markdown, MaterialTagetDetail },
   metaInfo () {
     return {
       title: this.title,
