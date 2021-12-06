@@ -2,6 +2,7 @@
   <vue-markdown
     class="markdown"
     linkify
+    typographer
   >{{ source }}</vue-markdown>
 </template>
 
