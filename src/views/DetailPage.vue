@@ -81,10 +81,17 @@ export default {
       return this.material ? this.material.notes : 'Loading...'
     },
     share () {
-      return {
-        title: `Mülli: ${this.material?.name} entsorgen 👉 ${this.material?.targets[0].name}`,
-        text: `${this.material?.name} entsorgen: ${this.material?.targets[0].name}
-        ${this.material?.notes}`
+      if (this.material?.targets) {
+        return {
+          title: `Mülli: ${this.material.name} entsorgen 👉 ${this.material.targets[0].name}`,
+          text: `${this.material.name} entsorgen: ${this.material.targets[0].name}
+          ${this.material?.notes}`
+        }
+      } else {
+        return {
+          title: `Mülli: ${this.material?.name} entsorgen`,
+          text: `${this.material?.name} entsorgen: ${this.material?.notes}`
+        }
       }
     }
   },
