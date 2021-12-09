@@ -5,7 +5,7 @@
         v-if="deferredPrompt"
         color="primary"
         dark
-        class="text-left"
+        class="install-banner text-left"
       >
         Möchten Sie die Mülli-App lokal installieren?
         <template v-slot:actions>
@@ -65,7 +65,9 @@ export default {
 .navigation {
   position: relative;
 }
-
+.install-banner {
+  z-index: 1000;
+}
 .bottomnav {
   position: absolute;
   bottom: 0;
