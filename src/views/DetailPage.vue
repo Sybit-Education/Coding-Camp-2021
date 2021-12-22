@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <back-button :to="{ name: 'Home'}"></back-button>
+    <back-button />
     <share-button
         :title="share.title"
         :text="share.text"
@@ -22,6 +22,18 @@
         <div class="mt-10" v-if="material.notes">
           <markdown :source="material.notes"/>
         </div>
+        <v-btn v-if="showThrowButton" block
+               class="rounded-xl py-7" color="blue"
+               dark elevation="0"
+               @click="routeToMap">
+          Jetzt Wegwerfen
+        </v-btn>
+        <v-btn v-if="showForwardButton" block class="rounded-xl py-7" color="blue"
+               dark elevation="0"
+               @click="routeToDRK">
+          Zum DRK
+          <v-icon color="red" size="30">mdi-hospital</v-icon>
+        </v-btn>
         <div v-for="target in material.targets" :key="target.id">
           <material-target-detail :target="target"/>
         </div>
@@ -64,6 +76,12 @@ export default {
     }
   },
   computed: {
+    showThrowButton () {
+      return !!this.material.targets.some((target) => target.targetAction === 'show')
+    },
+    showForwardButton () {
+      return !!this.material.targets.some(target => target.targetAction === 'URL_forwarding')
+    },
     image () {
       if (this.material && this.material.targets && this.material.targets[0]?.images) {
         return this.material.targets[0].images[0].url
@@ -135,6 +153,13 @@ export default {
           this.tip = list[Math.floor(Math.random() * list.length)]
         }
       })
+    },
+    routeToDRK () {
+      window.location.href = 'https://www.drk-intern.de/start/suchergebnisse/kleidercontainer-suchergebnis.html?tx_drkclothescontainersearch_clothescontainersearch%5Baction%5D=clothescontainerResult&tx_drkclothescontainersearch_clothescontainersearch%5Bcontroller%5D=Clothescontainer&cHash=7ff3b10ad9ccdcf930f0dfa688ec8e20'
+    },
+    routeToMap () {
+      const targetNames = this.material.targets.map((target) => target.name)
+      this.$router.push({ name: 'Karte', params: { targetNames: targetNames } })
     }
   }
 }
