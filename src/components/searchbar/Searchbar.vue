@@ -1,17 +1,17 @@
 <template>
   <div>
     <v-autocomplete
-        v-model="select"
-        :loading="items && items.length < 0"
-        :items="items"
-        class="rounded-xl"
-        solo
-        hide-details
-        label="Tippe zum Suchen"
-        :filter="filter"
-        @keyup.enter="search()"
-        :return-object="true"
-        auto-select-first
+      v-model="select"
+      :loading="items && items.length < 0"
+      :items="items"
+      class="rounded-xl"
+      solo
+      hide-details
+      label="Tippe zum Suchen"
+      :filter="filter"
+      @keyup.enter="search()"
+      :return-object="true"
+      auto-select-first
     >
       <template slot="item" slot-scope="data">
         {{ data.item.name }}
@@ -28,45 +28,54 @@
       </template>
       <template slot="no-data">
         <div class="px-3">
-          Leider keinen Treffer!<br>
+          Leider keinen Treffer!<br />
           Stelle eine <a @click="dialog = true">Anfrage</a>.
         </div>
       </template>
     </v-autocomplete>
-    <v-dialog
-        v-model="dialog"
-        persistent
-        max-width="600px"
-        class="rounded-xl"
-    >
+    <v-dialog v-model="dialog" persistent max-width="600px" class="rounded-xl">
       <v-card class="pa-5 rounded-xl">
-        <v-card-title class="text-h5">
-          Anfrage
-        </v-card-title>
+        <v-card-title class="text-h5"> Anfrage </v-card-title>
         <v-form ref="form" v-model="valid" @submit.prevent="addMaterial">
           <v-card-text>
-            <v-text-field v-model="material.name" :rules="nameRules" label="Name" required outlined/>
-            <v-textarea v-model="material.notes" label="Beschreibung" outlined/>
+            <v-text-field
+              v-model="material.name"
+              :rules="nameRules"
+              label="Name"
+              required
+              outlined
+            />
+            <v-textarea
+              v-model="material.notes"
+              label="Beschreibung"
+              outlined
+            />
+            <v-text-field
+              v-model="material.requester.email"
+              :rules="emailRules"
+              label="E-Mail"
+              outlined
+            />
+            <v-text-field
+              v-model="material.requester.city"
+              label="City"
+              outlined
+            />
             <v-alert v-if="message" color="error">
               {{ message }}
             </v-alert>
           </v-card-text>
           <v-card-actions class="px-4">
             <v-spacer></v-spacer>
-            <v-btn
-                color="grey"
-                class="rounded-xl"
-                text
-                @click="dialog = false"
-            >
+            <v-btn color="grey" class="rounded-xl" text @click="dialog = false">
               Abbrechen
             </v-btn>
             <v-btn
-                :disabled="!valid"
-                :loading="$store.state.showLoadingSpinner"
-                color="primary"
-                type="submit"
-                class="rounded-xl"
+              :disabled="!valid"
+              :loading="$store.state.showLoadingSpinner"
+              color="primary"
+              type="submit"
+              class="rounded-xl"
             >
               Senden
             </v-btn>
@@ -102,12 +111,22 @@ export default {
       dialog: false,
       valid: false,
       nameRules: [
-        v => !!v || 'Bitte Name eintragen',
-        v => v.length < 50 || 'Der Name darf nicht länger als 50 Zeichen sein.'
+        (v) => !!v || 'Bitte Name eintragen',
+        (v) =>
+          v.length < 50 || 'Der Name darf nicht länger als 50 Zeichen sein.'
+      ],
+      emailRules: [
+        (v) =>
+          (v.length ? /\S+@\S+\.\S+/.test(v) : true) ||
+          'Bitte eine korrekte E-Mail eintragen'
       ],
       material: {
         name: '',
-        notes: ''
+        notes: '',
+        requester: {
+          email: '',
+          city: ''
+        }
       },
       message: ''
     }
@@ -115,7 +134,10 @@ export default {
   methods: {
     search () {
       if (this.select?.id) {
-        this.$router.push({ name: 'DetailPage', params: { id: this.select.id } })
+        this.$router.push({
+          name: 'DetailPage',
+          params: { id: this.select.id }
+        })
       } else {
         this.dialog = true
       }
@@ -123,7 +145,7 @@ export default {
     addMaterial () {
       if (this.$refs.form.validate()) {
         this.$store.dispatch('updateShowLoadingSpinner', true)
-        materialService.getAllNames().then(names => {
+        materialService.getAllNames().then((names) => {
           if (!names.includes(this.material.name)) {
             materialService.addMaterial(this.material)
             this.dialog = false
@@ -145,15 +167,23 @@ export default {
         this.material.name = queryText
         if (item.synonyms) {
           return (
-            item.name.toLocaleLowerCase().indexOf(queryText.toLocaleLowerCase()) > -1 ||
-              item.synonyms.toLocaleLowerCase().indexOf(queryText.toLocaleLowerCase()) > -1)
+            item.name
+              .toLocaleLowerCase()
+              .indexOf(queryText.toLocaleLowerCase()) > -1 ||
+            item.synonyms
+              .toLocaleLowerCase()
+              .indexOf(queryText.toLocaleLowerCase()) > -1
+          )
         } else {
-          return item.name.toLocaleLowerCase().indexOf(queryText.toLocaleLowerCase()) > -1
+          return (
+            item.name
+              .toLocaleLowerCase()
+              .indexOf(queryText.toLocaleLowerCase()) > -1
+          )
         }
       }
       return -1
     }
-
   }
 }
 </script>
