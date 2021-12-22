@@ -11,6 +11,7 @@
         :filter="filter"
         @keyup.enter="search()"
         :return-object="true"
+        auto-select-first
     >
       <template slot="item" slot-scope="data">
         {{ data.item.name }}
@@ -28,12 +29,7 @@
       <template slot="no-data">
         <div class="px-3">
           Leider keinen Treffer!<br>
-          Drücke
-          <v-btn icon @click="search">
-          <v-icon>
-            {{ $route.path === "/detail" ? "mdi-magnify" : "mdi-help" }}
-          </v-icon>
-          </v-btn> für eine Anfrage.
+          Stelle eine <a @click="dialog = true">Anfrage</a>.
         </div>
       </template>
     </v-autocomplete>
