@@ -1,22 +1,28 @@
 <template>
   <v-card class="rounded-xl">
-    <a
-      v-if="imageSource"
-      :href="partner.website"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <v-img :src="imageSource" />
-    </a>
-    <v-card-title>
-      {{ partner.name }}
-    </v-card-title>
-    <v-card-text>
-      <markdown v-if="partner.notes" :source="partner.notes" />
-      <a :href="partner.website" target="_blank" rel="noopener noreferrer">
-        {{ partner.website }}
-      </a>
-    </v-card-text>
+    <v-row>
+      <v-col sm="4" cols="12">
+        <a
+          v-if="imageSource"
+          :href="partner.website"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <v-img :src="imageSource" />
+        </a>
+      </v-col>
+      <v-col sm="8" cols="12">
+        <v-card-title>
+          {{ partner.name }}
+        </v-card-title>
+        <v-card-text>
+          <markdown v-if="partner.notes" :source="partner.notes" />
+          <a :href="partner.website" target="_blank" rel="noopener noreferrer">
+            {{ partner.website }}
+          </a>
+        </v-card-text>
+      </v-col>
+    </v-row>
   </v-card>
 </template>
 
