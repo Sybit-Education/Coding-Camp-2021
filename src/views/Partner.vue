@@ -28,7 +28,7 @@ export default {
       title: 'Unsere Partner'
     }
   },
-  async created () {
+  created () {
     partnerService.getPartnerRecords().then((list) => {
       this.list = list
       this.showLoadingSpinner = false
