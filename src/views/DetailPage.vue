@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <back-button :to="{ name: 'Home'}"></back-button>
+    <back-button />
     <share-button
         :title="share.title"
         :text="share.text"

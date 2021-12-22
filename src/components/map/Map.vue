@@ -19,7 +19,7 @@
         </l-marker>
         <l-control-zoom class="map__zoom-buttons"></l-control-zoom>
         <l-control position="topleft">
-          <back-button :to="{name:'Home'}"/>
+          <back-button />
         </l-control>
       </l-map>
     </div>
