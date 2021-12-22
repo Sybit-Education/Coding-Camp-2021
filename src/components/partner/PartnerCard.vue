@@ -13,7 +13,7 @@
       </v-col>
       <v-col sm="8" cols="12">
         <v-card-title>
-          {{ partner.name }}
+          <h3>{{ partner.name }}</h3>
         </v-card-title>
         <v-card-text>
           <markdown v-if="partner.notes" :source="partner.notes" />

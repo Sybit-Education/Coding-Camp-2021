@@ -2,9 +2,11 @@
   <v-container>
     <h1 class="mb-5">Offizielle Partner der Mülli-App</h1>
     <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
-    <div v-for="partner in list" :key="partner.id">
-      <partner-card :partner="partner" class="mb-5" />
-    </div>
+    <v-row>
+      <v-col v-for="partner in list" :key="partner.id" cols="12" xl="6">
+        <partner-card :partner="partner" class="mb-5" />
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
