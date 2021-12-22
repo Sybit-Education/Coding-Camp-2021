@@ -47,7 +47,7 @@ import Markdown from '@/components/Markdown.vue'
 
 export default {
   components: { Markdown },
-  name: 'TypeCard',
+  name: 'TipCard',
   props: {
     tip: {
       type: Object,
