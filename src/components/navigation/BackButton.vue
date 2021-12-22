@@ -1,6 +1,6 @@
 <template>
   <v-btn
-      :to="to"
+      @click="$router.back()"
       fab
       small
       top
@@ -15,13 +15,7 @@
 </template>
 <script>
 export default {
-  name: 'BackButton',
-  props: {
-    to: {
-      type: Object,
-      required: true
-    }
-  }
+  name: 'BackButton'
 }
 </script>
 <style lang="scss" scoped>

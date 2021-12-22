@@ -4,7 +4,7 @@
       <v-col cols="11" xl="8">
         <div class="tips">
           <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
-          <back-button :to="{ name: 'Tipps'}"></back-button>
+          <back-button />
           <share-button
               v-if="tip"
               :title="tip.title"

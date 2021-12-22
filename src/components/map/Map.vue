@@ -19,7 +19,7 @@
         </l-marker>
         <l-control-zoom class="map__zoom-buttons"></l-control-zoom>
         <l-control position="topleft">
-          <back-button :to="{name:'Home'}"/>
+          <back-button />
         </l-control>
       </l-map>
     </div>
@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import { LControl, LControlZoom, LMap, LTileLayer, LMarker, LGeoJson } from 'vue2-leaflet'
+import { LControl, LControlZoom, LGeoJson, LMap, LMarker, LTileLayer } from 'vue2-leaflet'
 import 'leaflet.path.drag'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
@@ -121,8 +121,7 @@ export default {
   },
   async created () {
     const response = await fetch('/landkreis-konstanz.geojson')
-    const data = await response.json()
-    this.geojson = data
+    this.geojson = await response.json()
   },
   mounted () {
     this.getTrashCans()
@@ -131,7 +130,15 @@ export default {
   computed: {
     trashCans () {
       if (this.trashCanType) {
-        return this.$store.getters.getTrashCans.filter((trashCan) => trashCan.type === this.trashCanType[0])
+        const list = []
+        this.trashCanType.forEach(type => {
+          this.$store.getters.getTrashCans.forEach(trashCan => {
+            if (trashCan.type === type) {
+              list.push(trashCan)
+            }
+          })
+        })
+        return list
       } else {
         return this.$store.getters.getTrashCans
       }
