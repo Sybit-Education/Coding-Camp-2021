@@ -23,25 +23,16 @@ export default {
   metaInfo () {
     return {}
   },
-  data () {
-    return {
-      tip: null
-    }
-  },
   computed: {
     materials () {
       return this.$store.getters.getMaterialList
+    },
+    tip () {
+      const tipList = this.$store.getters.getTipList
+      return tipList[Math.floor(Math.random() * tipList.length)]
     }
   },
   async mounted () {
-    if (this.materials) {
-      await this.$store.dispatch('getRecordsFromSessionStorage', [
-        'material',
-        'targets'
-      ])
-    }
-    const tipList = await this.$store.dispatch('getTipRecords')
-    this.tip = tipList[Math.floor(Math.random() * tipList.length)]
   }
 }
 </script>

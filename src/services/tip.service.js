@@ -10,7 +10,7 @@ const tipService = {
         .select({
           // Selecting the first 3 records in All:
           view: 'published',
-          fields: ['Title', 'Teaser', 'TeaserImage', 'Article'],
+          fields: ['Title', 'Teaser', 'TeaserImage', 'Article', 'MaterialCategory'],
           sort: [{ field: 'Published', direction: 'desc' }]
         })
         .eachPage(
@@ -22,7 +22,8 @@ const tipService = {
                 title: partialTip?.fields?.Title,
                 teaser: partialTip?.fields?.Teaser,
                 teaserImage: partialTip?.fields?.TeaserImage,
-                article: partialTip?.fields?.Article
+                article: partialTip?.fields?.Article,
+                materialCategory: partialTip?.fields?.MaterialCategory
               })
             })
             fetchNextPage()

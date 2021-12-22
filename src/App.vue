@@ -46,6 +46,11 @@ export default {
     window.addEventListener('appinstalled', () => {
       this.deferredPrompt = null
     })
+    this.$store.dispatch('getRecordsFromSessionStorage', [
+      'material',
+      'targets'
+    ])
+    this.$store.dispatch('getTipRecords')
   },
   methods: {
     async dismiss () {
