@@ -27,8 +27,7 @@ export default new Vuex.Store({
     },
     getMaterialByName: (state) => (name) => {
       name = name.toLowerCase()
-      const material = state.materialList.find((material) => material.name.toLowerCase() === name)
-      return material
+      return state.materialList.find((material) => material.name.toLowerCase() === name)
     },
     getMaterialById: (state) => (id) => {
       return state.materialList.find((material) => material.id === id)
