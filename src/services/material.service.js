@@ -106,7 +106,7 @@ const materialService = {
           Notes: material.notes,
           Status: 'zu klären',
           Synonyme: material.synonyms,
-          InternalComment: material.requester ? `Online Anfrage von: ${material.requester.email}, Ort: ${material.requester.city}` : ''
+          InternalComment: material.requester.email ? `Online Anfrage von: ${material.requester.email}, Ort: ${material.requester.city ? material.requester.city : 'unbekannt'}` : ''
         }
       }
     ], function (err) {
