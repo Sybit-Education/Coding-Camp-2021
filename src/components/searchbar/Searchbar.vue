@@ -47,6 +47,8 @@
           <v-card-text>
             <v-text-field v-model="material.name" :rules="nameRules" label="Name" required outlined/>
             <v-textarea v-model="material.notes" label="Beschreibung" outlined/>
+            <v-text-field v-model="material.requester.email" :rules="emailRules" label="Email" outlined/>
+            <v-text-field v-model="material.requester.city" label="City" outlined/>
             <v-alert v-if="message" color="error">
               {{ message }}
             </v-alert>
@@ -105,9 +107,16 @@ export default {
         v => !!v || 'Bitte Name eintragen',
         v => v.length < 50 || 'Der Name darf nicht länger als 50 Zeichen sein.'
       ],
+      emailRules: [
+        v => (v.length ? /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) : true) || 'Bitte eine korrekte Email eintragen'
+      ],
       material: {
         name: '',
-        notes: ''
+        notes: '',
+        requester: {
+          email: '',
+          city: ''
+        }
       },
       message: ''
     }
