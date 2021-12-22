@@ -29,8 +29,7 @@
       <template slot="no-data">
         <div class="px-3">
           Leider keinen Treffer!<br>
-          <a @click="dialog = true">hier</a>
-          für eine Anfrage.
+          Stelle eine <a @click="dialog = true">Anfrage</a>.
         </div>
       </template>
     </v-autocomplete>
