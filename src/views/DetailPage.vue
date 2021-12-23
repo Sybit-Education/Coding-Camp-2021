@@ -135,7 +135,7 @@ export default {
       ])
     },
     async getTip () {
-      if (this.$store.state.tipList < 1) {
+      if (this.$store.state.tipList.length < 1) {
         await this.$store.dispatch('getTipRecords')
       }
       const list = []
