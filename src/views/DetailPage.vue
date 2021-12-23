@@ -115,7 +115,7 @@ export default {
       }
     }
   },
-  mounted () {
+  created () {
     this.getMaterial()
     if (this.material?.category?.length) {
       this.getTip()
