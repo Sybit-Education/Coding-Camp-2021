@@ -33,7 +33,7 @@
 import partnerService from '@/services/partner.service'
 
 export default {
-  name: 'Partner',
+  name: 'PartnerCarousel',
   data () {
     return {
       partnerList: []

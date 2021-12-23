@@ -6,13 +6,13 @@
     <searchbar :items="materials" class="my-5" />
     <tip-card v-if="tip && tip.id" :tip="tip" />
     <v-skeleton-loader v-else type="card" />
-    <partner />
+    <partner-carousel />
   </v-container>
 </template>
 
 <script>
 import Searchbar from '@/components/searchbar/Searchbar'
-import Partner from '@/components/partner/Partner'
+import PartnerCarousel from '@/components/partner/PartnerCarousel'
 import TipCard from '@/components/tips/TipCard'
 
 export default {
@@ -20,7 +20,7 @@ export default {
   components: {
     TipCard,
     Searchbar,
-    Partner
+    PartnerCarousel
   },
   metaInfo () {
     return {}
@@ -38,6 +38,6 @@ export default {
 </script>
 <style lang="scss">
 .search-title {
-  word-break: normal !important;
+  word-break: normal;
 }
 </style>
