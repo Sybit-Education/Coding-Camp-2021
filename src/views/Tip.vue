@@ -28,18 +28,21 @@
               </template>
             </v-img>
             <v-img :src="imageSource" class="card__image card__image--top card__image-background rounded-xl"
-                   contain></v-img>
+                   contain>
+            </v-img>
             <div class="card__title grey--text text--darken-3">{{ tip.title }}</div>
             <markdown
                 :source="tip.teaser"
                 class="card__teaser grey--text text--darken-3">
             </markdown>
             <div class="card__markdown-wrapper">
-              <v-img :src="imageSource" class="card__image card__image--bottom rounded-xl" contain></v-img>
+              <v-img :src="imageSource" class="card__image card__image--bottom rounded-xl" contain>
+              </v-img>
               <markdown
                   :source="tip.article"
                   class="card__markdown">
               </markdown>
+              <markdown :source="this.tip.teaserImageSource" class="card__image-source grey--text text--lighten-1"></markdown>
             </div>
           </div>
           <v-skeleton-loader v-if="!tip" type="card"/>
@@ -206,6 +209,10 @@ export default {
       z-index: 0 !important;
       transform: translateY(20px) scaleX(.8);
       filter: blur(30px) opacity(60%);
+    }
+
+    &-source {
+      font-size: 10px;
     }
 
   }
