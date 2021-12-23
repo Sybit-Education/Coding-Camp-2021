@@ -2,31 +2,27 @@
   <div>
     <h3>Unsere Partner</h3>
     <v-carousel
-        v-if="partnerList && partnerList.length > 0"
-        cycle
-        max-width="320"
-        max-height="200"
-        hide-delimiter-background
-        hide-delimiters
-        :show-arrows="false"
+      v-if="partnerList && partnerList.length > 0"
+      class="partner-carousel"
+      height="220"
+      cycle
+      hide-delimiter-background
+      hide-delimiters
+      :show-arrows="false"
     >
-      <v-carousel-item
-          v-for="partner in partnerList"
-          :key="partner.id"
-      >
-        <div class="d-flex justify-center">
-          <a :href="partner.website">
+      <v-carousel-item v-for="partner in partnerList" :key="partner.id">
+        <v-sheet class="d-flex justify-center">
+          <router-link :to="`/partner#${partner.id}`">
             <v-img
+              class="partner-logo"
               :src="partner.logo[0].url"
               :alt="partner.name"
-              contain
-              max-width="300"
-              max-height="200" />
-          </a>
-        </div>
+            />
+          </router-link>
+        </v-sheet>
       </v-carousel-item>
     </v-carousel>
-    <v-skeleton-loader v-else type="image"/>
+    <v-skeleton-loader v-else type="image" />
   </div>
 </template>
 <script>
@@ -40,9 +36,20 @@ export default {
     }
   },
   created () {
-    partnerService.getPartnerRecords().then(list => {
+    partnerService.getPartnerRecords().then((list) => {
       this.partnerList = list
     })
   }
 }
 </script>
+<style lang="scss" scoped>
+.partner-logo {
+  width: 240px;
+  max-height: 240px;
+  filter: grayscale(60%);
+  &:hover,
+  &:focus {
+    filter: grayscale(0%);
+  }
+}
+</style>

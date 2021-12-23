@@ -1,5 +1,5 @@
 <template>
-  <v-card class="rounded-xl">
+  <v-card :id="partner.id" class="rounded-xl">
     <v-row>
       <v-col sm="4" cols="12">
         <a
