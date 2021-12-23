@@ -22,6 +22,17 @@ html {
   font-family: $body-font-family;
 }
 
+h1,
+h2,
+h2,
+h4 {
+  word-break: break-none;
+}
+
 p {
   hyphens: auto;
+}
+
+.v-card__title {
+  word-break: keep-all;
 }
