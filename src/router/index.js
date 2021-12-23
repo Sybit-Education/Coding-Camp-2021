@@ -66,6 +66,19 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
+  scrollBehavior (to, from, savedPosition) {
+    if (to.hash) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          return {
+            selector: to.hash
+          }
+        })
+      }, 500)
+    } else {
+      return { x: 0, y: 0 }
+    }
+  },
   routes
 })
 

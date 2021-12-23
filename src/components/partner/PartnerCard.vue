@@ -1,5 +1,5 @@
 <template>
-  <v-card class="rounded-xl">
+  <v-card :id="partner.id" class="rounded-xl">
     <v-row>
       <v-col sm="4" cols="12">
         <a
@@ -8,7 +8,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          <v-img :src="imageSource" />
+          <v-img class="mx-1" :src="imageSource" />
         </a>
       </v-col>
       <v-col sm="8" cols="12">
