@@ -42,7 +42,7 @@
                   :source="tip.article"
                   class="card__markdown">
               </markdown>
-              <span class="card__image-source grey--text text--lighten-1">{{ this.tip.teaserImageSource }}</span>
+              <markdown :source="this.tip.teaserImageSource" class="card__image-source grey--text text--lighten-1"></markdown>
             </div>
           </div>
           <v-skeleton-loader v-if="!tip" type="card"/>
