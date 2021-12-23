@@ -29,6 +29,9 @@
         <v-list-item :to="{ name: 'Ueber-uns' }">
           <v-list-item-title>Über uns</v-list-item-title>
         </v-list-item>
+        <v-list-item :to="{ name: 'Partner' }">
+          <v-list-item-title>Partner</v-list-item-title>
+        </v-list-item>
       </v-list>
     </v-menu>
   </v-bottom-navigation>

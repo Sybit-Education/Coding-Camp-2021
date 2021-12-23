@@ -43,6 +43,12 @@ const routes = [
       import(/* webpackChunkName: "impressum" */ '../views/Ueber-uns.vue')
   },
   {
+    path: '/partner',
+    name: 'Partner',
+    component: () =>
+      import(/* webpackChunkName: "partner" */ '../views/Partner.vue')
+  },
+  {
     path: '/tipps',
     name: 'Tipps',
     component: () =>
@@ -60,6 +66,19 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
+  scrollBehavior (to, from, savedPosition) {
+    if (to.hash) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          return {
+            selector: to.hash
+          }
+        })
+      }, 500)
+    } else {
+      return { x: 0, y: 0 }
+    }
+  },
   routes
 })
 
