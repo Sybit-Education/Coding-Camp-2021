@@ -1,11 +1,8 @@
 <template>
   <div v-if="target.description">
-    <hr class="mt-5">
+    <hr />
     <h2 class="mt-5" v-text="target.name" />
-    <markdown
-      class="mt-5"
-      :source="target.description"
-    />
+    <markdown class="mt-5" :source="target.description" />
   </div>
 </template>
 <script>
