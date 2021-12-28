@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import materialService from '@/services/material.service'
 export default {
   name: 'MaterialMetricCard',
   data () {
@@ -16,8 +17,9 @@ export default {
     }
   },
   mounted () {
-    const list = this.$store.getters.getMaterialList
-    this.count = list.length
+    materialService.getMaterialRecords().then((list) => {
+      this.count = list.length
+    })
   }
 }
 </script>

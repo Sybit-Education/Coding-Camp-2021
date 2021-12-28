@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import * as trashcanService from '@/services/trashcan.service'
 export default {
   name: 'LocationMetricCard',
   data () {
@@ -16,8 +17,7 @@ export default {
     }
   },
   mounted () {
-    this.$store.dispatch('getTrashCansFromSessionStorage').then(() => {
-      const list = this.$store.getters.getTrashCans
+    trashcanService.getTrashCans().then((list) => {
       this.count = list.length
     })
   }

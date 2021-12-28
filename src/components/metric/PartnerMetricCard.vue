@@ -19,7 +19,6 @@ export default {
   },
   mounted () {
     partnerService.getPartnerRecords().then((list) => {
-      console.log(list)
       this.count = list.length
     })
   }
