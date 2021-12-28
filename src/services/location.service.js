@@ -2,23 +2,26 @@ import base from './airtable.service'
 import * as imageService from './image.service'
 import store from '../store/index'
 
-export function getTrashCans () {
+const BASE_NAME = 'Location'
+export function getLocations () {
   return new Promise((resolve, reject) => {
-    const allTrashCans = []
-    base('Location')
+    const locations = []
+    base(BASE_NAME)
       .select({
         view: 'published',
-        fields: ['Type', 'Notes', 'Latitude', 'Longitude', 'Image']
+        fields: ['Name', 'Type', 'Notes', 'Link', 'Latitude', 'Longitude', 'Image']
       }).eachPage(
         function page (partialRecords, fetchNextPage) {
           partialRecords.forEach((partialRecords) => {
-            allTrashCans.push({
-              id: partialRecords?.id,
-              type: partialRecords?.fields?.Type,
-              image: partialRecords?.fields?.Image,
-              notes: partialRecords?.fields?.Notes,
-              latitude: partialRecords?.fields?.Latitude,
-              longitude: partialRecords?.fields?.Longitude
+            locations.push({
+              id: partialRecords.id,
+              name: partialRecords.fields?.Name,
+              type: partialRecords.fields?.Type,
+              image: partialRecords.fields?.Image,
+              notes: partialRecords.fields?.Notes,
+              link: partialRecords.fields?.Link,
+              latitude: partialRecords.fields?.Latitude,
+              longitude: partialRecords.fields?.Longitude
             })
           })
           fetchNextPage()
@@ -27,22 +30,22 @@ export function getTrashCans () {
             console.log(err)
             reject(err)
           }
-          window.sessionStorage.setItem('trashCans', JSON.stringify(allTrashCans))
-          resolve(allTrashCans)
+          window.sessionStorage.setItem('locations', JSON.stringify(locations))
+          resolve(locations)
         })
   })
 }
 
-function postTrashCanWithoutImage (trashCan) {
-  base('Location').create([
+function postLocationWithoutImage (location) {
+  base(BASE_NAME).create([
     {
       fields: {
-        Name: trashCan.name,
-        Notes: trashCan.description,
+        Name: location.name,
+        Notes: location.description,
         Status: 'proposed',
-        Latitude: trashCan.latitude,
-        Longitude: trashCan.longitude,
-        Type: trashCan.type
+        Latitude: location.latitude,
+        Longitude: location.longitude,
+        Type: location.type
       }
     }
   ], function (err) {
@@ -52,17 +55,17 @@ function postTrashCanWithoutImage (trashCan) {
   })
 }
 
-function postTrashCanWithImage (trashCan, uploadedImage) {
+function postLocationWithImage (location, uploadedImage) {
   return new Promise((resolve, reject) => {
-    base('Location').create([
+    base(BASE_NAME).create([
       {
         fields: {
-          Name: trashCan.name,
-          Notes: trashCan.description,
+          Name: location.name,
+          Notes: location.description,
           Status: 'proposed',
-          Latitude: trashCan.latitude,
-          Longitude: trashCan.longitude,
-          Type: trashCan.type,
+          Latitude: location.latitude,
+          Longitude: location.longitude,
+          Type: location.type,
           Image: [
             {
               url: uploadedImage.File[0].url
@@ -81,12 +84,11 @@ function postTrashCanWithImage (trashCan, uploadedImage) {
   })
 }
 
-export function checkImageAndCreateTrashCan (trashCan) {
+export function checkImageAndCreateLocation (location) {
   return new Promise((resolve, reject) => {
-    if (trashCan.image) {
-      imageService.uploadFile(null, trashCan.image).then((uploadedImage) => {
-        console.log('PostTrashcanWithImage')
-        postTrashCanWithImage(trashCan, uploadedImage).then(() => {
+    if (location.image) {
+      imageService.uploadFile(null, location.image).then((uploadedImage) => {
+        postLocationWithImage(location, uploadedImage).then(() => {
           console.log('NACH  WITHIMAGE')
           imageService.deleteImageByUID(uploadedImage.deleteToken).then(() => {
             store.dispatch('updateShowLoadingSpinner', false)
@@ -101,8 +103,8 @@ export function checkImageAndCreateTrashCan (trashCan) {
         reject(error)
       })
     } else {
-      postTrashCanWithoutImage(trashCan)
-      console.log('PostTrashcanWithNOImage')
+      postLocationWithoutImage(location)
+      console.log('PostlocationWithNOImage')
       store.dispatch('updateShowLoadingSpinner', false)
       resolve()
     }

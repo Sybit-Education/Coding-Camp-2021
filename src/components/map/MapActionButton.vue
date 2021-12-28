@@ -1,6 +1,13 @@
 <template>
   <div>
-    <v-btn bottom right class="map__action-button" fab fixed @click="showUploadForm = true">
+    <v-btn
+      bottom
+      right
+      class="map__action-button"
+      fab
+      fixed
+      @click="showUploadForm = true"
+    >
       <v-icon size="35">mdi-plus</v-icon>
     </v-btn>
     <MapUploadForm :userLocation="userLocation"></MapUploadForm>
@@ -11,7 +18,7 @@
 import MapUploadForm from './MapUploadForm'
 
 export default {
-  name: 'MapActionButton.vue',
+  name: 'MapActionButton',
   components: { MapUploadForm },
   data () {
     return {
@@ -28,10 +35,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'src/scss/variables.scss';
+@import "src/scss/variables.scss";
 
 .map__action-button {
-  @include glassmorphism($color: white, $blur-ammount: 4px, $color-intensity: 0.4);
+  @include glassmorphism(
+    $color: white,
+    $blur-ammount: 4px,
+    $color-intensity: 0.4
+  );
   margin-bottom: calc(0.5 * #{$bottom-navigation-height});
 
   @media #{map-get($display-breakpoints, 'xs-only')} {
