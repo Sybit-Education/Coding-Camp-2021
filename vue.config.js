@@ -44,6 +44,11 @@ module.exports = {
           src: './img/icons/mstile-150x150.png',
           sizes: '150x150',
           type: 'image/png'
+        },
+        {
+          src: './img/icons/mstile-270x270.png',
+          sizes: '270x270',
+          type: 'image/png'
         }
       ]
     },
