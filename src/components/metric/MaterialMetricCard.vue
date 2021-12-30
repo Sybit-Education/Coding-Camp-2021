@@ -1,5 +1,5 @@
 <template>
-  <v-card class="rounded-xl text-center py-3 orange lighten-3">
+  <v-card class="rounded-xl text-center py-3 grey lighten-3" to="/">
     <div class="text-h4 font-weight-black">
       <number :to="count" :duration="5" />
     </div>
