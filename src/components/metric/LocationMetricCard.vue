@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import * as trashcanService from '@/services/trashcan.service'
+import * as locationService from '@/services/location.service'
 export default {
   name: 'LocationMetricCard',
   data () {
@@ -17,7 +17,7 @@ export default {
     }
   },
   mounted () {
-    trashcanService.getTrashCans().then((list) => {
+    locationService.getLocations().then((list) => {
       this.count = list.length
     })
   }

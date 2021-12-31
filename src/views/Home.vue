@@ -7,7 +7,7 @@
     <v-row class="metrics">
       <v-col><material-metric-card /></v-col>
       <v-col><location-metric-card /></v-col>
-      <v-col><partner-metric-card /></v-col>
+      <v-col><tipp-metric-card /></v-col>
     </v-row>
     <tip-card v-if="tip && tip.id" :tip="tip" />
     <v-skeleton-loader v-else type="card" />
@@ -21,7 +21,7 @@ import PartnerCarousel from '@/components/partner/PartnerCarousel'
 import TipCard from '@/components/tips/TipCard'
 import MaterialMetricCard from '@/components/metric/MaterialMetricCard.vue'
 import LocationMetricCard from '@/components/metric/LocationMetricCard.vue'
-import PartnerMetricCard from '../components/metric/PartnerMetricCard.vue'
+import TippMetricCard from '@/components/metric/TippMetricCard.vue'
 
 export default {
   name: 'Home',
@@ -31,7 +31,7 @@ export default {
     PartnerCarousel,
     MaterialMetricCard,
     LocationMetricCard,
-    PartnerMetricCard
+    TippMetricCard
   },
   metaInfo () {
     return {}

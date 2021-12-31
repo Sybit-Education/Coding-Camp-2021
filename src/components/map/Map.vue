@@ -1,77 +1,56 @@
 <template>
-  <div>
-    <div class="map">
-      <map-action-button :userLocation="userLocation"></map-action-button>
-      <l-map ref="map" :center="center" :options="{ zoomControl: false}" :zoom="zoom" class="map">
-        <l-tile-layer :attribution="attribution" :url="url"/>
-        <l-geo-json
-          v-if="geojson"
-          layerType="boundary"
-          :options-style="styleFunction"
-          :geojson="geojson"
-        />
-        <template v-if="userLocation">
-          <l-marker :icon="userIcon" :lat-lng="userLocation"/>
-        </template>
-        <l-marker v-for="can in trashCans" :key="can.id" :icon="pickIcon(can)"
-                  :lat-lng="[can.latitude, can.longitude]"
-                  @click="openTrashCanPopup(can)">
-        </l-marker>
-        <l-control-zoom class="map__zoom-buttons"></l-control-zoom>
-        <l-control position="topleft">
-          <back-button />
-        </l-control>
-      </l-map>
-    </div>
-
-    <v-bottom-sheet v-model="trashCanPopupData.active">
-      <v-card class="bottom-sheet__card">
-        <v-btn fixed icon right>
-          <v-icon large @click="trashCanPopupData.active = false">
-            mdi-close
-          </v-icon>
-        </v-btn>
-        <v-row>
-          <v-col class="align-self-center">
-            <h2 class="bottom-sheet__title">{{ trashCanPopupData.title }}</h2>
-          </v-col>
-        </v-row>
-        <v-row v-if="trashCanPopupData.link">
-          <v-col class="align-self-center bottom-sheet__link-wrapper">
-            <p class="text-h6">Mehr Informationen gibt es hier:</p>
-            <a :href="trashCanPopupData.link" class="bottom-sheet__link">{{ trashCanPopupData.link }}</a>
-          </v-col>
-        </v-row>
-        <div v-if="trashCanPopupData.notes !== '\n'">
-          <markdown
-            :source="trashCanPopupData.notes"
-            class="bottom-sheet__notes" />
-        </div>
-        <v-row v-if="trashCanPopupData.images.length" justify="center">
-          <v-col v-for="img in trashCanPopupData.images" :key="img" cols="auto">
-            <v-img :src="img" class="bottom-sheet__image"></v-img>
-          </v-col>
-        </v-row>
-        <v-row align="end" justify="center">
-          <v-col cols="11" lg="2" md="4" sm="6">
-            <v-btn block class="rounded-xl py-7" color="primary" dark
-                   @click="openGoogleMaps(trashCanPopupData.latitude, trashCanPopupData.longitude)">Navigiere mich
-            </v-btn>
-          </v-col>
-        </v-row>
-      </v-card>
+  <div class="map">
+    <map-action-button :userLocation="userLocation"></map-action-button>
+    <l-map
+      ref="map"
+      :center="center"
+      :options="{ zoomControl: false }"
+      :zoom="zoom"
+      class="map"
+    >
+      <l-tile-layer :attribution="attribution" :url="url" />
+      <l-geo-json
+        v-if="geojson"
+        layerType="boundary"
+        :options-style="styleFunction"
+        :geojson="geojson"
+      />
+      <template v-if="userLocation">
+        <l-marker :icon="userIcon" :lat-lng="userLocation" />
+      </template>
+      <l-marker
+        v-for="loc in locations"
+        :key="loc.id"
+        :icon="getPin(loc)"
+        :lat-lng="[loc.latitude, loc.longitude]"
+        @click="openPopup(loc)"
+      />
+      <l-control-zoom class="map__zoom-buttons" />
+      <l-control position="topleft">
+        <back-button />
+      </l-control>
+    </l-map>
+    <v-bottom-sheet v-model="showPopup">
+      <map-navigation-card :location="popupLocation" @close="closePopup" />
     </v-bottom-sheet>
   </div>
 </template>
 
 <script>
-import { LControl, LControlZoom, LGeoJson, LMap, LMarker, LTileLayer } from 'vue2-leaflet'
+import {
+  LControl,
+  LControlZoom,
+  LGeoJson,
+  LMap,
+  LMarker,
+  LTileLayer
+} from 'vue2-leaflet'
 import 'leaflet.path.drag'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 import MapActionButton from './MapActionButton'
 import BackButton from '@/components/navigation/BackButton.vue'
-import Markdown from '@/components/Markdown'
+import MapNavigationCard from './MapNavigationCard.vue'
 
 export default {
   name: 'Map',
@@ -84,10 +63,10 @@ export default {
     LControlZoom,
     LGeoJson,
     BackButton,
-    Markdown
+    MapNavigationCard
   },
   props: {
-    trashCanType: {
+    locationTypes: {
       type: Array,
       default: null
     }
@@ -99,121 +78,129 @@ export default {
       userLocation: null,
       zoom: 13,
       position: null,
-      trashCanPopupData: {
-        id: '',
-        active: false,
-        title: '',
-        link: '',
-        notes: '',
-        images: [],
-        latitude: '',
-        longitude: ''
-      },
+      locations: [],
+      showPopup: false,
+      popupLocation: null,
       center: [47.745236, 8.971745],
       userIcon: L.icon({
         iconUrl: require('@/assets/icons/crosshairs-gps.png'),
-        iconSize: [12, 12],
-        iconAnchor: [6, 12]
+        iconSize: [24, 24],
+        iconAnchor: [12, 12]
       }),
       url: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
-      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      attribution:
+        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }
   },
-  async created () {
-    const response = await fetch('/landkreis-konstanz.geojson')
-    this.geojson = await response.json()
+  created () {
+    this.loadDistrictPolygons()
+    this.loadLocations()
   },
   mounted () {
-    this.getTrashCans()
     this.onReady()
   },
-  computed: {
-    trashCans () {
-      if (this.trashCanType) {
-        const list = []
-        this.trashCanType.forEach(type => {
-          this.$store.getters.getTrashCans.forEach(trashCan => {
-            if (trashCan.type === type) {
-              list.push(trashCan)
-            }
-          })
-        })
-        return list
-      } else {
-        return this.$store.getters.getTrashCans
-      }
-    },
-    styleFunction () {
-      return () => {
-        return {
-          weight: 2,
-          color: '#FF6F00'
-        }
-      }
-    }
-  },
   methods: {
-    openGoogleMaps (latitude, longitude) {
-      window.open(`https://www.google.com/maps/dir/Current+Location/${latitude},${longitude}`, '_blank')
-    },
-    pickIcon (trashCan) {
-      return L.icon({ iconUrl: require(`@/assets/icons/${trashCan.type}.png`), iconSize: [32, 32], iconAnchor: [16, 32] })
-    },
-    openTrashCanPopup (trashCan) {
-      this.trashCanPopupData.id = trashCan.id
-      this.trashCanPopupData.title = trashCan.type
-      this.trashCanPopupData.notes = trashCan.notes
-      this.trashCanPopupData.link = trashCan.link
-      this.trashCanPopupData.latitude = trashCan.latitude
-      this.trashCanPopupData.longitude = trashCan.longitude
-
-      if (trashCan.image) {
-        this.trashCanPopupData.images = []
-        trashCan.image.forEach(img => {
-          this.trashCanPopupData.images.push(img.url)
+    loadDistrictPolygons () {
+      fetch('/landkreis-konstanz.geojson').then((response) => {
+        response.json().then((data) => {
+          this.geojson = data
         })
-      } else {
-        this.trashCanPopupData.images = []
-      }
-      this.trashCanPopupData.active = true
-    },
-    getTrashCans () {
-      this.$store.dispatch('getTrashCansFromSessionStorage')
-    },
-    onReady () {
-      navigator.geolocation.getCurrentPosition((success) => {
-        this.position = success.coords
-        if (this.center) {
-          this.center = [success.coords.latitude, success.coords.longitude]
-          this.registerGeolocationObserver()
-        }
-      }, error => {
-        this.$notify({
-          group: 'default',
-          type: 'error',
-          title: 'Error, keine Änderung der Position erkannt.',
-          text: error.message
-        })
-      }, options => {
-        options = {
-          enableHighAccuracy: true,
-          timeout: 5000,
-          maximumAge: 0
-        }
       })
     },
-    registerGeolocationObserver () {
-      if (window.navigator.geolocation) {
-        window.navigator.geolocation.watchPosition(position => {
-          this.userLocation = [position.coords.latitude, position.coords.longitude]
-        }, (error) => {
+    loadLocations () {
+      this.$store
+        .dispatch('getLocationsFromSessionStorage')
+        .then((locations) => {
+          if (this.locationTypes) {
+            const list = []
+            this.locationTypes.forEach((type) => {
+              const filteredList = this.$store.getters.getLocations.filter(
+                (loc) => {
+                  return loc.type === type
+                }
+              )
+              list.push(...filteredList)
+            })
+            this.locations = list
+          } else {
+            this.locations = this.$store.getters.getLocations
+          }
+        })
+    },
+    getPin (location) {
+      let icon
+      try {
+        icon = require(`@/assets/icons/${location.type}.png`)
+        return L.icon({
+          iconUrl: icon,
+          iconSize: [32, 32],
+          iconAnchor: [16, 32]
+        })
+      } catch (e) {
+        console.log(
+          `No icon associated to this location type '${location.type}'`
+        )
+        return null
+      }
+    },
+    openPopup (location) {
+      this.popupLocation = location
+      this.showPopup = true
+    },
+    closePopup () {
+      this.popupLocation = null
+      this.showPopup = false
+    },
+    onReady () {
+      navigator.geolocation.getCurrentPosition(
+        (success) => {
+          this.position = success.coords
+          if (this.center) {
+            this.center = [success.coords.latitude, success.coords.longitude]
+            this.registerGeolocationObserver()
+          }
+        },
+        (error) => {
           this.$notify({
             group: 'default',
             type: 'error',
             title: 'Keine Änderung der Position erkannt.',
-            text: error
+            text: error.message
           })
-        })
+        },
+        (options) => {
+          options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+          }
+        }
+      )
+    },
+    registerGeolocationObserver () {
+      if (window.navigator.geolocation) {
+        window.navigator.geolocation.watchPosition(
+          (position) => {
+            this.userLocation = [
+              position.coords.latitude,
+              position.coords.longitude
+            ]
+          },
+          (error) => {
+            this.$notify({
+              group: 'default',
+              type: 'error',
+              title: 'Keine Änderung der Position erkannt.',
+              text: error
+            })
+          }
+        )
+      }
+    },
+    styleFunction () {
+      return {
+        weight: 2,
+        color: '#FF6F00'
       }
     }
   }
@@ -221,60 +208,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'node_modules/vuetify/src/styles/settings/variables';
-@import 'src/scss/variables';
+@import "node_modules/vuetify/src/styles/settings/variables";
+@import "src/scss/variables";
 
 .map {
   width: 100vw;
   height: 100vh;
   z-index: 1;
-}
-
-.bottom-sheet {
-  &__card {
-    overflow-y: scroll;
-    padding: 1rem 1rem 1.75rem 0.75rem;
-    height: clamp(60vh, 70vw, 90vh);
-    display: grid
-  }
-
-  &__title {
-    margin: 1rem 0;
-    font-size: clamp(2rem, 8vw, 2.5rem);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  &__link {
-    word-break: break-all;
-    text-underline-offset: 4px;
-
-    &::before {
-      content: '🌐';
-      margin-right: 4px;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    &-wrapper {
-      margin: 0 0 3rem 0;
-    }
-  }
-
-  &__notes {
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    hyphens: auto;
-
-    ::v-deep ul li {
-      width: fit-content;
-      list-style-type: "📆  ";
-    }
-  }
-
-  &__image {
-    border-radius: 20px;
-    width: clamp(250px, calc(50vw - 40px), 1600px)
-  }
 }
 
 ::v-deep .leaflet-control-zoom {
@@ -286,10 +226,18 @@ export default {
 }
 
 ::v-deep .leaflet-control-zoom-in {
-  @include glassmorphism($color: white, $blur-ammount: 4px, $color-intensity: .4);
+  @include glassmorphism(
+    $color: white,
+    $blur-ammount: 4px,
+    $color-intensity: 0.4
+  );
 }
 
 ::v-deep .leaflet-control-zoom-out {
-  @include glassmorphism($color: white, $blur-ammount: 4px, $color-intensity: .4);
+  @include glassmorphism(
+    $color: white,
+    $blur-ammount: 4px,
+    $color-intensity: 0.4
+  );
 }
 </style>
