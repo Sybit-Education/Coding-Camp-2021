@@ -44,6 +44,26 @@ module.exports = {
           src: './img/icons/mstile-150x150.png',
           sizes: '150x150',
           type: 'image/png'
+        },
+        {
+          src: './img/icons/apple-touch-icon-152x152.png',
+          sizes: '152x152',
+          type: 'image/png'
+        },
+        {
+          src: './img/icons/apple-touch-icon-167x167.png',
+          sizes: '167x167',
+          type: 'image/png'
+        },
+        {
+          src: './img/icons/apple-touch-icon-180x180.png',
+          sizes: '180x180',
+          type: 'image/png'
+        },
+        {
+          src: './img/icons/mstile-270x270.png',
+          sizes: '270x270',
+          type: 'image/png'
         }
       ]
     },
