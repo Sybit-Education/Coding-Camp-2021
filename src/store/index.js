@@ -1,21 +1,29 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createLogger from 'vuex/dist/logger'
+
 import * as airtableService from '@/services/airtable.service'
-import * as trashcanService from '../services/trashcan.service'
+import * as locationService from '@/services/location.service'
 import materialService from '@/services/material.service'
 import targetService from '@/services/target.service'
-import tipService from '../services/tip.service'
-import { setCookie } from '../services/cookie.service'
+import tipService from '@/services/tip.service'
+import { setCookie } from '@/services/cookie.service'
 
 Vue.use(Vuex)
+const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
   state: {
     showLoadingSpinner: false,
     materialList: [],
     targetList: [],
-    trashCans: [],
-    tipList: []
+    locations: [],
+    tipList: [],
+    // Making sure that we're doing
+    // everything correctly by enabling
+    // strict mode in the dev environment.
+    strict: process.env.NODE_ENV !== 'production',
+    plugins: debug ? [createLogger()] : []
   },
 
   getters: {
@@ -35,8 +43,8 @@ export default new Vuex.Store({
     getTargetById: (state) => (id) => {
       return state.targetList.find((target) => target.id === id)
     },
-    getTrashCans (state) {
-      return state.trashCans
+    getLocations (state) {
+      return state.locations
     },
     getTipList: (state) => state.tipList,
     getTipById: (state) => (id) => state.tipList.find((tip) => tip.id === id)
@@ -52,8 +60,8 @@ export default new Vuex.Store({
     UPDATE_SHOW_LOADING_SPINNER (state, showLoadingSpinner) {
       state.showLoadingSpinner = showLoadingSpinner
     },
-    UPDATE_TRASHCAN_LIST (state, payload) {
-      state.trashCans = payload
+    UPDATE_LOCATION_LIST (state, payload) {
+      state.locations = payload
     },
     UPDATE_TIP_LIST (state, payload) {
       state.tipList = payload
@@ -79,21 +87,21 @@ export default new Vuex.Store({
   },
 
   actions: {
-    async getTrashCans ({ commit }) {
+    async getLocations ({ commit }) {
       try {
-        const trashCans = await trashcanService.getTrashCans()
-        commit('UPDATE_TRASHCAN_LIST', trashCans)
+        const locations = await locationService.getLocations()
+        commit('UPDATE_LOCATION_LIST', locations)
       } catch (error) {
         console.warn(error)
         return null
       }
     },
-    async getTrashCansFromSessionStorage ({ dispatch, commit }) {
-      const recordsFromSessionStorage = airtableService.getRecordsFromSessionStorage('trashCans')
+    async getLocationsFromSessionStorage ({ dispatch, commit }) {
+      const recordsFromSessionStorage = airtableService.getRecordsFromSessionStorage('locations')
       if (recordsFromSessionStorage) {
-        commit('UPDATE_TRASHCAN_LIST', recordsFromSessionStorage)
+        commit('UPDATE_LOCATION_LIST', recordsFromSessionStorage)
       } else {
-        dispatch('getTrashCans')
+        dispatch('getLocations')
       }
     },
     async getMaterialRecords ({ commit }) {

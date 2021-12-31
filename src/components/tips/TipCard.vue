@@ -8,7 +8,7 @@
         <v-col md="4" sm="12">
           <v-img
               :src="imageSource"
-              class="tip-teaser-card__image rounded-xl">
+              class="tip-teaser-card__image rounded-xl rounded-b-0">
             <template v-slot:placeholder>
               <v-row
                 class="fill-height ma-0"
