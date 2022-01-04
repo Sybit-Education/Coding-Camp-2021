@@ -35,6 +35,10 @@
         @click="openPopup(loc)"
       />
       <l-control-zoom class="map__zoom-buttons" />
+      <l-locate-control
+        class="map__locate-button"
+        :options="{ position: 'bottomright' }"
+      />
       <l-control position="topleft">
         <back-button />
       </l-control>
@@ -54,6 +58,7 @@ import {
   LMarker,
   LTileLayer
 } from 'vue2-leaflet'
+import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol'
 import 'leaflet.path.drag'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
@@ -71,6 +76,7 @@ export default {
     LControl,
     LControlZoom,
     LGeoJson,
+    'l-locate-control': Vue2LeafletLocatecontrol,
     BackButton,
     MapNavigationCard
   },
@@ -101,11 +107,6 @@ export default {
           lng: 9.365931896483863
         }
       },
-      userIcon: L.icon({
-        iconUrl: require('@/assets/icons/crosshairs-gps.png'),
-        iconSize: [12, 12],
-        iconAnchor: [6, 12]
-      }),
       url: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -113,12 +114,10 @@ export default {
   },
   created () {
     this.loadDistrictPolygons()
-    this.loadLocations()
   },
   mounted () {
-    this.onReady()
     this.currentZoom = this.$route.query.zoom
-      ? this.$route.query.zoom
+      ? Number.parseInt(this.$route.query.zoom, 10)
       : this.currentZoom
     this.currentCenter.lat = this.$route.query.clat
       ? this.$route.query.clat
@@ -126,6 +125,8 @@ export default {
     this.currentCenter.lng = this.$route.query.clng
       ? this.$route.query.clng
       : this.currentCenter.lng
+
+    this.loadLocations()
   },
   methods: {
     loadDistrictPolygons () {
@@ -177,55 +178,6 @@ export default {
       this.popupLocation = null
       this.showPopup = false
     },
-    onReady () {
-      navigator.geolocation.getCurrentPosition(
-        (success) => {
-          this.position = success.coords
-          if (this.center) {
-            this.currentCenter = [
-              success.coords.latitude,
-              success.coords.longitude
-            ]
-            this.registerGeolocationObserver()
-          }
-        },
-        (error) => {
-          this.$notify({
-            group: 'default',
-            type: 'error',
-            title: 'Keine Änderung der Position erkannt.',
-            text: error.message
-          })
-        },
-        (options) => {
-          options = {
-            enableHighAccuracy: true,
-            timeout: 5000,
-            maximumAge: 0
-          }
-        }
-      )
-    },
-    registerGeolocationObserver () {
-      if (window.navigator.geolocation) {
-        window.navigator.geolocation.watchPosition(
-          (position) => {
-            this.userLocation = [
-              position.coords.latitude,
-              position.coords.longitude
-            ]
-          },
-          (error) => {
-            this.$notify({
-              group: 'default',
-              type: 'error',
-              title: 'Keine Änderung der Position erkannt.',
-              text: error
-            })
-          }
-        )
-      }
-    },
     styleFunction () {
       return {
         weight: 2,
@@ -234,7 +186,7 @@ export default {
     },
     updateZoom (zoom) {
       if (zoom !== this.currentZoom) {
-        this.currentZoom = zoom
+        this.currentZoom = Number.parseInt(zoom, 10)
         this.$router.replace({
           query: {
             zoom: this.currentZoom,
@@ -266,34 +218,54 @@ export default {
 <style lang="scss" scoped>
 @import "node_modules/vuetify/src/styles/settings/variables";
 @import "src/scss/variables";
+@import "~leaflet/dist/leaflet.css";
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
 
 .map {
   width: 100vw;
   height: 100vh;
   z-index: 1;
 }
+::v-deep .leaflet-bottom {
+  @media #{map-get($display-breakpoints, 'xs-only')} {
+    bottom: calc(1.5 * #{$bottom-navigation-height});
+  }
+}
+
+::v-deep .leaflet-touch .leaflet-bar a {
+  @include glassmorphism(
+    $color: white,
+    $blur-ammount: 4px,
+    $color-intensity: 0.4
+  );
+  width: 40px;
+  height: 40px;
+  font-size: 28px;
+  font-weight: 700;
+}
+::v-deep .leaflet-touch .leaflet-bar a:first-child {
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
+
+::v-deep .leaflet-touch .leaflet-bar a:last-child {
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
 
 ::v-deep .leaflet-control-zoom {
-  margin-right: 2rem;
+  margin-right: 1.25rem;
   border: 0;
   @media #{map-get($display-breakpoints, 'xs-only')} {
     display: none;
   }
 }
 
-::v-deep .leaflet-control-zoom-in {
-  @include glassmorphism(
-    $color: white,
-    $blur-ammount: 4px,
-    $color-intensity: 0.4
-  );
-}
-
-::v-deep .leaflet-control-zoom-out {
-  @include glassmorphism(
-    $color: white,
-    $blur-ammount: 4px,
-    $color-intensity: 0.4
-  );
+::v-deep .leaflet-control-locate {
+  margin-right: 1.25rem;
+  @media #{map-get($display-breakpoints, 'xs-only')} {
+    margin-right: 0.75rem;
+    margin-bottom: 0;
+  }
 }
 </style>

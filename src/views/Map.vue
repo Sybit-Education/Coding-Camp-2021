@@ -1,5 +1,5 @@
 <template>
-  <Map :navigate="false" :trashCanType="targetNames"/>
+  <Map :navigate="false" :locationType="targetNames" />
 </template>
 
 <script>

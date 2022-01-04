@@ -10,15 +10,17 @@
         Möchten Sie die Mülli-App lokal installieren?
         <template v-slot:actions>
           <v-btn text @click="dismiss" class="rounded-xl">Nein danke</v-btn>
-          <v-btn color="white" @click="install" class="rounded-xl black--text">Installieren</v-btn>
+          <v-btn color="white" @click="install" class="rounded-xl black--text"
+            >Installieren</v-btn
+          >
         </template>
       </v-banner>
       <router-view />
       <div class="navigation">
-        <BottomNavigation class="bottomnav"/>
+        <bottom-navigation class="bottomnav" />
       </div>
     </v-main>
-    <notifications group="default"/>
+    <notifications group="default" />
   </v-app>
 </template>
 
@@ -39,7 +41,7 @@ export default {
     }
   },
   created () {
-    window.addEventListener('beforeinstallprompt', event => {
+    window.addEventListener('beforeinstallprompt', (event) => {
       event.preventDefault()
       this.deferredPrompt = event
     })
@@ -48,9 +50,11 @@ export default {
     })
     this.$store.dispatch('getRecordsFromSessionStorage', [
       'material',
-      'targets'
+      'targets',
+      'locations'
     ])
     this.$store.dispatch('getTipRecords')
+    this.$store.dispatch('getLocations')
   },
   methods: {
     async dismiss () {
@@ -63,7 +67,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import 'src/scss/scrollbar.scss';
+@import "src/scss/scrollbar.scss";
 .container {
   margin-bottom: 1.25 * $bottom-navigation-height;
 }

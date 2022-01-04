@@ -158,6 +158,10 @@ export default new Vuex.Store({
         targets: {
           commitName: 'UPDATE_TARGET_LIST',
           actionName: 'getTargetRecords'
+        },
+        locations: {
+          commitName: 'UPDATE_LOCATION_LIST',
+          actionName: 'getLocations'
         }
       }
 

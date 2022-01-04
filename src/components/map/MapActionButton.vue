@@ -2,13 +2,13 @@
   <div>
     <v-btn
       bottom
-      right
+      left
       class="map__action-button"
       fab
       fixed
       @click="showUploadForm = true"
     >
-      <v-icon size="35">mdi-plus</v-icon>
+      <v-icon size="30">mdi-plus</v-icon>
     </v-btn>
     <MapUploadForm :userLocation="userLocation"></MapUploadForm>
   </div>
@@ -38,12 +38,14 @@ export default {
 @import "src/scss/variables.scss";
 
 .map__action-button {
+  width: 40px;
+  height: 40px;
   @include glassmorphism(
     $color: white,
     $blur-ammount: 4px,
     $color-intensity: 0.4
   );
-  margin-bottom: calc(0.5 * #{$bottom-navigation-height});
+  margin-bottom: calc(0.25 * #{$bottom-navigation-height});
 
   @media #{map-get($display-breakpoints, 'xs-only')} {
     margin-bottom: calc(1.5 * #{$bottom-navigation-height});
