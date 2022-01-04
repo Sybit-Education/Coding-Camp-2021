@@ -3,12 +3,21 @@
     <map-action-button :userLocation="userLocation"></map-action-button>
     <l-map
       ref="map"
-      :center="center"
+      :center="currentCenter"
       :options="{ zoomControl: false }"
-      :zoom="zoom"
+      :max-bounds="maxBounds"
+      :min-zoom="9"
+      :max-zoom="18"
+      :zoom="currentZoom"
       class="map"
+      @update:zoom="updateZoom"
+      @update:center="updateCenter"
     >
-      <l-tile-layer :attribution="attribution" :url="url" />
+      <l-tile-layer
+        :attribution="attribution"
+        :url="url"
+        :max-bounds="maxBounds"
+      />
       <l-geo-json
         v-if="geojson"
         layerType="boundary"
@@ -76,16 +85,26 @@ export default {
       map: null,
       geojson: null,
       userLocation: null,
-      zoom: 13,
+      currentZoom: 10,
+      currentCenter: { lat: 47.78707377527543, lng: 8.8828643076576 },
       position: null,
       locations: [],
       showPopup: false,
       popupLocation: null,
-      center: [47.745236, 8.971745],
+      maxBounds: {
+        _southWest: {
+          lat: 47.54918891696502,
+          lng: 8.474666027343236
+        },
+        _northEast: {
+          lat: 47.99957120189105,
+          lng: 9.365931896483863
+        }
+      },
       userIcon: L.icon({
         iconUrl: require('@/assets/icons/crosshairs-gps.png'),
-        iconSize: [24, 24],
-        iconAnchor: [12, 12]
+        iconSize: [12, 12],
+        iconAnchor: [6, 12]
       }),
       url: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution:
@@ -98,6 +117,15 @@ export default {
   },
   mounted () {
     this.onReady()
+    this.currentZoom = this.$route.query.zoom
+      ? this.$route.query.zoom
+      : this.currentZoom
+    this.currentCenter.lat = this.$route.query.clat
+      ? this.$route.query.clat
+      : this.currentCenter.lat
+    this.currentCenter.lng = this.$route.query.clng
+      ? this.$route.query.clng
+      : this.currentCenter.lng
   },
   methods: {
     loadDistrictPolygons () {
@@ -128,11 +156,9 @@ export default {
         })
     },
     getPin (location) {
-      let icon
       try {
-        icon = require(`@/assets/icons/${location.type}.png`)
         return L.icon({
-          iconUrl: icon,
+          iconUrl: require(`@/assets/icons/${location.type}.png`),
           iconSize: [32, 32],
           iconAnchor: [16, 32]
         })
@@ -156,7 +182,10 @@ export default {
         (success) => {
           this.position = success.coords
           if (this.center) {
-            this.center = [success.coords.latitude, success.coords.longitude]
+            this.currentCenter = [
+              success.coords.latitude,
+              success.coords.longitude
+            ]
             this.registerGeolocationObserver()
           }
         },
@@ -201,6 +230,33 @@ export default {
       return {
         weight: 2,
         color: '#FF6F00'
+      }
+    },
+    updateZoom (zoom) {
+      if (zoom !== this.currentZoom) {
+        this.currentZoom = zoom
+        this.$router.replace({
+          query: {
+            zoom: this.currentZoom,
+            clat: this.currentCenter ? this.currentCenter.lat : null,
+            clng: this.currentCenter ? this.currentCenter.lng : null
+          }
+        })
+      }
+    },
+    updateCenter (center) {
+      if (
+        center.lat !== this.currentCenter.lat ||
+        center.lng !== this.currentCenter.lng
+      ) {
+        this.currentCenter = center
+        this.$router.replace({
+          query: {
+            zoom: this.currentZoom,
+            clat: this.currentCenter ? this.currentCenter.lat : null,
+            clng: this.currentCenter ? this.currentCenter.lng : null
+          }
+        })
       }
     }
   }
