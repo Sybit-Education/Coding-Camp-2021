@@ -73,6 +73,7 @@ import L, { latLngBounds } from 'leaflet'
 import MapActionButton from './MapActionButton'
 import BackButton from '@/components/navigation/BackButton.vue'
 import MapNavigationCard from './MapNavigationCard.vue'
+import * as locationService from '@/services/location.service'
 
 export default {
   name: 'Map',
@@ -147,6 +148,7 @@ export default {
       this.$store
         .dispatch('getLocationsFromSessionStorage')
         .then((locations) => {
+          console.log('locations', locations)
           if (this.locationTypes) {
             const list = []
             this.locationTypes.forEach((type) => {
@@ -164,18 +166,11 @@ export default {
         })
     },
     getPin (location) {
-      try {
-        return L.icon({
-          iconUrl: require(`@/assets/icons/${location.type}.png`),
-          iconSize: [32, 32],
-          iconAnchor: [16, 32]
-        })
-      } catch (e) {
-        console.log(
-          `No icon associated to this location type '${location.type}'`
-        )
-        return null
-      }
+      return L.icon({
+        iconUrl: locationService.getLocationTypeImage(location),
+        iconSize: [32, 32],
+        iconAnchor: [16, 32]
+      })
     },
     openPopup (location) {
       this.popupLocation = location
