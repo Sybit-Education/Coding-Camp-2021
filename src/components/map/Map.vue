@@ -4,6 +4,7 @@
       ref="map"
       :center="currentCenter"
       :options="{ zoomControl: false }"
+      :bounds="bounds"
       :max-bounds="maxBounds"
       :min-zoom="9"
       :max-zoom="18"
@@ -68,7 +69,7 @@ import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol'
 import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster'
 import 'leaflet.path.drag'
 import 'leaflet/dist/leaflet.css'
-import L from 'leaflet'
+import L, { latLngBounds } from 'leaflet'
 import MapActionButton from './MapActionButton'
 import BackButton from '@/components/navigation/BackButton.vue'
 import MapNavigationCard from './MapNavigationCard.vue'
@@ -105,16 +106,14 @@ export default {
       locations: [],
       showPopup: false,
       popupLocation: null,
-      maxBounds: {
-        _southWest: {
-          lat: 47.54918891696502,
-          lng: 8.474666027343236
-        },
-        _northEast: {
-          lat: 47.99957120189105,
-          lng: 9.365931896483863
-        }
-      },
+      bounds: latLngBounds([
+        [47.54918891696502, 8.474666027343236],
+        [47.99957120189105, 9.365931896483863]
+      ]),
+      maxBounds: latLngBounds([
+        [47.54918891696502, 8.474666027343236],
+        [47.99957120189105, 9.365931896483863]
+      ]),
       url: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
