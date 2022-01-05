@@ -4,7 +4,6 @@
       ref="map"
       :center="currentCenter"
       :options="{ zoomControl: false }"
-      :bounds="bounds"
       :max-bounds="maxBounds"
       :min-zoom="9"
       :max-zoom="18"
@@ -16,7 +15,6 @@
       <l-tile-layer
         :attribution="attribution"
         :url="url"
-        :max-bounds="maxBounds"
       />
       <l-geo-json
         v-if="geojson"
