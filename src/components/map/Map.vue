@@ -1,6 +1,5 @@
 <template>
   <div class="map">
-    <map-action-button :userLocation="userLocation"></map-action-button>
     <l-map
       ref="map"
       :center="currentCenter"
@@ -27,21 +26,28 @@
       <template v-if="userLocation">
         <l-marker :icon="userIcon" :lat-lng="userLocation" />
       </template>
-      <l-marker
-        v-for="loc in locations"
-        :key="loc.id"
-        :icon="getPin(loc)"
-        :lat-lng="[loc.latitude, loc.longitude]"
-        @click="openPopup(loc)"
-      />
+      <v-marker-cluster
+        :options="{ showCoverageOnHover: false, maxClusterRadius: 40 }"
+      >
+        <l-marker
+          v-for="loc in locations"
+          :key="loc.id"
+          :icon="getPin(loc)"
+          :lat-lng="[loc.latitude, loc.longitude]"
+          @click="openPopup(loc)"
+        />
+      </v-marker-cluster>
       <l-control-zoom class="map__zoom-buttons" />
-      <l-locate-control
-        class="map__locate-button"
-        :options="{ position: 'bottomright' }"
-      />
       <l-control position="topleft">
         <back-button />
       </l-control>
+      <l-control class="map__action-button" position="bottomleft">
+        <map-action-button :userLocation="userLocation"></map-action-button>
+      </l-control>
+      <v-locate-control
+        class="map__locate-button"
+        :options="{ position: 'bottomright' }"
+      />
     </l-map>
     <v-bottom-sheet v-model="showPopup">
       <map-navigation-card :location="popupLocation" @close="closePopup" />
@@ -59,6 +65,7 @@ import {
   LTileLayer
 } from 'vue2-leaflet'
 import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol'
+import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster'
 import 'leaflet.path.drag'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
@@ -76,7 +83,8 @@ export default {
     LControl,
     LControlZoom,
     LGeoJson,
-    'l-locate-control': Vue2LeafletLocatecontrol,
+    'v-locate-control': Vue2LeafletLocatecontrol,
+    'v-marker-cluster': Vue2LeafletMarkerCluster,
     BackButton,
     MapNavigationCard
   },
@@ -220,16 +228,13 @@ export default {
 @import "src/scss/variables";
 @import "~leaflet/dist/leaflet.css";
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+@import "~leaflet.markercluster/dist/MarkerCluster.css";
+@import "~leaflet.markercluster/dist/MarkerCluster.Default.css";
 
 .map {
   width: 100vw;
   height: 100vh;
   z-index: 1;
-}
-::v-deep .leaflet-bottom {
-  @media #{map-get($display-breakpoints, 'xs-only')} {
-    bottom: calc(1.5 * #{$bottom-navigation-height});
-  }
 }
 
 ::v-deep .leaflet-touch .leaflet-bar a {
@@ -254,6 +259,7 @@ export default {
 }
 
 ::v-deep .leaflet-control-zoom {
+  margin-top: 28px;
   margin-right: 1.25rem;
   border: 0;
   @media #{map-get($display-breakpoints, 'xs-only')} {
@@ -265,7 +271,23 @@ export default {
   margin-right: 1.25rem;
   @media #{map-get($display-breakpoints, 'xs-only')} {
     margin-right: 0.75rem;
+    bottom: calc(1.5 * #{$bottom-navigation-height} - 18px);
+  }
+}
+
+::v-deep .leaflet-control-attribution {
+  margin-right: 1.25rem;
+  @media #{map-get($display-breakpoints, 'xs-only')} {
+    margin-right: 0;
     margin-bottom: 0;
+  }
+}
+
+::v-deep .map-action-button {
+  margin-bottom: calc(0.25 * #{$bottom-navigation-height} + 4px);
+
+  @media #{map-get($display-breakpoints, 'xs-only')} {
+    margin-bottom: calc(1.5 * #{$bottom-navigation-height});
   }
 }
 </style>
