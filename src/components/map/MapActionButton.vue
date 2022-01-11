@@ -1,9 +1,9 @@
 <template>
   <div class="map-action-button">
     <v-btn class="map-action-button__btn" fab @click="showUploadForm = true">
-      <v-icon size="30">mdi-plus</v-icon>
+      <v-icon size="30" title="Hinzufügen">mdi-plus</v-icon>
     </v-btn>
-    <MapUploadForm :userLocation="userLocation"></MapUploadForm>
+    <map-upload-form :userLocation="userLocation" />
   </div>
 </template>
 
