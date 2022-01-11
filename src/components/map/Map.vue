@@ -12,19 +12,14 @@
       @update:zoom="updateZoom"
       @update:center="updateCenter"
     >
-      <l-tile-layer
-        :attribution="attribution"
-        :url="url"
-      />
       <l-geo-json
         v-if="geojson"
         layerType="boundary"
         :options-style="styleFunction"
         :geojson="geojson"
       />
-      <template v-if="userLocation">
-        <l-marker :icon="userIcon" :lat-lng="userLocation" />
-      </template>
+      <l-tile-layer :attribution="attribution" :url="url" />
+      <l-marker v-if="userLocation" :icon="userIcon" :lat-lng="userLocation" />
       <v-marker-cluster
         :options="{ showCoverageOnHover: false, maxClusterRadius: 40 }"
       >
@@ -36,12 +31,12 @@
           @click="openPopup(loc)"
         />
       </v-marker-cluster>
-      <l-control-zoom class="map__zoom-buttons" />
+      <l-control-zoom class="map__zoom-buttons" position="topright" />
       <l-control position="topleft">
         <back-button />
       </l-control>
       <l-control class="map__action-button" position="bottomleft">
-        <map-action-button :userLocation="userLocation"></map-action-button>
+        <map-action-button :userLocation="userLocation" />
       </l-control>
       <v-locate-control
         class="map__locate-button"
@@ -146,7 +141,6 @@ export default {
       this.$store
         .dispatch('getLocationsFromSessionStorage')
         .then((locations) => {
-          console.log('locations', locations)
           if (this.locationTypes) {
             const list = []
             this.locationTypes.forEach((type) => {
@@ -216,12 +210,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "node_modules/vuetify/src/styles/settings/variables";
-@import "src/scss/variables";
 @import "~leaflet/dist/leaflet.css";
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
 @import "~leaflet.markercluster/dist/MarkerCluster.css";
 @import "~leaflet.markercluster/dist/MarkerCluster.Default.css";
+@import "node_modules/vuetify/src/styles/settings/variables";
+@import "src/scss/variables";
 
 .map {
   width: 100vw;
