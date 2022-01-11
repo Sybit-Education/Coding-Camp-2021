@@ -31,7 +31,12 @@
           @click="openPopup(loc)"
         />
       </v-marker-cluster>
-      <l-control-zoom class="map__zoom-buttons" position="topright" />
+      <l-control-zoom
+        class="map__zoom-buttons"
+        position="topright"
+        zoomInTitle="Vergrößern"
+        zoomOutTitle="Verkleinern"
+      />
       <l-control position="topleft">
         <back-button />
       </l-control>
