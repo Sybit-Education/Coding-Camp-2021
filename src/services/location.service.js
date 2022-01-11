@@ -117,7 +117,7 @@ export function getLocationTypeImage (location) {
     .replace(' ', '-')
     .replace('/', '-')
   try {
-    return require(`@/assets/icons/${imageName}.png`)
+    return require(`@/assets/pins/${imageName}.png`)
   } catch (e) {
     console.error(`No icon associated to this location type '${location.type}': ${imageName}.png`)
     return null
