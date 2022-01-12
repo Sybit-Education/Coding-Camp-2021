@@ -8,7 +8,10 @@ const problemstoffmobilService = {
       const allRecords = []
       base(BASE_NAME)
         .select({
-          view: 'public'
+          view: 'public',
+          cellFormat: 'string', // required to format times readable
+          userLocale: 'de-DE',
+          timeZone: 'Europe/Berlin'
         })
         .eachPage(
           function page (partialRecords, fetchNextPage) {
@@ -16,12 +19,12 @@ const problemstoffmobilService = {
             partialRecords.forEach((partialRecord) => {
               allRecords.push({
                 id: partialRecord.id,
-                date: partialRecord?.fields.DATUM,
-                municipality: partialRecord?.fields.GEMEINDE,
-                district: partialRecord?.fields.ORTSTEIL,
-                timeFrom: partialRecord?.fields['VON UHR'],
-                timeTo: partialRecord.fields['BIS UHR'],
-                collectionPoint: partialRecord.fields.SAMMELSTELLE
+                date: partialRecord.get('DATUM'),
+                municipality: partialRecord.get('GEMEINDE'),
+                district: partialRecord.get('ORTSTEIL'),
+                timeFrom: partialRecord.get('VON UHR'),
+                timeTo: partialRecord.get('BIS UHR'),
+                collectionPoint: partialRecord.get('SAMMELSTELLE')
               })
             })
             // To fetch the next page of records, call `fetchNextPage`.
