@@ -9,29 +9,20 @@
       </h4>
     </v-card-title>
     <v-card-text>
-      <v-row>
-        <v-col cols="1"
-          ><v-icon size="20" class="event-card__clock-icon"
-            >mdi-clock</v-icon
-          ></v-col
-        >
-        <v-col cols="11">
-          <b>Zeitraum:</b> {{ event.timeFrom }} - {{ event.timeTo }}
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="1"
-          ><v-icon size="20" class="event-card__map-marker-icon"
-            >mdi-map-marker</v-icon
-          ></v-col
-        >
-        <v-col cols="11">
-          <b>Sammelpunkt:</b><br />
+      <div>
+        <v-icon size="18" class="event-card__clock-icon">mdi-clock</v-icon>
+        <b> Zeitraum:</b> {{ event.timeFrom }} - {{ event.timeTo }}
+      </div>
+      <div>
+        <v-icon size="18" class="event-card__map-marker-icon"
+          >mdi-map-marker</v-icon
+        ><b> Sammelpunkt:</b>
+        <div class="event-card__pickup">
           {{ event.collectionPoint }}<br />
           {{ event.municipality
           }}<span v-if="event.district">, Ortsteil: {{ event.district }}</span>
-        </v-col>
-      </v-row>
+        </div>
+      </div>
     </v-card-text>
   </v-card>
 </template>
@@ -57,3 +48,8 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.event-card__pickup {
+  padding-left: 1.25rem;
+}
+</style>
