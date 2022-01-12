@@ -25,6 +25,13 @@ const routes = [
     props: true
   },
   {
+    path: '/problemstoff-sammeltermine',
+    name: 'Problemstoffmobil',
+    component: () =>
+      import(/* webpackChunkName: "map" */ '../views/Problemstoffmobil.vue'),
+    props: true
+  },
+  {
     path: '/datenschutz',
     name: 'Datenschutz',
     component: () =>
