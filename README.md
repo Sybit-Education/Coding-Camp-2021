@@ -3,7 +3,7 @@
 [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-WebApp to answer the question of how to properly dispose of garbage in the district of Constance: https://muelli.app
+The webbased application supports the citizens of "Landkreis Konstanz" in Germany to dispose the waste properly and to find the nearest recycling station: https://muelli.app
 
 - Testsystem: [![Netlify Status](https://api.netlify.com/api/v1/badges/7ee1ed26-e7a2-403a-8e20-332a7216475e/deploy-status)](https://app.netlify.com/sites/d1-coding-camp/deploys)
 - Produktiv: [![Netlify Status](https://api.netlify.com/api/v1/badges/25d8012e-6d1a-40c6-b43b-5ed17c1204e6/deploy-status)](https://app.netlify.com/sites/muelli/deploys)
@@ -12,8 +12,6 @@ WebApp to answer the question of how to properly dispose of garbage in the distr
 
 Within the one week Sybit Coding-Camp ten teenagers were guided by
 the apprentices of Sybit building the web application: "Mülli".
-
-The application will support the citizens of "Landkreis Konstanz" to dispose the waste properly and to find the nearest recycling station.
 
 ## Partner of the Project
 
