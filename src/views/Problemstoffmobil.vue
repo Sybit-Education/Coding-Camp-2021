@@ -4,7 +4,7 @@
     <p>
       Das Problemstoff-Mobil kommt für die Sammeltermine in die Gemeinden des
       Landkreis Konstanz. Suchen Sie sich den nächsten Sammeltermin für Ihre
-      Gemeinde aus:
+      Gemeinde:
     </p>
     <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
     <municipality-filter :event-list="unfilteredList" @doFilter="filter" />
