@@ -1,11 +1,11 @@
 <template>
-  <div id="municipality-filter">
+  <div clasee="municipality-filter">
     <v-autocomplete
       v-model="select"
       :loading="municipalities && municipalities.length < 0"
       :items="municipalities"
       :search-input="search"
-      class="rounded-xl"
+      class="municipality-filter__autocomplete rounded-xl"
       hide-no-data
       hide-details
       label="Gemeinde auswählen"

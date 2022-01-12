@@ -89,6 +89,7 @@
 <script>
 import materialService from '../../services/material.service'
 export default {
+  name: 'MaterialSearchbar',
   props: {
     items: {
       type: Array,

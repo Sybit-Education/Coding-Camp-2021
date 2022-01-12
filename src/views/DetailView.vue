@@ -26,7 +26,7 @@
         </v-row>
         <v-row>
           <v-col>
-            <markdown
+            <markdown-wrapper
               class="mt-10 mb-5"
               v-if="material.notes"
               :source="material.notes"
@@ -71,15 +71,16 @@
 <script>
 import BackButton from '@/components/navigation/BackButton.vue'
 import ShareButton from '@/components/navigation/ShareButton.vue'
-import Markdown from '@/components/Markdown.vue'
-import MaterialTargetDetail from '../components/material/MaterialTargetDetail.vue'
-import TipCard from '../components/tips/TipCard'
+import MaterialTargetDetail from '@/components/material/MaterialTargetDetail.vue'
+import TipCard from '@/components/tips/TipCard'
+import MarkdownWrapper from '@/components/MarkdownWrapper.vue'
 
 export default {
+  name: 'DetailView',
   components: {
     BackButton,
     ShareButton,
-    Markdown,
+    MarkdownWrapper,
     MaterialTargetDetail,
     TipCard
   },
@@ -200,7 +201,10 @@ export default {
     },
     routeToMap () {
       const targetNames = this.material.targets.map((target) => target.name)
-      this.$router.push({ name: 'Karte', params: { targetNames: targetNames } })
+      this.$router.push({
+        name: 'Karte',
+        params: { targetNames: targetNames }
+      })
     }
   }
 }

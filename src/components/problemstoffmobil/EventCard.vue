@@ -11,7 +11,7 @@
     <v-card-text>
       <div>
         <v-icon size="18" class="event-card__clock-icon">mdi-clock</v-icon>
-        <b> Zeitraum:</b> {{ event.timeFrom }} - {{ event.timeTo }}
+        <b> Zeitraum:</b> {{ timeFrom }} - {{ timeTo }}
       </div>
       <div>
         <v-icon size="18" class="event-card__map-marker-icon"
@@ -44,12 +44,20 @@ export default {
         day: 'numeric'
       }
       return new Date(this.event.date).toLocaleDateString('de-DE', options)
+    },
+    timeFrom () {
+      return new Date(this.event.timeFrom * 1000).toISOString().substr(11, 5)
+    },
+    timeTo () {
+      return new Date(this.event.timeTo * 1000).toISOString().substr(11, 5)
     }
   }
 }
 </script>
 <style lang="scss" scoped>
-.event-card__pickup {
-  padding-left: 1.25rem;
+.event-card {
+  &__pickup {
+    padding-left: 1.25rem;
+  }
 }
 </style>

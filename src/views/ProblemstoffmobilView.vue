@@ -7,10 +7,12 @@
       Gemeinde:
     </p>
     <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
-    <municipality-filter :event-list="unfilteredList" @doFilter="filter" />
-    <div v-for="event in list" :key="event.id">
-      <event-card :event="event" />
-    </div>
+    <v-row>
+      <v-col md="8" offset-md="2" lg="6" offset-lg="3" xl="4" offset-xl="4">
+        <municipality-filter :event-list="unfilteredList" @doFilter="filter" />
+        <event-card v-for="event in list" :key="event.id" :event="event" />
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -20,7 +22,7 @@ import EventCard from '@/components/problemstoffmobil/EventCard.vue'
 import MunicipalityFilter from '@/components/problemstoffmobil/MunicipalityFilter.vue'
 
 export default {
-  name: 'Problemstoffmobil',
+  name: 'ProblemstoffmobilView',
   components: { EventCard, MunicipalityFilter },
   data () {
     return {

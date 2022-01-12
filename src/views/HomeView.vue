@@ -3,7 +3,7 @@
     <h1 class="search-title">
       Wie entsorge ich im Landkreis Konstanz &hellip;
     </h1>
-    <searchbar :items="materials" class="my-5" />
+    <material-searchbar :items="materials" class="my-5" />
     <v-row class="metrics">
       <v-col><material-metric-card /></v-col>
       <v-col><location-metric-card /></v-col>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Searchbar from '@/components/searchbar/Searchbar'
+import MaterialSearchbar from '@/components/searchbar/MaterialSearchbar'
 import PartnerCarousel from '@/components/partner/PartnerCarousel'
 import TipCard from '@/components/tips/TipCard'
 import MaterialMetricCard from '@/components/metric/MaterialMetricCard.vue'
@@ -24,10 +24,10 @@ import LocationMetricCard from '@/components/metric/LocationMetricCard.vue'
 import TippMetricCard from '@/components/metric/TippMetricCard.vue'
 
 export default {
-  name: 'Home',
+  name: 'HomeView',
   components: {
     TipCard,
-    Searchbar,
+    MaterialSearchbar,
     PartnerCarousel,
     MaterialMetricCard,
     LocationMetricCard,

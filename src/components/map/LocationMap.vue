@@ -53,7 +53,7 @@ import BackButton from '@/components/navigation/BackButton.vue'
 import MapNavigationCard from './MapNavigationCard.vue'
 
 export default {
-  name: 'Map',
+  name: 'LocationMap',
   components: {
     MapActionButton,
     LMap,

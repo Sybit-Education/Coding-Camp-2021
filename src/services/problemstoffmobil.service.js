@@ -8,10 +8,7 @@ const problemstoffmobilService = {
       const allRecords = []
       base(BASE_NAME)
         .select({
-          view: 'public',
-          cellFormat: 'string', // required to format times readable
-          userLocale: 'de-DE',
-          timeZone: 'Europe/Berlin'
+          view: 'public'
         })
         .eachPage(
           function page (partialRecords, fetchNextPage) {

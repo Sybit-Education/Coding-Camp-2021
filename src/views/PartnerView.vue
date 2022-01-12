@@ -15,7 +15,7 @@ import partnerService from '@/services/partner.service'
 import partnerCard from '@/components/partner/PartnerCard.vue'
 
 export default {
-  name: 'Tipps',
+  name: 'PartnerView',
   components: { partnerCard },
   data () {
     return {

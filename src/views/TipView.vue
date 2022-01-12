@@ -6,46 +6,56 @@
           <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
           <back-button />
           <share-button
-              v-if="tip"
-              :title="tip.title"
-              :text="tip.teaser"
-              :url="$route.path"
+            v-if="tip"
+            :title="tip.title"
+            :text="tip.teaser"
+            :url="$route.path"
           >
           </share-button>
           <div class="card" v-if="tip">
-            <v-img :src="imageSource" class="card__image card__image--top rounded-xl" contain>
+            <v-img
+              :src="imageSource"
+              class="card__image card__image--top rounded-xl"
+              contain
+            >
               <template v-slot:placeholder>
-                <v-row
-                    class="fill-height ma-0"
-                    align="center"
-                    justify="center"
-                >
-                  <v-progress-circular
-                      indeterminate
-                      color="grey lighten-5"
-                  />
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5" />
                 </v-row>
               </template>
             </v-img>
-            <v-img :src="imageSource" class="card__image card__image--top card__image-background rounded-xl"
-                   contain>
+            <v-img
+              :src="imageSource"
+              class="
+                card__image card__image--top card__image-background
+                rounded-xl
+              "
+              contain
+            >
             </v-img>
-            <div class="card__title grey--text text--darken-3">{{ tip.title }}</div>
+            <div class="card__title grey--text text--darken-3">
+              {{ tip.title }}
+            </div>
             <markdown
-                :source="tip.teaser"
-                class="card__teaser grey--text text--darken-3">
+              :source="tip.teaser"
+              class="card__teaser grey--text text--darken-3"
+            >
             </markdown>
             <div class="card__markdown-wrapper">
-              <v-img :src="imageSource" class="card__image card__image--bottom rounded-xl" contain>
+              <v-img
+                :src="imageSource"
+                class="card__image card__image--bottom rounded-xl"
+                contain
+              >
               </v-img>
+              <markdown-wrapper :source="tip.article" class="card__markdown" />
               <markdown
-                  :source="tip.article"
-                  class="card__markdown">
-              </markdown>
-              <markdown :source="this.tip.teaserImageSource" class="card__image-source grey--text text--lighten-1"></markdown>
+                :source="this.tip.teaserImageSource"
+                class="card__image-source grey--text text--lighten-1"
+              ></markdown>
             </div>
           </div>
-          <v-skeleton-loader v-if="!tip" type="card"/>
+          <v-skeleton-loader v-if="!tip" type="card" />
         </div>
       </v-col>
     </v-row>
@@ -54,13 +64,13 @@
 
 <script>
 import tipService from '@/services/tip.service'
-import Markdown from '@/components/Markdown.vue'
 import BackButton from '@/components/navigation/BackButton.vue'
 import ShareButton from '@/components/navigation/ShareButton.vue'
+import MarkdownWrapper from '@/components/MarkdownWrapper.vue'
 
 export default {
-  components: { BackButton, ShareButton, Markdown },
-  name: 'Tip',
+  components: { BackButton, ShareButton, MarkdownWrapper },
+  name: 'TipView',
   data () {
     return {
       showLoadingSpinner: false,
@@ -123,7 +133,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import 'src/scss/variables.scss';
+@import "src/scss/variables.scss";
 @import "node_modules/vuetify/src/styles/settings/_colors.scss";
 
 .card {
@@ -167,7 +177,7 @@ export default {
     }
 
     strong {
-      letter-spacing: .1rem;
+      letter-spacing: 0.1rem;
       line-height: 2.5em;
     }
 
@@ -207,14 +217,13 @@ export default {
 
     &-background {
       z-index: 0 !important;
-      transform: translateY(20px) scaleX(.8);
+      transform: translateY(20px) scaleX(0.8);
       filter: blur(30px) opacity(60%);
     }
 
     &-source {
       font-size: 10px;
     }
-
   }
 }
 </style>
