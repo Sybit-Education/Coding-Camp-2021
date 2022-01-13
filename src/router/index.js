@@ -20,9 +20,9 @@ const routes = [
   {
     path: '/karte',
     name: 'Karte',
+    props: true,
     component: () =>
-      import(/* webpackChunkName: "map" */ '../views/Map.vue'),
-    props: true
+      import(/* webpackChunkName: "map" */ '../views/Map.vue')
   },
   {
     path: '/datenschutz',
