@@ -54,11 +54,13 @@
               v-model="material.requester.email"
               :rules="emailRules"
               label="E-Mail"
+              type="email"
               outlined
             />
             <v-text-field
               v-model="material.requester.city"
-              label="City"
+              label="Ort"
+              type="text"
               outlined
             />
             <v-alert v-if="message" color="error">
