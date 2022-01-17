@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3>Unsere Partner</h3>
     <v-carousel
       v-if="partnerList && partnerList.length > 0"
       class="partner-carousel"

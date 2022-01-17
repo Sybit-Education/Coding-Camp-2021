@@ -20,7 +20,7 @@
         {{ data.item.name }}
       </template>
       <template v-slot:append>
-        <v-btn icon @click="search">
+        <v-btn icon @click="search" aria-label="Suchen">
           <v-icon>
             {{ $route.path === "/detail" ? "mdi-magnify" : "mdi-help" }}
           </v-icon>

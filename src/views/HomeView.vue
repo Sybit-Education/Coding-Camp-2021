@@ -11,6 +11,7 @@
     </v-row>
     <tip-card v-if="tip && tip.id" :tip="tip" />
     <v-skeleton-loader v-else type="card" />
+    <h2>Unsere Partner</h2>
     <partner-carousel />
   </v-container>
 </template>
