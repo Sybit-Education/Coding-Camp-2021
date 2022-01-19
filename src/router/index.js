@@ -20,15 +20,15 @@ const routes = [
   {
     path: '/karte',
     name: 'Karte',
+    props: true,
     component: () =>
-      import(/* webpackChunkName: "map" */ '../views/MapView.vue'),
-    props: true
+      import(/* webpackChunkName: "map" */ '../views/MapView.vue')
   },
   {
     path: '/problemstoff-sammeltermine',
     name: 'Problemstoffmobil',
     component: () =>
-      import(/* webpackChunkName: "map" */ '../views/ProblemstoffmobilView.vue'),
+      import(/* webpackChunkName: "problemmobil" */ '../views/ProblemstoffmobilView.vue'),
     props: true
   },
   {

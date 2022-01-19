@@ -17,7 +17,7 @@
       </v-banner>
       <router-view />
       <div class="navigation">
-        <BottomNavigation class="bottomnav" />
+        <bottom-navigation class="bottomnav" />
       </div>
     </v-main>
     <notifications group="default" />
@@ -50,9 +50,11 @@ export default {
     })
     this.$store.dispatch('getRecordsFromSessionStorage', [
       'material',
-      'targets'
+      'targets',
+      'locations'
     ])
     this.$store.dispatch('getTipRecords')
+    this.$store.dispatch('getLocations')
   },
   methods: {
     async dismiss () {

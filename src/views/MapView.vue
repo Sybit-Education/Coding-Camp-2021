@@ -1,5 +1,5 @@
 <template>
-  <location-map :navigate="false" :trash-can-type="targetNames" />
+  <location-map :navigate="false" :location-type="targetNames" />
 </template>
 <script>
 import LocationMap from '@/components/map/LocationMap.vue'

@@ -1,16 +1,9 @@
 <template>
-  <div>
-    <v-btn
-      bottom
-      right
-      class="map__action-button"
-      fab
-      fixed
-      @click="showUploadForm = true"
-    >
-      <v-icon size="35">mdi-plus</v-icon>
+  <div class="map-action-button">
+    <v-btn class="map-action-button__btn" fab @click="showUploadForm = true">
+      <v-icon size="30" title="Hinzufügen">mdi-plus</v-icon>
     </v-btn>
-    <MapUploadForm :userLocation="userLocation"></MapUploadForm>
+    <map-upload-form :userLocation="userLocation" />
   </div>
 </template>
 
@@ -37,16 +30,13 @@ export default {
 <style lang="scss" scoped>
 @import "src/scss/variables.scss";
 
-.map__action-button {
+.map-action-button__btn {
+  width: 40px;
+  height: 40px;
   @include glassmorphism(
     $color: white,
     $blur-ammount: 4px,
     $color-intensity: 0.4
   );
-  margin-bottom: calc(0.5 * #{$bottom-navigation-height});
-
-  @media #{map-get($display-breakpoints, 'xs-only')} {
-    margin-bottom: calc(1.5 * #{$bottom-navigation-height});
-  }
 }
 </style>

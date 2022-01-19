@@ -110,3 +110,16 @@ export function checkImageAndCreateLocation (location) {
     }
   })
 }
+
+export function getLocationTypeImage (location) {
+  const imageName = location.type
+    .toLowerCase()
+    .replace(' ', '-')
+    .replace('/', '-')
+  try {
+    return `/pins/${imageName}.png`
+  } catch (e) {
+    console.error(`No icon associated to this location type '${location.type}': ${imageName}.png`)
+    return null
+  }
+}
