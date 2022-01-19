@@ -1,5 +1,5 @@
 <template>
-  <v-container id="problemstoffmobil">
+  <v-container>
     <h1 class="mb-5">Problemstoff-Sammeltermine</h1>
     <p>
       Das Problemstoff-Mobil kommt für die Sammeltermine in die Gemeinden des

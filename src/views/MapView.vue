@@ -2,24 +2,23 @@
   <location-map :navigate="false" :trash-can-type="targetNames" />
 </template>
 <script>
-/* eslint-disable */
-import LocationMap from "@/components/map/LocationMap.vue";
+import LocationMap from '@/components/map/LocationMap.vue'
 
 export default {
-  name: "MapView",
+  name: 'MapView',
   components: {
-    LocationMap,
+    LocationMap
   },
   props: {
     targetNames: {
       type: Array,
-      default: null,
-    },
+      default: null
+    }
   },
-  metaInfo() {
+  metaInfo () {
     return {
-      title: "Karte mit Entsorgungsmöglichkeiten",
-    };
-  },
-};
+      title: 'Karte mit Entsorgungsmöglichkeiten'
+    }
+  }
+}
 </script>
