@@ -3,7 +3,7 @@
     :to="{ name: 'TipDetail', params: { tipId: tip.id } }"
     class="text-decoration-none"
   >
-    <v-card class="tip-teaser-card rounded-xl">
+    <v-card v-if="tip" class="tip-teaser-card rounded-xl">
       <v-row>
         <v-col md="4" sm="12">
           <v-img
@@ -17,7 +17,7 @@
             </template>
           </v-img>
         </v-col>
-        <v-col md="8" sm="12">
+        <v-col sm="8" xs="12">
           <v-card-title class="tip-teaser-card__title">
             {{ tip.title }}
           </v-card-title>
@@ -33,6 +33,7 @@
         </v-col>
       </v-row>
     </v-card>
+    <v-skeleton-loader v-else type="card" />
   </router-link>
 </template>
 
@@ -51,7 +52,7 @@ export default {
   computed: {
     imageSource () {
       if (this.tip?.teaserImage?.length) {
-        return this.tip.teaserImage[0].url
+        return this.tip.teaserImage[0].thumbnails.large.url
       }
       return require('@/assets/tips_placeholder.svg')
     }
