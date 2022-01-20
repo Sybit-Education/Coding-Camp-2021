@@ -36,11 +36,10 @@
             <div class="card__title grey--text text--darken-3">
               {{ tip.title }}
             </div>
-            <markdown
+            <markdown-wrapper
               :source="tip.teaser"
               class="card__teaser grey--text text--darken-3"
-            >
-            </markdown>
+            />
             <div class="card__markdown-wrapper">
               <v-img
                 :src="imageSource"
@@ -49,10 +48,10 @@
               >
               </v-img>
               <markdown-wrapper :source="tip.article" class="card__markdown" />
-              <markdown
+              <markdown-wrapper
                 :source="this.tip.teaserImageSource"
                 class="card__image-source grey--text text--lighten-1"
-              ></markdown>
+              />
             </div>
           </div>
           <v-skeleton-loader v-if="!tip" type="card" />
