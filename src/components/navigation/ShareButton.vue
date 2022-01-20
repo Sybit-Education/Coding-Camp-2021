@@ -1,19 +1,17 @@
 <template>
   <v-btn
-      fab
-      top
-      small
-      right
-      fixed
-      class="share-button mt-3"
-      aria-hidden="false"
-      aria-label="Teilen"
-      v-if="isShareable"
-      @click="shareDetails"
+    fab
+    top
+    small
+    right
+    :fixed="fixed"
+    class="share-button mt-3"
+    aria-hidden="false"
+    aria-label="Teilen"
+    v-if="isShareable"
+    @click="shareDetails"
   >
-    <v-icon>
-      mdi-share-variant
-    </v-icon>
+    <v-icon> mdi-share-variant </v-icon>
   </v-btn>
 </template>
 <script>
@@ -31,11 +29,15 @@ export default {
     url: {
       type: String,
       required: true
+    },
+    fixed: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
     isShareable () {
-      return ('share' in navigator)
+      return 'share' in navigator
     }
   },
   methods: {
@@ -54,10 +56,14 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import 'src/scss/variables.scss';
+@import "src/scss/variables.scss";
 
 .share-button {
-  @include glassmorphism($color: white, $blur-ammount: 4px, $color-intensity: 0.4);
+  @include glassmorphism(
+    $color: white,
+    $blur-ammount: 4px,
+    $color-intensity: 0.4
+  );
   z-index: 999;
   margin-bottom: calc(0.5 * #{$bottom-navigation-height});
 

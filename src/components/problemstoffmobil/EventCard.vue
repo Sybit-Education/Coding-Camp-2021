@@ -7,6 +7,13 @@
         >
         {{ eventdate }}
       </h4>
+      <share-button
+        :title="shareTitle"
+        :url="shareUrl"
+        :text="shareText"
+        :fixed="false"
+        class="event-card__share-button"
+      />
     </v-card-title>
     <v-card-text>
       <div>
@@ -27,7 +34,9 @@
   </v-card>
 </template>
 <script>
+import ShareButton from '../navigation/ShareButton.vue'
 export default {
+  components: { ShareButton },
   name: 'EventCard',
   props: {
     event: {
@@ -50,6 +59,16 @@ export default {
     },
     timeTo () {
       return new Date(this.event.timeTo * 1000).toISOString().substr(11, 5)
+    },
+    shareTitle () {
+      return `Problemstoff-Mobil am ${this.eventdate} in ${this.event.municipality}`
+    },
+    shareUrl () {
+      return `/problemstoffmobil#${this.event.id}`
+    },
+    shareText () {
+      return `Am ${this.eventdate} ist das Problemstoff-Mobil von ${this.timeFrom} bis ${this.timeTo} Uhr in ${this.event.municipality}.
+      Sammelpunkt: ${this.event.collectionPoint}`
     }
   }
 }
@@ -58,6 +77,11 @@ export default {
 .event-card {
   &__pickup {
     padding-left: 1.25rem;
+  }
+  &__share-button {
+    position: absolute;
+    right: 1rem;
+    top: 0;
   }
 }
 </style>

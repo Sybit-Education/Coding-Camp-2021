@@ -25,7 +25,7 @@ const routes = [
       import(/* webpackChunkName: "map" */ '../views/MapView.vue')
   },
   {
-    path: '/problemstoff-sammeltermine',
+    path: '/problemstoffmobil',
     name: 'Problemstoffmobil',
     component: () =>
       import(/* webpackChunkName: "problemmobil" */ '../views/ProblemstoffmobilView.vue'),
