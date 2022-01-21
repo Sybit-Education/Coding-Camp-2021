@@ -1,28 +1,15 @@
 <template>
   <div>
     <v-btn
-      v-if="showThrowButton"
+      v-if="selectedTarget"
       block
       class="rounded-xl py-7"
       color="blue"
       dark
       elevation="0"
-      @click="routeToMap"
-    >
-      Jetzt entsorgen &hellip;
-    </v-btn>
-    <v-btn
-      v-if="showForwardButton"
-      block
-      class="rounded-xl py-7"
-      color="blue"
-      dark
-      elevation="0"
-      @click="routeToDRK"
-    >
-      Container beim
-      <v-icon color="red" size="30">mdi-hospital</v-icon>DRK suchen
-    </v-btn>
+      @click="onClick"
+      v-html="selectedTarget.targetLabel"
+    />
   </div>
 </template>
 
@@ -35,36 +22,43 @@ export default {
       required: true
     }
   },
-  computed: {
-    showButton () {
-      return this.material.status === 'available'
-    },
-    showThrowButton () {
-      return !!this.material.targets.some(
-        (target) => target.targetAction === 'show'
-      )
-    },
-    showForwardButton () {
-      return !!this.material.targets.some(
-        (target) => target.targetAction === 'URL_forwarding'
-      )
+  data () {
+    return {
+      selectedTarget: null
     }
   },
+  mounted () {
+    this.material.targets.forEach((target) => {
+      if (
+        target.targetAction === 'show_link' ||
+        target.targetAction === 'show_map'
+      ) {
+        this.selectedTarget = target
+      }
+    })
+  },
   methods: {
-    routeToDRK () {
-      window.location.href =
-        'https://www.drk-intern.de/start/suchergebnisse/kleidercontainer-suchergebnis.html?tx_drkclothescontainersearch_clothescontainersearch%5Baction%5D=clothescontainerResult&tx_drkclothescontainersearch_clothescontainersearch%5Bcontroller%5D=Clothescontainer&cHash=7ff3b10ad9ccdcf930f0dfa688ec8e20'
-    },
-    routeToMap () {
-      const targetNames = this.material.targets.map((target) => target.name)
-      this.$router.push({
-        name: 'Karte',
-        params: { targetNames: targetNames }
-      })
+    onClick () {
+      if (this.selectedTarget.targetAction === 'show_link') {
+        const url = this.selectedTarget.targetLink
+        if (url.startsWith('http')) {
+          window.open(url, '_blank')
+        } else {
+          this.$router.push(url)
+        }
+      } else if (this.selectedTarget.targetAction === 'show_map') {
+        const targetNames = this.material.targets.map((target) => target.name)
+        this.$router.push({
+          name: 'Karte',
+          params: { targetNames: targetNames }
+        })
+      } else {
+        console.error(
+          'undefined target action',
+          this.selectedTarget.targetAction
+        )
+      }
     }
   }
 }
 </script>
-
-<style>
-</style>

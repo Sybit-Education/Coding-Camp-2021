@@ -8,7 +8,7 @@ const targetService = {
         .select({
           // Selecting the first 3 records in All:
           view: 'All',
-          fields: ['Name', 'Description', 'Color', 'Image', 'TargetAction'],
+          fields: ['Name', 'Description', 'Color', 'Image', 'TargetAction', 'TargetLink', 'TargetLabel'],
           sort: [{ field: 'Name', direction: 'asc' }]
         })
         .eachPage(
@@ -22,6 +22,8 @@ const targetService = {
                 images: partialTarget?.fields?.Image,
                 description: partialTarget?.fields?.Description,
                 targetAction: partialTarget.fields?.TargetAction,
+                targetLink: partialTarget.fields?.TargetLink,
+                targetLabel: partialTarget.fields?.TargetLabel,
                 type: partialTarget.fields?.Type
               })
             })
