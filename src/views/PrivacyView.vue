@@ -876,6 +876,7 @@
 
 <script>
 export default {
+  name: 'PrivacyView',
   created () {
     window.scrollTo(0, 0)
   },

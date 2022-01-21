@@ -74,7 +74,7 @@ import MapNavigationCard from './MapNavigationCard.vue'
 import * as locationService from '@/services/location.service'
 
 export default {
-  name: 'Map',
+  name: 'LocationMap',
   components: {
     MapActionButton,
     LMap,

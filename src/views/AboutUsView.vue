@@ -98,6 +98,7 @@
 
 <script>
 export default {
+  name: 'AboutUsView',
   computed: {
     image () {
       return require('@/assets/img/ueber-uns/team.jpg')

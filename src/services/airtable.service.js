@@ -1,8 +1,7 @@
-// noinspection JSIgnoredPromiseFromCall
 import { getCookie } from './cookie.service'
 import store from '../store/index'
+import Airtable from 'airtable'
 
-const Airtable = require('airtable')
 export const base = new Airtable({
   apiKey: `${process.env.VUE_APP_AIRTABLE_TOKEN}`
 }).base('appWyEiPQWXPnV3sD')

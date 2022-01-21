@@ -7,7 +7,7 @@
         dark
         class="install-banner text-left"
       >
-        Möchten Sie die Mülli-App lokal installieren?
+        Möchten Sie die Mülli-App installieren?
         <template v-slot:actions>
           <v-btn text @click="dismiss" class="rounded-xl">Nein danke</v-btn>
           <v-btn color="white" @click="install" class="rounded-xl black--text"

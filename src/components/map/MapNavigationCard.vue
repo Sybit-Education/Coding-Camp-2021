@@ -9,7 +9,10 @@
       </div>
       <h2 class="bottom-sheet__title">{{ location.name }}</h2>
       <div v-if="location.notes">
-        <markdown :source="location.notes" class="bottom-sheet__notes" />
+        <markdown-wrapper
+          :source="location.notes"
+          class="bottom-sheet__notes"
+        />
       </div>
       <div v-if="location.link">
         <h3>Weitere Informationen</h3>
@@ -46,7 +49,7 @@
 </template>
 
 <script>
-import Markdown from '@/components/Markdown'
+import MarkdownWrapper from '@/components/MarkdownWrapper.vue'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
 
 export default {
@@ -58,7 +61,7 @@ export default {
     }
   },
   components: {
-    Markdown,
+    MarkdownWrapper,
     LoadingSpinner
   },
   methods: {
