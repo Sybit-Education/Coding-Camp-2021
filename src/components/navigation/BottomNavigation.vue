@@ -15,7 +15,7 @@
     <v-menu offset-y top>
       <template v-slot:activator="{ on, attrs }">
         <v-btn class="bottom-nav__button rounded-xl" v-bind="attrs" v-on="on">
-          <span class="grey--text text--darken-2">Menu</span>
+          <span class="grey--text text--darken-2">Mehr</span>
           <v-icon color="grey darken-2">mdi-menu</v-icon>
         </v-btn>
       </template>
@@ -39,16 +39,16 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       locationMap: {
         location_: 0,
         location_map: 1,
-        location_more: 2
-      }
-    }
-  }
-}
+        location_more: 2,
+      },
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
