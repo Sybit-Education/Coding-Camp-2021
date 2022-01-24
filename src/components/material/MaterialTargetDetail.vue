@@ -2,16 +2,16 @@
   <div v-if="target.description">
     <hr />
     <h2 class="mt-5" v-text="target.name" />
-    <markdown class="mt-5" :source="target.description" />
+    <markdown-wrapper class="mt-5" :source="target.description" />
   </div>
 </template>
 <script>
-import Markdown from '@/components/Markdown.vue'
+import MarkdownWrapper from '@/components/MarkdownWrapper.vue'
 
 export default {
   name: 'MaterialTargetDetail',
   components: {
-    Markdown
+    MarkdownWrapper
   },
   props: {
     target: {

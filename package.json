@@ -1,6 +1,6 @@
 {
   "name": "coding-camp-2021",
-  "version": "0.1.0",
+  "version": "1.4.0",
   "private": true,
   "engines": {
     "node": ">=12"
@@ -28,6 +28,8 @@
     "vue-number-animation": "^1.1.1",
     "vue-router": "^3.5.3",
     "vue2-leaflet": "^2.7.1",
+    "vue2-leaflet-locatecontrol": "^1.0.2",
+    "vue2-leaflet-markercluster": "^3.1.0",
     "vuetify": "^2.5.14",
     "vuex": "^3.6.2"
   },
@@ -43,9 +45,9 @@
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.1",
+    "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-standard": "^5.0.0",
-    "eslint-plugin-vue": "^7.20.0",
+    "eslint-plugin-vue": "^8.2.0",
     "husky": "^7.0.4",
     "node-sass": "^6.0.1",
     "sass": "~1.32.13",

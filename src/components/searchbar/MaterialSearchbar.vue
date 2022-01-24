@@ -20,7 +20,7 @@
         {{ data.item.name }}
       </template>
       <template v-slot:append>
-        <v-btn icon @click="search">
+        <v-btn icon @click="search" aria-label="Suchen">
           <v-icon>
             {{ $route.path === "/detail" ? "mdi-magnify" : "mdi-help" }}
           </v-icon>
@@ -54,11 +54,13 @@
               v-model="material.requester.email"
               :rules="emailRules"
               label="E-Mail"
+              type="email"
               outlined
             />
             <v-text-field
               v-model="material.requester.city"
-              label="City"
+              label="Ort"
+              type="text"
               outlined
             />
             <v-alert v-if="message" color="error">
@@ -89,6 +91,7 @@
 <script>
 import materialService from '../../services/material.service'
 export default {
+  name: 'MaterialSearchbar',
   props: {
     items: {
       type: Array,

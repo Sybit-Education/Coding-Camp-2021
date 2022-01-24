@@ -16,7 +16,7 @@
           <h3>{{ partner.name }}</h3>
         </v-card-title>
         <v-card-text>
-          <markdown v-if="partner.notes" :source="partner.notes" />
+          <markdown-wrapper v-if="partner.notes" :source="partner.notes" />
           <a :href="partner.website" target="_blank" rel="noopener noreferrer">
             {{ partner.website }}
           </a>
@@ -27,11 +27,11 @@
 </template>
 
 <script>
-import Markdown from '@/components/Markdown.vue'
+import MarkdownWrapper from '@/components/MarkdownWrapper.vue'
 
 export default {
   name: 'PartnerCard',
-  components: { Markdown },
+  components: { MarkdownWrapper },
   props: {
     partner: {
       type: Object,

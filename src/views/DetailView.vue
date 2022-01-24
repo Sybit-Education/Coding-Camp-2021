@@ -1,32 +1,31 @@
 <template>
   <v-container id="material-detail">
-    <back-button />
-    <share-button :title="share.title" :text="share.text" :url="$route.path" />
-    <v-card
-      class="mx-auto rounded-xl mt-10"
-      v-if="material && material.name && image"
-    >
+    <v-card class="mx-auto rounded-xl mt-3" v-if="material">
+      <back-button />
+      <share-button
+        :title="share.title"
+        :text="share.text"
+        :url="$route.path"
+      />
       <v-card-title>
-        <h1 class="material-name d-flex justify-center mb-5">
+        <h1 class="material-name mb-5 mx-10">
           {{ material.name }}
         </h1>
       </v-card-title>
-      <v-img contain class="mb-5 target-image" :src="image" />
-      <v-card-text elevation="20" class="material-box">
+      <target-image :material="material" />
+      <v-card-text>
         <v-row class="mb-3">
           <v-col
             v-for="target in material.targets"
             :key="target.id"
             align="center"
           >
-            <v-chip class="ml-2 elevation-3" outlined :color="target.color">{{
-              target.name
-            }}</v-chip>
+            <target-chip :target="target" />
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            <markdown
+            <markdown-wrapper
               class="mt-10 mb-5"
               v-if="material.notes"
               :source="material.notes"
@@ -34,29 +33,9 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-btn
-            v-if="showThrowButton"
-            block
-            class="rounded-xl py-7"
-            color="blue"
-            dark
-            elevation="0"
-            @click="routeToMap"
-          >
-            Jetzt entsorgen &hellip;
-          </v-btn>
-          <v-btn
-            v-if="showForwardButton"
-            block
-            class="rounded-xl py-7"
-            color="blue"
-            dark
-            elevation="0"
-            @click="routeToDRK"
-          >
-            Container beim
-            <v-icon color="red" size="30">mdi-hospital</v-icon>DRK suchen
-          </v-btn>
+          <v-col>
+            <material-call-to-action-button :material="material" />
+          </v-col>
         </v-row>
       </v-card-text>
       <v-card-text v-for="target in material.targets" :key="target.id">
@@ -71,17 +50,24 @@
 <script>
 import BackButton from '@/components/navigation/BackButton.vue'
 import ShareButton from '@/components/navigation/ShareButton.vue'
-import Markdown from '@/components/Markdown.vue'
-import MaterialTargetDetail from '../components/material/MaterialTargetDetail.vue'
-import TipCard from '../components/tips/TipCard'
+import MaterialTargetDetail from '@/components/material/MaterialTargetDetail.vue'
+import TipCard from '@/components/tips/TipCard'
+import MarkdownWrapper from '@/components/MarkdownWrapper.vue'
+import TargetChip from '@/components/target/TargetChip.vue'
+import TargetImage from '@/components/target/TargetImage.vue'
+import MaterialCallToActionButton from '@/components/material/MaterialCallToActionButton.vue'
 
 export default {
+  name: 'DetailView',
   components: {
     BackButton,
     ShareButton,
-    Markdown,
+    MarkdownWrapper,
     MaterialTargetDetail,
-    TipCard
+    TipCard,
+    TargetChip,
+    TargetImage,
+    MaterialCallToActionButton
   },
   metaInfo () {
     return {
@@ -105,26 +91,6 @@ export default {
     }
   },
   computed: {
-    showThrowButton () {
-      return !!this.material.targets.some(
-        (target) => target.targetAction === 'show'
-      )
-    },
-    showForwardButton () {
-      return !!this.material.targets.some(
-        (target) => target.targetAction === 'URL_forwarding'
-      )
-    },
-    image () {
-      if (
-        this.material &&
-        this.material.targets &&
-        this.material.targets[0]?.images
-      ) {
-        return this.material.targets[0].images[0].url
-      }
-      return "required('https://via.placeholder.com/150?text=placeholder')"
-    },
     materialId () {
       return this.$route.params.id
     },
@@ -193,14 +159,6 @@ export default {
           this.tip = list[Math.floor(Math.random() * list.length)]
         }
       })
-    },
-    routeToDRK () {
-      window.location.href =
-        'https://www.drk-intern.de/start/suchergebnisse/kleidercontainer-suchergebnis.html?tx_drkclothescontainersearch_clothescontainersearch%5Baction%5D=clothescontainerResult&tx_drkclothescontainersearch_clothescontainersearch%5Bcontroller%5D=Clothescontainer&cHash=7ff3b10ad9ccdcf930f0dfa688ec8e20'
-    },
-    routeToMap () {
-      const targetNames = this.material.targets.map((target) => target.name)
-      this.$router.push({ name: 'Karte', params: { targetNames: targetNames } })
     }
   }
 }
@@ -210,12 +168,5 @@ export default {
   font-size: 2rem;
   line-height: 2.25rem;
   word-break: break-word;
-}
-.target-image {
-  width: 50%;
-  max-width: 280px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 </style>
