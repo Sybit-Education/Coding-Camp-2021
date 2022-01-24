@@ -1,13 +1,13 @@
 <template>
-  <Map :navigate="false" :locationType="targetNames" />
+  <location-map :navigate="false" :location-type="targetNames" />
 </template>
-
 <script>
-import Map from '@/components/map/Map.vue'
+import LocationMap from '@/components/map/LocationMap.vue'
 
 export default {
+  name: 'MapView',
   components: {
-    Map
+    LocationMap
   },
   props: {
     targetNames: {

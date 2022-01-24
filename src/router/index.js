@@ -8,58 +8,65 @@ const routes = [
     path: '/',
     name: 'Home',
     component: () =>
-      import(/* webpackChunkName: "home" */ '../views/Home.vue')
+      import(/* webpackChunkName: "home" */ '../views/HomeView.vue')
   },
   {
     path: '/detail/:id',
     props: true,
     name: 'DetailPage',
     component: () =>
-      import(/* webpackChunkName: "home" */ '../views/DetailPage.vue')
+      import(/* webpackChunkName: "home" */ '../views/DetailView.vue')
   },
   {
     path: '/karte',
     name: 'Karte',
     props: true,
     component: () =>
-      import(/* webpackChunkName: "map" */ '../views/Map.vue')
+      import(/* webpackChunkName: "map" */ '../views/MapView.vue')
+  },
+  {
+    path: '/problemstoffmobil',
+    name: 'Problemstoffmobil',
+    component: () =>
+      import(/* webpackChunkName: "problemmobil" */ '../views/ProblemstoffmobilView.vue'),
+    props: true
   },
   {
     path: '/datenschutz',
     name: 'Datenschutz',
     component: () =>
-      import(/* webpackChunkName: "datenschutz" */ '../views/Datenschutz.vue')
+      import(/* webpackChunkName: "datenschutz" */ '../views/PrivacyView.vue')
   },
   {
     path: '/impressum',
     name: 'Impressum',
     component: () =>
-      import(/* webpackChunkName: "impressum" */ '../views/Impressum.vue')
+      import(/* webpackChunkName: "impressum" */ '../views/ImpressumView.vue')
   },
   {
     path: '/ueber-uns',
     name: 'Ueber-uns',
     component: () =>
-      import(/* webpackChunkName: "impressum" */ '../views/Ueber-uns.vue')
+      import(/* webpackChunkName: "impressum" */ '../views/AboutUsView.vue')
   },
   {
     path: '/partner',
     name: 'Partner',
     component: () =>
-      import(/* webpackChunkName: "partner" */ '../views/Partner.vue')
+      import(/* webpackChunkName: "partner" */ '../views/PartnerView.vue')
   },
   {
     path: '/tipps',
     name: 'Tipps',
     component: () =>
-      import(/* webpackChunkName: "tipps" */ '../views/TipsList.vue')
+      import(/* webpackChunkName: "tipps" */ '../views/TipsListView.vue')
   },
   {
     path: '/tipps/:tipId',
     props: true,
     name: 'TipDetail',
     component: () =>
-      import(/* webpackChunkName: "tips" */ '../views/Tip.vue')
+      import(/* webpackChunkName: "tips" */ '../views/TipView.vue')
   },
   {
     path: '*',

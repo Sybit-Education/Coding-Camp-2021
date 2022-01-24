@@ -12,7 +12,7 @@
 import tipCard from '@/components/tips/TipCard.vue'
 
 export default {
-  name: 'Tipps',
+  name: 'TipsListView',
   components: { tipCard },
   data () {
     return {

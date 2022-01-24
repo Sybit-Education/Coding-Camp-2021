@@ -1,16 +1,12 @@
 <template>
-  <vue-markdown
-    class="markdown"
-    linkify
-    typographer
-  >{{ source }}</vue-markdown>
+  <vue-markdown class="markdown" linkify typographer>{{ source }}</vue-markdown>
 </template>
 
 <script>
 import VueMarkdown from '@adapttive/vue-markdown'
 
 export default {
-  name: 'Markdown',
+  name: 'MarkdownWrapper',
   props: {
     source: {
       type: String,

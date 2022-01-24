@@ -51,7 +51,7 @@
 
 <script>
 export default {
-  name: 'Impressum',
+  name: 'ImpressumView',
   created () {
     window.scrollTo(0, 0)
   },

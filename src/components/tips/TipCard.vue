@@ -1,34 +1,28 @@
 <template>
   <router-link
-      :to="{ name: 'TipDetail', params: { tipId: tip.id } }"
-      class="text-decoration-none"
+    :to="{ name: 'TipDetail', params: { tipId: tip.id } }"
+    class="text-decoration-none"
   >
-    <v-card class="tip-teaser-card rounded-xl">
+    <v-card v-if="tip" class="tip-teaser-card rounded-xl">
       <v-row>
         <v-col md="4" sm="12">
           <v-img
-              :src="imageSource"
-              class="tip-teaser-card__image rounded-xl rounded-b-0">
+            :src="imageSource"
+            class="tip-teaser-card__image rounded-xl rounded-b-0"
+          >
             <template v-slot:placeholder>
-              <v-row
-                class="fill-height ma-0"
-                align="center"
-                justify="center"
-              >
-                <v-progress-circular
-                  indeterminate
-                  color="grey lighten-5"
-                />
+              <v-row class="fill-height ma-0" align="center" justify="center">
+                <v-progress-circular indeterminate color="grey lighten-5" />
               </v-row>
             </template>
           </v-img>
         </v-col>
-        <v-col md="8" sm="12">
+        <v-col sm="8" xs="12">
           <v-card-title class="tip-teaser-card__title">
             {{ tip.title }}
           </v-card-title>
           <v-card-text>
-            <markdown
+            <markdown-wrapper
               :source="tip.teaser"
               class="tip-teaser-card__teaser"
             />
@@ -39,14 +33,15 @@
         </v-col>
       </v-row>
     </v-card>
+    <v-skeleton-loader v-else type="card" />
   </router-link>
 </template>
 
 <script>
-import Markdown from '@/components/Markdown.vue'
+import MarkdownWrapper from '@/components/MarkdownWrapper.vue'
 
 export default {
-  components: { Markdown },
+  components: { MarkdownWrapper },
   name: 'TipCard',
   props: {
     tip: {
@@ -57,7 +52,7 @@ export default {
   computed: {
     imageSource () {
       if (this.tip?.teaserImage?.length) {
-        return this.tip.teaserImage[0].url
+        return this.tip.teaserImage[0].thumbnails.large.url
       }
       return require('@/assets/tips_placeholder.svg')
     }
@@ -93,7 +88,7 @@ export default {
   }
 
   &__more {
-    color: rgba(255, 111, 0, 0.87)
+    color: rgba(255, 111, 0, 0.87);
   }
 }
 </style>
