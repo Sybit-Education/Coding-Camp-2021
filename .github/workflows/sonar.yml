@@ -1,6 +1,4 @@
 on:
-  # Trigger analysis when pushing in master or pull requests, and when creating
-  # a pull request.
   push:
     branches:
       - develop
@@ -16,7 +14,8 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          projectKey: "Muelli"
+          args: >
+            -Dsonar.projectKey=Muelli
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
         env:
