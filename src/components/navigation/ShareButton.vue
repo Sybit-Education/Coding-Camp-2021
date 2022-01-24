@@ -64,7 +64,7 @@ export default {
     $blur-ammount: 4px,
     $color-intensity: 0.4
   );
-  z-index: 999;
+  z-index: 2;
   margin-bottom: calc(0.5 * #{$bottom-navigation-height});
 
   @media #{map-get($display-breakpoints, 'xs-only')} {
