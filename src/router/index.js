@@ -67,6 +67,12 @@ const routes = [
     name: 'TipDetail',
     component: () =>
       import(/* webpackChunkName: "tips" */ '../views/TipView.vue')
+  },
+  {
+    path: '*',
+    name: 'NotFound',
+    component: () =>
+      import(/* webpackChunkName: "not-found" */ '../views/NotFound.vue')
   }
 ]
 
