@@ -3,6 +3,7 @@ on:
   # a pull request.
   push:
     branches:
+      - develop
       - main
   pull_request:
     types: [opened, synchronize, reopened]
