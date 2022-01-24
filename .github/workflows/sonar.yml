@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          projectKey: Muelli
+          projectKey: "Muelli"
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
         env:
