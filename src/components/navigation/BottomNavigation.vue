@@ -39,16 +39,8 @@
 
 <script>
 export default {
-  data() {
-    return {
-      locationMap: {
-        location_: 0,
-        location_map: 1,
-        location_more: 2,
-      },
-    };
-  },
-};
+  name: "BottomNavigation"
+}
 </script>
 
 <style lang="scss" scoped>
