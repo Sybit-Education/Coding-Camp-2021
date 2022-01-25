@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import * as locationService from '@/services/location.service'
+import locationService from '@/services/location.service'
 export default {
   name: 'LocationMetricCard',
   data () {

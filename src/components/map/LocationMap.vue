@@ -71,7 +71,7 @@ import L, { latLngBounds } from 'leaflet'
 import MapActionButton from './MapActionButton'
 import BackButton from '@/components/navigation/BackButton.vue'
 import MapNavigationCard from './MapNavigationCard.vue'
-import * as locationService from '@/services/location.service'
+import locationService from '@/services/location.service'
 
 export default {
   name: 'LocationMap',
