@@ -1,20 +1,24 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
-import createLogger from 'vuex/dist/logger'
+import Vuex, { createLogger } from 'vuex'
 
+import VuexPersistence from 'vuex-persist'
 import * as airtableService from '@/services/airtable.service'
-import * as locationService from '@/services/location.service'
+import locationService from '@/services/location.service'
 import materialService from '@/services/material.service'
 import targetService from '@/services/target.service'
 import tipService from '@/services/tip.service'
 import { setCookie } from '@/services/cookie.service'
+
+const vuexPersist = new VuexPersistence({
+  storage: window.localStorage
+})
 
 Vue.use(Vuex)
 const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
   state: {
-    showLoadingSpinner: false,
+    showLoadingSpinner: 0,
     materialList: [],
     targetList: [],
     locations: [],
@@ -23,12 +27,12 @@ export default new Vuex.Store({
     // everything correctly by enabling
     // strict mode in the dev environment.
     strict: process.env.NODE_ENV !== 'production',
-    plugins: debug ? [createLogger()] : []
+    plugins: debug ? [createLogger(), vuexPersist.plugin] : [vuexPersist.plugin]
   },
 
   getters: {
     showLoadingSpinner (state) {
-      return state.showLoadingSpinner
+      return state.showLoadingSpinner > 0
     },
     getMaterialList (state) {
       return state.materialList
@@ -57,8 +61,15 @@ export default new Vuex.Store({
     UPDATE_TARGET_LIST (state, payload) {
       state.targetList = payload
     },
-    UPDATE_SHOW_LOADING_SPINNER (state, showLoadingSpinner) {
-      state.showLoadingSpinner = showLoadingSpinner
+    UPDATE_SHOW_LOADING_SPINNER (state, payload) {
+      if (payload) {
+        state.showLoadingSpinner++
+      } else {
+        state.showLoadingSpinner--
+        if (state.showLoadingSpinner < 0) {
+          state.showLoadingSpinner = 0
+        }
+      }
     },
     UPDATE_LOCATION_LIST (state, payload) {
       state.locations = payload
@@ -83,7 +94,8 @@ export default new Vuex.Store({
           )
         }
       })
-    }
+    },
+    RESTORE_MUTATION: vuexPersist.RESTORE_MUTATION // this mutation **MUST** be named "RESTORE_MUTATION"
   },
 
   actions: {
