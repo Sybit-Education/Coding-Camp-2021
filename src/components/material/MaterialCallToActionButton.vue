@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'MaterialCallToActionButton',
   props: {
@@ -28,13 +29,19 @@ export default {
     }
   },
   mounted () {
-    this.material.targets.forEach((target) => {
+    this.material.targets.forEach((targetId) => {
+      const target = this.getTargetById(targetId)
       if (
         target.targetAction === 'show_link' ||
         target.targetAction === 'show_map'
       ) {
         this.selectedTarget = target
       }
+    })
+  },
+  computed: {
+    ...mapGetters({
+      getTargetById: 'Target/getTargetById'
     })
   },
   methods: {

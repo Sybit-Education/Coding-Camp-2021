@@ -8,18 +8,17 @@
 </template>
 
 <script>
-import locationService from '@/services/location.service'
+import { mapGetters } from 'vuex'
 export default {
   name: 'LocationMetricCard',
-  data () {
-    return {
-      count: 0
+
+  computed: {
+    ...mapGetters({
+      getLocationList: 'Location/getLocationList'
+    }),
+    count () {
+      return this.getLocationList.length
     }
-  },
-  mounted () {
-    locationService.getLocations().then((list) => {
-      this.count = list.length
-    })
   }
 }
 </script>

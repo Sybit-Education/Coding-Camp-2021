@@ -143,24 +143,21 @@ export default {
       })
     },
     loadLocations () {
-      this.$store
-        .dispatch('getLocationsFromSessionStorage')
-        .then((locations) => {
-          if (this.locationTypes) {
-            const list = []
-            this.locationTypes.forEach((type) => {
-              const filteredList = this.$store.getters.getLocations.filter(
-                (loc) => {
-                  return loc.type === type
-                }
-              )
-              list.push(...filteredList)
+      this.$store.dispatch('Location/getLocationList').then((result) => {
+        const locations = this.$store.getters['Location/getLocationList']
+        if (this.locationTypes) {
+          const list = []
+          this.locationTypes.forEach((type) => {
+            const filteredList = locations.filter((loc) => {
+              return loc.type === type
             })
-            this.locations = list
-          } else {
-            this.locations = this.$store.getters.getLocations
-          }
-        })
+            list.push(...filteredList)
+          })
+          this.locations = list
+        } else {
+          this.locations = locations
+        }
+      })
     },
     getPin (location) {
       return L.icon({

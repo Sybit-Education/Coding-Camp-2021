@@ -4,7 +4,7 @@ import store from '../store/index'
 
 const BASE_NAME = 'Location'
 const locationService = {
-  getLocations () {
+  getLocationList () {
     return new Promise((resolve, reject) => {
       const locations = []
       base(BASE_NAME)
