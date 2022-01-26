@@ -7,9 +7,9 @@
       Gemeinde:
     </p>
     <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
-    <v-row>
+    <v-row v-else>
       <v-col md="8" offset-md="2" lg="6" offset-lg="3" xl="4" offset-xl="4">
-        <municipality-filter :event-list="unfilteredList" @doFilter="filter" />
+        <municipality-filter :event-list="eventList" @doFilter="filter" />
         <event-card v-for="event in list" :key="event.id" :event="event" />
       </v-col>
     </v-row>
@@ -17,18 +17,16 @@
 </template>
 
 <script>
-import problemstoffmobilService from '@/services/problemstoffmobil.service'
 import EventCard from '@/components/problemstoffmobil/EventCard.vue'
 import MunicipalityFilter from '@/components/problemstoffmobil/MunicipalityFilter.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'ProblemstoffmobilView',
   components: { EventCard, MunicipalityFilter },
   data () {
     return {
-      list: [],
-      unfilteredList: [],
-      showLoadingSpinner: true
+      list: []
     }
   },
   metaInfo () {
@@ -37,17 +35,22 @@ export default {
     }
   },
   async created () {
-    this.unfilteredList = this.list =
-      await problemstoffmobilService.getRecords()
-    this.showLoadingSpinner = false
+    await this.$store.dispatch('Problemstoffmobil/getEventRecords')
+    this.list = this.eventList
   },
   methods: {
     filter (municipality) {
-      this.list = this.unfilteredList
+      this.list = this.eventList
       this.list = this.list.filter(
         (event) => event.municipality === municipality
       )
     }
+  },
+  computed: {
+    ...mapGetters({
+      eventList: 'Problemstoffmobil/getEventList',
+      showLoadingSpinner: 'Loading/showLoadingSpinner'
+    })
   }
 }
 </script>

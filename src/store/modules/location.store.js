@@ -13,7 +13,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async getLocationList ({ commit, getters }) {
+  async getLocationRecords ({ commit, getters }) {
     if (!getters.getLocationList || getters.getLocationList.length === 0) {
       try {
         commit('Loading/UPDATE_SHOW_LOADING_SPINNER', true, { root: true })

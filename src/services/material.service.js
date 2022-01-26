@@ -34,7 +34,6 @@ const materialService = {
               console.error(err)
               reject(err)
             }
-            window.sessionStorage.setItem('material', JSON.stringify(allRecords))
             resolve(allRecords)
           }
         )

@@ -31,7 +31,6 @@ const locationService = {
               console.log(err)
               reject(err)
             }
-            window.sessionStorage.setItem('locations', JSON.stringify(locations))
             resolve(locations)
           })
     })

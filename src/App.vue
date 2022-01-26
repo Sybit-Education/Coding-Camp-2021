@@ -52,7 +52,7 @@ export default {
     this.$store.dispatch('Material/getMaterialRecords')
     this.$store.dispatch('Target/getTargetRecords')
     this.$store.dispatch('Tip/getTipRecords')
-    this.$store.dispatch('Location/getLocationList')
+    this.$store.dispatch('Location/getLocationRecords')
   },
   methods: {
     async dismiss () {
