@@ -143,7 +143,7 @@ export default {
       })
     },
     loadLocations () {
-      this.$store.dispatch('Location/getLocationList').then((result) => {
+      this.$store.dispatch('Location/getLocationRecords').then((result) => {
         const locations = this.$store.getters['Location/getLocationList']
         if (this.locationTypes) {
           const list = []
