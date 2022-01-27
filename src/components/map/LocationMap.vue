@@ -142,22 +142,21 @@ export default {
         })
       })
     },
-    loadLocations () {
-      this.$store.dispatch('Location/getLocationRecords').then((result) => {
-        const locations = this.$store.getters['Location/getLocationList']
-        if (this.locationTypes) {
-          const list = []
-          this.locationTypes.forEach((type) => {
-            const filteredList = locations.filter((loc) => {
-              return loc.type === type
-            })
-            list.push(...filteredList)
+    async loadLocations () {
+      await this.$store.dispatch('Location/getLocationRecords')
+      const locations = this.$store.getters['Location/getLocationList']
+      if (this.locationTypes) {
+        const list = []
+        this.locationTypes.forEach((type) => {
+          const filteredList = locations.filter((loc) => {
+            return loc.type === type
           })
-          this.locations = list
-        } else {
-          this.locations = locations
-        }
-      })
+          list.push(...filteredList)
+        })
+        this.locations = list
+      } else {
+        this.locations = locations
+      }
     },
     getPin (location) {
       return L.icon({
