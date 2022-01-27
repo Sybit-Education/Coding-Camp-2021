@@ -51,6 +51,7 @@
         >.
       </p>
       <p>Version: {{ version }}</p>
+      <data-reload-button />
     </section>
 
     <hr class="mt-2 mb-8" />
@@ -97,8 +98,10 @@
 </template>
 
 <script>
+import DataReloadButton from '@/components/DataReloadButton.vue'
 export default {
   name: 'AboutUsView',
+  components: { DataReloadButton },
   computed: {
     image () {
       return require('@/assets/img/ueber-uns/team.jpg')
