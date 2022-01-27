@@ -20,7 +20,6 @@ export default {
   },
   computed: {
     firstTarget () {
-      console.log('material', this.material)
       if (this.material && this.material.targets[0]) {
         return this.getTargetById(this.material.targets[0])
       } else {

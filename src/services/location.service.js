@@ -89,7 +89,6 @@ const locationService = {
       if (location.image) {
         imageService.uploadFile(null, location.image).then((uploadedImage) => {
           this.postLocationWithImage(location, uploadedImage).then(() => {
-            console.log('NACH  WITHIMAGE')
             imageService.deleteImageByUID(uploadedImage.deleteToken).then(() => {
               store.dispatch('updateShowLoadingSpinner', false)
               resolve()

@@ -20,7 +20,7 @@ export const mutations = {
 
 export const actions = {
   updateShowLoadingSpinner ({ commit }, payload) {
-    commit('Loading/Loading/UPDATE_SHOW_LOADING_SPINNER', payload)
+    commit('Loading/UPDATE_SHOW_LOADING_SPINNER', payload)
   }
 }
 
