@@ -8,18 +8,16 @@
 </template>
 
 <script>
-import materialService from '@/services/material.service'
+import { mapGetters } from 'vuex'
 export default {
   name: 'MaterialMetricCard',
-  data () {
-    return {
-      count: 0
+  computed: {
+    ...mapGetters({
+      getMaterialList: 'Material/getMaterialList'
+    }),
+    count () {
+      return this.getMaterialList.length
     }
-  },
-  mounted () {
-    materialService.getMaterialRecords().then((list) => {
-      this.count = list.length
-    })
   }
 }
 </script>

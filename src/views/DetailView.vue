@@ -17,10 +17,10 @@
         <v-row class="mb-3">
           <v-col
             v-for="target in material.targets"
-            :key="target.id"
+            :key="target"
             align="center"
           >
-            <target-chip :target="target" />
+            <target-chip :target-id="target" />
           </v-col>
         </v-row>
         <v-row>
@@ -38,8 +38,8 @@
           </v-col>
         </v-row>
       </v-card-text>
-      <v-card-text v-for="target in material.targets" :key="target.id">
-        <material-target-detail :target="target" />
+      <v-card-text v-for="target in material.targets" :key="target">
+        <material-target-detail :target-id="target" />
       </v-card-text>
     </v-card>
     <v-skeleton-loader v-else type="card" />
@@ -56,6 +56,8 @@ import MarkdownWrapper from '@/components/MarkdownWrapper.vue'
 import TargetChip from '@/components/target/TargetChip.vue'
 import TargetImage from '@/components/target/TargetImage.vue'
 import MaterialCallToActionButton from '@/components/material/MaterialCallToActionButton.vue'
+
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'DetailView',
@@ -91,11 +93,8 @@ export default {
     }
   },
   computed: {
-    materialId () {
-      return this.$route.params.id
-    },
     material () {
-      return this.$store.getters.getMaterialById(this.materialId)
+      return this.getMaterialById(this.$route.params.id)
     },
     title () {
       return this.material ? this.material.name : 'Loading...'
@@ -116,7 +115,11 @@ export default {
           text: `${this.material?.name} entsorgen: ${this.material?.notes}`
         }
       }
-    }
+    },
+    ...mapGetters({
+      getMaterialById: 'Material/getMaterialById',
+      getTipList: 'Tip/getTipList'
+    })
   },
   created () {
     this.getMaterial()
@@ -132,17 +135,11 @@ export default {
   methods: {
     getMaterial () {
       if (this.material !== undefined) return
-      this.$store.dispatch('getRecordsFromSessionStorage', [
-        'material',
-        'targets'
-      ])
+      this.$store.dispatch('Material/getMaterialRecords')
     },
     async getTip () {
-      if (this.$store.state.tipList.length < 1) {
-        await this.$store.dispatch('getTipRecords')
-      }
       const list = []
-      const tipList = this.$store.getters.getTipList
+      const tipList = this.getTipList
       let i = 0
       this.material.category.forEach((category) => {
         tipList.forEach((tip) => {

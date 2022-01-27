@@ -103,7 +103,7 @@ export default {
   },
   methods: {
     async getTip () {
-      const tipFromStore = this.$store.getters.getTipById(this.tipId)
+      const tipFromStore = this.$store.getters['Tip/getTipById'](this.tipId)
       if (tipFromStore) {
         this.tip = tipFromStore
       } else {

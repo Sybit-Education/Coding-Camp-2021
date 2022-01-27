@@ -71,7 +71,7 @@ import L, { latLngBounds } from 'leaflet'
 import MapActionButton from './MapActionButton'
 import BackButton from '@/components/navigation/BackButton.vue'
 import MapNavigationCard from './MapNavigationCard.vue'
-import * as locationService from '@/services/location.service'
+import locationService from '@/services/location.service'
 
 export default {
   name: 'LocationMap',
@@ -142,25 +142,21 @@ export default {
         })
       })
     },
-    loadLocations () {
-      this.$store
-        .dispatch('getLocationsFromSessionStorage')
-        .then((locations) => {
-          if (this.locationTypes) {
-            const list = []
-            this.locationTypes.forEach((type) => {
-              const filteredList = this.$store.getters.getLocations.filter(
-                (loc) => {
-                  return loc.type === type
-                }
-              )
-              list.push(...filteredList)
-            })
-            this.locations = list
-          } else {
-            this.locations = this.$store.getters.getLocations
-          }
+    async loadLocations () {
+      await this.$store.dispatch('Location/getLocationRecords')
+      const locations = this.$store.getters['Location/getLocationList']
+      if (this.locationTypes) {
+        const list = []
+        this.locationTypes.forEach((type) => {
+          const filteredList = locations.filter((loc) => {
+            return loc.type === type
+          })
+          list.push(...filteredList)
         })
+        this.locations = list
+      } else {
+        this.locations = locations
+      }
     },
     getPin (location) {
       return L.icon({
