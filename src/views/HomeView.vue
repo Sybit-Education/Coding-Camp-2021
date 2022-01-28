@@ -3,7 +3,7 @@
     <h1 class="search-title">
       Wie entsorge ich im Landkreis Konstanz &hellip;
     </h1>
-    <material-searchbar :items="materials" class="my-5" />
+    <material-searchbar :items="materialList" class="my-5" />
     <v-row class="metrics">
       <v-col><material-metric-card /></v-col>
       <v-col><location-metric-card /></v-col>
@@ -24,6 +24,8 @@ import MaterialMetricCard from '@/components/metric/MaterialMetricCard.vue'
 import LocationMetricCard from '@/components/metric/LocationMetricCard.vue'
 import TippMetricCard from '@/components/metric/TippMetricCard.vue'
 
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'HomeView',
   components: {
@@ -38,13 +40,13 @@ export default {
     return {}
   },
   computed: {
-    materials () {
-      return this.$store.getters.getMaterialList
-    },
     tip () {
-      const tipList = this.$store.getters.getTipList
-      return tipList[Math.floor(Math.random() * tipList.length)]
-    }
+      return this.tipList[Math.floor(Math.random() * this.tipList.length)]
+    },
+    ...mapGetters({
+      materialList: 'Material/getMaterialList',
+      tipList: 'Tip/getTipList'
+    })
   }
 }
 </script>

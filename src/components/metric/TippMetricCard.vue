@@ -1,3 +1,4 @@
+import { mapGetters } from 'vuex';
 <template>
   <v-card class="rounded-xl text-center py-3 grey lighten-3" to="/tipps">
     <div class="text-h4 font-weight-black">
@@ -8,18 +9,16 @@
 </template>
 
 <script>
-import tipService from '@/services/tip.service'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'TippMetricCard',
-  data () {
-    return {
-      count: 0
-    }
-  },
-  mounted () {
-    tipService.getTipRecords().then((list) => {
-      this.count = list.length
+  computed: {
+    count () {
+      return this.getTipList.length
+    },
+    ...mapGetters({
+      getTipList: 'Tip/getTipList'
     })
   }
 }

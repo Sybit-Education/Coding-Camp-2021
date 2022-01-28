@@ -37,7 +37,6 @@ const targetService = {
               console.error(err)
               reject(err)
             }
-            window.sessionStorage.setItem('targets', JSON.stringify(allTargets))
             resolve(allTargets)
           }
         )

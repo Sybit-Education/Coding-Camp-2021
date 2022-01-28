@@ -3,7 +3,7 @@ import base from './airtable.service'
 const BASE_NAME = 'Problemstoffmobil'
 
 const problemstoffmobilService = {
-  async getRecords () {
+  async getEventRecords () {
     return new Promise((resolve, reject) => {
       const allRecords = []
       base(BASE_NAME)
@@ -34,7 +34,6 @@ const problemstoffmobilService = {
               console.error(err)
               reject(err)
             }
-            window.sessionStorage.setItem(BASE_NAME, JSON.stringify(allRecords))
             resolve(allRecords)
           }
         )

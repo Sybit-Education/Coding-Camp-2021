@@ -32,7 +32,6 @@ const partnerService = {
               console.error(err)
               reject(err)
             }
-            window.sessionStorage.setItem('partner', JSON.stringify(allRecords))
             resolve(allRecords)
           }
         )

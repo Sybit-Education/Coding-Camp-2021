@@ -7,6 +7,7 @@
 </template>
 <script>
 import MarkdownWrapper from '@/components/MarkdownWrapper.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'MaterialTargetDetail',
@@ -14,10 +15,18 @@ export default {
     MarkdownWrapper
   },
   props: {
-    target: {
-      type: Object,
+    targetId: {
+      type: String,
       required: true
     }
+  },
+  computed: {
+    target () {
+      return this.getTargetById(this.targetId)
+    },
+    ...mapGetters({
+      getTargetById: 'Target/getTargetById'
+    })
   }
 }
 </script>

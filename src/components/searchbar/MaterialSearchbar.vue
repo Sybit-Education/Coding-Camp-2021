@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import materialService from '../../services/material.service'
+import materialService from '@/services/material.service'
 export default {
   name: 'MaterialSearchbar',
   props: {
