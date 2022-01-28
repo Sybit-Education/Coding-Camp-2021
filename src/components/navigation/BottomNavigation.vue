@@ -16,7 +16,7 @@
       <template v-slot:activator="{ on, attrs }">
         <v-btn class="bottom-nav__button rounded-xl" v-bind="attrs" v-on="on">
           <span class="grey--text text--darken-2">Mehr</span>
-          <v-icon color="grey darken-2">mdi-menu</v-icon>
+          <v-icon color="grey darken-2">mdi-dots-horizontal</v-icon>
         </v-btn>
       </template>
       <v-list>
