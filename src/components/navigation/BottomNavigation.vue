@@ -26,6 +26,9 @@
         <v-list-item :to="{ name: 'Datenschutz' }">
           <v-list-item-title>Datenschutz</v-list-item-title>
         </v-list-item>
+        <v-list-item :to="{ name: 'Press' }">
+          <v-list-item-title>Presse</v-list-item-title>
+        </v-list-item>
         <v-list-item :to="{ name: 'Ueber-uns' }">
           <v-list-item-title>Über uns</v-list-item-title>
         </v-list-item>

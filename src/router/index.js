@@ -35,7 +35,7 @@ const routes = [
     path: '/datenschutz',
     name: 'Datenschutz',
     component: () =>
-      import(/* webpackChunkName: "datenschutz" */ '../views/PrivacyView.vue')
+      import(/* webpackChunkName: "impressum" */ '../views/PrivacyView.vue')
   },
   {
     path: '/impressum',
@@ -66,7 +66,13 @@ const routes = [
     props: true,
     name: 'TipDetail',
     component: () =>
-      import(/* webpackChunkName: "tips" */ '../views/TipView.vue')
+      import(/* webpackChunkName: "tipps" */ '../views/TipView.vue')
+  },
+  {
+    path: '/presse',
+    name: 'Press',
+    component: () =>
+      import(/* webpackChunkName: "press" */ '../views/PressView.vue')
   },
   {
     path: '*',
