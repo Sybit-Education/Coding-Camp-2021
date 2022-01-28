@@ -19,7 +19,7 @@
           <v-icon color="grey darken-2">mdi-dots-horizontal</v-icon>
         </v-btn>
       </template>
-      <v-list>
+      <v-list class="bottom-nav__menu">
         <v-list-item :to="{ name: 'Impressum' }" class="px-7">
           <v-list-item-title>Impressum</v-list-item-title>
         </v-list-item>
@@ -73,6 +73,13 @@ export default {
     &.v-btn--active::before {
       opacity: 0 !important;
     }
+  }
+  &__menu {
+    @include glassmorphism(
+      $color: white,
+      $blur-ammount: 8px,
+      $color-intensity: 0.4
+    );
   }
 }
 
