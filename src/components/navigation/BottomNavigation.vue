@@ -12,7 +12,7 @@
       <span>Karte</span>
       <v-icon>mdi-google-maps</v-icon>
     </v-btn>
-    <v-menu offset-y top>
+    <v-menu offset-y top rounded="xl" transition="slide-y-transition">
       <template v-slot:activator="{ on, attrs }">
         <v-btn class="bottom-nav__button rounded-xl" v-bind="attrs" v-on="on">
           <span class="grey--text text--darken-2">Mehr</span>
@@ -20,19 +20,19 @@
         </v-btn>
       </template>
       <v-list>
-        <v-list-item :to="{ name: 'Impressum' }">
+        <v-list-item :to="{ name: 'Impressum' }" class="px-7">
           <v-list-item-title>Impressum</v-list-item-title>
         </v-list-item>
-        <v-list-item :to="{ name: 'Datenschutz' }">
+        <v-list-item :to="{ name: 'Datenschutz' }" class="px-7">
           <v-list-item-title>Datenschutz</v-list-item-title>
         </v-list-item>
-        <v-list-item :to="{ name: 'Press' }">
+        <v-list-item :to="{ name: 'Press' }" class="px-7">
           <v-list-item-title>Presse</v-list-item-title>
         </v-list-item>
-        <v-list-item :to="{ name: 'Ueber-uns' }">
+        <v-list-item :to="{ name: 'Ueber-uns' }" class="px-7">
           <v-list-item-title>Über uns</v-list-item-title>
         </v-list-item>
-        <v-list-item :to="{ name: 'Partner' }">
+        <v-list-item :to="{ name: 'Partner' }" class="px-7">
           <v-list-item-title>Partner</v-list-item-title>
         </v-list-item>
       </v-list>
