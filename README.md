@@ -16,10 +16,9 @@ The application will support the citizens of "Landkreis Konstanz" to dispose the
 ## Partner of the Project
 
 The project is supported by several municipalities:
-https://airtable.com/embed/shrJyBkwkIxzvZfLh?backgroundColor=green
+<https://airtable.com/embed/shrJyBkwkIxzvZfLh?backgroundColor=green>
 
 ![municipalities](/public/img/municipalities.png)
-
 
 ---
 
@@ -61,3 +60,11 @@ Activate the following:
 
 - _Automatic ESLint configuration_
 - Run eslint --fix on save
+
+## Import Locations
+
+How to import ESRI shape files into the application?
+
+- Useful video: <https://youtu.be/U7BPHZhCbP4>
+- Tool to reorder and enhance exported CVS file: <https://www.editcsvonline.com/>
+- Import CVS file into Airtable by creating new table. Then copy&paste rows to ```Location``` table.
