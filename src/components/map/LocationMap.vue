@@ -215,8 +215,6 @@ export default {
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
 @import "~leaflet.markercluster/dist/MarkerCluster.css";
 @import "~leaflet.markercluster/dist/MarkerCluster.Default.css";
-@import "node_modules/vuetify/src/styles/settings/variables";
-@import "src/scss/variables";
 
 .map {
   width: 100vw;

@@ -1,5 +1,8 @@
+import '@mdi/font/css/materialdesignicons.css'
+import '@/scss/index.scss'
+
 import Vue from 'vue'
-import Vuetify from 'vuetify/lib'
+import Vuetify from 'vuetify'
 
 import colors from 'vuetify/lib/util/colors'
 

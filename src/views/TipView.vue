@@ -132,8 +132,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import "src/scss/variables.scss";
-@import "node_modules/vuetify/src/styles/settings/_colors.scss";
 
 .card {
   display: grid;

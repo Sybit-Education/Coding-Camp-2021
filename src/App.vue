@@ -65,7 +65,6 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "src/scss/scrollbar.scss";
 .container {
   margin-bottom: 1.25 * $bottom-navigation-height;
 }

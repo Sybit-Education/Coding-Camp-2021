@@ -56,8 +56,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import "src/scss/variables.scss";
-
 .share-button {
   @include glassmorphism(
     $color: white,
