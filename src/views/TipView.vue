@@ -132,7 +132,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+@import "~@/assets/scss/variables.scss";
 .card {
   display: grid;
   grid-template-rows: auto auto 1fr;

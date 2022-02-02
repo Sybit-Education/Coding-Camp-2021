@@ -1,14 +1,11 @@
-import '@mdi/font/css/materialdesignicons.css'
-import '@/scss/index.scss'
-
 import Vue from 'vue'
-import Vuetify from 'vuetify'
+import Vuetify from 'vuetify/lib'
 
 import colors from 'vuetify/lib/util/colors'
 
 Vue.use(Vuetify)
 
-export default new Vuetify({
+const opts = {
   theme: {
     themes: {
       light: {
@@ -20,4 +17,6 @@ export default new Vuetify({
       }
     }
   }
-})
+}
+
+export default new Vuetify(opts)

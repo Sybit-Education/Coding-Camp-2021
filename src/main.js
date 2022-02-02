@@ -10,6 +10,8 @@ import VueMeta from 'vue-meta'
 import VueGtag from 'vue-gtag'
 import LoadingSpinner from './components/LoadingSpinner'
 
+import '@mdi/font/css/materialdesignicons.css'
+
 Vue.config.productionTip = false
 Vue.component('LoadingSpinner', LoadingSpinner)
 

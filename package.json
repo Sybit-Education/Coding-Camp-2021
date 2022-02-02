@@ -2,9 +2,6 @@
   "name": "muelli.app",
   "version": "1.6.0",
   "private": true,
-  "engines": {
-    "node": ">=12"
-  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -43,6 +40,7 @@
     "@vue/cli-service": "^4.5.15",
     "@vue/eslint-config-standard": "^6.1.0",
     "babel-eslint": "^10.1.0",
+    "deepmerge": "^4.2.2",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
@@ -52,10 +50,18 @@
     "husky": "^7.0.4",
     "node-sass": "^6.0.1",
     "sass": "~1.32.13",
-    "sass-loader": "^10.2.0",
+    "sass-loader": "^10.2.1",
     "vue-cli-plugin-vuetify": "^2.4.5",
     "vue-template-compiler": "^2.6.14",
     "vuetify-loader": "^1.7.3"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "engines": {
+    "node": ">=12"
   },
   "lint-staged": {
     "*.js": [
@@ -64,10 +70,5 @@
     "*.vue": [
       "npm run lint"
     ]
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+  }
 }
