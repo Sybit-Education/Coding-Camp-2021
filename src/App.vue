@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-main class="py-0">
+    <v-main>
       <v-banner
         v-if="deferredPrompt"
         color="primary"
@@ -18,7 +18,7 @@
       <router-view />
     </v-main>
     <nav class="navigation">
-      <bottom-navigation class="bottomnav" />
+      <bottom-navigation />
     </nav>
     <notifications group="default" />
   </v-app>
@@ -67,13 +67,6 @@ export default {
 <style lang="scss">
 .container {
   margin-bottom: 1.25 * $bottom-navigation-height;
-}
-.navigation {
-  position: relative;
-  .bottomnav {
-    position: absolute;
-    bottom: 0;
-  }
 }
 .install-banner {
   z-index: 1000;
