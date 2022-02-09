@@ -16,10 +16,10 @@
         </template>
       </v-banner>
       <router-view />
-      <div class="navigation">
-        <bottom-navigation class="bottomnav" />
-      </div>
     </v-main>
+    <nav class="navigation">
+      <bottom-navigation class="bottomnav" />
+    </nav>
     <notifications group="default" />
   </v-app>
 </template>
@@ -70,12 +70,12 @@ export default {
 }
 .navigation {
   position: relative;
+  .bottomnav {
+    position: absolute;
+    bottom: 0;
+  }
 }
 .install-banner {
   z-index: 1000;
-}
-.bottomnav {
-  position: absolute;
-  bottom: 0;
 }
 </style>

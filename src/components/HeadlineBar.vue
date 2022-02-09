@@ -1,6 +1,6 @@
 <template>
   <div class="headline-bar mb-5">
-    <h1>{{ title }}</h1>
+    <h1 class="ma-3">{{ title }}</h1>
   </div>
 </template>
 

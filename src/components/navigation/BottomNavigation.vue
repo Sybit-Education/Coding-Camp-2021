@@ -85,7 +85,9 @@ export default {
   }
 }
 
-.theme--light.v-btn {
-  color: rgba(255, 111, 0, 0.87);
+.theme--light {
+  .v-btn {
+    color: rgba(255, 111, 0, 0.87);
+  }
 }
 </style>

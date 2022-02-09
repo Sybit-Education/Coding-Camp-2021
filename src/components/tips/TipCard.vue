@@ -85,6 +85,10 @@ export default {
 
   &__teaser {
     line-height: 1.75rem !important;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__more {
