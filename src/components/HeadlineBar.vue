@@ -76,6 +76,7 @@ export default {
   );
 }
 .headline-bar--small {
+  padding-top: env(safe-area-inset-top);
   align-items: center;
   h1 {
     font-size: 1.25rem;
