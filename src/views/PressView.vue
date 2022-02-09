@@ -1,6 +1,7 @@
 <template>
   <v-container>
-    <h1 class="mb-5">Presse</h1>
+    <headline-bar title="Presse" />
+
     <p>
       Wir freuen uns über den Anklang, welchen unsere App
       <strong>Mülli</strong> erhält und sind auch ein wenig stolz über die
@@ -23,11 +24,12 @@
 
 <script>
 import partnerService from '@/services/press.service'
-import pressCard from '@/components/press/PressCard.vue'
+import PressCard from '@/components/press/PressCard.vue'
+import HeadlineBar from '@/components/HeadlineBar.vue'
 
 export default {
   name: 'PartnerView',
-  components: { pressCard },
+  components: { PressCard, HeadlineBar },
   data () {
     return {
       showLoadingSpinner: true,

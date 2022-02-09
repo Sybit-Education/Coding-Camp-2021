@@ -3,14 +3,17 @@
     <h1 class="search-title">
       Wie entsorge ich im Landkreis Konstanz &hellip;
     </h1>
-    <material-searchbar :items="materialList" class="my-5" />
+    <material-searchbar :items="materialList" class="my-10" />
+
     <v-row class="metrics">
       <v-col><material-metric-card /></v-col>
       <v-col><location-metric-card /></v-col>
       <v-col><tipp-metric-card /></v-col>
     </v-row>
+
     <tip-card v-if="tip && tip.id" :tip="tip" />
     <v-skeleton-loader v-else type="card" />
+
     <h2>Unsere Partner</h2>
     <partner-carousel />
   </v-container>
