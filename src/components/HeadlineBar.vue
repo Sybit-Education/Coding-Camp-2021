@@ -67,7 +67,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: left;
-  padding-top: env(safe-area-inset-top);
   z-index: 1020;
 
   @include glassmorphism(
