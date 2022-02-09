@@ -64,6 +64,8 @@ export default {
 }
 
 .bottom-nav {
+  padding-bottom: env(safe-area-inset-bottom);
+
   &__button {
     display: flex;
     justify-content: center;
