@@ -1,6 +1,6 @@
 <template>
-  <div class="headline-bar mb-5">
-    <h1 class="ma-3">{{ title }}</h1>
+  <div :class="dynamicStyle" @click="scrollToTop">
+    <h1 class="mx-3">{{ title }}</h1>
   </div>
 </template>
 
@@ -11,10 +11,50 @@ export default {
     title: {
       type: String,
       required: true
+    }
+  },
+  data () {
+    return {
+      smallSearch: false,
+      lastScrollPosition: 0
+    }
+  },
+
+  mounted () {
+    window.addEventListener('scroll', this.onScroll)
+  },
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.onScroll)
+  },
+  computed: {
+    dynamicStyle () {
+      if (this.smallSearch) {
+        return 'headline-bar headline-bar--small mb-3'
+      } else {
+        return 'headline-bar headline-bar--large mb-5'
+      }
+    }
+  },
+  methods: {
+    onScroll () {
+      const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+      if (currentScrollPosition < 0) {
+        return
+      }
+      // Stop executing this function if the difference between
+      // current scroll position and last scroll position is less than some offset
+      if (Math.abs(currentScrollPosition - this.lastScrollPosition) < 60) {
+        return
+      }
+      if (currentScrollPosition > 60) {
+        this.smallSearch = true
+      } else {
+        this.smallSearch = false
+      }
+      this.lastScrollPosition = currentScrollPosition
     },
-    subtitle: {
-      type: String,
-      required: false
+    scrollToTop () {
+      window.scrollTo(0, 0)
     }
   }
 }
@@ -22,12 +62,12 @@ export default {
 
 <style lang="scss" scoped>
 .headline-bar {
-  padding-top: env(safe-area-inset-top);
+  position: sticky;
+  top: 0;
   display: flex;
   flex-direction: column;
   align-items: left;
-  position: sticky;
-  top: 0;
+  padding-top: env(safe-area-inset-top);
   z-index: 1020;
 
   @include glassmorphism(
@@ -35,5 +75,11 @@ export default {
     $blur-ammount: 8px,
     $color-intensity: 0.4
   );
+}
+.headline-bar--small {
+  align-items: center;
+  h1 {
+    font-size: 1.25rem;
+  }
 }
 </style>
