@@ -37,9 +37,6 @@
         zoomInTitle="Vergrößern"
         zoomOutTitle="Verkleinern"
       />
-      <l-control position="topleft">
-        <back-button />
-      </l-control>
       <l-control class="map__action-button" position="bottomleft">
         <map-action-button :userLocation="userLocation" />
       </l-control>
@@ -69,7 +66,6 @@ import 'leaflet.path.drag'
 import 'leaflet/dist/leaflet.css'
 import L, { latLngBounds } from 'leaflet'
 import MapActionButton from './MapActionButton'
-import BackButton from '@/components/navigation/BackButton.vue'
 import MapNavigationCard from './MapNavigationCard.vue'
 import locationService from '@/services/location.service'
 
@@ -85,7 +81,6 @@ export default {
     LGeoJson,
     'v-locate-control': Vue2LeafletLocatecontrol,
     'v-marker-cluster': Vue2LeafletMarkerCluster,
-    BackButton,
     MapNavigationCard
   },
   props: {
@@ -245,7 +240,7 @@ export default {
 
 ::v-deep .leaflet-control-zoom {
   margin-top: 28px;
-  margin-right: 1.25rem;
+  margin-right: calc(1.25rem + env(safe-area-inset-right));
   border: 0;
   @media #{map-get($display-breakpoints, 'xs-only')} {
     display: none;
@@ -253,17 +248,17 @@ export default {
 }
 
 ::v-deep .leaflet-control-locate {
-  margin-right: 1.25rem;
+  margin-right: calc(1.25rem + env(safe-area-inset-right));
   @media #{map-get($display-breakpoints, 'xs-only')} {
-    margin-right: 0.75rem;
-    bottom: calc(1.5 * #{$bottom-navigation-height} - 18px);
+    margin-right: calc(1.25rem + env(safe-area-inset-right));
+    bottom: calc(1.5 * #{$bottom-navigation-height} - 18px + env(safe-area-inset-bottom)) ;
   }
 }
 
 ::v-deep .leaflet-control-attribution {
-  margin-right: 1.25rem;
+  margin-right: calc(1.25rem + env(safe-area-inset-right));
   @media #{map-get($display-breakpoints, 'xs-only')} {
-    margin-right: 0;
+    margin-right: env(safe-area-inset-right);
     margin-bottom: 0;
   }
 }
@@ -272,7 +267,7 @@ export default {
   margin-bottom: calc(0.25 * #{$bottom-navigation-height} + 4px);
 
   @media #{map-get($display-breakpoints, 'xs-only')} {
-    margin-bottom: calc(1.5 * #{$bottom-navigation-height});
+    margin-bottom: calc(1.5 * #{$bottom-navigation-height} + env(safe-area-inset-bottom));
   }
 }
 </style>
