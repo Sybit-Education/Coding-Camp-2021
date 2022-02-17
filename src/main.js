@@ -18,9 +18,9 @@ Vue.component('LoadingSpinner', LoadingSpinner)
 Vue.use(Notifications)
 Vue.use(VueMeta)
 Vue.use(VueNumber)
-if (process.env.VUE_APP_GTAG_ID !== '') {
+if (process.env.NODE_ENV === 'production' && process.env.VUE_APP_GTAG_ID !== '') {
   Vue.use(VueGtag, {
-    config: { id: 'G-R88JSEDEBT' }
+    config: { id: process.env.VUE_APP_GTAG_ID }
   }, router)
 }
 
