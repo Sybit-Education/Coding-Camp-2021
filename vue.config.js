@@ -67,7 +67,12 @@ module.exports = {
           src: './img/icons/mstile-270x270.png',
           sizes: '270x270',
           type: 'image/png'
-        }
+        },
+        {
+          src: './img/icons/android-chrome-512x512.png',
+          sizes: '512x512',
+          type: 'image/png'
+        },
       ]
     },
     workboxOptions: {
