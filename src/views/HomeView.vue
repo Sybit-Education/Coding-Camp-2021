@@ -5,17 +5,20 @@
     </h1>
     <material-searchbar :items="materialList" class="my-10" />
 
-    <v-row class="metrics">
+    <v-row class="metrics" class="my-10">
       <v-col><material-metric-card /></v-col>
       <v-col><location-metric-card /></v-col>
       <v-col><tipp-metric-card /></v-col>
     </v-row>
 
-    <tip-card v-if="tip && tip.id" :tip="tip" />
-    <v-skeleton-loader v-else type="card" />
-
-    <h2>Unsere Partner</h2>
-    <partner-carousel />
+    <div class="my-10">
+      <tip-card v-if="tip && tip.id" :tip="tip" />
+      <v-skeleton-loader v-else type="card" />
+    </div>
+    <div class="my-10">
+      <h2>Unsere Partner</h2>
+      <partner-carousel />
+    </div>
   </v-container>
 </template>
 
