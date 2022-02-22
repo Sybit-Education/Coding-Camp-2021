@@ -212,8 +212,8 @@ export default {
 @import "~leaflet.markercluster/dist/MarkerCluster.Default.css";
 
 .map {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 1;
 }
 
