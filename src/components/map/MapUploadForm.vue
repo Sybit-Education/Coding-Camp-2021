@@ -2,48 +2,35 @@
   <div>
     <v-dialog
       v-model="$parent.showUploadForm"
-      fullscreen
       transition="dialog-bottom-transition"
     >
       <v-card>
-        <v-toolbar dark color="secondary">
+        <v-toolbar dark color="primary" dense flat>
+          <v-toolbar-title>
+            Wegwerfmöglichkeit erstellen
+          </v-toolbar-title>
+          <v-spacer />
           <v-btn icon @click="$parent.showUploadForm = false">
             <v-icon dark>mdi-close</v-icon>
           </v-btn>
-          <v-toolbar-title class="pl-2"
-            >Erstellen einer Wegwerfmöglichkeit</v-toolbar-title
-          >
-          <v-spacer></v-spacer>
         </v-toolbar>
-        <v-row class="mt-3">
-          <v-col class="d-flex justify-center" cols="12">
-            <p class="text-h6 text-sm-h5 text-md-h4 text-center">
-              Formular zum Erstellen einer neuen Wegwerfmöglichkeit
-            </p>
-          </v-col>
-        </v-row>
-        <v-row justify="center">
-          <v-col class="px-md-13" cols="start">
-            <v-list>
-              <v-list-item>
-                <p>
-                  * Bitte beachten Sie, dass Ihre eingegebenen Daten korrekt
-                  eingetragen sind.
-                </p>
-              </v-list-item>
-              <v-list-item>
-                <p>
-                  * Außerdem bitten wir Sie um Geduld, jeder Mülleimer wird von
-                  einem unserer Moderatoren überprüft und freigeben.
-                </p>
-              </v-list-item>
-            </v-list>
+        <v-row>
+          <v-col>
+            <ul>
+              <li>
+                Bitte achten Sie darauf, dass Ihre eingegebenen Daten korrekt sind.
+              </li>
+              <li>
+                Außerdem bitten wir Sie um Geduld: Jede Meldung wird von
+                Moderator:innen überprüft und freigeben.
+              </li>
+            </ul>
           </v-col>
         </v-row>
         <v-form
           ref="form"
           v-model="formDataIsValid"
-          class="px-4 px-md-14"
+          class="px-4"
           lazy-validation
         >
           <v-row>
@@ -78,17 +65,16 @@
           <v-row>
             <v-col cols="12">
               <v-checkbox
-                color="secondary"
                 v-model="useGPSData"
                 :disabled="denyGPSTracking"
-                :value="userLocation === null ? false : userLocation.length > 0"
-                label="Momentane GPS Position Benutzen? (Für Computer nicht empfohlen)"
+                :value="userLocation"
+                label="Momentane GPS Position verwenden? (Für Computer nicht empfohlen)"
               >
               </v-checkbox>
             </v-col>
           </v-row>
           <v-row v-if="!useGPSData">
-            <v-col cols="12" md="6">
+            <v-col cols="12" sm="6">
               <v-text-field
                 v-model="latitude"
                 :rules="latitudeRules"
@@ -97,7 +83,7 @@
                 outlined
               ></v-text-field>
             </v-col>
-            <v-col cols="12" md="6">
+            <v-col cols="12" sm="6">
               <v-text-field
                 v-model="longitude"
                 :rules="longitudeRules"
@@ -121,17 +107,25 @@
             </v-col>
           </v-row>
           <v-row justify="center" justify-sm="end">
-            <v-col cols="12" md="3" lg="2">
+            <v-col cols="6" md="3" lg="2">
               <v-btn
                 :disabled="!formDataIsValid"
                 :loading="$store.state.showLoadingSpinner"
                 block
-                class="white--text py-6"
+                class="white--text"
                 color="primary"
                 @click="submit"
               >
+                <v-icon dark left> mdi-cloud-upload </v-icon>
                 Erstellen
-                <v-icon dark right> mdi-cloud-upload </v-icon>
+              </v-btn>
+            </v-col>
+            <v-col cols="6" md="3" lg="2">
+              <v-btn
+                block
+                @click="$parent.showUploadForm = false"
+              >
+                Abbrechen
               </v-btn>
             </v-col>
           </v-row>
@@ -146,7 +140,7 @@ import locationService from '@/services/location.service'
 export default {
   props: {
     userLocation: {
-      type: Array,
+      type: Object,
       default: null
     }
   },
@@ -182,7 +176,7 @@ export default {
           v.length === 0 ||
           'Bitte wählen Sie eine Beschreibung, die mindestens 10 Zeichen lang oder komplett leer ist.'
       ],
-      types: ['Wertstoffhof', 'Glas-Container'],
+      types: ['Altkleider-Container', 'Glas-Container', 'Wertstoffhof'],
       type: '',
       typeRules: [(v) => !!v || 'Bitte wählen Sie einen Typ aus.'],
       image: null
@@ -230,7 +224,7 @@ export default {
   },
   watch: {
     userLocation (newValue, oldValue) {
-      if (newValue.length > 0 && oldValue === null) {
+      if (newValue !== null) {
         this.denyGPSTracking = false
         this.useGPSData = true
       }

@@ -20,7 +20,7 @@ export default {
   },
   props: {
     userLocation: {
-      type: Array,
+      type: Object,
       default: null
     }
   }

@@ -11,6 +11,7 @@
       class="map"
       @update:zoom="updateZoom"
       @update:center="updateCenter"
+      @locationfound="onLocationFound"
     >
       <l-geo-json
         v-if="geojson"
@@ -19,7 +20,6 @@
         :geojson="geojson"
       />
       <l-tile-layer :attribution="attribution" :url="url" />
-      <l-marker v-if="userLocation" :icon="userIcon" :lat-lng="userLocation" />
       <v-marker-cluster
         :options="{ showCoverageOnHover: false, maxClusterRadius: 40 }"
       >
@@ -96,12 +96,10 @@ export default {
   },
   data () {
     return {
-      map: null,
       geojson: null,
       userLocation: null,
       currentZoom: 10,
       currentCenter: { lat: 47.78707377527543, lng: 8.8828643076576 },
-      position: null,
       locations: [],
       showPopup: false,
       popupLocation: null,
@@ -205,6 +203,9 @@ export default {
           }
         })
       }
+    },
+    onLocationFound (location) {
+      this.userLocation = location
     }
   }
 }
