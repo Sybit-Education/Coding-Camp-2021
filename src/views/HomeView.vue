@@ -1,9 +1,11 @@
 <template>
   <v-container>
-    <h1 class="search-title">
-      Wie entsorge ich im Landkreis Konstanz &hellip;
-    </h1>
-    <material-searchbar :items="materialList" class="my-10" />
+    <div class="search">
+      <h1 class="search__title">
+        Wie entsorge ich im Landkreis Konstanz &hellip;
+      </h1>
+      <material-searchbar :items="materialList" class="search__input my-10" />
+    </div>
 
     <v-row class="metrics">
       <v-col><material-metric-card /></v-col>
@@ -54,7 +56,20 @@ export default {
 }
 </script>
 <style lang="scss">
-.search-title {
-  word-break: normal;
+.search {
+  @include glassmorphism(
+    $color: white,
+    $blur-ammount: 8px,
+    $color-intensity: 0.4
+  );
+  &__title {
+    word-break: normal;
+    min-height: 1.5rem;
+  }
+  &__input {
+    z-index: 1020;
+    position: sticky;
+    top: 0;
+  }
 }
 </style>
