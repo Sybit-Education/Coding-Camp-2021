@@ -7,7 +7,7 @@
       <material-searchbar :items="materialList" class="search__input my-10" />
     </div>
 
-    <v-row class="metrics" class="my-10">
+    <v-row class="metrics my-10">
       <v-col><material-metric-card /></v-col>
       <v-col><location-metric-card /></v-col>
       <v-col><tipp-metric-card /></v-col>
