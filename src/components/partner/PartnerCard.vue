@@ -8,7 +8,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          <v-img class="mx-1" :src="imageSource" />
+          <v-img class="mx-3" :src="imageSource" />
         </a>
       </v-col>
       <v-col sm="8" cols="12">

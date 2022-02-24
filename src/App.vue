@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-main class="py-0">
+    <v-main class="pb-0">
       <v-banner
         v-if="deferredPrompt"
         color="primary"
@@ -16,10 +16,10 @@
         </template>
       </v-banner>
       <router-view />
-      <div class="navigation">
-        <bottom-navigation class="bottomnav" />
-      </div>
     </v-main>
+    <nav class="navigation">
+      <bottom-navigation />
+    </nav>
     <notifications group="default" />
   </v-app>
 </template>
@@ -65,18 +65,10 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "src/scss/scrollbar.scss";
 .container {
   margin-bottom: 1.25 * $bottom-navigation-height;
 }
-.navigation {
-  position: relative;
-}
 .install-banner {
   z-index: 1000;
-}
-.bottomnav {
-  position: absolute;
-  bottom: 0;
 }
 </style>

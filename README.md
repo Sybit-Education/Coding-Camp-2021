@@ -1,13 +1,12 @@
 # Mülli-App (Sybit Coding Camp 2021: 2.11. - 5.11.2021)
 
-
 [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 The webbased application supports the citizens of "Landkreis Konstanz" in Germany to dispose the waste properly and to find the nearest recycling station: https://muelli.app
 
-- Testsystem: [![Netlify Status](https://api.netlify.com/api/v1/badges/7ee1ed26-e7a2-403a-8e20-332a7216475e/deploy-status)](https://app.netlify.com/sites/d1-coding-camp/deploys)
-- Produktiv: [![Netlify Status](https://api.netlify.com/api/v1/badges/25d8012e-6d1a-40c6-b43b-5ed17c1204e6/deploy-status)](https://app.netlify.com/sites/muelli/deploys)
+- Staging Build: [![Netlify Status](https://api.netlify.com/api/v1/badges/7ee1ed26-e7a2-403a-8e20-332a7216475e/deploy-status)](https://app.netlify.com/sites/d1-coding-camp/deploys)
+- Production Build: [![Netlify Status](https://api.netlify.com/api/v1/badges/25d8012e-6d1a-40c6-b43b-5ed17c1204e6/deploy-status)](https://app.netlify.com/sites/muelli/deploys)
 
 ## Sybit Coding Camp 2021: 2.11. - 5.11.2021
 
@@ -69,3 +68,15 @@ How to import ESRI shape files into the application?
 - Useful video: <https://youtu.be/U7BPHZhCbP4>
 - Tool to reorder and enhance exported CVS file: <https://www.editcsvonline.com/>
 - Import CVS file into Airtable by creating new table. Then copy&paste rows to ```Location``` table.
+
+## Contributors
+
+<a href="https://github.com/Sybit-Education/Coding-Camp-2021/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Sybit-Education/Coding-Camp-2021" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
+
+## License
+
+[License](LICENSE)

@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1>Über die Mülli-App</h1>
+    <headline-bar title="Über die Mülli-App" />
     <section class="my-5">
       <v-row>
         <v-col cols="3">
@@ -81,27 +81,26 @@
       <h3>Das Team</h3>
       <v-img contain class="mt-2" :src="image"></v-img>
       <div class="mt-2 d-flex">
-        <small
-          >Stephan Strittmatter (von links), Enrico Franke, Jonas Degener,
-          Morries Bieg, Maurice Rehn, Alexander Kugler, Jan Steppacher, Mohammad
-          Kalaji, Mirko Pleli, Raphael Schnick, Mario Sieg, Sophia Kunert (von
-          unten), Dominik Smyczkowski, Viktor Müller, Niklas Neumann, Gideon
-          Godejoann während ihrer Arbeit beim Coding-Camp.</small
-        >
+        <small>
+          Während ihrer Arbeit beim Coding-Camp - erste Reihe (v.l.n.r): Sophia
+          Kunert, Dominik Smyczkowski, Viktor Müller, Niklas Neumann, Gideon
+          Godejoann<br />
+          stehend: Stephan Strittmatter, Enrico Franke, Jonas Degener, Morries
+          Bieg, Maurice Rehn, Alexander Kugler, Jan Steppacher, Mohammad Kalaji,
+          Mirko Pleli, Raphael Schnick, Mario Sieg
+        </small>
       </div>
-      <small class="grey--text text--lighten-1"
-        >Auf dem Bild fehlt: Brandon Serra, Henrik Schmid (als
-        Schülerpraktikum), Cedric Lange</small
-      >
     </section>
   </v-container>
 </template>
 
 <script>
+import HeadlineBar from '@/components/HeadlineBar.vue'
 import DataReloadButton from '@/components/DataReloadButton.vue'
+
 export default {
   name: 'AboutUsView',
-  components: { DataReloadButton },
+  components: { HeadlineBar, DataReloadButton },
   computed: {
     image () {
       return require('@/assets/img/ueber-uns/team.jpg')
