@@ -79,9 +79,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "node_modules/vuetify/src/styles/settings/variables";
-@import "src/scss/variables";
-
 .bottom-sheet {
   &__card {
     overflow-y: scroll;

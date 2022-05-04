@@ -64,6 +64,8 @@ export default {
 }
 
 .bottom-nav {
+  padding-bottom: env(safe-area-inset-bottom);
+
   &__button {
     display: flex;
     justify-content: center;
@@ -83,7 +85,9 @@ export default {
   }
 }
 
-.theme--light.v-btn {
-  color: rgba(255, 111, 0, 0.87);
+.theme--light {
+  .v-btn {
+    color: rgba(255, 111, 0, 0.87);
+  }
 }
 </style>

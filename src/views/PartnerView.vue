@@ -1,6 +1,7 @@
 <template>
   <v-container>
-    <h1 class="mb-5">Offizielle Partner der Mülli-App</h1>
+    <headline-bar title="Offizielle Partner der Mülli-App" />
+
     <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
     <v-row>
       <v-col v-for="partner in list" :key="partner.id" cols="12" xl="6">
@@ -12,11 +13,12 @@
 
 <script>
 import partnerService from '@/services/partner.service'
-import partnerCard from '@/components/partner/PartnerCard.vue'
+import PartnerCard from '@/components/partner/PartnerCard.vue'
+import HeadlineBar from '@/components/HeadlineBar.vue'
 
 export default {
   name: 'PartnerView',
-  components: { partnerCard },
+  components: { PartnerCard, HeadlineBar },
   data () {
     return {
       list: [],

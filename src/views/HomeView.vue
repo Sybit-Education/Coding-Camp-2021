@@ -1,18 +1,26 @@
 <template>
   <v-container>
-    <h1 class="search-title">
-      Wie entsorge ich im Landkreis Konstanz &hellip;
-    </h1>
-    <material-searchbar :items="materialList" class="my-5" />
-    <v-row class="metrics">
+    <div class="search">
+      <h1 class="search__title">
+        Wie entsorge ich im Landkreis Konstanz &hellip;
+      </h1>
+      <material-searchbar :items="materialList" class="search__input my-10" />
+    </div>
+
+    <v-row class="metrics my-10">
       <v-col><material-metric-card /></v-col>
       <v-col><location-metric-card /></v-col>
       <v-col><tipp-metric-card /></v-col>
     </v-row>
-    <tip-card v-if="tip && tip.id" :tip="tip" />
-    <v-skeleton-loader v-else type="card" />
-    <h2>Unsere Partner</h2>
-    <partner-carousel />
+
+    <div class="my-10">
+      <tip-card v-if="tip && tip.id" :tip="tip" />
+      <v-skeleton-loader v-else type="card" />
+    </div>
+    <div class="my-10">
+      <h2>Unsere Partner</h2>
+      <partner-carousel />
+    </div>
   </v-container>
 </template>
 
@@ -51,7 +59,20 @@ export default {
 }
 </script>
 <style lang="scss">
-.search-title {
-  word-break: normal;
+.search {
+  @include glassmorphism(
+    $color: white,
+    $blur-ammount: 8px,
+    $color-intensity: 0.4
+  );
+  &__title {
+    word-break: normal;
+    min-height: 1.5rem;
+  }
+  &__input {
+    z-index: 1020;
+    position: sticky;
+    top: 0;
+  }
 }
 </style>
