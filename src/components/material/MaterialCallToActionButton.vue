@@ -8,8 +8,9 @@
       dark
       elevation="0"
       @click="onClick"
-      v-html="selectedTarget.targetLabel"
-    />
+     >
+      {{selectedTarget.targetLabel}}
+    </v-btn>
   </div>
 </template>
 

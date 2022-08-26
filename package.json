@@ -2,11 +2,15 @@
   "name": "muelli.app",
   "version": "1.6.0",
   "private": true,
+  "engines": {
+    "node": ">=14"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "update:browserlist": "npx browserslist@latest --update-db"
   },
   "dependencies": {
     "@adapttive/vue-markdown": "^4.0.1",
@@ -26,34 +30,27 @@
     "vue2-leaflet": "^2.7.1",
     "vue2-leaflet-locatecontrol": "^1.0.2",
     "vue2-leaflet-markercluster": "^3.1.0",
-    "vuetify": "^2.5.14",
+    "vuetify": "^2.6.9",
     "vuex": "^3.6.2",
     "vuex-persist": "^3.1.3"
   },
   "devDependencies": {
-    "@mdi/font": "^6.5.95",
-    "@vue/cli-plugin-babel": "^4.5.15",
-    "@vue/cli-plugin-eslint": "^4.5.15",
-    "@vue/cli-plugin-pwa": "^4.5.15",
-    "@vue/cli-plugin-router": "^4.5.15",
-    "@vue/cli-plugin-vuex": "^4.5.15",
-    "@vue/cli-service": "^4.5.15",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-eslint": "^5.0.8",
+    "@vue/cli-plugin-pwa": "^5.0.8",
+    "@vue/cli-plugin-router": "^5.0.8",
+    "@vue/cli-plugin-vuex": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
     "@vue/eslint-config-standard": "^6.1.0",
     "babel-eslint": "^10.1.0",
     "deepmerge": "^4.2.2",
-    "eslint": "^7.32.0",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-standard": "^5.0.0",
-    "eslint-plugin-vue": "^8.2.0",
     "husky": "^7.0.4",
-    "node-sass": "^7.0.0",
-    "sass": "~1.32.13",
-    "sass-loader": "^10.2.1",
+    "node-sass": "^7.0.1",
+    "sass": "~1.32",
+    "sass-loader": "^13.0.2",
     "vue-cli-plugin-vuetify": "^2.4.5",
     "vue-template-compiler": "^2.6.14",
-    "vuetify-loader": "^1.7.3"
+    "vuetify-loader": "^1.9.2"
   },
   "browserslist": [
     "> 1%",

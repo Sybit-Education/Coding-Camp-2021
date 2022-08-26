@@ -4,8 +4,9 @@
     class="ml-2 elevation-3"
     outlined
     :color="target.color"
-    v-html="target.name"
-  ></v-chip>
+  >
+    {{ target.name }}
+  </v-chip>
 </template>
 
 <script>
