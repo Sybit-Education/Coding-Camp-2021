@@ -8,7 +8,7 @@
       dark
       elevation="0"
       @click="onClick"
-    >
+     >
       {{selectedTarget.targetLabel}}
     </v-btn>
   </div>
