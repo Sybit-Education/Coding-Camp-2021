@@ -107,7 +107,6 @@ module.exports = {
     loaderOptions: {
       scss: {
         additionalData: `
-          @import "@/assets/scss/_font.scss";
           @import "@/assets/scss/_variables.scss";
           @import "@/assets/scss/_scrollbar.scss";
           @import '~vuetify/src/styles/styles.sass';
