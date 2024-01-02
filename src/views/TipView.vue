@@ -164,7 +164,7 @@ export default {
     }
   }
 
-  :deep(&__markdown) {
+  :deep(.card__markdown) {
     font-family: "Atkinson Hyperlegible", sans-serif !important;
     color: #616161 !important;
     line-height: 1.7rem;
@@ -182,7 +182,7 @@ export default {
       line-height: 1.75em;
     }
 
-    &-wrapper {
+    .card__markdown-wrapper {
       grid-area: 3 / 1 / span 1 / -1;
       @media #{map-get($display-breakpoints, 'xs-only')} {
         grid-area: 4 / 1 / span 1 / -1;
