@@ -217,7 +217,7 @@ export default {
   z-index: 1;
 }
 
-::v-deep .leaflet-touch .leaflet-bar a {
+:deep(.leaflet-touch) .leaflet-bar a {
   @include glassmorphism(
     $color: white,
     $blur-ammount: 4px,
@@ -228,17 +228,17 @@ export default {
   font-size: 28px;
   font-weight: 700;
 }
-::v-deep .leaflet-touch .leaflet-bar a:first-child {
+:deep(.leaflet-touch) .leaflet-bar a:first-child {
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
 }
 
-::v-deep .leaflet-touch .leaflet-bar a:last-child {
+:deep(.leaflet-touch) .leaflet-bar a:last-child {
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
 }
 
-::v-deep .leaflet-control-zoom {
+:deep(.leaflet-control-zoom) {
   margin-top: 28px;
   margin-right: calc(1.25rem + env(safe-area-inset-right));
   border: 0;
@@ -247,7 +247,7 @@ export default {
   }
 }
 
-::v-deep .leaflet-control-locate {
+:deep(.leaflet-control-locate) {
   margin-right: calc(1.25rem + env(safe-area-inset-right));
   @media #{map-get($display-breakpoints, 'xs-only')} {
     margin-right: calc(1.25rem + env(safe-area-inset-right));
@@ -255,7 +255,7 @@ export default {
   }
 }
 
-::v-deep .leaflet-control-attribution {
+:deep(.leaflet-control-attribution) {
   margin-right: calc(1.25rem + env(safe-area-inset-right));
   @media #{map-get($display-breakpoints, 'xs-only')} {
     margin-right: env(safe-area-inset-right);
@@ -263,7 +263,7 @@ export default {
   }
 }
 
-::v-deep .map-action-button {
+:deep(.map-action-button) {
   margin-bottom: calc(0.25 * #{$bottom-navigation-height} + 4px);
 
   @media #{map-get($display-breakpoints, 'xs-only')} {

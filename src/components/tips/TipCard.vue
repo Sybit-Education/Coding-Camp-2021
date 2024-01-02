@@ -60,7 +60,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-::v-deep .tip-teaser-card {
+:deep(.tip-teaser-card) {
   border: 1px solid rgba(194, 194, 194, 0.4);
   box-shadow: 0 4px 8px rgba(105, 118, 124, 0.1) !important;
   transition: 200ms cubic-bezier(0.22, 0.6, 0.52, 0.99);

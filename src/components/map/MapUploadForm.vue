@@ -239,11 +239,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-::v-deep .v-dialog--fullscreen {
+:deep(.v-dialog--fullscreen) {
   overflow-x: hidden;
 }
 
-::v-deep .v-input__prepend-inner {
+:deep(.v-input__prepend-inner) {
   margin-right: 6px !important;
 }
 </style>

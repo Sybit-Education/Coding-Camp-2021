@@ -164,7 +164,7 @@ export default {
     }
   }
 
-  ::v-deep &__markdown {
+  :deep(&__markdown) {
     font-family: "Atkinson Hyperlegible", sans-serif !important;
     color: #616161 !important;
     line-height: 1.7rem;
