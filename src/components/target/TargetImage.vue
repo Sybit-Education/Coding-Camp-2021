@@ -3,13 +3,14 @@
     v-if="material"
     class="mb-5 target-image"
     :src="image"
-    contain
+    cover
     :alt="title"
   />
 </template>
 
-<script>
-import { mapGetters } from 'vuex'
+<script lang="ts">
+import { useTargetStore } from '@/store/target.store'
+
 export default {
   name: 'TargetImage',
   props: {
@@ -21,7 +22,8 @@ export default {
   computed: {
     firstTarget () {
       if (this.material && this.material.targets[0]) {
-        return this.getTargetById(this.material.targets[0])
+        const target = useTargetStore().getTargetById(this.material.targets[0])
+        return target
       } else {
         return null
       }
@@ -29,7 +31,7 @@ export default {
     image () {
       if (this.firstTarget) {
         const target = this.firstTarget
-        return target.images[0].thumbnails.large.url
+        return target.images[0].thumbnails?.large.url
       }
       return "required('https://via.placeholder.com/150?text=placeholder')"
     },
@@ -37,12 +39,9 @@ export default {
       if (this.firstTarget) {
         return this.firstTarget.name
       } else {
-        return null
+        return undefined
       }
-    },
-    ...mapGetters({
-      getTargetById: 'Target/getTargetById'
-    })
+    }
   }
 }
 </script>

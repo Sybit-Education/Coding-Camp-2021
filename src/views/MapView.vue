@@ -1,11 +1,13 @@
 <template>
-  <location-map :navigate="false" :location-type="targetNames" />
+  <location-map
+    :navigate="false"
+    :location-type="targetNames"
+  />
 </template>
-<script>
+<script lang="ts">
 import LocationMap from '@/components/map/LocationMap.vue'
 
 export default {
-  name: 'MapView',
   components: {
     LocationMap
   },
@@ -15,10 +17,8 @@ export default {
       default: null
     }
   },
-  metaInfo () {
-    return {
-      title: 'Karte mit Entsorgungsmöglichkeiten'
-    }
+  head: {
+    title: 'Karte mit Entsorgungsmöglichkeiten'
   }
 }
 </script>

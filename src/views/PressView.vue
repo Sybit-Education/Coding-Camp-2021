@@ -1,6 +1,7 @@
 <template>
   <v-container>
-    <h1 class="mb-5">Presse</h1>
+    <headline-bar title="Presse" />
+
     <p>
       Wir freuen uns über den Anklang, welchen unsere App
       <strong>Mülli</strong> erhält und sind auch ein wenig stolz über die
@@ -12,32 +13,42 @@
       QR-Code, Logo etc. für weitere Berichterstattungen an.
     </p>
     <h2>Artikel zur Mülli-App</h2>
-    <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
+    <loading-spinner v-if="showLoadingSpinner" />
     <v-row>
-      <v-col v-for="item in list" :key="item.id" cols="12" xl="6">
-        <press-card :item="item" class="mb-5" />
+      <v-col
+        v-for="item in list"
+        :key="item.id"
+        cols="12"
+        xl="6"
+      >
+        <press-card
+          :item="item"
+          class="mb-5"
+        />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
-<script>
+<script lang="ts">
 import partnerService from '@/services/press.service'
-import pressCard from '@/components/press/PressCard.vue'
+import PressCard from '@/components/press/PressCard.vue'
+import HeadlineBar from '@/components/HeadlineBar.vue'
+import type Press from '@/types/press'
 
 export default {
-  name: 'PartnerView',
-  components: { pressCard },
+  name: 'PressView',
+  components: {
+    PressCard, HeadlineBar
+  },
   data () {
     return {
       showLoadingSpinner: true,
-      list: []
+      list: Array<Press>()
     }
   },
-  metaInfo () {
-    return {
-      title: 'Presse'
-    }
+  head: {
+    title: 'Presse'
   },
   created () {
     partnerService.getPressRecords().then((list) => {

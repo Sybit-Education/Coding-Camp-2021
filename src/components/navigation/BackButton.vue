@@ -1,33 +1,33 @@
 <template>
   <v-btn
-      @click="$router.back()"
-      fab
-      small
-      top
-      left
-      fixed
-      class="back-button mt-3"
-  >
-    <v-icon style="font-size:25px">
-      mdi-arrow-left
-    </v-icon>
-  </v-btn>
+    size="small"
+    location="top left"
+    icon="mdi-arrow-left"
+    fixed
+    class="back-button mt-3"
+    @click="$router.back()"
+  />
 </template>
-<script>
+
+<script lang="ts">
 export default {
   name: 'BackButton'
 }
 </script>
+
 <style lang="scss" scoped>
-@import 'src/scss/variables.scss';
-
+@use 'vuetify/settings' as v;
 .back-button {
-  @include glassmorphism($color: white, $blur-ammount: 4px, $color-intensity: 0.4);
+  @include glassmorphism(
+    $color: white,
+    $blur-ammount: 4px,
+    $color-intensity: 0.4
+  );
   z-index: 999;
-  margin-bottom: calc(0.5 * #{$bottom-navigation-height});
+  --margin-bottom: calc(0.5 * #{$bottom-navigation-height});
 
-  @media #{map-get($display-breakpoints, 'xs-only')} {
-    margin-bottom: calc(1.5 * #{$bottom-navigation-height});
+  @media #{map-get(v.$display-breakpoints, 'xs')} {
+    --margin-bottom: calc(1.5 * #{$bottom-navigation-height});
   }
 }
 

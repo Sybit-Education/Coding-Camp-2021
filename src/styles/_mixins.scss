@@ -1,0 +1,13 @@
+// MIXINS
+@mixin glassmorphism($color: white, $blur-ammount: 8px, $color-intensity: 0.4, $remove-shadow: true) {
+  backdrop-filter: blur($blur-ammount) !important;
+  -webkit-backdrop-filter: blur($blur-ammount) !important;
+  background: rgba($color, $color-intensity) !important;
+  border: 2px solid rgba($color, $color-intensity) !important;
+
+  @if($remove-shadow) {
+    -webkit-box-shadow: 0 0 !important;
+    -moz-box-shadow: 0 0 !important;
+    box-shadow: 0 0 !important;
+  }
+}

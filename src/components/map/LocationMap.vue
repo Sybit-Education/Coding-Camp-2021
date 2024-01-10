@@ -11,17 +11,26 @@
       class="map"
       @update:zoom="updateZoom"
       @update:center="updateCenter"
+      @ready="onReady"
+      @locationfound="onLocationFound"
     >
       <l-geo-json
         v-if="geojson"
-        layerType="boundary"
+        --layer-type="boundary"
         :options-style="styleFunction"
         :geojson="geojson"
       />
-      <l-tile-layer :attribution="attribution" :url="url" />
-      <l-marker v-if="userLocation" :icon="userIcon" :lat-lng="userLocation" />
+      <l-tile-layer
+        :attribution="attribution"
+        :url="url"
+      />
+      <l-marker
+        v-if="userLocation"
+        --:icon="userIcon"
+        :lat-lng="userLocation"
+      />
       <v-marker-cluster
-        :options="{ showCoverageOnHover: false, maxClusterRadius: 40 }"
+        v-bind="{ showCoverageOnHover: false, maxClusterRadius: 40 }"
       >
         <l-marker
           v-for="loc in locations"
@@ -34,27 +43,22 @@
       <l-control-zoom
         class="map__zoom-buttons"
         position="topright"
-        zoomInTitle="Vergrößern"
-        zoomOutTitle="Verkleinern"
-      />
-      <l-control position="topleft">
-        <back-button />
-      </l-control>
-      <l-control class="map__action-button" position="bottomleft">
-        <map-action-button :userLocation="userLocation" />
-      </l-control>
-      <v-locate-control
-        class="map__locate-button"
-        :options="{ position: 'bottomright' }"
+        zoom-in-title="Vergrößern"
+        zoom-out-title="Verkleinern"
       />
     </l-map>
     <v-bottom-sheet v-model="showPopup">
-      <map-navigation-card :location="popupLocation" @close="closePopup" />
+      <v-sheet>
+        <map-navigation-card
+          :location="popupLocation"
+          @close="closePopup"
+        />
+      </v-sheet>
     </v-bottom-sheet>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import {
   LControl,
   LControlZoom,
@@ -62,32 +66,31 @@ import {
   LMap,
   LMarker,
   LTileLayer
-} from 'vue2-leaflet'
-import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol'
-import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster'
+} from '@vue-leaflet/vue-leaflet'
+import { LMarkerClusterGroup } from 'vue-leaflet-markercluster'
 import 'leaflet.path.drag'
+
 import 'leaflet/dist/leaflet.css'
-import L, { latLngBounds } from 'leaflet'
-import MapActionButton from './MapActionButton'
-import BackButton from '@/components/navigation/BackButton.vue'
+import 'vue-leaflet-markercluster/dist/style.css'
+
+import L, { Point, latLngBounds } from 'leaflet'
 import MapNavigationCard from './MapNavigationCard.vue'
 import locationService from '@/services/location.service'
+import { useLocationStore } from '@/store/location.store'
+import type Location from '@/types/location'
 
 export default {
   name: 'LocationMap',
   components: {
-    MapActionButton,
     LMap,
     LTileLayer,
     LMarker,
-    LControl,
     LControlZoom,
     LGeoJson,
-    'v-locate-control': Vue2LeafletLocatecontrol,
-    'v-marker-cluster': Vue2LeafletMarkerCluster,
-    BackButton,
+    'v-marker-cluster': LMarkerClusterGroup,
     MapNavigationCard
   },
+  inject: [ 'L'],
   props: {
     locationTypes: {
       type: Array,
@@ -98,13 +101,13 @@ export default {
     return {
       map: null,
       geojson: null,
-      userLocation: null,
+      userLocation: undefined as { lat: number; lng: number } | undefined,
       currentZoom: 10,
-      currentCenter: { lat: 47.78707377527543, lng: 8.8828643076576 },
+      currentCenter: { x: 47.78707377527543, y: 8.8828643076576 } as Point,
       position: null,
-      locations: [],
+      locations: Array<Location>(),
       showPopup: false,
-      popupLocation: null,
+      popupLocation: undefined as Location | undefined,
       bounds: latLngBounds([
         [47.54918891696502, 8.474666027343236],
         [47.99957120189105, 9.365931896483863]
@@ -123,14 +126,14 @@ export default {
   },
   mounted () {
     this.currentZoom = this.$route.query.zoom
-      ? Number.parseInt(this.$route.query.zoom, 10)
+      ? Number.parseInt(this.$route.query.zoom as string, 10)
       : this.currentZoom
-    this.currentCenter.lat = this.$route.query.clat
-      ? this.$route.query.clat
-      : this.currentCenter.lat
-    this.currentCenter.lng = this.$route.query.clng
-      ? this.$route.query.clng
-      : this.currentCenter.lng
+    this.currentCenter.x = this.$route.query.clat
+      ? Number.parseFloat(this.$route.query.clat as string)
+      : this.currentCenter.x
+    this.currentCenter.x = this.$route.query.clng
+      ? Number.parseFloat(this.$route.query.clng as string)
+      : this.currentCenter.x
 
     this.loadLocations()
   },
@@ -143,10 +146,11 @@ export default {
       })
     },
     async loadLocations () {
-      await this.$store.dispatch('Location/getLocationRecords')
-      const locations = this.$store.getters['Location/getLocationList']
+      const locStore = useLocationStore()
+      await locStore.getLocationRecords()
+      const locations = locStore.getLocationList
       if (this.locationTypes) {
-        const list = []
+        const list = Array<Location>()
         this.locationTypes.forEach((type) => {
           const filteredList = locations.filter((loc) => {
             return loc.type === type
@@ -158,19 +162,19 @@ export default {
         this.locations = locations
       }
     },
-    getPin (location) {
+    getPin (location: any) {
       return L.icon({
         iconUrl: locationService.getLocationTypeImage(location),
         iconSize: [32, 32],
         iconAnchor: [16, 32]
       })
     },
-    openPopup (location) {
+    openPopup (location: Location) {
       this.popupLocation = location
       this.showPopup = true
     },
     closePopup () {
-      this.popupLocation = null
+      this.popupLocation = undefined
       this.showPopup = false
     },
     styleFunction () {
@@ -179,52 +183,57 @@ export default {
         color: '#FF6F00'
       }
     },
-    updateZoom (zoom) {
+    updateZoom (zoom: number) {
       if (zoom !== this.currentZoom) {
-        this.currentZoom = Number.parseInt(zoom, 10)
+        this.currentZoom = zoom //Number.parseInt(zoom, 10)
         this.$router.replace({
           query: {
             zoom: this.currentZoom,
-            clat: this.currentCenter ? this.currentCenter.lat : null,
-            clng: this.currentCenter ? this.currentCenter.lng : null
+            clat: this.currentCenter ? this.currentCenter.x : null,
+            clng: this.currentCenter ? this.currentCenter.y : null
           }
         })
       }
     },
-    updateCenter (center) {
+    updateCenter (center: Point) {
       if (
-        center.lat !== this.currentCenter.lat ||
-        center.lng !== this.currentCenter.lng
+        center.x !== this.currentCenter.x ||
+        center.y !== this.currentCenter.y
       ) {
         this.currentCenter = center
         this.$router.replace({
           query: {
             zoom: this.currentZoom,
-            clat: this.currentCenter ? this.currentCenter.lat : null,
-            clng: this.currentCenter ? this.currentCenter.lng : null
+            clat: this.currentCenter ? this.currentCenter.x : null,
+            clng: this.currentCenter ? this.currentCenter.y : null
           }
         })
       }
+    },
+    onReady(mapObject: { locate: () => void }) {
+      mapObject.locate()
+    },
+    onLocationFound(location: { latlng: Point }){
+      this.updateCenter(location.latlng)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import "~leaflet/dist/leaflet.css";
+@use 'vuetify/settings' as v;
+@import "leaflet/dist/leaflet.css";
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
-@import "~leaflet.markercluster/dist/MarkerCluster.css";
-@import "~leaflet.markercluster/dist/MarkerCluster.Default.css";
-@import "node_modules/vuetify/src/styles/settings/variables";
-@import "src/scss/variables";
+@import "leaflet.markercluster/dist/MarkerCluster.css";
+@import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 
 .map {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 1;
 }
 
-::v-deep .leaflet-touch .leaflet-bar a {
+:deep(.leaflet-touch) .leaflet-bar a {
   @include glassmorphism(
     $color: white,
     $blur-ammount: 4px,
@@ -235,46 +244,46 @@ export default {
   font-size: 28px;
   font-weight: 700;
 }
-::v-deep .leaflet-touch .leaflet-bar a:first-child {
+:deep(.leaflet-touch) .leaflet-bar a:first-child {
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
 }
 
-::v-deep .leaflet-touch .leaflet-bar a:last-child {
+:deep(.leaflet-touch) .leaflet-bar a:last-child {
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
 }
 
-::v-deep .leaflet-control-zoom {
+:deep(.leaflet-control-zoom) {
   margin-top: 28px;
-  margin-right: 1.25rem;
+  margin-right: calc(1.25rem + env(safe-area-inset-right));
   border: 0;
-  @media #{map-get($display-breakpoints, 'xs-only')} {
+  @media #{map-get(v.$display-breakpoints, 'xs')} {
     display: none;
   }
 }
 
-::v-deep .leaflet-control-locate {
-  margin-right: 1.25rem;
-  @media #{map-get($display-breakpoints, 'xs-only')} {
-    margin-right: 0.75rem;
-    bottom: calc(1.5 * #{$bottom-navigation-height} - 18px);
+:deep(.leaflet-control-locate) {
+  margin-right: calc(1.25rem + env(safe-area-inset-right));
+  @media #{map-get(v.$display-breakpoints, 'xs')} {
+    margin-right: calc(1.25rem + env(safe-area-inset-right));
+    bottom: calc(0.5 * #{$bottom-navigation-height} - 18px + env(safe-area-inset-bottom)) ;
   }
 }
 
-::v-deep .leaflet-control-attribution {
-  margin-right: 1.25rem;
-  @media #{map-get($display-breakpoints, 'xs-only')} {
-    margin-right: 0;
+:deep(.leaflet-control-attribution) {
+  margin-right: calc(1.25rem + env(safe-area-inset-right));
+  @media #{map-get(v.$display-breakpoints, 'xs')} {
+    margin-right: env(safe-area-inset-right);
     margin-bottom: 0;
   }
 }
 
-::v-deep .map-action-button {
+:deep(.map-action-button) {
   margin-bottom: calc(0.25 * #{$bottom-navigation-height} + 4px);
 
-  @media #{map-get($display-breakpoints, 'xs-only')} {
-    margin-bottom: calc(1.5 * #{$bottom-navigation-height});
+  @media #{map-get(v.$display-breakpoints, 'xs')} {
+    margin-bottom: calc(0.5 * #{$bottom-navigation-height} + env(safe-area-inset-bottom));
   }
 }
 </style>

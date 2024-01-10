@@ -5,11 +5,17 @@
     target="_blank"
     rel="noopener noreferrer"
   >
-    <v-card v-if="item" class="press-teaser-card rounded-xl">
+    <v-card
+      v-if="item"
+      class="press-teaser-card rounded-xl"
+    >
       <v-card-text>
         <v-row>
           <v-col cols="6">{{ item.source }}</v-col>
-          <v-col cols="6" class="text-right">{{ publishedDate }}</v-col>
+          <v-col
+            cols="6"
+            class="text-right"
+          >{{ publishedDate }}</v-col>
         </v-row>
       </v-card-text>
       <v-card-title class="press-teaser-card__title">
@@ -22,19 +28,26 @@
         />
       </v-card-text>
       <v-card-actions>
-        <v-btn class="press-teaser-card__more" text>mehr &hellip;</v-btn>
+        <v-btn
+          class="press-teaser-card__more"
+          variant="text"
+        >mehr &hellip;</v-btn>
       </v-card-actions>
     </v-card>
-    <v-skeleton-loader v-else type="card" />
+    <v-skeleton-loader
+      v-else
+      type="card"
+    />
   </a>
 </template>
 
-<script>
+<script lang="ts">
 import MarkdownWrapper from '@/components/MarkdownWrapper.vue'
 
 export default {
-  components: { MarkdownWrapper },
-  name: 'PressCard',
+  components: {
+    MarkdownWrapper
+  },
   props: {
     item: {
       type: Object,
@@ -43,7 +56,7 @@ export default {
   },
   computed: {
     publishedDate () {
-      const options = {
+      const options: Intl.DateTimeFormatOptions = {
         weekday: 'long',
         year: 'numeric',
         month: 'numeric',
@@ -55,7 +68,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-::v-deep .press-teaser-card {
+.press-teaser-card {
   border: 1px solid rgba(194, 194, 194, 0.4);
   box-shadow: 0 4px 8px rgba(105, 118, 124, 0.1) !important;
   transition: 200ms cubic-bezier(0.22, 0.6, 0.52, 0.99);
@@ -72,7 +85,7 @@ export default {
     line-height: 1.75rem !important;
   }
   &__more {
-    color: rgba(255, 111, 0, 0.87);
+    color: rgb(var(--v-theme-primary))
   }
 }
 </style>

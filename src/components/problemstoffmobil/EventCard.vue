@@ -1,10 +1,16 @@
 <template>
-  <v-card :id="event.id" class="event-card rounded-xl my-3">
+  <v-card
+    :id="event.id"
+    class="event-card rounded-xl my-3"
+  >
     <v-card-title>
       <h4>
-        <v-icon class="event-card__calendar-icon" color="primary"
-          >mdi-calendar</v-icon
+        <v-icon
+          class="event-card__calendar-icon"
+          color="primary"
         >
+          mdi-calendar
+        </v-icon>
         {{ eventdate }}
       </h4>
       <share-button
@@ -17,15 +23,23 @@
     </v-card-title>
     <v-card-text>
       <div>
-        <v-icon size="18" class="event-card__clock-icon">mdi-clock</v-icon>
+        <v-icon
+          size="18"
+          class="event-card__clock-icon"
+        >
+          mdi-clock
+        </v-icon>
         <b> Zeitraum:</b> {{ timeFrom }} - {{ timeTo }}
       </div>
       <div>
-        <v-icon size="18" class="event-card__map-marker-icon"
-          >mdi-map-marker</v-icon
-        ><b> Sammelpunkt:</b>
+        <v-icon
+          size="18"
+          class="event-card__map-marker-icon"
+        >
+          mdi-map-marker
+        </v-icon><b> Sammelpunkt:</b>
         <div class="event-card__pickup">
-          {{ event.collectionPoint }}<br />
+          {{ event.collectionPoint }}<br>
           {{ event.municipality
           }}<span v-if="event.district">, Ortsteil: {{ event.district }}</span>
         </div>
@@ -33,11 +47,14 @@
     </v-card-text>
   </v-card>
 </template>
-<script>
+<script lang="ts">
 import ShareButton from '../navigation/ShareButton.vue'
+
 export default {
-  components: { ShareButton },
   name: 'EventCard',
+  components: {
+    ShareButton
+  },
   props: {
     event: {
       type: Object,
@@ -46,7 +63,7 @@ export default {
   },
   computed: {
     eventdate () {
-      const options = {
+      const options: Intl.DateTimeFormatOptions = {
         weekday: 'long',
         year: 'numeric',
         month: 'long',

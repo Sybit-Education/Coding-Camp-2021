@@ -1,20 +1,42 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
-  <vue-markdown class="markdown" linkify typographer>{{ source }}</vue-markdown>
+  <div
+    class="markdown"
+    linkify
+    typographer
+    v-html="markdown.render(source)"
+  />
 </template>
 
-<script>
-import VueMarkdown from '@adapttive/vue-markdown'
+<script setup lang="ts">
+// see https://dev.to/matijanovosel/rendering-markdown-in-vue-3-3maj
+import MarkdownIt from 'markdown-it'
+const markdown = new MarkdownIt()
 
-export default {
-  name: 'MarkdownWrapper',
-  props: {
-    source: {
-      type: String,
-      required: true
+defineProps({
+  source: {
+    type: String,
+    required: true
+  }
+})
+</script>
+<style lang="scss">
+
+.markdown {
+  a {
+    color: rgb(var(--v-theme-primary));
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
     }
-  },
-  components: {
-    VueMarkdown
+  }
+  ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+  }
+  ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
   }
 }
-</script>
+</style>

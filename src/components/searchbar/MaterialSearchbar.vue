@@ -2,79 +2,101 @@
   <div>
     <v-autocomplete
       v-model="select"
+      class="flex-full-width"
       :loading="items && items.length < 0"
       :items="items"
-      class="rounded-xl"
-      solo
-      hide-details
+      append-inner-icon="mdi-magnify"
+      eager
+      hide-no-data
+      variant="solo"
+      hide-details="auto"
       label="Tippe zum Suchen"
-      :filter="filter"
-      @keyup.enter="search()"
-      :return-object="true"
+      :custom-filter="filter"
+      return-object
       auto-select-first
+      item-title="name"
+      item-value="id"
+      rounded
+      @keyup.enter="search()"
     >
-      <template slot="item" slot-scope="data">
-        {{ data.item.name }}
-      </template>
-      <template slot="selection" slot-scope="data">
-        {{ data.item.name }}
-      </template>
-      <template v-slot:append>
-        <v-btn icon @click="search" aria-label="Suchen">
-          <v-icon>
-            {{ $route.path === "/detail" ? "mdi-magnify" : "mdi-help" }}
-          </v-icon>
-        </v-btn>
-      </template>
-      <template slot="no-data">
+      <template #no-data>
         <div class="px-3">
-          Leider keinen Treffer!<br />
-          Stelle eine <a @click="dialog = true">Anfrage</a>.
+          Leider keine Treffer!<br>
+          Stelle eine <a
+            class="link"
+            @click="dialog = true"
+          >Anfrage</a>.
         </div>
       </template>
     </v-autocomplete>
-    <v-dialog v-model="dialog" persistent max-width="600px" class="rounded-xl">
+    <v-dialog
+      v-model="dialog"
+      persistent
+      max-width="600px"
+      class="rounded-xl"
+    >
       <v-card class="pa-5 rounded-xl">
-        <v-card-title class="text-h5"> Anfrage </v-card-title>
-        <v-form ref="form" v-model="valid" @submit.prevent="addMaterial">
+        <v-card-title class="text-h5">
+          Anfrage
+        </v-card-title>
+        <v-form
+          ref="form"
+          v-model="valid"
+          @submit.prevent="addMaterial"
+        >
           <v-card-text>
             <v-text-field
               v-model="material.name"
               :rules="nameRules"
-              label="Name"
+              label="gesuchter Abfall"
               required
-              outlined
+              variant="outlined"
             />
             <v-textarea
               v-model="material.notes"
               label="Beschreibung"
-              outlined
+              variant="outlined"
+            />
+            <v-text-field
+              v-model="material.requester.name"
+              :rules="nameRules"
+              label="Name"
+              required
+              variant="outlined"
             />
             <v-text-field
               v-model="material.requester.email"
               :rules="emailRules"
               label="E-Mail"
               type="email"
-              outlined
+              variant="outlined"
             />
             <v-text-field
               v-model="material.requester.city"
               label="Ort"
               type="text"
-              outlined
+              variant="outlined"
             />
-            <v-alert v-if="message" color="error">
+            <v-alert
+              v-if="message"
+              color="error"
+            >
               {{ message }}
             </v-alert>
           </v-card-text>
           <v-card-actions class="px-4">
-            <v-spacer></v-spacer>
-            <v-btn color="grey" class="rounded-xl" text @click="dialog = false">
+            <v-spacer />
+            <v-btn
+              color="grey"
+              class="rounded-xl"
+              variant="text"
+              @click="dialog = false"
+            >
               Abbrechen
             </v-btn>
             <v-btn
               :disabled="!valid"
-              :loading="$store.state.showLoadingSpinner"
+              :loading="showLoadingSpinner"
               color="primary"
               type="submit"
               class="rounded-xl"
@@ -88,53 +110,64 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { toast } from 'vuetify-sonner'
+import type Material from '@/types/material'
 import materialService from '@/services/material.service'
+import { useLoadingStore } from '@/store/loading.store'
+import { mapState } from 'pinia'
+import MaterialRequest from '@/types/material-request'
+
 export default {
-  name: 'MaterialSearchbar',
   props: {
     items: {
-      type: Array,
+      type: Array<Material>,
       required: true
-    }
-  },
-  watch: {
-    select () {
-      this.search()
-    },
-    dialog () {
-      if (!this.dialog) {
-        this.message = ''
-      }
     }
   },
   data () {
     return {
-      select: null,
+      select: null as Material | null,
       dialog: false,
       valid: false,
       nameRules: [
-        (v) => !!v || 'Bitte Name eintragen',
-        (v) =>
+        (v: string) => !!v || 'Bitte Name eintragen',
+        (v: string) =>
           v.length < 50 || 'Der Name darf nicht länger als 50 Zeichen sein.'
       ],
       emailRules: [
-        (v) =>
+        (v: string) =>
           (v.length ? /\S+@\S+\.\S+/.test(v) : true) ||
           'Bitte eine korrekte E-Mail eintragen'
       ],
-      material: {
-        name: '',
-        notes: '',
-        requester: {
-          email: '',
-          city: ''
-        }
-      },
+      material: {} as MaterialRequest,
       message: ''
     }
   },
+  computed: {
+    ...mapState(useLoadingStore, {
+      showLoadingSpinner: (state) => state.showLoadingSpinner
+    })
+  },
+  watch: {
+    dialog () {
+      if (!this.dialog) {
+        this.message = ''
+      }
+    },
+    select () {
+      if (this.select) {
+        this.search()
+      }
+    }
+  },
   methods: {
+    compare (a: Material, b: Material) {
+      if (a.name === b.name) {
+        return true
+      }
+      return false
+    },
     search () {
       if (this.select?.id) {
         this.$router.push({
@@ -146,53 +179,45 @@ export default {
       }
     },
     addMaterial () {
-      if (this.$refs.form.validate()) {
-        this.$store.dispatch('updateShowLoadingSpinner', true)
+      if ((this.$refs.form as any).validate()) {
+        useLoadingStore().updateShowLoadingSpinner(true)
         materialService.getAllNames().then((names) => {
           if (!names.includes(this.material.name)) {
             materialService.addMaterial(this.material)
             this.dialog = false
-            this.$notify({
-              group: 'default',
-              type: 'success',
-              title: 'Vielen Dank!',
-              text: 'Wir haben deine Anfrage erhalten und werden sie bearbeiten.'
-            })
+            toast('Wir haben deine Anfrage erhalten und werden sie bearbeiten.')
           } else {
             this.message = 'Diesen Eintrag gibt es bereits'
           }
-          this.$store.dispatch('updateShowLoadingSpinner', false)
+          useLoadingStore().updateShowLoadingSpinner(false)
         })
       }
     },
-    filter (item, queryText) {
+    filter (itemTitle: string, queryText: string, item?: any): boolean {
       if (item != null && queryText != null) {
         this.material.name = queryText
-        if (item.synonyms) {
-          return (
-            item.name
-              .toLocaleLowerCase()
-              .indexOf(queryText.toLocaleLowerCase()) > -1 ||
-            item.synonyms
-              .toLocaleLowerCase()
-              .indexOf(queryText.toLocaleLowerCase()) > -1
-          )
+
+        const query = queryText.toLocaleLowerCase()
+        const valueName = item.raw.name.toLocaleLowerCase()
+
+        if (item.raw.synonyms) {
+          return valueName.indexOf(query) > -1 ||
+            item.raw.synonyms.toLocaleLowerCase().indexOf(query) > -1
         } else {
-          return (
-            item.name
-              .toLocaleLowerCase()
-              .indexOf(queryText.toLocaleLowerCase()) > -1
-          )
+          return  valueName.indexOf(query) > -1
         }
       }
-      return -1
+      return false
     }
   }
 }
 </script>
-
 <style scoped>
 .v-sheet.v-toolbar:not(.v-sheet--outlined) {
   box-shadow: none !important;
+}
+.link {
+  color: rgb(var(--v-theme-primary));
+  cursor: pointer;
 }
 </style>
