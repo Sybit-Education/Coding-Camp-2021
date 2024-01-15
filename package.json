@@ -9,7 +9,7 @@
     "update:browserlist": "npx browserslist@latest --update-db"
   },
   "dependencies": {
-    "@mdi/font": "7.0.96",
+    "@mdi/font": "^7.4.47",
     "@unhead/vue": "^1.8.9",
     "@vue-leaflet/vue-leaflet": "^0.10.1",
     "airtable": "^0.12.2",
@@ -32,8 +32,12 @@
   },
   "devDependencies": {
     "@babel/types": "^7.23.0",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-regular-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/vue-fontawesome": "^3.0.5",
     "@types/leaflet": "^1.9.8",
-    "@types/markdown-it": "^13.0.7",    
+    "@types/markdown-it": "^13.0.7",
     "@types/node": "^20.10.8",
     "@vitejs/plugin-vue": "^4.5.0",
     "@vue/cli-plugin-pwa": "~5.0.0",

@@ -60,7 +60,6 @@
 
 <script lang="ts">
 import {
-  LControl,
   LControlZoom,
   LGeoJson,
   LMap,
@@ -73,7 +72,7 @@ import 'leaflet.path.drag'
 import 'leaflet/dist/leaflet.css'
 import 'vue-leaflet-markercluster/dist/style.css'
 
-import L, { Point, latLngBounds } from 'leaflet'
+import L from 'leaflet'
 import MapNavigationCard from './MapNavigationCard.vue'
 import locationService from '@/services/location.service'
 import { useLocationStore } from '@/store/location.store'
@@ -102,20 +101,25 @@ export default {
       map: null,
       geojson: null,
       userLocation: undefined as { lat: number; lng: number } | undefined,
+      userIcon: L.icon({
+        iconUrl: '@/assets/icons/user-location.svg',
+        iconSize: [32, 32],
+        iconAnchor: [16, 32]
+      }),
       currentZoom: 10,
-      currentCenter: { x: 47.78707377527543, y: 8.8828643076576 } as Point,
+      currentCenter: {lat: 47.78707377527543, lng: 8.8828643076576 } as any,
       position: null,
       locations: Array<Location>(),
       showPopup: false,
       popupLocation: undefined as Location | undefined,
-      bounds: latLngBounds([
+      bounds: L.latLngBounds([
         [47.54918891696502, 8.474666027343236],
         [47.99957120189105, 9.365931896483863]
-      ]),
-      maxBounds: latLngBounds([
+      ]) as L.LatLngBounds | undefined,
+      maxBounds: L.latLngBounds([
         [47.54918891696502, 8.474666027343236],
         [47.99957120189105, 9.365931896483863]
-      ]),
+      ]) as L.LatLngBounds | undefined,
       url: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -128,12 +132,12 @@ export default {
     this.currentZoom = this.$route.query.zoom
       ? Number.parseInt(this.$route.query.zoom as string, 10)
       : this.currentZoom
-    this.currentCenter.x = this.$route.query.clat
+    this.currentCenter.lat = this.$route.query.clat
       ? Number.parseFloat(this.$route.query.clat as string)
-      : this.currentCenter.x
-    this.currentCenter.x = this.$route.query.clng
+      : this.currentCenter.lat
+    this.currentCenter.lat = this.$route.query.clng
       ? Number.parseFloat(this.$route.query.clng as string)
-      : this.currentCenter.x
+      : this.currentCenter.lat
 
     this.loadLocations()
   },
@@ -162,7 +166,7 @@ export default {
         this.locations = locations
       }
     },
-    getPin (location: any) {
+    getPin (location: Location) {
       return L.icon({
         iconUrl: locationService.getLocationTypeImage(location),
         iconSize: [32, 32],
@@ -185,7 +189,7 @@ export default {
     },
     updateZoom (zoom: number) {
       if (zoom !== this.currentZoom) {
-        this.currentZoom = zoom //Number.parseInt(zoom, 10)
+        this.currentZoom = zoom
         this.$router.replace({
           query: {
             zoom: this.currentZoom,
@@ -195,17 +199,14 @@ export default {
         })
       }
     },
-    updateCenter (center: Point) {
-      if (
-        center.x !== this.currentCenter.x ||
-        center.y !== this.currentCenter.y
-      ) {
+    updateCenter (center: L.LatLng) {
+      if (center) {
         this.currentCenter = center
         this.$router.replace({
           query: {
             zoom: this.currentZoom,
-            clat: this.currentCenter ? this.currentCenter.x : null,
-            clng: this.currentCenter ? this.currentCenter.y : null
+            clat: this.currentCenter ? this.currentCenter.lat : null,
+            clng: this.currentCenter ? this.currentCenter.lng : null
           }
         })
       }
@@ -213,8 +214,8 @@ export default {
     onReady(mapObject: { locate: () => void }) {
       mapObject.locate()
     },
-    onLocationFound(location: { latlng: Point }){
-      this.updateCenter(location.latlng)
+    onLocationFound(locationEvt: L.LocationEvent){
+      this.updateCenter(locationEvt.latlng)
     }
   }
 }
