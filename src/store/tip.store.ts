@@ -2,6 +2,7 @@ import { defineStore } from "pinia"
 import tipService from '@/services/tip.service'
 import { useLoadingStore } from "@/store/loading.store"
 import type Tip from "@/types/tip"
+import { toast } from 'vuetify-sonner'
 
 interface State {
   tipList: Array<Tip>
@@ -26,7 +27,15 @@ export const useTipStore = defineStore("tip", {
         loading.updateShowLoadingSpinner(true)
         tipService.getTipRecords()
           .then((result) => this.tipList = result)
-          .catch((error) => console.error(error))
+          .catch((error) => {
+            console.error(error)
+            toast("Kommunikationsfehler", {
+              description: error.message,
+              cardProps: {
+                color: 'error',
+              }
+            })
+          })
           .finally(() => {
             loading.updateShowLoadingSpinner(false)
             this.isLoading = false

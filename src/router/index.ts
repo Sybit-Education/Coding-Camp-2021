@@ -94,23 +94,23 @@ const router = createRouter({
     } else if (savedPosition) {
       return savedPosition
     } else {
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         setTimeout(() => {
           resolve({ left: 0, top: 0 })
-        }, 500)
+        }, 5)
       })
     }
   },
   routes
 })
 
-router.beforeEach((to) => {
+router.beforeEach(() => {
   // ✅ This will work make sure the correct store is used for the
   // current running app
+  useLocationStore().getLocationRecords()
   useMaterialStore().getMaterialRecords()
   useTargetStore().getTargetRecords()
   useTipStore().getTipRecords()
-  useLocationStore().getLocationRecords()
 })
 
 export default router

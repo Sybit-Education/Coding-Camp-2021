@@ -1,6 +1,5 @@
 import type Location  from '@/types/location'
 import base from './airtable.service'
-import { toast } from 'vuetify-sonner'
 
 const BASE_NAME = 'Location'
 const locationService = {
@@ -29,13 +28,6 @@ const locationService = {
             fetchNextPage()
           }, function done (err) {
             if (err) {
-              console.error(err)
-              toast("Kommunikationsfehler", {
-                description: err.message,
-                cardProps: {
-                  color: 'error',
-                }
-              })
               reject(err)
             }
             resolve(locations)

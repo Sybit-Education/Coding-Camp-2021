@@ -32,13 +32,6 @@ const partnerService = {
           },
           function done (err: Error) {
             if (err) {
-              console.error(err)
-              toast("Kommunikationsfehler", {
-                description: err.message,
-                cardProps: {
-                  color: 'error',
-                }
-              })
               reject(err)
             }
             resolve(allRecords)

@@ -2,6 +2,7 @@ import { defineStore } from "pinia"
 import problemstoffmobilService from '@/services/problemstoffmobil.service'
 import { useLoadingStore } from "./loading.store"
 import type Event from "@/types/event"
+import { toast } from 'vuetify-sonner'
 
 interface State {
   eventList: Array<Event>
@@ -25,7 +26,15 @@ export const useEventStore = defineStore("event", {
         loading.updateShowLoadingSpinner(true)
         problemstoffmobilService.getEventRecords()
           .then((result) => this.eventList = result)
-          .catch((error) => console.error(error))
+          .catch((error) => {
+            console.error(error)
+            toast("Kommunikationsfehler", {
+              description: error.message,
+              cardProps: {
+                color: 'error',
+              }
+            })
+          })
           .finally(() => {
             loading.updateShowLoadingSpinner(false)
             this.isLoading = false

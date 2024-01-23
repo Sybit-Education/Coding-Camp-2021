@@ -36,13 +36,6 @@ const targetService = {
           },
           function done (err) {
             if (err) {
-              console.error(err)
-              toast("Kommunikationsfehler", {
-                description: err.message,
-                cardProps: {
-                  color: 'error',
-                }
-              })
               reject(err)
             }
             resolve(allTargets)

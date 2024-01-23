@@ -3,6 +3,7 @@ import { defineStore } from "pinia"
 import materialService from '@/services/material.service'
 import type Material from "@/types/material"
 import { useLoadingStore } from "@/store/loading.store"
+import { toast } from 'vuetify-sonner'
 
 interface State {
   materialList: Array<Material>
@@ -31,7 +32,15 @@ export const useMaterialStore = defineStore("material", {
         loading.updateShowLoadingSpinner(true)
         materialService.getMaterialRecords()
           .then((result) => this.materialList = result)
-          .catch((error) => console.error(error))
+          .catch((error) => {
+            console.error(error)
+            toast("Kommunikationsfehler", {
+              description: error.message,
+              cardProps: {
+                color: 'error',
+              }
+            })
+          })
           .finally(() => {
             loading.updateShowLoadingSpinner(false)
             this.isLoading = false

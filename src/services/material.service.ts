@@ -1,7 +1,6 @@
 import MaterialRequest from '@/types/material-request'
 import type Material from '@/types/material'
 import base from './airtable.service'
-import { toast } from 'vuetify-sonner'
 import { useTargetStore } from '@/store/target.store'
 
 const materialService = {
@@ -39,13 +38,6 @@ const materialService = {
           },
           function done (err) {
             if (err) {
-              console.error(err)
-              toast("Kommunikationsfehler", {
-                description: err.message,
-                cardProps: {
-                  color: 'error',
-                }
-              })
               reject(err)
             }
             resolve(allRecords)

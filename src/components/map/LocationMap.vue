@@ -77,6 +77,7 @@ import MapNavigationCard from './MapNavigationCard.vue'
 import locationService from '@/services/location.service'
 import { useLocationStore } from '@/store/location.store'
 import type Location from '@/types/location'
+import { mapState } from 'pinia'
 
 export default {
   name: 'LocationMap',
@@ -98,7 +99,6 @@ export default {
   },
   data () {
     return {
-      map: null,
       geojson: null,
       userLocation: undefined as { lat: number; lng: number } | undefined,
       userIcon: L.icon({
@@ -109,7 +109,6 @@ export default {
       currentZoom: 10,
       currentCenter: {lat: 47.78707377527543, lng: 8.8828643076576 } as any,
       position: null,
-      locations: Array<Location>(),
       showPopup: false,
       popupLocation: undefined as Location | undefined,
       bounds: L.latLngBounds([
@@ -125,8 +124,13 @@ export default {
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }
   },
+  computed: {
+    ...mapState(useLocationStore, {
+      locations: store =>  store.locationList
+    })
+  },
   created () {
-    this.loadDistrictPolygons()
+
   },
   mounted () {
     this.currentZoom = this.$route.query.zoom
@@ -138,9 +142,8 @@ export default {
     this.currentCenter.lat = this.$route.query.clng
       ? Number.parseFloat(this.$route.query.clng as string)
       : this.currentCenter.lat
-
-    this.loadLocations()
-  },
+    this.loadDistrictPolygons()
+    },
   methods: {
     loadDistrictPolygons () {
       fetch('/landkreis-konstanz.geojson').then((response) => {
@@ -148,23 +151,6 @@ export default {
           this.geojson = data
         })
       })
-    },
-    async loadLocations () {
-      const locStore = useLocationStore()
-      await locStore.getLocationRecords()
-      const locations = locStore.getLocationList
-      if (this.locationTypes) {
-        const list = Array<Location>()
-        this.locationTypes.forEach((type) => {
-          const filteredList = locations.filter((loc) => {
-            return loc.type === type
-          })
-          list.push(...filteredList)
-        })
-        this.locations = list
-      } else {
-        this.locations = locations
-      }
     },
     getPin (location: Location) {
       return L.icon({

@@ -2,6 +2,7 @@ import { defineStore } from "pinia"
 import targetService from '@/services/target.service'
 import type Target from "@/types/target"
 import { useLoadingStore } from "./loading.store"
+import { toast } from 'vuetify-sonner'
 
 interface State {
   targetList: Array<Target>
@@ -25,7 +26,15 @@ export const useTargetStore = defineStore("target", {
         loading.updateShowLoadingSpinner(true)
         targetService.getTargetRecords()
           .then((result) => this.targetList = result)
-          .catch((error) => console.error(error))
+          .catch((error) => {
+            console.error(error)
+            toast("Kommunikationsfehler", {
+              description: error.message,
+              cardProps: {
+                color: 'error',
+              }
+            })
+          })
           .finally(() => {
             loading.updateShowLoadingSpinner(false)
             this.isLoading = false
