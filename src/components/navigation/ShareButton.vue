@@ -1,20 +1,18 @@
 <template>
   <v-btn
-    fab
-    top
-    small
-    right
+    v-if="isShareable"
+    location="top right"
+    size="small"
+    icon="mdi-share-variant"
     :fixed="fixed"
     class="share-button mt-3"
     aria-hidden="false"
     aria-label="Teilen"
-    v-if="isShareable"
     @click="shareDetails"
-  >
-    <v-icon> mdi-share-variant </v-icon>
-  </v-btn>
+  />
 </template>
-<script>
+<script lang="ts">
+
 export default {
   name: 'ShareButton',
   props: {
@@ -56,7 +54,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import "src/scss/variables.scss";
+@use "@/styles/variables.scss";
+@use 'vuetify/settings' as v;
 
 .share-button {
   @include glassmorphism(
@@ -64,11 +63,11 @@ export default {
     $blur-ammount: 4px,
     $color-intensity: 0.4
   );
-  z-index: 2;
-  margin-bottom: calc(0.5 * #{$bottom-navigation-height});
+  z-index: 999;
+  --margin-bottom: calc(0.5 * #{$bottom-navigation-height});
 
-  @media #{map-get($display-breakpoints, 'xs-only')} {
-    margin-bottom: calc(1.5 * #{$bottom-navigation-height});
+  @media #{map-get(v.$display-breakpoints, 'xs')} {
+    --margin-bottom: calc(1.5 * #{$bottom-navigation-height});
   }
 }
 </style>

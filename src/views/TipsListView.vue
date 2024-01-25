@@ -1,29 +1,44 @@
 <template>
   <v-container id="tip-list">
-    <h1 class="mb-5">Tipps</h1>
-    <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
-    <div v-for="tip in list" :key="tip.id">
-      <tip-card :tip="tip" class="mb-5" />
+    <headline-bar title="Tipps" />
+    <loading-spinner v-if="showLoadingSpinner" />
+    <div
+      v-for="tip in tipList"
+      v-else
+      :key="tip.id"
+    >
+      <tip-card
+        :tip="tip"
+        class="mb-5"
+      />
     </div>
   </v-container>
 </template>
 
-<script>
-import tipCard from '@/components/tips/TipCard.vue'
-import { mapGetters } from 'vuex'
+<script lang="ts">
+import { mapState } from 'pinia'
+
+import HeadlineBar from '@/components/HeadlineBar.vue'
+import TipCard from '@/components/tips/TipCard.vue'
+
+import { useTipStore } from '@/store/tip.store'
+import { useLoadingStore } from '@/store/loading.store'
+
 export default {
+
   name: 'TipsListView',
-  components: { tipCard },
-  metaInfo () {
-    return {
-      title: 'Tipps zur Entsorgung'
-    }
+  components: {
+    HeadlineBar,
+    TipCard
+  },
+  head: {
+    title: 'Tipps zur Entsorgung'
   },
   computed: {
-    ...mapGetters({
-      list: 'Tip/getTipList',
-      showLoadingSpinner: 'Loading/showLoadingSpinner'
-    })
+    ...mapState( useTipStore, ['tipList']),
+    ...mapState( useLoadingStore, ['showLoadingSpinner'])
   }
+
+
 }
 </script>

@@ -2,15 +2,16 @@
   <v-chip
     v-if="target"
     class="ml-2 elevation-3"
-    outlined
+    variant="outlined"
     :color="target.color"
   >
     {{ target.name }}
   </v-chip>
 </template>
 
-<script>
-import { mapGetters } from 'vuex'
+<script lang="ts">
+import { useTargetStore } from '@/store/target.store';
+
 export default {
   name: 'TargetChip',
   props: {
@@ -21,11 +22,9 @@ export default {
   },
   computed: {
     target () {
-      return this.getTargetById(this.targetId)
-    },
-    ...mapGetters({
-      getTargetById: 'Target/getTargetById'
-    })
+      const target = useTargetStore().getTargetById(this.targetId)
+      return target
+    }
   }
 }
 </script>

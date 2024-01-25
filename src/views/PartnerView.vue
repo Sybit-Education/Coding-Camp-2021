@@ -1,32 +1,44 @@
 <template>
   <v-container>
-    <h1 class="mb-5">Offizielle Partner der Mülli-App</h1>
-    <loading-spinner v-if="showLoadingSpinner"></loading-spinner>
+    <headline-bar title="Offizielle Partner der Mülli-App" />
+
+    <loading-spinner v-if="showLoadingSpinner" />
     <v-row>
-      <v-col v-for="partner in list" :key="partner.id" cols="12" xl="6">
-        <partner-card :partner="partner" class="mb-5" />
+      <v-col
+        v-for="partner in list"
+        :key="partner.id"
+        cols="12"
+        xl="6"
+      >
+        <partner-card
+          :partner="partner"
+          class="mb-5"
+        />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
-<script>
+<script lang="ts">
 import partnerService from '@/services/partner.service'
-import partnerCard from '@/components/partner/PartnerCard.vue'
+import PartnerCard from '@/components/partner/PartnerCard.vue'
+import HeadlineBar from '@/components/HeadlineBar.vue'
+import Partner from '@/types/partner'
 
 export default {
   name: 'PartnerView',
-  components: { partnerCard },
+  components: {
+    PartnerCard,
+    HeadlineBar
+  },
   data () {
     return {
-      list: [],
+      list: Array<Partner>(),
       showLoadingSpinner: true
     }
   },
-  metaInfo () {
-    return {
-      title: 'Unsere Partner'
-    }
+  head: {
+    title: 'Unsere Partner'
   },
   created () {
     partnerService.getPartnerRecords().then((list) => {

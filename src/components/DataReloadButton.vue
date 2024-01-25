@@ -1,18 +1,24 @@
 <template>
-  <v-btn @click="reload">Daten neu laden</v-btn>
+  <v-btn @click="reload">
+    Daten neu laden
+  </v-btn>
 </template>
 
-<script>
+<script lang="ts">
+import { useMaterialStore } from '@/store/material.store'
+import { useTargetStore } from '@/store/target.store'
+import { useTipStore } from '@/store/tip.store'
+import { useLocationStore } from '@/store/location.store'
+
 export default {
-  name: 'DataReloadButton',
   methods: {
     reload () {
       window.sessionStorage.clear()
 
-      this.$store.dispatch('Material/getMaterialRecords')
-      this.$store.dispatch('Target/getTargetRecords')
-      this.$store.dispatch('Tip/getTipRecords')
-      this.$store.dispatch('Location/getLocationRecords')
+      useMaterialStore().getMaterialRecords()
+      useTargetStore().getTargetRecords()
+      useTipStore().getTipRecords()
+      useLocationStore().getLocationRecords()
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-main class="py-0">
+    <v-main>
       <v-banner
         v-if="deferredPrompt"
         color="primary"
@@ -8,75 +8,120 @@
         class="install-banner text-left"
       >
         Möchten Sie die Mülli-App installieren?
-        <template v-slot:actions>
-          <v-btn text @click="dismiss" class="rounded-xl">Nein danke</v-btn>
-          <v-btn color="white" @click="install" class="rounded-xl black--text"
-            >Installieren</v-btn
+        <template #actions>
+          <v-btn
+            variant="text"
+            class="rounded-xl"
+            @click="dismiss"
           >
+            Nein danke
+          </v-btn>
+          <v-btn
+            color="white"
+            class="rounded-xl text-black"
+            @click="install"
+          >
+            Installieren
+          </v-btn>
         </template>
       </v-banner>
       <router-view />
-      <div class="navigation">
-        <bottom-navigation class="bottomnav" />
-      </div>
     </v-main>
-    <notifications group="default" />
+    <nav class="navigation">
+      <bottom-navigation />
+    </nav>
+    <VSonner :duration="10000" />
   </v-app>
 </template>
 
-<script>
-import BottomNavigation from '@/components/navigation/BottomNavigation'
+<script setup lang="ts">
+import BottomNavigation from '@/components/navigation/BottomNavigation.vue'
+import { ref } from 'vue';
+import { useHead } from '@unhead/vue'
+import { VSonner } from 'vuetify-sonner'
 
-export default {
-  name: 'App',
-  metaInfo: {
-    title: 'Wie entsorge ich ...?',
-    // all titles will be injected into this template
-    titleTemplate: '%s | Mülli'
-  },
-  components: { BottomNavigation },
-  data () {
-    return {
-      deferredPrompt: null
-    }
-  },
-  created () {
-    window.addEventListener('beforeinstallprompt', (event) => {
-      event.preventDefault()
-      this.deferredPrompt = event
-    })
-    window.addEventListener('appinstalled', () => {
-      this.deferredPrompt = null
-    })
-
-    this.$store.dispatch('Material/getMaterialRecords')
-    this.$store.dispatch('Target/getTargetRecords')
-    this.$store.dispatch('Tip/getTipRecords')
-    this.$store.dispatch('Location/getLocationRecords')
-  },
-  methods: {
-    async dismiss () {
-      this.deferredPrompt = null
+useHead({
+  title: 'Wie entsorge ich ...?',
+  titleTemplate: '%s | Mülli-App',
+  meta: [
+    {
+      name: 'description',
+      content: 'Mülli App'
     },
-    async install () {
-      this.deferredPrompt.prompt()
+    {
+      name: 'keywords',
+      content: 'Müll, Entsorgung, Problemstoffe, Abfall, Landkreis Konstanz, Mülli App'
+    },
+    {
+      name: 'author',
+      content: 'Sybit coding Camp 2021 team'
+    },
+    {
+      name: 'og:title',
+      content: 'Mülli App'
+    },
+    {
+      name: 'og:description',
+      content: 'App für die Entsorgung von Müll im Landkreis Konstanz'
+    },
+    {
+      name: 'og:url',
+      content: 'https://muelli.app'
+    },
+    {
+      name: 'twitter:title',
+      content: 'Mülli App'
+    },
+    {
+      name: 'twitter:description',
+      content: 'App für die Entsorgung von Müll im Landkreis Konstanz'
+    },
+    {
+      name: 'twitter:card',
+      content: 'Mülli App'
     }
+  ]
+})
+
+
+interface BeforeInstallPromptEvent extends Event {
+  readonly platforms: string[];
+  readonly userChoice: Promise<{
+    outcome: "accepted" | "dismissed";
+    platform: string;
+  }>;
+  prompt(): Promise<void>;
+}
+
+declare global {
+  interface WindowEventMap {
+    beforeinstallprompt: BeforeInstallPromptEvent;
   }
+}
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+window.addEventListener("beforeinstallprompt", (_e) => {}); // _e is now typed as BeforeInstallPromptEvent
+const deferredPrompt = ref<BeforeInstallPromptEvent | null>(null)
+
+window.addEventListener('beforeinstallprompt', (event) => {
+  event.preventDefault()
+  deferredPrompt.value = event
+})
+window.addEventListener('appinstalled', () => {
+  deferredPrompt.value = null
+})
+
+const install = () => {
+  deferredPrompt.value?.prompt()
+}
+const dismiss = () => {
+  deferredPrompt.value = null
 }
 </script>
 <style lang="scss">
-@import "src/scss/scrollbar.scss";
 .container {
   margin-bottom: 1.25 * $bottom-navigation-height;
 }
-.navigation {
-  position: relative;
-}
 .install-banner {
   z-index: 1000;
-}
-.bottomnav {
-  position: absolute;
-  bottom: 0;
 }
 </style>

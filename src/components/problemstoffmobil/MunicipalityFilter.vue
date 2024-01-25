@@ -4,35 +4,39 @@
       v-model="select"
       :loading="municipalities && municipalities.length < 0"
       :items="municipalities"
-      :search-input="search"
+      :search="search"
       class="municipality-filter__autocomplete rounded-xl"
       hide-no-data
       hide-details
       label="Gemeinde auswählen"
-      solo
+      variant="solo"
       auto-select-first
-    ></v-autocomplete>
+    />
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import type Event from '@/types/event'
+
 export default {
+
   name: 'MunicipalityFilter',
   props: {
     eventList: {
-      type: Array,
+      type: Array<Event>,
       required: true
     }
   },
+  emits: ['doFilter'],
   data () {
     return {
-      search: null,
-      select: null
+      search: undefined as string | undefined,
+      select: undefined as string | undefined
     }
   },
   computed: {
     municipalities () {
-      const muni = this.eventList.map((event) => event.municipality)
+      const muni = this.eventList.map((event: Event) => event.municipality)
       return [...new Set(muni)].sort()
     }
   },

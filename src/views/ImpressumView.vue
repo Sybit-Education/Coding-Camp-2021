@@ -1,6 +1,6 @@
 <template>
   <v-container class="impressum__container">
-    <h1 class="mt-5">Impressum</h1>
+    <headline-bar title="Impressum" />
     <div>
       <h2>Sybit GmbH</h2>
       <address>Sankt-Johannis-Str. 1-5</address>
@@ -15,7 +15,8 @@
       <p><b>DUNS Nummer:</b> 34-124-4838</p>
 
       <h2>Haftung für Inhalte</h2>
-      <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
+      <p>
+        Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
         Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet,
         übermittelte
         oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige
@@ -23,9 +24,11 @@
         Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben
         hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten
         Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte
-        umgehend entfernen.</p>
+        umgehend entfernen.
+      </p>
       <h2>Haftung für Links</h2>
-      <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb
+      <p>
+        Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb
         können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist
         stets
         der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der
@@ -33,9 +36,11 @@
         erkennbar.
         Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer
         Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend
-        entfernen.</p>
+        entfernen.
+      </p>
       <h2>Urheberrecht</h2>
-      <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
+      <p>
+        Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
         Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen
         des
         Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien
@@ -49,18 +54,17 @@
   </v-container>
 </template>
 
-<script>
-export default {
-  name: 'ImpressumView',
-  created () {
-    window.scrollTo(0, 0)
-  },
-  metaInfo () {
-    return {
-      title: 'Impressum'
-    }
-  }
-}
+<script setup lang="ts">
+import { onMounted } from 'vue';
+import { useHead } from '@unhead/vue'
+
+onMounted(() => {
+  window.scrollTo(0, 0)
+})
+
+useHead({
+   title: 'Impressum'
+})
 </script>
 
 <style lang="scss" scoped>

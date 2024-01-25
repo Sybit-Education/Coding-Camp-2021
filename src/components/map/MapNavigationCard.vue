@@ -1,13 +1,12 @@
 <template>
   <v-card class="bottom-sheet__card">
-    <v-btn fixed icon right>
-      <v-icon large @click="close"> mdi-close </v-icon>
-    </v-btn>
     <div v-if="location">
       <div class="bottom-sheet__subtitle text--secondary">
         {{ location.type }}
       </div>
-      <h2 class="bottom-sheet__title">{{ location.name }}</h2>
+      <h2 class="bottom-sheet__title">
+        {{ location.name }}
+      </h2>
       <div v-if="location.notes">
         <markdown-wrapper
           :source="location.notes"
@@ -22,17 +21,31 @@
             class="bottom-sheet__link"
             target="_blank"
             rel="noopener noreferrer"
-            >{{ location.link }}</a
-          >
+          >{{ location.link }}</a>
         </div>
       </div>
       <v-row v-if="location.images">
-        <v-col v-for="img in location.images" :key="img" cols="auto">
-          <v-img :src="img" class="bottom-sheet__image"></v-img>
+        <v-col
+          v-for="img in location.images"
+          :key="img"
+          cols="auto"
+        >
+          <v-img
+            :src="img"
+            class="bottom-sheet__image"
+          />
         </v-col>
       </v-row>
-      <v-row align-content="center" justify="center">
-        <v-col cols="12" lg="2" md="4" sm="6">
+      <v-row
+        align-content="center"
+        justify="center"
+      >
+        <v-col
+          cols="12"
+          lg="2"
+          md="4"
+          sm="6"
+        >
           <v-btn
             block
             class="rounded-xl py-7 bottom-sheet__navigation-button"
@@ -48,28 +61,28 @@
   </v-card>
 </template>
 
-<script>
+<script lang="ts">
 import MarkdownWrapper from '@/components/MarkdownWrapper.vue'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
 
 export default {
   name: 'MapNavigationCard',
+  components: {
+    MarkdownWrapper,
+    LoadingSpinner
+  },
   props: {
     location: {
       type: Object,
       default: null
     }
   },
-  components: {
-    MarkdownWrapper,
-    LoadingSpinner
-  },
+  emits: ['close'],
   methods: {
     close () {
       this.$emit('close')
-      this.active = false
     },
-    openGoogleMaps (lat, lng) {
+    openGoogleMaps (lat: number, lng: number) {
       window.open(
         `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`
       )
@@ -79,14 +92,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "node_modules/vuetify/src/styles/settings/variables";
-@import "src/scss/variables";
-
 .bottom-sheet {
   &__card {
     overflow-y: scroll;
     padding: 1rem 1rem 1.75rem 0.75rem;
-    height: clamp(50vh, 70vh, 80vh);
+    min-height: clamp(25vh, 40vh, 50vh);
     display: grid;
   }
 

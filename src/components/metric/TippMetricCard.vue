@@ -1,28 +1,40 @@
 import { mapGetters } from 'vuex';
 <template>
-  <v-card class="rounded-xl text-center py-3 grey lighten-3" to="/tipps">
+  <v-card
+    class="rounded-xl text-center py-3 bg-grey-lighten-3"
+    to="/tipps"
+  >
     <div class="text-h4 font-weight-black">
-      <number :to="count" :duration="1" />
+      <number-animation
+        :to="count"
+        :duration="1"
+        :format="format"
+      />
     </div>
-    <div class="text-caption">Tipps</div>
+    <div class="text-caption">
+      Tipps
+    </div>
   </v-card>
 </template>
 
-<script>
-import { mapGetters } from 'vuex'
+<script lang="ts">
+import NumberAnimation from "vue-number-animation"
+import { mapState } from 'pinia'
+import { useTipStore } from '@/store/tip.store'
 
 export default {
-  name: 'TippMetricCard',
+  components: {
+    NumberAnimation
+  },
   computed: {
-    count () {
-      return this.getTipList.length
-    },
-    ...mapGetters({
-      getTipList: 'Tip/getTipList'
+    ...mapState(useTipStore, {
+      count: store =>  store.tipList.length
     })
+  },
+  methods: {
+    format (value: number) {
+      return value.toFixed(0)
+    }
   }
 }
 </script>
-
-<style>
-</style>
