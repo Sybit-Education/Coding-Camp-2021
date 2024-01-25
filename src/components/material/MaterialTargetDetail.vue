@@ -1,16 +1,21 @@
 <template>
-  <div v-if="target.description">
-    <hr />
-    <h2 class="mt-5" v-text="target.name" />
-    <markdown-wrapper class="mt-5" :source="target.description" />
+  <div v-if="target">
+    <hr>
+    <h2
+      class="mt-5"
+      v-text="target.name"
+    />
+    <markdown-wrapper
+      class="mt-5"
+      :source="target.description"
+    />
   </div>
 </template>
-<script>
+<script lang="ts">
 import MarkdownWrapper from '@/components/MarkdownWrapper.vue'
-import { mapGetters } from 'vuex'
+import { useTargetStore } from '@/store/target.store';
 
 export default {
-  name: 'MaterialTargetDetail',
   components: {
     MarkdownWrapper
   },
@@ -22,11 +27,9 @@ export default {
   },
   computed: {
     target () {
-      return this.getTargetById(this.targetId)
-    },
-    ...mapGetters({
-      getTargetById: 'Target/getTargetById'
-    })
+      const target = useTargetStore().getTargetById(this.targetId)
+      return target
+    }
   }
 }
 </script>

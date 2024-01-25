@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="CGImap 0.8.5 (2517673 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <relation id="62603" visible="true" version="94" changeset="87718208" timestamp="2020-07-08T15:24:03Z" user="Erdrotationsbeschleuniger" uid="11461462">
+  <member type="way" ref="207179103" role="outer"/>
+  <member type="way" ref="124997881" role="outer"/>
+  <member type="way" ref="35829664" role="outer"/>
+  <member type="way" ref="124997866" role="outer"/>
+  <member type="way" ref="70138728" role="outer"/>
+  <member type="way" ref="105901759" role="outer"/>
+  <member type="way" ref="105901964" role="outer"/>
+  <member type="way" ref="70039687" role="outer"/>
+  <member type="way" ref="209044148" role="outer"/>
+  <member type="way" ref="124997918" role="outer"/>
+  <member type="way" ref="70032767" role="outer"/>
+  <member type="way" ref="40469805" role="outer"/>
+  <member type="way" ref="40471492" role="outer"/>
+  <member type="way" ref="92514614" role="outer"/>
+  <member type="way" ref="70032753" role="outer"/>
+  <member type="way" ref="92514606" role="outer"/>
+  <member type="way" ref="70039691" role="outer"/>
+  <member type="way" ref="92514591" role="outer"/>
+  <member type="way" ref="69568286" role="outer"/>
+  <member type="way" ref="69568365" role="outer"/>
+  <member type="way" ref="44815944" role="outer"/>
+  <member type="way" ref="124315481" role="outer"/>
+  <member type="way" ref="207174191" role="outer"/>
+  <member type="way" ref="207174200" role="outer"/>
+  <member type="way" ref="207168710" role="outer"/>
+  <member type="way" ref="207168703" role="outer"/>
+  <member type="way" ref="207168706" role="outer"/>
+  <member type="way" ref="207162337" role="outer"/>
+  <member type="way" ref="207159962" role="outer"/>
+  <member type="way" ref="207162333" role="outer"/>
+  <member type="way" ref="313419902" role="outer"/>
+  <member type="way" ref="313419898" role="outer"/>
+  <member type="way" ref="207159959" role="outer"/>
+  <member type="way" ref="207162328" role="outer"/>
+  <member type="way" ref="207159960" role="outer"/>
+  <member type="way" ref="207162319" role="outer"/>
+  <member type="way" ref="220528380" role="outer"/>
+  <member type="way" ref="220528379" role="outer"/>
+  <member type="way" ref="220528378" role="outer"/>
+  <member type="way" ref="124053341" role="outer"/>
+  <member type="way" ref="124053350" role="outer"/>
+  <member type="way" ref="212102467" role="outer"/>
+  <member type="way" ref="233681723" role="outer"/>
+  <member type="way" ref="212102543" role="outer"/>
+  <member type="way" ref="212102599" role="outer"/>
+  <member type="way" ref="212102579" role="outer"/>
+  <member type="way" ref="212102673" role="outer"/>
+  <member type="way" ref="218264685" role="outer"/>
+  <member type="way" ref="220963374" role="outer"/>
+  <member type="way" ref="323979541" role="outer"/>
+  <member type="way" ref="218323024" role="outer"/>
+  <member type="way" ref="218303169" role="outer"/>
+  <member type="way" ref="212102658" role="outer"/>
+  <member type="way" ref="212102590" role="outer"/>
+  <member type="way" ref="218303162" role="outer"/>
+  <member type="way" ref="207159964" role="outer"/>
+  <member type="way" ref="218294279" role="outer"/>
+  <member type="way" ref="207159967" role="outer"/>
+  <member type="way" ref="207159957" role="outer"/>
+  <member type="way" ref="220140015" role="outer"/>
+  <member type="way" ref="220140020" role="outer"/>
+  <member type="way" ref="220140013" role="outer"/>
+  <member type="way" ref="220140011" role="outer"/>
+  <member type="way" ref="220140016" role="outer"/>
+  <member type="way" ref="220140018" role="outer"/>
+  <member type="way" ref="320172632" role="outer"/>
+  <member type="way" ref="220140014" role="outer"/>
+  <member type="way" ref="320168912" role="outer"/>
+  <member type="way" ref="220076489" role="outer"/>
+  <member type="way" ref="220073721" role="outer"/>
+  <member type="way" ref="220073718" role="outer"/>
+  <member type="way" ref="320769342" role="outer"/>
+  <member type="way" ref="220380596" role="outer"/>
+  <member type="way" ref="220380593" role="outer"/>
+  <member type="way" ref="320774380" role="outer"/>
+  <member type="way" ref="220380594" role="outer"/>
+  <member type="way" ref="220393907" role="outer"/>
+  <member type="way" ref="220393912" role="outer"/>
+  <member type="way" ref="220393904" role="outer"/>
+  <member type="way" ref="207179100" role="outer"/>
+  <member type="way" ref="40471792" role="outer"/>
+  <member type="way" ref="556049535" role="outer"/>
+  <member type="way" ref="123620567" role="outer"/>
+  <member type="way" ref="124062272" role="outer"/>
+  <member type="way" ref="40471659" role="outer"/>
+  <member type="way" ref="124997906" role="outer"/>
+  <member type="way" ref="207159968" role="outer"/>
+  <member type="way" ref="207162351" role="outer"/>
+  <member type="way" ref="54436444" role="outer"/>
+  <member type="node" ref="1636999091" role="admin_centre"/>
+  <member type="node" ref="1675121151" role="label"/>
+  <tag k="admin_level" v="6"/>
+  <tag k="border_type" v="county"/>
+  <tag k="boundary" v="administrative"/>
+  <tag k="de:amtlicher_gemeindeschluessel" v="08335"/>
+  <tag k="de:place" v="county"/>
+  <tag k="de:regionalschluessel" v="08335"/>
+  <tag k="license_plate_code" v="KN"/>
+  <tag k="name" v="Landkreis Konstanz"/>
+  <tag k="name:ru" v="Констанц"/>
+  <tag k="ref:nuts:3" v="DE138"/>
+  <tag k="source" v="LGL, www.lgl-bw.de"/>
+  <tag k="TMC:cid_58:tabcd_1:Class" v="Area"/>
+  <tag k="TMC:cid_58:tabcd_1:LCLversion" v="8.00"/>
+  <tag k="TMC:cid_58:tabcd_1:LocationCode" v="491"/>
+  <tag k="type" v="boundary"/>
+  <tag k="wikidata" v="Q8206"/>
+  <tag k="wikipedia" v="de:Landkreis Konstanz"/>
+ </relation>
+</osm>

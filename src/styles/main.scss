@@ -1,0 +1,34 @@
+@use 'vuetify' with (
+  $body-font-family: 'Atkinson Hyperlegible',
+  $heading-font-family: 'Atkinson Hyperlegible'
+);
+
+@import "variables.scss";
+@import "_mixins.scss";
+@import "_font.scss";
+@import "_scrollbar.scss";
+
+
+html {
+    // to force font also for cookie-banner
+    font-family: $body-font-family;
+  
+    // for PWA
+    min-height: calc(100% + env(safe-area-inset-top));
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+  
+  h1,
+  h2,
+  h2,
+  h4 {
+    word-break: break-none;
+  }
+  
+  p {
+    hyphens: auto;
+  }
+  
+  .v-card__title {
+    word-break: keep-all;
+  }
