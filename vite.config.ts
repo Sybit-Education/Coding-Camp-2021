@@ -3,6 +3,7 @@ import Components from 'unplugin-vue-components/vite'
 import Vue from '@vitejs/plugin-vue'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import ViteFonts from 'unplugin-fonts/vite'
+import { VitePWA } from "vite-plugin-pwa";
 import version from 'vite-plugin-package-version'
 
 // Utilities
@@ -31,6 +32,38 @@ export default defineConfig({
         }],
       },
     }),
+    VitePWA({
+      registerType: "autoUpdate",
+      devOptions: {
+        enabled: true,
+      },
+      manifest: {
+        name: "Mülli.app",
+        short_name: "Mülli.app",
+        description: "Wie entsorge ich im Landkreis Konstanz …",
+        theme_color: "#FF6F00",
+        icons: [
+          {
+            src: "img/icons/android-chrome-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
+            purpose: "any",
+          },
+          {
+            src: "img/icons/android-chrome-maskable-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
+            purpose: "maskable",
+          },
+          {
+            src: "img/icons/android-chrome-maskable-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "maskable",
+          },
+        ],
+      },
+    }),
   ],
   define: { 'process.env': {} },
   resolve: {
@@ -55,10 +88,10 @@ export default defineConfig({
           @use "@/styles/variables.scss" as *;
           @use "@/styles/_mixins.scss" as *;
           @use "@/styles/_scrollbar.scss" as *;
-        `        
+        `
       },
     }
-  },  
+  },
   server: {
     port: 3000,
   },

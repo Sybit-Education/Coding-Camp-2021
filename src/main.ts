@@ -12,8 +12,6 @@ import router from "./router"
 
 import { createApp } from 'vue'
 
-import './registerServiceWorker'
-
 const app = createApp(App)
 
 app.provide('L', L)
