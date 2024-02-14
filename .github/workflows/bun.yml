@@ -17,4 +17,4 @@ jobs:
       with:
         bun-version: latest
     - run: bun install --frozen-lockfile
-    - run: bun build --if-present
+    - run: bun run build
