@@ -15,8 +15,8 @@ export const useTargetStore = defineStore("target", {
     isLoading: false
   }),
   getters: {
-    getTargetList: (state) => state.targetList,
-    getTargetById: (state) => (id: string) =>  state.targetList.find((target) => target.id === id)
+    getTargetList: (state) => state.targetList as Array<Target>,
+    getTargetById: (state) => (id: string) =>  state.targetList.find((target) => target.id === id) as Target
   },
   actions: {
     async getTargetRecords () {

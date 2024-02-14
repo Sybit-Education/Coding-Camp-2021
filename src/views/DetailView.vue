@@ -72,6 +72,7 @@ import MaterialCallToActionButton from '@/components/material/MaterialCallToActi
 import { mapState } from 'pinia'
 import { useMaterialStore } from '@/store/material.store'
 import { useTipStore } from '@/store/tip.store'
+import { useTargetStore } from '@/store/target.store'
 import type Tip from '@/types/tip'
 import type Material from '@/types/material'
 
@@ -116,10 +117,10 @@ export default {
       return this.material ? this.material.notes : 'Loading...'
     },
     share (): {title: string, text: string} {
-      if (this.material?.targets) {
+      if (this.material && this.material?.targets) {
         return {
-          title: `Mülli: ${this.material.name} entsorgen 👉 ${this.getMaterialById(this.material.targets[0]).name}`,
-          text: `${this.material.name} entsorgen: ${this.getMaterialById(this.material.targets[0]).name}
+          title: `Mülli: ${this.material.name} entsorgen 👉 ${this.getTargetById(this.material.targets[0]).name}`,
+          text: `${this.material.name} entsorgen: ${this.getTargetById(this.material.targets[0]).name}
           ${this.material?.notes}`
         }
       } else {
@@ -134,6 +135,9 @@ export default {
     }),
     ...mapState( useMaterialStore, {
       getMaterialById: store => store.getMaterialById
+    }),
+    ...mapState(useTargetStore, {
+      getTargetById: store => store.getTargetById
     })
   },
   created () {
