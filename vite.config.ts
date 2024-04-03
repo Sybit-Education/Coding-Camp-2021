@@ -100,6 +100,25 @@ export default defineConfig({
             }
         ],
       },
+      workbox: {
+        runtimeCaching: [
+          {
+            // URL-Muster, das auf deine Airtable-API-Endpunkte passt
+            urlPattern: /^https:\/\/api\.airtable\.com\//,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'api-cache',
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 24 * 60 * 60 // 24 Stunden
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          }
+        ]
+      }
     }),
   ],
   define: { 'process.env': {} },

@@ -22,11 +22,11 @@
     "pinia": "^2.1.7",
     "register-service-worker": "^1.7.2",
     "vite-plugin-package-version": "^1.1.0",
-    "vue": "^3.4.15",
+    "vue": "^3.4.21",
     "vue-leaflet-markercluster": "^0.5.1",
     "vue-number-animation": "^2.0.2",
     "vue-router": "^4.2.5",
-    "vuetify": "^3.5.1",
+    "vuetify": "^3.5.14",
     "vuetify-sonner": "^0.3.12"
   },
   "devDependencies": {

@@ -10,14 +10,13 @@
         Möchten Sie die Mülli-App installieren?
         <template #actions>
           <v-btn
-            variant="text"
             class="rounded-xl"
             @click="dismiss"
           >
-            Nein danke
+            Nein, danke.
           </v-btn>
           <v-btn
-            color="white"
+            variant="outlined"
             class="rounded-xl text-black"
             @click="install"
           >
