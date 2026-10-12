@@ -22,7 +22,7 @@
     "pinia": "^2.1.7",
     "register-service-worker": "^1.7.2",
     "vite-plugin-package-version": "^1.1.0",
-    "vue": "^3.4.21",
+    "vue": "^3.5.43",
     "vue-leaflet-markercluster": "^0.5.1",
     "vue-number-animation": "^2.0.2",
     "vue-router": "^4.2.5",
